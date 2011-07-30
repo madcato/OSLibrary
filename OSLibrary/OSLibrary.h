@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+#import "OSSystem.h"
+#import "OSDate.h"
+#import "OSDateTime.h"
+#import "OSTime.h"
+
 @interface OSLibrary : NSObject
 
 @end
