@@ -18,7 +18,7 @@
 @interface OSDate : NSObject
 
 /*!
- @function now
+ @method now
  @result NSString*
  @abstract This method return the current date with the system locale format
 */
