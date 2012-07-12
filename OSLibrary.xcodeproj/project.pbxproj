@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		272C036215335261008DF260 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 272C036015335261008DF260 /* NSData+Base64.h */; };
+		272C036315335261008DF260 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 272C036115335261008DF260 /* NSData+Base64.m */; };
+		272C0366153352F9008DF260 /* OSCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 272C0364153352F9008DF260 /* OSCrypto.h */; };
+		272C0367153352F9008DF260 /* OSCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 272C0365153352F9008DF260 /* OSCrypto.m */; };
 		27713A0913E481DC00287735 /* OSLibrary.h in Headers */ = {isa = PBXBuildFile; fileRef = 27CB95FE13E4110100717380 /* OSLibrary.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		278474B913EFF2E400CDD1CF /* OSWebRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 278474B713EFF2E400CDD1CF /* OSWebRequest.h */; };
+		278474BA13EFF2E400CDD1CF /* OSWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 278474B813EFF2E400CDD1CF /* OSWebRequest.m */; };
 		27CB95FA13E4110100717380 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CB95F913E4110100717380 /* Foundation.framework */; };
 		27CB960013E4110100717380 /* OSLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CB95FF13E4110100717380 /* OSLibrary.m */; };
 		27CB960813E4110100717380 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CB960713E4110100717380 /* SenTestingKit.framework */; };
@@ -27,6 +33,11 @@
 		27CB963513E4140600717380 /* OSDateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CB963413E4140600717380 /* OSDateTest.m */; };
 		27CB963813E4162F00717380 /* OSTimeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CB963713E4162F00717380 /* OSTimeTest.m */; };
 		27CB963B13E418A300717380 /* OSDateTimeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CB963A13E418A300717380 /* OSDateTimeTest.m */; };
+		27FD9C7014EAB2DB0091A0E3 /* OSNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FD9C6E14EAB2DB0091A0E3 /* OSNetwork.h */; };
+		27FD9C7114EAB2DB0091A0E3 /* OSNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FD9C6F14EAB2DB0091A0E3 /* OSNetwork.m */; };
+		27FD9C7414EAB3200091A0E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD9C7314EAB3200091A0E3 /* SystemConfiguration.framework */; };
+		27FD9C7A14EAB3BA0091A0E3 /* OSNetworkTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FD9C7914EAB3BA0091A0E3 /* OSNetworkTest.m */; };
+		27FD9C7B14EAB5940091A0E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27FD9C7314EAB3200091A0E3 /* SystemConfiguration.framework */; };
 		27FEF6E413ED459800BC78B0 /* OSAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF6E213ED459800BC78B0 /* OSAnimation.h */; };
 		27FEF6E513ED459800BC78B0 /* OSAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF6E313ED459800BC78B0 /* OSAnimation.m */; };
 		27FEF70C13ED4A7A00BC78B0 /* OSLocation.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF70A13ED4A7A00BC78B0 /* OSLocation.h */; };
@@ -35,19 +46,6 @@
 		27FEF71113ED4FBE00BC78B0 /* OSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF70F13ED4FBE00BC78B0 /* OSImage.m */; };
 		27FEF71513ED54B200BC78B0 /* WebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF71213ED54B100BC78B0 /* WebViewController.h */; };
 		27FEF71613ED54B200BC78B0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF71313ED54B200BC78B0 /* WebViewController.m */; };
-		27FEF72513ED54D200BC78B0 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF71813ED54D200BC78B0 /* JSON.h */; };
-		27FEF72613ED54D200BC78B0 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF71913ED54D200BC78B0 /* NSObject+SBJSON.h */; };
-		27FEF72713ED54D200BC78B0 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF71A13ED54D200BC78B0 /* NSObject+SBJSON.m */; };
-		27FEF72813ED54D200BC78B0 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF71B13ED54D200BC78B0 /* NSString+SBJSON.h */; };
-		27FEF72913ED54D200BC78B0 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF71C13ED54D200BC78B0 /* NSString+SBJSON.m */; };
-		27FEF72A13ED54D200BC78B0 /* SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF71D13ED54D200BC78B0 /* SBJSON.h */; };
-		27FEF72B13ED54D200BC78B0 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF71E13ED54D200BC78B0 /* SBJSON.m */; };
-		27FEF72C13ED54D200BC78B0 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF71F13ED54D200BC78B0 /* SBJsonBase.h */; };
-		27FEF72D13ED54D200BC78B0 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF72013ED54D200BC78B0 /* SBJsonBase.m */; };
-		27FEF72E13ED54D200BC78B0 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF72113ED54D200BC78B0 /* SBJsonParser.h */; };
-		27FEF72F13ED54D200BC78B0 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF72213ED54D200BC78B0 /* SBJsonParser.m */; };
-		27FEF73013ED54D200BC78B0 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF72313ED54D200BC78B0 /* SBJsonWriter.h */; };
-		27FEF73113ED54D200BC78B0 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF72413ED54D200BC78B0 /* SBJsonWriter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +59,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		272C036015335261008DF260 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		272C036115335261008DF260 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		272C0364153352F9008DF260 /* OSCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCrypto.h; sourceTree = "<group>"; };
+		272C0365153352F9008DF260 /* OSCrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCrypto.m; sourceTree = "<group>"; };
+		278474B713EFF2E400CDD1CF /* OSWebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSWebRequest.h; sourceTree = "<group>"; };
+		278474B813EFF2E400CDD1CF /* OSWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSWebRequest.m; sourceTree = "<group>"; };
 		27CB95F613E4110100717380 /* libOSLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOSLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CB95F913E4110100717380 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27CB95FD13E4110100717380 /* OSLibrary-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibrary-Prefix.pch"; sourceTree = "<group>"; };
@@ -80,12 +84,17 @@
 		27CB962C13E411DC00717380 /* OSDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDateTime.m; sourceTree = "<group>"; };
 		27CB962F13E4124400717380 /* OSSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSSystem.h; sourceTree = "<group>"; };
 		27CB963013E4124400717380 /* OSSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSystem.m; sourceTree = "<group>"; };
-		27CB963313E4140600717380 /* OSDateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDateTest.h; sourceTree = "<group>"; };
-		27CB963413E4140600717380 /* OSDateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDateTest.m; sourceTree = "<group>"; };
-		27CB963613E4162F00717380 /* OSTimeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTimeTest.h; sourceTree = "<group>"; };
+		27CB963313E4140600717380 /* OSDateTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSDateTest.h; path = OSLibraryTests/OSDateTest.h; sourceTree = SOURCE_ROOT; };
+		27CB963413E4140600717380 /* OSDateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OSDateTest.m; path = OSLibraryTests/OSDateTest.m; sourceTree = SOURCE_ROOT; };
+		27CB963613E4162F00717380 /* OSTimeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OSTimeTest.h; path = OSLibraryTests/OSTimeTest.h; sourceTree = SOURCE_ROOT; };
 		27CB963713E4162F00717380 /* OSTimeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTimeTest.m; sourceTree = "<group>"; };
 		27CB963913E418A300717380 /* OSDateTimeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDateTimeTest.h; sourceTree = "<group>"; };
 		27CB963A13E418A300717380 /* OSDateTimeTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDateTimeTest.m; sourceTree = "<group>"; };
+		27FD9C6E14EAB2DB0091A0E3 /* OSNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNetwork.h; sourceTree = "<group>"; };
+		27FD9C6F14EAB2DB0091A0E3 /* OSNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNetwork.m; sourceTree = "<group>"; };
+		27FD9C7314EAB3200091A0E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		27FD9C7814EAB3BA0091A0E3 /* OSNetworkTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSNetworkTest.h; sourceTree = "<group>"; };
+		27FD9C7914EAB3BA0091A0E3 /* OSNetworkTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSNetworkTest.m; sourceTree = "<group>"; };
 		27FEF6E213ED459800BC78B0 /* OSAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSAnimation.h; sourceTree = "<group>"; };
 		27FEF6E313ED459800BC78B0 /* OSAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSAnimation.m; sourceTree = "<group>"; };
 		27FEF70A13ED4A7A00BC78B0 /* OSLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSLocation.h; sourceTree = "<group>"; };
@@ -95,19 +104,6 @@
 		27FEF71213ED54B100BC78B0 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		27FEF71313ED54B200BC78B0 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		27FEF71413ED54B200BC78B0 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
-		27FEF71813ED54D200BC78B0 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		27FEF71913ED54D200BC78B0 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		27FEF71A13ED54D200BC78B0 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
-		27FEF71B13ED54D200BC78B0 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		27FEF71C13ED54D200BC78B0 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
-		27FEF71D13ED54D200BC78B0 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		27FEF71E13ED54D200BC78B0 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		27FEF71F13ED54D200BC78B0 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		27FEF72013ED54D200BC78B0 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
-		27FEF72113ED54D200BC78B0 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		27FEF72213ED54D200BC78B0 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		27FEF72313ED54D200BC78B0 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		27FEF72413ED54D200BC78B0 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27FD9C7414EAB3200091A0E3 /* SystemConfiguration.framework in Frameworks */,
 				27CB95FA13E4110100717380 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27FD9C7B14EAB5940091A0E3 /* SystemConfiguration.framework in Frameworks */,
 				27CB960813E4110100717380 /* SenTestingKit.framework in Frameworks */,
 				27CB960B13E4110100717380 /* Foundation.framework in Frameworks */,
 				27CB961013E4110100717380 /* libOSLibrary.a in Frameworks */,
@@ -132,6 +130,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		278474A913EFF0BF00CDD1CF /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				278474B713EFF2E400CDD1CF /* OSWebRequest.h */,
+				278474B813EFF2E400CDD1CF /* OSWebRequest.m */,
+			);
+			name = Web;
+			sourceTree = "<group>";
+		};
 		27CB95EB13E4110000717380 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +161,7 @@
 		27CB95F813E4110100717380 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27FD9C7314EAB3200091A0E3 /* SystemConfiguration.framework */,
 				27CB95F913E4110100717380 /* Foundation.framework */,
 				27CB960713E4110100717380 /* SenTestingKit.framework */,
 			);
@@ -163,8 +171,8 @@
 		27CB95FB13E4110100717380 /* OSLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				278474A913EFF0BF00CDD1CF /* Web */,
 				27CB95FC13E4110100717380 /* Supporting Files */,
-				27FEF71713ED54D200BC78B0 /* JSON */,
 				27CB95FE13E4110100717380 /* OSLibrary.h */,
 				27CB95FF13E4110100717380 /* OSLibrary.m */,
 				27CB962313E4115700717380 /* OSDate.h */,
@@ -184,6 +192,12 @@
 				27FEF71213ED54B100BC78B0 /* WebViewController.h */,
 				27FEF71313ED54B200BC78B0 /* WebViewController.m */,
 				27FEF71413ED54B200BC78B0 /* WebViewController.xib */,
+				27FD9C6E14EAB2DB0091A0E3 /* OSNetwork.h */,
+				27FD9C6F14EAB2DB0091A0E3 /* OSNetwork.m */,
+				272C036015335261008DF260 /* NSData+Base64.h */,
+				272C036115335261008DF260 /* NSData+Base64.m */,
+				272C0364153352F9008DF260 /* OSCrypto.h */,
+				272C0365153352F9008DF260 /* OSCrypto.m */,
 			);
 			path = OSLibrary;
 			sourceTree = "<group>";
@@ -202,12 +216,13 @@
 				27CB961713E4110100717380 /* OSLibraryTests.h */,
 				27CB961913E4110100717380 /* OSLibraryTests.m */,
 				27CB961213E4110100717380 /* Supporting Files */,
-				27CB963313E4140600717380 /* OSDateTest.h */,
 				27CB963413E4140600717380 /* OSDateTest.m */,
 				27CB963613E4162F00717380 /* OSTimeTest.h */,
 				27CB963713E4162F00717380 /* OSTimeTest.m */,
 				27CB963913E418A300717380 /* OSDateTimeTest.h */,
 				27CB963A13E418A300717380 /* OSDateTimeTest.m */,
+				27FD9C7814EAB3BA0091A0E3 /* OSNetworkTest.h */,
+				27FD9C7914EAB3BA0091A0E3 /* OSNetworkTest.m */,
 			);
 			path = OSLibraryTests;
 			sourceTree = "<group>";
@@ -217,28 +232,9 @@
 			children = (
 				27CB961313E4110100717380 /* OSLibraryTests-Info.plist */,
 				27CB961413E4110100717380 /* InfoPlist.strings */,
+				27CB963313E4140600717380 /* OSDateTest.h */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		27FEF71713ED54D200BC78B0 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				27FEF71813ED54D200BC78B0 /* JSON.h */,
-				27FEF71913ED54D200BC78B0 /* NSObject+SBJSON.h */,
-				27FEF71A13ED54D200BC78B0 /* NSObject+SBJSON.m */,
-				27FEF71B13ED54D200BC78B0 /* NSString+SBJSON.h */,
-				27FEF71C13ED54D200BC78B0 /* NSString+SBJSON.m */,
-				27FEF71D13ED54D200BC78B0 /* SBJSON.h */,
-				27FEF71E13ED54D200BC78B0 /* SBJSON.m */,
-				27FEF71F13ED54D200BC78B0 /* SBJsonBase.h */,
-				27FEF72013ED54D200BC78B0 /* SBJsonBase.m */,
-				27FEF72113ED54D200BC78B0 /* SBJsonParser.h */,
-				27FEF72213ED54D200BC78B0 /* SBJsonParser.m */,
-				27FEF72313ED54D200BC78B0 /* SBJsonWriter.h */,
-				27FEF72413ED54D200BC78B0 /* SBJsonWriter.m */,
-			);
-			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,13 +253,10 @@
 				27FEF70C13ED4A7A00BC78B0 /* OSLocation.h in Headers */,
 				27FEF71013ED4FBE00BC78B0 /* OSImage.h in Headers */,
 				27FEF71513ED54B200BC78B0 /* WebViewController.h in Headers */,
-				27FEF72513ED54D200BC78B0 /* JSON.h in Headers */,
-				27FEF72613ED54D200BC78B0 /* NSObject+SBJSON.h in Headers */,
-				27FEF72813ED54D200BC78B0 /* NSString+SBJSON.h in Headers */,
-				27FEF72A13ED54D200BC78B0 /* SBJSON.h in Headers */,
-				27FEF72C13ED54D200BC78B0 /* SBJsonBase.h in Headers */,
-				27FEF72E13ED54D200BC78B0 /* SBJsonParser.h in Headers */,
-				27FEF73013ED54D200BC78B0 /* SBJsonWriter.h in Headers */,
+				278474B913EFF2E400CDD1CF /* OSWebRequest.h in Headers */,
+				27FD9C7014EAB2DB0091A0E3 /* OSNetwork.h in Headers */,
+				272C036215335261008DF260 /* NSData+Base64.h in Headers */,
+				272C0366153352F9008DF260 /* OSCrypto.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +304,9 @@
 /* Begin PBXProject section */
 		27CB95ED13E4110000717380 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
 			buildConfigurationList = 27CB95F013E4110000717380 /* Build configuration list for PBXProject "OSLibrary" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -371,12 +367,10 @@
 				27FEF70D13ED4A7A00BC78B0 /* OSLocation.m in Sources */,
 				27FEF71113ED4FBE00BC78B0 /* OSImage.m in Sources */,
 				27FEF71613ED54B200BC78B0 /* WebViewController.m in Sources */,
-				27FEF72713ED54D200BC78B0 /* NSObject+SBJSON.m in Sources */,
-				27FEF72913ED54D200BC78B0 /* NSString+SBJSON.m in Sources */,
-				27FEF72B13ED54D200BC78B0 /* SBJSON.m in Sources */,
-				27FEF72D13ED54D200BC78B0 /* SBJsonBase.m in Sources */,
-				27FEF72F13ED54D200BC78B0 /* SBJsonParser.m in Sources */,
-				27FEF73113ED54D200BC78B0 /* SBJsonWriter.m in Sources */,
+				278474BA13EFF2E400CDD1CF /* OSWebRequest.m in Sources */,
+				27FD9C7114EAB2DB0091A0E3 /* OSNetwork.m in Sources */,
+				272C036315335261008DF260 /* NSData+Base64.m in Sources */,
+				272C0367153352F9008DF260 /* OSCrypto.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +382,7 @@
 				27CB963513E4140600717380 /* OSDateTest.m in Sources */,
 				27CB963813E4162F00717380 /* OSTimeTest.m in Sources */,
 				27CB963B13E418A300717380 /* OSDateTimeTest.m in Sources */,
+				27FD9C7A14EAB3BA0091A0E3 /* OSNetworkTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +464,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSLibrary/OSLibrary-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -485,6 +481,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSLibrary/OSLibrary-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -500,6 +497,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSLibrary/OSLibrary-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "OSLibraryTests/OSLibraryTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;
@@ -515,6 +513,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSLibrary/OSLibrary-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "OSLibraryTests/OSLibraryTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = octest;

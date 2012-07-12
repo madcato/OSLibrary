@@ -3,10 +3,20 @@
 //  OSLibrary
 //
 //  Created by Dani Vela on 7/30/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 veladan. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+
+
+#define IOS_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define IOS_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define IOS_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define IOS_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+
+#define INTERFACE_IS_PAD                         ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) 
+#define INTERFACE_IS_PHONE                       ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) 
 
 /*!
  @class OSDate
@@ -84,4 +94,67 @@
  @param objectName Name for the key assigned to this new entry
 */
 +(void)createObjectInConfiguration:(id)object forKey:(NSString*)objectName;
+
+/*!
+ @method getPreferredLanguage
+ @abstract Return the user selected preferred language identificator.
+ @return An string with the language id, like canonicalized IETF BCP 47 language identifier such as “en” or “fr”
+ */
++(NSString*)getPreferredLanguage;
+
+
+/*! 
+ @method batteryLevel
+ @abstract Retrive battery level
+ @return A value form 0.0 to 1.0
+ */
++(float)batteryLevel;
+
+/*!
+ @method screenBright
+ @abstract Screen brightness
+ @return A value from0.0 to 1.0
+*/
++(float)screenBright;
+  
+/*!
+ @method setScreenBright
+ @abstract Sets a new screen bright
+ @param Value from 0.0 to 1.0
+ */
++(void)setScreenBright:(float)bright;
+
+/*! 
+ @method registerUserDefaults
+ @abstract Register the default values in Settings.bundle
+ @discussion iOS load the Settings bundle automatically. But it doesn't register de default values. This method can do it. Call this method only once in first load, because it overwrite any previous value user entered.
+ */
++(void)registerUserDefaults;
+
 @end
+
+
+/*
+ 
+ 
+ http://iphone-dev-kitchan.blogspot.com.es/2010/08/text-to-speech-using.html
+ 
+ #import  <foundation/foundation.h>
+ 
+ @interface VSSpeechSynthesizer : NSObject 
+ { 
+ } 
+ 
+ + (id)availableLanguageCodes; 
+ + (BOOL)isSystemSpeaking; 
+ - (id)startSpeakingString:(id)string; 
+ - (id)startSpeakingString:(id)string toURL:(id)url; 
+ - (id)startSpeakingString:(id)string toURL:(id)url withLanguageCode:(id)code; 
+ - (float)rate;             // default rate: 1 
+ - (id)setRate:(float)rate; 
+ - (float)pitch;           // default pitch: 0.5
+ - (id)setPitch:(float)pitch; 
+ - (float)volume;       // default volume: 0.8
+ - (id)setVolume:(float)volume; 
+ @end
+*/

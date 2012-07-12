@@ -3,7 +3,7 @@
 //  OSLibrary
 //
 //  Created by Dani Vela on 7/30/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 veladan. All rights reserved.
 //
 
 #import "OSSystem.h"
@@ -36,7 +36,7 @@
 
 +(void)disableIdleTimer {
     // Disable the idle timer
-    [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
+  //  [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
 }
 
 +(void)invokeMethod:(id)methodName forObject:(id)object {
@@ -46,7 +46,7 @@
 +(NSMutableDictionary*)loadDictionaryFromResource:(NSString*)fileName {
     
 
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"fileName" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
     
     if(path == nil) return nil;
 
@@ -57,7 +57,7 @@
 
 +(NSMutableArray*)loadArrayFromResource:(NSString*)fileName {    
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"fileName" ofType:@"plist"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
     
     if(path == nil) return nil;
     
@@ -80,4 +80,56 @@
 +(void)createObjectInConfiguration:(id)object forKey:(NSString*)objectName {
     [[NSUserDefaults standardUserDefaults] setObject:object forKey:objectName];
 }
+
++(NSString*)getPreferredLanguage {
+    return [[NSLocale preferredLanguages] objectAtIndex:0];
+}
+
+
++(float)batteryLevel {
+    UIDevice* device = [UIDevice currentDevice];
+    
+    device.batteryMonitoringEnabled = YES;
+    float level = device.batteryLevel;
+    device.batteryMonitoringEnabled = NO;
+    
+    return level;
+}
+
+
++(float)screenBright {
+    UIScreen* screen = [UIScreen mainScreen];
+    return screen.brightness;
+}
+
++(void)setScreenBright:(float)bright {
+    UIScreen* screen = [UIScreen mainScreen];
+    screen.brightness = bright;
+}
+
++(void)registerUserDefaults {
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    if(!settingsBundle) {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+    
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+    NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+    
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for(NSDictionary *prefSpecification in preferences) {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if(key) {
+            if([[NSUserDefaults standardUserDefaults] objectForKey:key] == nil) {
+                [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+            }
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+    
+}
+
+
 @end

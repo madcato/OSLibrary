@@ -3,7 +3,7 @@
 //  OSLibrary
 //
 //  Created by Daniel Vela on 6/29/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 veladan. All rights reserved.
 //
 
 #import "WebViewController.h"
@@ -33,7 +33,7 @@
 																   target:self action:@selector(moreTouched)];
 	
 	[self.navigationItem setRightBarButtonItem:moreButton];
-	[moreButton release];
+    
 	
 	
 	
@@ -57,7 +57,6 @@
 											  cancelButtonTitle:@"OK"
 											  otherButtonTitles:nil];
     [alertView show];
-    [alertView release];	
 }
 
 -(void)moreTouched {
@@ -67,8 +66,6 @@
 	actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
 	
 	[actionSheet showInView:self.view];
-	
-	[actionSheet release];
 }
 
 #pragma mark -
@@ -120,8 +117,6 @@
 - (void)dealloc {
 	
 	web.delegate = nil;
-	[web release];
-    [super dealloc];
 }
 
 
