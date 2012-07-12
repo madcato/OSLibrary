@@ -115,7 +115,7 @@
 
 
 - (void)dealloc {
-	
+	[super dealloc];
 	web.delegate = nil;
 }
 

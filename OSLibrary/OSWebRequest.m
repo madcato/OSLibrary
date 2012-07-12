@@ -10,13 +10,6 @@
 
 @implementation OSWebRequest
 
-@synthesize m_connection;
-@synthesize silent = _silent;
-@synthesize headers;
-@synthesize responseData;
-@synthesize statusCode = _statusCode;
-
-
 - (id)init
 {
     self = [super init];
@@ -24,8 +17,6 @@
         // Initialization code here.
         
         encoding = NSUTF8StringEncoding;
-        _silent = NO;
-        _statusCode = 0;
     }
     
     return self;
@@ -35,39 +26,40 @@
     encoding = enc;
 }
 
--(void)download:(NSString*)url withDelegate:(id<OSWebRequestDelegate>)delegate;
-{
-	NSString *scaped_url = [url stringByAddingPercentEscapesUsingEncoding:encoding];
-    //NSLog(@"Escaped URL %@",scaped_url);	
-	receiver = delegate;
-	
-	self.responseData = [NSMutableData data];
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:scaped_url] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
- 	m_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+-(void)useCredentials:(NSString*)user withPassword:(NSString*)password {
+    _user = user;
+    _password = password;
 }
 
 -(void)dealloc {
     [self cancelRequest];
     [super dealloc];
 }
+
 -(void)cancelRequest {
 	[m_connection cancel];
 }
 
+-(void)download:(NSString*)url withHandler:(OSRequestHandler)handler
+{
+	NSString *scaped_url = [url stringByAddingPercentEscapesUsingEncoding:encoding];
 
--(void)postData:(NSString*)data toURL:(NSString*)u withDelegate:(id<OSWebRequestDelegate>)delegate {
+	requestHandler = handler;
+	
+	responseData = [NSMutableData data];
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:scaped_url] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
+ 	m_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+}
+
+-(void)post:(NSString*)data toURL:(NSString*)u withHandler:(OSRequestHandler)handler
+{
+    NSString *scaped_url = [u stringByAddingPercentEscapesUsingEncoding:encoding];
     
-    receiver = delegate;
+    requestHandler = handler;
     
+    NSURL *url = [[NSURL alloc] initWithString:scaped_url];
     
-    
-    NSURL *url = [[NSURL alloc] initWithString:u];
-    
-    self.responseData = [NSMutableData data];
-    
-    
-    
-    
+    responseData = [NSMutableData data];
     
     NSData* buffer;
     buffer = [data dataUsingEncoding:encoding];
@@ -78,23 +70,18 @@
     
     [request setValue:[NSString stringWithFormat:@"%d", [buffer length]] forHTTPHeaderField:@"Content-Length"];
     
-    
     m_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self] ;
 }
 
--(void)postJson:(NSString*)data toURL:(NSString*)u withDelegate:(id<OSWebRequestDelegate>)delegate {
+-(void)postJson:(NSString*)data toURL:(NSString*)u withHandler:(OSRequestHandler)handler
+{
+    NSString *scaped_url = [u stringByAddingPercentEscapesUsingEncoding:encoding];
     
-    receiver = delegate;
+    requestHandler = handler;
+
+    NSURL *url = [[NSURL alloc] initWithString:scaped_url];
     
-    
-    
-    NSURL *url = [[NSURL alloc] initWithString:u];
-    
-    self.responseData = [NSMutableData data];
-    
-    
-    
-    
+    responseData = [NSMutableData data];
     
     NSData* buffer;
     buffer = [data dataUsingEncoding:encoding];
@@ -106,17 +93,18 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
     [request setValue:[NSString stringWithFormat:@"%d", [buffer length]] forHTTPHeaderField:@"Content-Length"];
     
-    
     m_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self] ;
 }
 
--(void)putJson:(NSString*)data toURL:(NSString*)u withDelegate:(id<OSWebRequestDelegate>)delegate {
+-(void)putJson:(NSString*)data toURL:(NSString*)u withHandler:(OSRequestHandler)handler 
+{
+    NSString *scaped_url = [u stringByAddingPercentEscapesUsingEncoding:encoding];
     
-    receiver = delegate;
+    requestHandler = handler;
 
-    NSURL *url = [[NSURL alloc] initWithString:u];
+    NSURL *url = [[NSURL alloc] initWithString:scaped_url];
     
-    self.responseData = [NSMutableData data];
+    responseData = [NSMutableData data];
 
     NSData* buffer;
     buffer = [data dataUsingEncoding:encoding];
@@ -128,16 +116,17 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
     [request setValue:[NSString stringWithFormat:@"%d", [buffer length]] forHTTPHeaderField:@"Content-Length"];
     
-    
     m_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self] ;
 }
 
-- (void)postFile:(NSData*)fileData withName:(NSString*)fileName withParams:(NSDictionary *)requestData toURL:(NSString*)u withDelegate:(id<OSWebRequestDelegate>)delegate
+- (void)postFile:(NSData*)fileData withName:(NSString*)fileName withParams:(NSDictionary *)requestData toURL:(NSString*)u withHandler:(OSRequestHandler)handler
 {
-    receiver = delegate;
-    self.responseData = [NSMutableData data];
+    NSString *scaped_url = [u stringByAddingPercentEscapesUsingEncoding:encoding];
     
-	NSURL *theURL = [NSURL URLWithString:u];
+    requestHandler = handler;
+    responseData = [NSMutableData data];
+    
+	NSURL *theURL = [NSURL URLWithString:scaped_url];
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL 
                                                               cachePolicy:NSURLRequestReloadIgnoringCacheData 
                                                           timeoutInterval:20.0f];
@@ -176,7 +165,10 @@
 	 m_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self] ;
 }
 
--(BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
+#pragma mark - Web delegate
+
+-(BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace 
+{
 	NSString* authMethod = [protectionSpace authenticationMethod];
 	
 	if(authMethod == NSURLAuthenticationMethodHTTPDigest) {
@@ -186,12 +178,10 @@
 	return NO;
 }
 
--(void)useCredentials:(NSString*)user withPassword:(NSString*)password {
-    _user = user;
-    _password = password;
-}
 
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
+{
 	
 	if([challenge previousFailureCount] > 0){
 		[[challenge sender] cancelAuthenticationChallenge:challenge];
@@ -200,81 +190,32 @@
     NSString *user = _user;
     NSString *pass = _password;
     
-	
     NSURLCredential *creds = [NSURLCredential credentialWithUser:user password:pass persistence:NSURLCredentialPersistenceForSession];
     [[challenge sender] useCredential:creds forAuthenticationChallenge:challenge];
-    
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    
-
-    [self.responseData setLength:0];
-	NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
-	if ([response respondsToSelector:@selector(allHeaderFields)]) {
-		self.headers = [httpResponse allHeaderFields];
-		
-	}
-    
-    _statusCode = httpResponse.statusCode;
-    
-    
-}
-
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	[self.responseData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	//	signText.text = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
-	errorDescription = [NSString stringWithFormat:@"Connection failed: %@", [error description]];
-	[self handleError:error];
-	
-	[receiver requestDidFinishWithError:error];
-    
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	
-	NSString *responseString = [[NSString alloc] initWithData:self.responseData encoding:encoding];
-    
-	
-    if(receiver != nil) {
-        if([(id)receiver respondsToSelector:@selector(requestDidFinishWithString:)]) {
-            [receiver requestDidFinishWithString:responseString];
-        } else {
-            [receiver requestDidFinishWithData:responseData];
-        }
-        
-    }
-    
-    responseString = nil;
-	self.responseData = nil;
-    // if responseString == nil check the encoding of the response it can be UT8 instead Latin1.
-    //NSLog(@"Response:%@--",responseString );
-    
-    
-}
-
-
-// -------------------------------------------------------------------------------
-//	handleError:error
-// -------------------------------------------------------------------------------
-- (void)handleError:(NSError *)error
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
+    [responseData setLength:0];
+	httpResponse = (NSHTTPURLResponse*)response;   
     
-    if(!_silent) {
-        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-        NSString *errorMessage = [error localizedDescription];
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Web"
-                                                             message:errorMessage
-                                                            delegate:nil
-                                                   cancelButtonTitle:@"OK"
-                                                   otherButtonTitles:nil];
-        [alertView show];
-    }
+}
+
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+	[responseData appendData:data];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error 
+{
+    requestHandler(nil,nil,error);
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+	requestHandler(responseData,httpResponse,nil);    
 }
 
 @end

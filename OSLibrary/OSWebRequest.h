@@ -9,86 +9,26 @@
 #import <Foundation/Foundation.h>
 #import "OSWebRequestDelegate.h"
 
+typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error);
+
 /*!
  @class OSWebRequest
  @abstract Web requests class
  */
 @interface OSWebRequest : NSObject {
-    
 
-	NSString *errorDescription;
-	id<OSWebRequestDelegate> receiver;
-    
+    OSRequestHandler requestHandler;
+
     NSURLConnection* m_connection;
     
     NSStringEncoding encoding;
     
     NSString* _user;
     NSString* _password;
+    
+    NSMutableData* responseData;
+    NSHTTPURLResponse* httpResponse;
 };
-
-@property (nonatomic, retain) NSMutableData *responseData;
-@property (nonatomic, retain) NSURLConnection* m_connection;
-
-@property (nonatomic, retain) NSDictionary* headers;
-
-@property (nonatomic, assign) BOOL silent;
-
-@property (nonatomic, assign) NSInteger statusCode;
-/*!
- @method cancelRequest
- @abstract Cancel the current request.
- @discussion It's important to call this method before destroying the WebRequest object. This is the way to avoid that the delegate object receive method invocations when not expected.
- */
--(void)cancelRequest;
-
-/*!
- @method download:withDelegate:
- @abstract Send a GET petition to a web server.
- @discussion Use this method to download any page or file in a HTTP server.
- @param url URL to download
- @param delegate Delegate object that will receive notification. This object must implement the OSWebRequestDelegate protocol.
- */
--(void)download:(NSString*)url withDelegate:(id<OSWebRequestDelegate>)delegate;
-
-/*!
- @method postData:toURL:withDelegate:
- @abstract Make a POST to an URL
- @discussion Use this method to send data using POST http verb to a server.
- @param data Data to send
- @param url Destination URL
- @param delegate Delegate object that will receive notification. This object must implement the OSWebRequestDelegate protocol.
- */
--(void)postData:(NSString*)data toURL:(NSString*)url withDelegate:(id<OSWebRequestDelegate>)delegate;
-
--(void)handleError:(NSError *)error;
-
-/*!
- @method postJson:toURL:withDelegate:
- @abstract Make a POST to an URL using JSON content-type.
- @discussion Use this method to send data using POST http verb to a server. Only when Content-type must be Json data.
- @param data Data to send
- @param url Destination URL
- @param delegate Delegate object that will receive notification. This object must implement the OSWebRequestDelegate protocol.
- */
--(void)postJson:(NSString*)data toURL:(NSString*)u withDelegate:(id<OSWebRequestDelegate>)delegate;
-
-/*!
- @method puJson:toURL:withDelegate:
- @abstract Make a PUT to an URL using JSON content-type.
- @discussion Use this method to send data using POST http verb to a server. Only when Content-type must be Json data.
- @param data Data to send
- @param url Destination URL
- @param delegate Delegate object that will receive notification. This object must implement the OSWebRequestDelegate protocol.
- */
--(void)putJson:(NSString*)data toURL:(NSString*)u withDelegate:(id<OSWebRequestDelegate>)delegate;
-
-
-/*! 
- @method postFile:withName::withParams:toURL:withDelegate:
- @abstract Send a file to a server using multipart/form-data
-*/
-- (void)postFile:(NSData*)fileData withName:(NSString*)fileName withParams:(NSDictionary *)requestData toURL:(NSString*)u withDelegate:(id<OSWebRequestDelegate>)delegate;
 
 /*!
  @method useEncoding
@@ -104,5 +44,57 @@
  @abstract set the credentials for a http digest authentication
  */
 -(void)useCredentials:(NSString*)user withPassword:(NSString*)password;
+
+/*!
+ @method cancelRequest
+ @abstract Cancel the current request.
+ @discussion It's important to call this method before destroying the WebRequest object. This is the way to avoid that the delegate object receive method invocations when not expected.
+ */
+-(void)cancelRequest;
+
+/*!
+ @method download:withHandler:
+ @abstract Send a GET petition to a web server.
+ @discussion Use this method to download any page or file in a HTTP server.
+ @param url URL to download
+ @param handler this method will be called at the end of request.
+ */
+-(void)download:(NSString*)url withHandler:(OSRequestHandler)handler;
+
+/*!
+ @method post:toURL:withHandler:
+ @abstract Make a POST to an URL
+ @discussion Use this method to send data using POST http verb to a server.
+ @param data Data to send
+ @param url Destination URL
+ @param handler this method will be called at the end of request.
+ */
+-(void)post:(NSString*)data toURL:(NSString*)url withHandler:(OSRequestHandler)handler;
+
+/*!
+ @method postJson:toURL:withHandler:
+ @abstract Make a POST to an URL using JSON content-type.
+ @discussion Use this method to send data using POST http verb to a server. Only when Content-type must be Json data.
+ @param data Data to send
+ @param url Destination URL
+ @param handler this method will be called at the end of request.
+ */
+-(void)postJson:(NSString*)data toURL:(NSString*)u withHandler:(OSRequestHandler)handler;
+
+/*!
+ @method puJson:toURL:withHandler:
+ @abstract Make a PUT to an URL using JSON content-type.
+ @discussion Use this method to send data using POST http verb to a server. Only when Content-type must be Json data.
+ @param data Data to send
+ @param url Destination URL
+ @param handler this method will be called at the end of request.
+ */
+-(void)putJson:(NSString*)data toURL:(NSString*)u withHandler:(OSRequestHandler)handler;
+
+/*! 
+ @method postFile:withName::withParams:toURL:withHandler:
+ @abstract Send a file to a server using multipart/form-data
+ */
+- (void)postFile:(NSData*)fileData withName:(NSString*)fileName withParams:(NSDictionary *)requestData toURL:(NSString*)u withHandler:(OSRequestHandler)handler;
 
 @end
