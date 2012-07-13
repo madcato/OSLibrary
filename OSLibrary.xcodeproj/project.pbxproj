@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		108E2C6715B0483B003C0EB7 /* UIImageView+Downloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 108E2C6515B0483B003C0EB7 /* UIImageView+Downloader.h */; };
+		108E2C6815B0483B003C0EB7 /* UIImageView+Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 108E2C6615B0483B003C0EB7 /* UIImageView+Downloader.m */; };
 		272C036215335261008DF260 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 272C036015335261008DF260 /* NSData+Base64.h */; };
 		272C036315335261008DF260 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 272C036115335261008DF260 /* NSData+Base64.m */; };
 		272C0366153352F9008DF260 /* OSCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 272C0364153352F9008DF260 /* OSCrypto.h */; };
@@ -59,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		108E2C6515B0483B003C0EB7 /* UIImageView+Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Downloader.h"; sourceTree = "<group>"; };
+		108E2C6615B0483B003C0EB7 /* UIImageView+Downloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Downloader.m"; sourceTree = "<group>"; };
 		272C036015335261008DF260 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		272C036115335261008DF260 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		272C0364153352F9008DF260 /* OSCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCrypto.h; sourceTree = "<group>"; };
@@ -130,15 +134,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		278474A913EFF0BF00CDD1CF /* Web */ = {
-			isa = PBXGroup;
-			children = (
-				278474B713EFF2E400CDD1CF /* OSWebRequest.h */,
-				278474B813EFF2E400CDD1CF /* OSWebRequest.m */,
-			);
-			name = Web;
-			sourceTree = "<group>";
-		};
 		27CB95EB13E4110000717380 = {
 			isa = PBXGroup;
 			children = (
@@ -171,8 +166,9 @@
 		27CB95FB13E4110100717380 /* OSLibrary */ = {
 			isa = PBXGroup;
 			children = (
-				278474A913EFF0BF00CDD1CF /* Web */,
 				27CB95FC13E4110100717380 /* Supporting Files */,
+				278474B713EFF2E400CDD1CF /* OSWebRequest.h */,
+				278474B813EFF2E400CDD1CF /* OSWebRequest.m */,
 				27CB95FE13E4110100717380 /* OSLibrary.h */,
 				27CB95FF13E4110100717380 /* OSLibrary.m */,
 				27CB962313E4115700717380 /* OSDate.h */,
@@ -196,6 +192,8 @@
 				27FD9C6F14EAB2DB0091A0E3 /* OSNetwork.m */,
 				272C036015335261008DF260 /* NSData+Base64.h */,
 				272C036115335261008DF260 /* NSData+Base64.m */,
+				108E2C6515B0483B003C0EB7 /* UIImageView+Downloader.h */,
+				108E2C6615B0483B003C0EB7 /* UIImageView+Downloader.m */,
 				272C0364153352F9008DF260 /* OSCrypto.h */,
 				272C0365153352F9008DF260 /* OSCrypto.m */,
 			);
@@ -257,6 +255,7 @@
 				27FD9C7014EAB2DB0091A0E3 /* OSNetwork.h in Headers */,
 				272C036215335261008DF260 /* NSData+Base64.h in Headers */,
 				272C0366153352F9008DF260 /* OSCrypto.h in Headers */,
+				108E2C6715B0483B003C0EB7 /* UIImageView+Downloader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +370,7 @@
 				27FD9C7114EAB2DB0091A0E3 /* OSNetwork.m in Sources */,
 				272C036315335261008DF260 /* NSData+Base64.m in Sources */,
 				272C0367153352F9008DF260 /* OSCrypto.m in Sources */,
+				108E2C6815B0483B003C0EB7 /* UIImageView+Downloader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
