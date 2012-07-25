@@ -32,8 +32,8 @@
 }
 
 -(void)dealloc {
-    [self cancelRequest];
     [super dealloc];
+    [self cancelRequest];
 }
 
 -(void)cancelRequest {
@@ -53,6 +53,38 @@
 
 -(void)post:(NSString*)data toURL:(NSString*)u withHandler:(OSRequestHandler)handler
 {
+    NSString *scaped_url = [u stringByAddingPercentEscapesUsingEncoding:encoding];
+    
+    requestHandler = handler;
+    
+    NSURL *url = [[NSURL alloc] initWithString:scaped_url];
+    
+    responseData = [NSMutableData data];
+    
+    NSData* buffer;
+    buffer = [data dataUsingEncoding:encoding];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20.0];
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:buffer];
+    
+    [request setValue:[NSString stringWithFormat:@"%d", [buffer length]] forHTTPHeaderField:@"Content-Length"];
+    
+    m_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self] ;
+}
+
+-(void)post2:(NSDictionary*)object toURL:(NSString*)u withHandler:(OSRequestHandler)handler
+{
+    
+    NSString* data = @"";
+    
+    for(NSString* key in [object allKeys]) {
+        NSString* value = [object valueForKey:key];
+        
+        data = [NSString stringWithFormat:@"%@=%@&%@",[key stringByAddingPercentEscapesUsingEncoding:encoding],[value stringByAddingPercentEscapesUsingEncoding:encoding],data];
+    }
+    
+    
     NSString *scaped_url = [u stringByAddingPercentEscapesUsingEncoding:encoding];
     
     requestHandler = handler;

@@ -8,12 +8,22 @@
 
 #import "UIImageView+Downloader.h"
 #import "OSWebRequest.h"
+#import <objc/runtime.h>
 
 static NSMutableDictionary* imageCache = nil;
-static NSMutableDictionary* requestCache = nil;
 
+static char kOSWebRequestObjectKey = 's';
 
 @implementation UIImageView (Downloader)
+@dynamic osWebRequestObject;
+
+- (OSWebRequest *)osWebRequestObject {
+    return (OSWebRequest *)objc_getAssociatedObject(self, &kOSWebRequestObjectKey);
+}
+
+- (void)setOsWebRequestObject:(OSWebRequest *)imageRequestOperation {
+    objc_setAssociatedObject(self, &kOSWebRequestObjectKey, imageRequestOperation, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 -(void)setImageFrom:(NSString*)url withTag:(NSInteger)tag 
 {
@@ -28,7 +38,7 @@ static NSMutableDictionary* requestCache = nil;
         [self setImage:image];
         
         OSWebRequest* request = [[OSWebRequest alloc]init];
-        [self setCachedRequest:request forKey:url];
+        [self setOsWebRequestObject:request];
         [request download:url withHandler:^(NSData* response, NSHTTPURLResponse* urlResponse, NSError* error){
             [self hideLoadingView];
             if(error == nil) {
@@ -38,6 +48,7 @@ static NSMutableDictionary* requestCache = nil;
                     if(image != nil) {
                         [self setCachedImage:image forKey:url];
                         if(self.tag == tag) [self setImage:image];
+                        if(tag == -1) [self setImage:image];
                     }
                     else {
                         NSLog(@"BAD IMAGE: %@",url);
@@ -46,6 +57,7 @@ static NSMutableDictionary* requestCache = nil;
             } else {
                 NSLog(@"ERROR %@", [error description]);
             }
+            [self setOsWebRequestObject:nil];
         }];
     }
 }
@@ -60,30 +72,11 @@ static NSMutableDictionary* requestCache = nil;
 }
 -(UIImage*)getCachedImage:(NSString*)key
 {
-
     if(imageCache == nil) {
         imageCache = [NSMutableDictionary dictionary];
     }
     
     return [imageCache objectForKey:key];
-}
-
--(void)setCachedRequest:(OSWebRequest*)request forKey:(NSString*)key
-{
-    if(requestCache == nil) {
-        requestCache = [NSMutableDictionary dictionary];
-    }
-    
-    [requestCache setObject:request forKey:key];
-}
-
--(UIImage*)getCachedRequest:(NSString*)key
-{
-    if(requestCache == nil) {
-        requestCache = [NSMutableDictionary dictionary];
-    }
-    
-    return [requestCache objectForKey:key];
 }
 
 - (void)showLoadingView
@@ -111,6 +104,10 @@ static NSMutableDictionary* requestCache = nil;
     }
 }
 
+- (void)hideLoadingView2
+{
+
+}
 - (void)hideLoadingView
 {
     UIActivityIndicatorView * v = (UIActivityIndicatorView *)[self viewWithTag:-12];

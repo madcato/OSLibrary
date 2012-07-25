@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "OSWebRequestDelegate.h"
 
 typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error);
 
@@ -64,12 +63,29 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
 /*!
  @method post:toURL:withHandler:
  @abstract Make a POST to an URL
- @discussion Use this method to send data using POST http verb to a server.
+ @discussion Use this method to send data using POST http verb to a server. Sample:
+ Name: Jonathan Doe
+ Age: 23
+ Formula: a + b == 13%!
+ 
+ are encoded as
+ 
+ Name=Jonathan+Doe&Age=23&Formula=a+%2B+b+%3D%3D+13%25%21
  @param data Data to send
  @param url Destination URL
  @param handler this method will be called at the end of request.
  */
 -(void)post:(NSString*)data toURL:(NSString*)url withHandler:(OSRequestHandler)handler;
+
+/*!
+ @method post2:toURL:withHandler:
+ @abstract Make a POST to an URL
+ @discussion Use this method to send data using POST http verb to a server.
+ @param data NSDictionary object with the ky/value pairs to send as the http body.
+ @param url Destination URL
+ @param handler this method will be called at the end of request.
+ */
+-(void)post2:(NSDictionary*)object toURL:(NSString*)u withHandler:(OSRequestHandler)handler;
 
 /*!
  @method postJson:toURL:withHandler:
