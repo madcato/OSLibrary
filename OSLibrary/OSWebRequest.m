@@ -32,7 +32,6 @@
 }
 
 -(void)dealloc {
-    [super dealloc];
     [self cancelRequest];
 }
 

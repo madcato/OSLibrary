@@ -19,7 +19,6 @@
 
 - (void) dealloc
 {
-    [super dealloc];
 	[self stopNotifier];
 	if(reachabilityRef!= NULL)
 	{
