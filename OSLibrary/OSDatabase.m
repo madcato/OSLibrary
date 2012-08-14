@@ -140,7 +140,36 @@
         [newManagedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     assert(newManagedObjectContext != nil);
+    self.managedObjectContext = newManagedObjectContext;
     return newManagedObjectContext;
+}
+
+
+-(void)deleteObjects:(NSString*)entityName withPredicate:(NSString*)format andArguments:(NSArray*)arguments {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:format argumentArray:arguments];
+    [fetchRequest setPredicate:predicate];
+
+    NSError* error = nil;
+    NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    if (fetchedObjects == nil) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+
+    for(NSManagedObject* toDelAccount in fetchedObjects) {
+        [self.managedObjectContext deleteObject:toDelAccount];
+    }
+    // Save the context.
+    if (![self.managedObjectContext save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
 }
 
 @end

@@ -24,6 +24,7 @@
 - (NSFetchedResultsController*)getFetchedResultsController:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andSectionNameKeyPath:(NSString*)keyPath;
 - (NSManagedObjectContext*)getNewObjectContext;
 -(void)save;
+-(void)deleteObjects:(NSString*)entityName withPredicate:(NSString*)format andArguments:(NSArray*)arguments;
 @property (atomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (atomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (atomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
