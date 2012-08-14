@@ -18,10 +18,10 @@
        andStore:(NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 +(OSDatabase*)defaultDatabase;
 +(OSDatabase*)backgroundDatabase;
-- (void)insertObject:(NSString*)entityName values:(NSDictionary*)values;
-- (NSManagedObject*)getObject:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText;
-- (NSArray*)getFetchedResults:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText;
-- (NSFetchedResultsController*)getFetchedResultsController:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andSectionNameKeyPath:(NSString*)keyPath;
+- (NSManagedObject*)insertObject:(NSString*)entityName values:(NSDictionary*)values;
+- (NSManagedObject*)getObject:(NSString*)entityName withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments;
+- (NSArray*)getFetchedResults:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments;
+- (NSFetchedResultsController*)getFetchedResultsController:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments andSectionNameKeyPath:(NSString*)keyPath;
 - (NSManagedObjectContext*)getNewObjectContext;
 -(void)save;
 -(void)deleteObjects:(NSString*)entityName withPredicate:(NSString*)format andArguments:(NSArray*)arguments;
