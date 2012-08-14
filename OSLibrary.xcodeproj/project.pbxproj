@@ -21,6 +21,8 @@
 		106F64A815C16B8700C22FC0 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 106F64A615C16B8700C22FC0 /* UIImage+StackBlur.m */; };
 		106F667815D8DFC10016184F /* OSDatabase.h in Headers */ = {isa = PBXBuildFile; fileRef = 106F667615D8DFC10016184F /* OSDatabase.h */; };
 		106F667915D8DFC10016184F /* OSDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 106F667715D8DFC10016184F /* OSDatabase.m */; };
+		108AD5D915DA657700EE2443 /* OSAppearance.h in Headers */ = {isa = PBXBuildFile; fileRef = 108AD5D715DA657700EE2443 /* OSAppearance.h */; };
+		108AD5DA15DA657700EE2443 /* OSAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 108AD5D815DA657700EE2443 /* OSAppearance.m */; };
 		108E2C6715B0483B003C0EB7 /* UIImageView+Downloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 108E2C6515B0483B003C0EB7 /* UIImageView+Downloader.h */; };
 		108E2C6815B0483B003C0EB7 /* UIImageView+Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 108E2C6615B0483B003C0EB7 /* UIImageView+Downloader.m */; };
 		272C036215335261008DF260 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 272C036015335261008DF260 /* NSData+Base64.h */; };
@@ -88,6 +90,8 @@
 		106F64A615C16B8700C22FC0 /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+StackBlur.m"; sourceTree = "<group>"; };
 		106F667615D8DFC10016184F /* OSDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDatabase.h; sourceTree = "<group>"; };
 		106F667715D8DFC10016184F /* OSDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDatabase.m; sourceTree = "<group>"; };
+		108AD5D715DA657700EE2443 /* OSAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSAppearance.h; sourceTree = "<group>"; };
+		108AD5D815DA657700EE2443 /* OSAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSAppearance.m; sourceTree = "<group>"; };
 		108E2C6515B0483B003C0EB7 /* UIImageView+Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Downloader.h"; sourceTree = "<group>"; };
 		108E2C6615B0483B003C0EB7 /* UIImageView+Downloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Downloader.m"; sourceTree = "<group>"; };
 		272C036015335261008DF260 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 				10532F4715DA593F00AB115B /* OSViewController.m */,
 				10532F4A15DA5AFA00AB115B /* OSTableViewController.h */,
 				10532F4B15DA5AFA00AB115B /* OSTableViewController.m */,
+				108AD5D715DA657700EE2443 /* OSAppearance.h */,
+				108AD5D815DA657700EE2443 /* OSAppearance.m */,
 			);
 			path = OSLibrary;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 				10532F4315DA569000AB115B /* OSLoadingViewController.h in Headers */,
 				10532F4815DA593F00AB115B /* OSViewController.h in Headers */,
 				10532F4C15DA5AFA00AB115B /* OSTableViewController.h in Headers */,
+				108AD5D915DA657700EE2443 /* OSAppearance.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +432,7 @@
 				10532F4415DA569000AB115B /* OSLoadingViewController.m in Sources */,
 				10532F4915DA593F00AB115B /* OSViewController.m in Sources */,
 				10532F4D15DA5AFA00AB115B /* OSTableViewController.m in Sources */,
+				108AD5DA15DA657700EE2443 /* OSAppearance.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
