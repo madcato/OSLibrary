@@ -25,6 +25,7 @@
 - (NSManagedObjectContext*)getNewObjectContext;
 -(void)save;
 -(void)deleteObjects:(NSString*)entityName withPredicate:(NSString*)format andArguments:(NSArray*)arguments;
+-(NSManagedObject*)objectWithID:(NSManagedObjectID*)objectID;
 @property (atomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (atomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (atomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;

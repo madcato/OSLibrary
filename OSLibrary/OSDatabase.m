@@ -58,19 +58,19 @@
 - (NSManagedObject*)insertObject:(NSString*)entityName values:(NSDictionary*)values {
     // Insert new object
     NSManagedObject *managedObject = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:self.managedObjectContext];
+    assert(managedObject != nil);
     // If appropriate, configure the new managed object.
     // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
     NSArray* keyArray = [values allKeys];
     for(NSString* key in keyArray) {
         [managedObject setValue:[values valueForKey:key] forKey:key];
     }
-    [self save];
     return managedObject;
 }
 
 - (NSManagedObject*)getObject:(NSString*)entityName withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments {
     NSArray* array = [self getFetchedResults:entityName sortArray:nil withPredicate:predicateText andArguments:arguments];
-    assert([array count] > 1);
+    assert([array count] <= 1);
     if([array count] == 0) return nil;
     return [array objectAtIndex:0];
 }
@@ -80,6 +80,7 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.managedObjectContext];
+    assert(entity != nil);
     [fetchRequest setEntity:entity];
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
@@ -93,6 +94,7 @@
         [fetchRequest setSortDescriptors:sortDescriptors];
     }
     NSPredicate* predicate = [NSPredicate predicateWithFormat:predicateText argumentArray:arguments];
+    assert(predicate != nil);
     [fetchRequest setPredicate:predicate];
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
@@ -110,6 +112,7 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.managedObjectContext];
+    assert(entity != nil);
     [fetchRequest setEntity:entity];
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
@@ -121,6 +124,7 @@
     }
     [fetchRequest setSortDescriptors:sortDescriptors];
     NSPredicate* predicate = [NSPredicate predicateWithFormat:predicateText argumentArray:arguments];
+    assert(predicate != nil);
     [fetchRequest setPredicate:predicate];
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
@@ -152,8 +156,10 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
                                               inManagedObjectContext:self.managedObjectContext];
+    assert(entity != nil);
     [fetchRequest setEntity:entity];
     NSPredicate* predicate = [NSPredicate predicateWithFormat:format argumentArray:arguments];
+    assert(predicate != nil);
     [fetchRequest setPredicate:predicate];
 
     NSError* error = nil;
@@ -166,13 +172,10 @@
     for(NSManagedObject* toDelAccount in fetchedObjects) {
         [self.managedObjectContext deleteObject:toDelAccount];
     }
-    // Save the context.
-    if (![self.managedObjectContext save:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
+}
+
+-(NSManagedObject*)objectWithID:(NSManagedObjectID*)objectID {
+    return [self.managedObjectContext objectWithID:objectID];
 }
 
 @end
