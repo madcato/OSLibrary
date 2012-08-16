@@ -32,6 +32,9 @@
 #import "OSViewController.h"
 #import "OSTableViewController.h"
 #import "OSAppearance.h"
+#import "OSOperation.h"
+#import "OSTwitterOperation.h"
+#import "OSOperationQueues.h"
 
 @interface OSLibrary : NSObject
 
