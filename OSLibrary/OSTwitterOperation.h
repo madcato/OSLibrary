@@ -10,8 +10,10 @@
 
 @interface OSTwitterOperation : OSOperation {
     OSRequestHandler twitterBlock;
-    TWRequest* twitterRequest;
+    NSString* twitterUrl;
+    NSDictionary* twitterParams;
+    NSString* twitterAccountID;
 }
 
--(id)initWithRequest:(TWRequest*)request withCompletionBlock:(OSRequestHandler)block;
+-(id)initWithUrl:(NSString*)url params:(NSDictionary*)params account:(NSString*)accountID withCompletionBlock:(OSRequestHandler)block;
 @end

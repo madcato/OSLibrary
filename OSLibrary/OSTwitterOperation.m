@@ -10,10 +10,12 @@
 
 @implementation OSTwitterOperation
 
--(id)initWithRequest:(TWRequest*)request withCompletionBlock:(OSRequestHandler)block {
+-(id)initWithUrl:(NSString*)url params:(NSDictionary*)params account:(NSString*)accountID withCompletionBlock:(OSRequestHandler)block {
     self = [super init];
     if (self) {
-        twitterRequest = request;
+        twitterUrl = url;
+        twitterParams = params;
+        twitterAccountID = accountID;
         twitterBlock = block;
     }
     return self;
@@ -22,9 +24,22 @@
 - (void)main {
     @try {
         // Do the main work of the operation here.
-        [twitterRequest performRequestWithHandler:^(NSData* responseData, NSHTTPURLResponse* urlResponse, NSError* error) {
-            twitterBlock(responseData,urlResponse,error);
-            [super completeOperation];
+        ACAccountStore* store = [[ACAccountStore alloc]init];
+        [store requestAccessToAccountsWithType:[store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter] withCompletionHandler:
+         ^(BOOL granted, NSError* error){
+             if (!granted) {
+                 // The user rejected your request
+                 NSLog(@"User rejected access to the account.");
+                 [super completeOperation];
+             } else {
+                 ACAccount* account = [store accountWithIdentifier:twitterAccountID];
+                 TWRequest* request = [[TWRequest alloc] initWithURL:[NSURL URLWithString:twitterUrl] parameters:twitterParams requestMethod:TWRequestMethodGET];
+                 request.account = account;
+                 [request performRequestWithHandler:^(NSData* responseData, NSHTTPURLResponse* urlResponse, NSError* error) {
+                    twitterBlock(responseData,urlResponse,error);
+                     [super completeOperation];
+                 }];
+             }
         }];
     }
     @catch(NSException* exception) {

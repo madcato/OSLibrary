@@ -10,4 +10,5 @@
     #import <SystemConfiguration/SystemConfiguration.h>
     #import <CoreData/CoreData.h>
     #import <Twitter/Twitter.h>
+    #import <Accounts/Accounts.h>
 #endif
