@@ -56,4 +56,17 @@ static NSDateFormatter* dateFormatter = nil;
     return [dateFormatter stringFromDate:date];
 }
 
++(NSDate*)dateByAddingToDate:(NSDate*)fromDate years:(NSInteger)numYears months:(NSInteger)numMonths days:(NSInteger)numDays hours:(NSInteger)numHours minutes:(NSInteger)numMinutes seconds:(NSInteger)numSeconds {
+    NSDateComponents* components = [[NSDateComponents alloc] init];
+    components.year = numYears;
+    components.month = numMonths;
+    components.day = numDays;
+    components.hour = numHours;
+    components.minute = numMinutes;
+    components.second = numSeconds;
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    return [calendar dateByAddingComponents:components toDate:fromDate options:0];
+}
+
+
 @end
