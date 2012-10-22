@@ -34,9 +34,27 @@ char *NewBase64Encode(
 	bool separateLines,
 	size_t *outputLength);
 
+/*!
+ @class NSData (Base64)
+ @abstract NSDate extension to perform encoding from or to Base64
+ @namespace OSLibrary
+ @updated 2011-07-30
+ */
 @interface NSData (Base64)
 
+/*!
+ @method dataFromBase64String
+ @param aString Data source. This string must be in base64 codification format.
+ @abstract Creates a new NSData object and initialices it with the decoded base64 string.
+ @return The created NSData object.
+ */
 + (NSData *)dataFromBase64String:(NSString *)aString;
+
+/*!
+ @method base64EncodedString
+ @abstract Encode the content of this NSData object and return it.
+ @return The base64 encoded string.
+ */
 - (NSString *)base64EncodedString;
 
 @end
