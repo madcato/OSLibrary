@@ -20,7 +20,6 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        loadingViewController = nil;
     }
     return self;
 }
@@ -124,19 +123,5 @@
      */
 }
 
-- (void)initLoadingView:(UIView*)view andColor:(UIColor*)c {
-    if(loadingViewController == nil) {
-        loadingViewController = [[OSLoadingViewController alloc] init];
-    }
-    [loadingViewController initLoadingView:view andColor:c];
-}
-
-- (void)showLoadingView {
-    [loadingViewController showLoadingView];
-}
-
-- (void)hideLoadingView {
-    [loadingViewController hideLoadingView];
-}
 
 @end

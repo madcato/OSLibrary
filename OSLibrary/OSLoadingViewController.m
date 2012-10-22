@@ -14,22 +14,17 @@ const CGFloat spinningWheelSize = 38.0;
 
 -(id)init {
     self = [super init];
-    color = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3];
+    _color = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.3];
     return self;
-}
-
-- (void)initLoadingView:(UIView*)view andColor:(UIColor*)c {
-    color = c;
-    parentView = view;
 }
 
 - (void)showLoadingView {
     if (loadingView == nil)
     {
-        CGRect frame = parentView.bounds;
+        CGRect frame = _parentView.bounds;
         loadingView = [[UIView alloc] initWithFrame:frame];
         loadingView.opaque = NO;
-        loadingView.backgroundColor = color;
+        loadingView.backgroundColor = _color;
         loadingView.alpha = 1;
         
         CGFloat posx = (frame.size.width / 2) - (spinningWheelSize / 2);
@@ -39,7 +34,7 @@ const CGFloat spinningWheelSize = 38.0;
         spinningWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
         [loadingView addSubview:spinningWheel];
     }    
-    [parentView addSubview:loadingView];
+    [_parentView addSubview:loadingView];
 }
 
 - (void)hideLoadingView {

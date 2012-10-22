@@ -10,10 +10,12 @@
 
 @interface OSLoadingViewController : NSObject {
     UIView* loadingView;
-    UIView* parentView;
-    UIColor* color;
 }
-- (void)initLoadingView:(UIView*)view andColor:(UIColor*)c;
+
 - (void)showLoadingView;
 - (void)hideLoadingView;
+
+@property (nonatomic, assign) IBOutlet UIView* parentView;
+@property (nonatomic, assign) IBOutlet UIColor* color;
+
 @end

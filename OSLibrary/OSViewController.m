@@ -20,7 +20,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        loadingViewController = nil;
     }
     return self;
 }
@@ -40,21 +39,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (void)initLoadingView:(UIView*)view andColor:(UIColor*)c {
-    if(loadingViewController == nil) {
-        loadingViewController = [[OSLoadingViewController alloc] init];
-    }
-    [loadingViewController initLoadingView:view andColor:c];
-}
-
-- (void)showLoadingView {
-    [loadingViewController showLoadingView];
-}
-
-- (void)hideLoadingView {
-    [loadingViewController hideLoadingView];
 }
 
 @end
