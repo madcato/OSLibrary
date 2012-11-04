@@ -237,16 +237,52 @@ function disclosure_triangle(elt) {
 <dd> OSLibrary
 </dd>
 <dt><b>Updated:</b></dt>
-<dd>Saturday, July 30, 2011</dd>
+<dd>s&aacute;bado, julio 30, 2011</dd>
 </dl>
 <hr class="afterClassOrHeaderInfo">
 <br><a name="HeaderDoc_methods"></a>
 <h2 class="h2tight">Methods</h2>
 <dl>
+<dt><tt><a href="index.html#//apple_ref/occ/clm/OSDateTime/dateFromString:" target="_top">+dateFromString:</a></tt></dt>
+<dd><p>This method parses the input string and generates the NSDate object.
+</p></dd>
 <dt><tt><a href="index.html#//apple_ref/occ/clm/OSDateTime/now" target="_top">+now</a></tt></dt>
 <dd><p>This method return the current date and time with the system locale format
 </p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/clm/OSDateTime/stringFromDate:" target="_top">+stringFromDate:</a></tt></dt>
+<dd><p>This method generates an string representation from an NSDate.
+</p></dd>
 </dl>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=clm;  uid=//apple_ref/occ/clm/OSDateTime/dateFromString:;   name=OSDateTime::dateFromString: --><a name="//apple_ref/occ/clm/OSDateTime/dateFromString:"></a>
+<h3><a name="dateFromString:">dateFromString:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSDateTime/dateFromString:;name=start --><!-- begin abstract --></p>
+<p>This method parses the input string and generates the NSDate object.
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSDateTime/dateFromString:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSDateTime/dateFromString:;name=start -->+(<!-- a logicalPath="//apple_ref/occ/cl/NSDate //apple_ref/occ/tdef/NSDate //apple_ref/occ/tag/NSDate //apple_ref/occ/struct/NSDate //apple_ref/occ/intf/NSDate //apple_ref/doc/anysymbol/NSDate" machineGenerated="true" --><span class="type">NSDate</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/clm/OSDateTime/dateFromString:" logicalPath="//apple_ref/occ/instm/OSDateTime/dateFromString //apple_ref/occ/clm/OSDateTime/dateFromString" target="_top"><span class="function">dateFromString</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/str //apple_ref/occ/data/OSDateTime/str //apple_ref/occ/data/str //apple_ref/occ/clconst/OSDateTime/str " machineGenerated="true" --><span class="var">str</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSDateTime/dateFromString:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/OSDateTime/dateFromString:/str;   name=dateFromString:::str -->
+<a name="//apple_ref/doc/methodparam/OSDateTime/dateFromString:/str"></a>
+<code>str</code>
+</dt>
+<dd><p>input string</p></dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>NSDate*
+
+<!-- end return value --></p>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/occ/clm/OSDateTime/dateFromString:;name=start --><p>The string date format is "yyyy-MM-dd'T'HH:mm:ss.SSSZ" UTC
+<!-- headerDoc=discussion;uid=//apple_ref/occ/clm/OSDateTime/dateFromString:;name=end --><!-- end discussion -->
+</p>
 <hr class="betweenAPIEntries">
 <!-- headerDoc=clm;  uid=//apple_ref/occ/clm/OSDateTime/now;   name=OSDateTime::now --><a name="//apple_ref/occ/clm/OSDateTime/now"></a>
 <h3><a name="now">now</a></h3>
@@ -262,10 +298,40 @@ function disclosure_triangle(elt) {
 <p>NSString*
 
 <!-- end return value --></p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=clm;  uid=//apple_ref/occ/clm/OSDateTime/stringFromDate:;   name=OSDateTime::stringFromDate: --><a name="//apple_ref/occ/clm/OSDateTime/stringFromDate:"></a>
+<h3><a name="stringFromDate:">stringFromDate:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSDateTime/stringFromDate:;name=start --><!-- begin abstract --></p>
+<p>This method generates an string representation from an NSDate.
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSDateTime/stringFromDate:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSDateTime/stringFromDate:;name=start -->+(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<a machinegenerated="true" href="index.html#//apple_ref/occ/clm/OSDateTime/stringFromDate:" logicalPath="//apple_ref/occ/instm/OSDateTime/stringFromDate //apple_ref/occ/clm/OSDateTime/stringFromDate" target="_top"><span class="function">stringFromDate</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/NSDate //apple_ref/occ/tdef/NSDate //apple_ref/occ/tag/NSDate //apple_ref/occ/struct/NSDate //apple_ref/occ/intf/NSDate //apple_ref/doc/anysymbol/NSDate" machineGenerated="true" --><span class="type">NSDate</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/date //apple_ref/occ/data/OSDateTime/date //apple_ref/occ/data/date //apple_ref/occ/clconst/OSDateTime/date " machineGenerated="true" --><span class="var">date</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSDateTime/stringFromDate:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/OSDateTime/stringFromDate:/date;   name=stringFromDate:::date -->
+<a name="//apple_ref/doc/methodparam/OSDateTime/stringFromDate:/date"></a>
+<code>date</code>
+</dt>
+<dd><p>NSDate object</p></dd>
+</dl>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>NSString*
+
+<!-- end return value --></p>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/occ/clm/OSDateTime/stringFromDate:;name=start --><p>The string date format is "yyyy-MM-dd'T'HH:mm:ss.SSSZ" UTC
+<!-- headerDoc=discussion;uid=//apple_ref/occ/clm/OSDateTime/stringFromDate:;name=end --><!-- end discussion -->
+</p>
 <p class="gapBeforeFooter">&nbsp;</p>
 <hr class="afterFooter">
 <div class="hd_copyright_and_timestamp">
-<p class="hd_timestamp">Last Updated: Saturday, July 30, 2011
+<p class="hd_timestamp">Last Updated: s&aacute;bado, julio 30, 2011
 </p>
 </div>
 </td>

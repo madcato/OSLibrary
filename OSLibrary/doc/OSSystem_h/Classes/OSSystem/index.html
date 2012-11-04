@@ -230,12 +230,15 @@ function disclosure_triangle(elt) {
 <dd> OSLibrary
 </dd>
 <dt><b>Updated:</b></dt>
-<dd>Saturday, July 30, 2011</dd>
+<dd>s&aacute;bado, julio 30, 2011</dd>
 </dl>
 <hr class="afterClassOrHeaderInfo">
 <br><a name="HeaderDoc_methods"></a>
 <h2 class="h2tight">Methods</h2>
 <dl>
+<dt><tt><a href="index.html#//apple_ref/occ/clm/OSSystem/batteryLevel" target="_top">+batteryLevel</a></tt></dt>
+<dd><p>Retrive battery level
+</p></dd>
 <dt><tt><a href="index.html#//apple_ref/doc/title:clm/OSSystem/createObjectInConfiguration" target="_top">+createObjectInConfiguration</a></tt></dt>
 <dd><p>Create and stores an object in configuration
 </p></dd>
@@ -250,6 +253,9 @@ function disclosure_triangle(elt) {
 </p></dd>
 <dt><tt><a href="index.html#//apple_ref/occ/clm/OSSystem/getDateFormatForCurrentLocale:" target="_top">+getDateFormatForCurrentLocale:</a></tt></dt>
 <dd><p>This method return the current locale format for the components specified.
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/clm/OSSystem/getPreferredLanguage" target="_top">+getPreferredLanguage</a></tt></dt>
+<dd><p>Return the user selected preferred language identificator.
 </p></dd>
 <dt><tt><a href="index.html#//apple_ref/occ/clm/OSSystem/invokeMethod:forObject:" target="_top">+invokeMethod:forObject:</a></tt></dt>
 <dd><p>Invoke a mothod of an object
@@ -266,7 +272,31 @@ function disclosure_triangle(elt) {
 <dt><tt><a href="index.html#//apple_ref/occ/clm/OSSystem/redrawView:" target="_top">+redrawView:</a></tt></dt>
 <dd><p>Redraw a view
 </p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/clm/OSSystem/registerUserDefaults" target="_top">+registerUserDefaults</a></tt></dt>
+<dd><p>Register the default values in Settings.bundle
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/clm/OSSystem/screenBright" target="_top">+screenBright</a></tt></dt>
+<dd><p>Screen brightness
+</p></dd>
+<dt><tt><a href="index.html#//apple_ref/occ/clm/OSSystem/setScreenBright:" target="_top">+setScreenBright:</a></tt></dt>
+<dd><p>Sets a new screen bright
+</p></dd>
 </dl>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=clm;  uid=//apple_ref/occ/clm/OSSystem/batteryLevel;   name=OSSystem::batteryLevel --><a name="//apple_ref/occ/clm/OSSystem/batteryLevel"></a>
+<h3><a name="batteryLevel">batteryLevel</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSSystem/batteryLevel;name=start --><!-- begin abstract --></p>
+<p>Retrive battery level
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSSystem/batteryLevel;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/batteryLevel;name=start -->+(<!-- a logicalPath="//apple_ref/occ/cl/float //apple_ref/occ/tdef/float //apple_ref/occ/tag/float //apple_ref/occ/struct/float //apple_ref/occ/intf/float //apple_ref/doc/anysymbol/float" machineGenerated="true" --><span class="type">float</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/batteryLevel //apple_ref/occ/data/OSSystem/batteryLevel //apple_ref/occ/data/batteryLevel //apple_ref/occ/clconst/OSSystem/batteryLevel " machineGenerated="true" --><span class="var">batteryLevel</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/batteryLevel;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>A value form 0.0 to 1.0
+
+<!-- end return value --></p>
 <hr class="betweenAPIEntries">
 <!-- headerDoc=title:clm;  uid=//apple_ref/doc/title:clm/OSSystem/createObjectInConfiguration;   name=OSSystem::createObjectInConfiguration --><a name="//apple_ref/doc/title:clm/OSSystem/createObjectInConfiguration"></a>
 <h3><a name="createObjectInConfiguration">createObjectInConfiguration</a></h3>
@@ -387,6 +417,21 @@ function disclosure_triangle(elt) {
 
 <!-- end return value --></p>
 <hr class="betweenAPIEntries">
+<!-- headerDoc=clm;  uid=//apple_ref/occ/clm/OSSystem/getPreferredLanguage;   name=OSSystem::getPreferredLanguage --><a name="//apple_ref/occ/clm/OSSystem/getPreferredLanguage"></a>
+<h3><a name="getPreferredLanguage">getPreferredLanguage</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSSystem/getPreferredLanguage;name=start --><!-- begin abstract --></p>
+<p>Return the user selected preferred language identificator.
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSSystem/getPreferredLanguage;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/getPreferredLanguage;name=start -->+(<!-- a logicalPath="//apple_ref/occ/cl/NSString //apple_ref/occ/tdef/NSString //apple_ref/occ/tag/NSString //apple_ref/occ/struct/NSString //apple_ref/occ/intf/NSString //apple_ref/doc/anysymbol/NSString" machineGenerated="true" --><span class="type">NSString</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/getPreferredLanguage //apple_ref/occ/data/OSSystem/getPreferredLanguage //apple_ref/occ/data/getPreferredLanguage //apple_ref/occ/clconst/OSSystem/getPreferredLanguage " machineGenerated="true" --><span class="var">getPreferredLanguage</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/getPreferredLanguage;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>An string with the language id, like canonicalized IETF BCP 47 language identifier such as &ldquo;en&rdquo; or &ldquo;fr&rdquo;
+
+<!-- end return value --></p>
+<hr class="betweenAPIEntries">
 <!-- headerDoc=clm;  uid=//apple_ref/occ/clm/OSSystem/invokeMethod:forObject:;   name=OSSystem::invokeMethod:forObject: --><a name="//apple_ref/occ/clm/OSSystem/invokeMethod:forObject:"></a>
 <h3><a name="invokeMethod:forObject:">invokeMethod:forObject:</a></h3>
 <hr class="afterName">
@@ -497,10 +542,60 @@ function disclosure_triangle(elt) {
 <div class="declaration_indent">
 <pre><!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/redrawView:;name=start -->+(<!-- a logicalPath="//apple_ref/occ/cl/void //apple_ref/occ/tdef/void //apple_ref/occ/tag/void //apple_ref/occ/struct/void //apple_ref/occ/intf/void //apple_ref/doc/anysymbol/void" machineGenerated="true" --><span class="type">void</span><!-- /a -->)<a machinegenerated="true" href="index.html#//apple_ref/occ/clm/OSSystem/redrawView:" logicalPath="//apple_ref/occ/instm/OSSystem/redrawView //apple_ref/occ/clm/OSSystem/redrawView" target="_top"><span class="function">redrawView</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/UIView //apple_ref/occ/tdef/UIView //apple_ref/occ/tag/UIView //apple_ref/occ/struct/UIView //apple_ref/occ/intf/UIView //apple_ref/doc/anysymbol/UIView" machineGenerated="true" --><span class="type">UIView</span><!-- /a --><span class="type">*</span>)<!-- a logicalPath="//apple_ref/occ/econst/view //apple_ref/occ/data/OSSystem/view //apple_ref/occ/data/view //apple_ref/occ/clconst/OSSystem/view " machineGenerated="true" --><span class="var">view</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/redrawView:;name=end --></pre>
 </div>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=clm;  uid=//apple_ref/occ/clm/OSSystem/registerUserDefaults;   name=OSSystem::registerUserDefaults --><a name="//apple_ref/occ/clm/OSSystem/registerUserDefaults"></a>
+<h3><a name="registerUserDefaults">registerUserDefaults</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSSystem/registerUserDefaults;name=start --><!-- begin abstract --></p>
+<p>Register the default values in Settings.bundle
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSSystem/registerUserDefaults;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/registerUserDefaults;name=start -->+(<!-- a logicalPath="//apple_ref/occ/cl/void //apple_ref/occ/tdef/void //apple_ref/occ/tag/void //apple_ref/occ/struct/void //apple_ref/occ/intf/void //apple_ref/doc/anysymbol/void" machineGenerated="true" --><span class="type">void</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/registerUserDefaults //apple_ref/occ/data/OSSystem/registerUserDefaults //apple_ref/occ/data/registerUserDefaults //apple_ref/occ/clconst/OSSystem/registerUserDefaults " machineGenerated="true" --><span class="var">registerUserDefaults</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/registerUserDefaults;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Discussion</font></h5>
+<!-- begin discussion --><!-- headerDoc=discussion;uid=//apple_ref/occ/clm/OSSystem/registerUserDefaults;name=start --><p>iOS load the Settings bundle automatically. But it doesn't register de default values. This method can do it. Call this method only once in first load, because it overwrite any previous value user entered.
+<!-- headerDoc=discussion;uid=//apple_ref/occ/clm/OSSystem/registerUserDefaults;name=end --><!-- end discussion -->
+</p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=clm;  uid=//apple_ref/occ/clm/OSSystem/screenBright;   name=OSSystem::screenBright --><a name="//apple_ref/occ/clm/OSSystem/screenBright"></a>
+<h3><a name="screenBright">screenBright</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSSystem/screenBright;name=start --><!-- begin abstract --></p>
+<p>Screen brightness
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSSystem/screenBright;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/screenBright;name=start -->+(<!-- a logicalPath="//apple_ref/occ/cl/float //apple_ref/occ/tdef/float //apple_ref/occ/tag/float //apple_ref/occ/struct/float //apple_ref/occ/intf/float //apple_ref/doc/anysymbol/float" machineGenerated="true" --><span class="type">float</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/screenBright //apple_ref/occ/data/OSSystem/screenBright //apple_ref/occ/data/screenBright //apple_ref/occ/clconst/OSSystem/screenBright " machineGenerated="true" --><span class="var">screenBright</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/screenBright;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Return Value</font></h5>
+<p><!-- begin return value --></p>
+<p>A value from0.0 to 1.0
+
+<!-- end return value --></p>
+<hr class="betweenAPIEntries">
+<!-- headerDoc=clm;  uid=//apple_ref/occ/clm/OSSystem/setScreenBright:;   name=OSSystem::setScreenBright: --><a name="//apple_ref/occ/clm/OSSystem/setScreenBright:"></a>
+<h3><a name="setScreenBright:">setScreenBright:</a></h3>
+<hr class="afterName">
+<p><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSSystem/setScreenBright:;name=start --><!-- begin abstract --></p>
+<p>Sets a new screen bright
+<!-- end abstract --><!-- headerDoc=abstract;uid=//apple_ref/occ/clm/OSSystem/setScreenBright:;name=end --></p>
+<div class="declaration_indent">
+<pre><!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/setScreenBright:;name=start -->+(<!-- a logicalPath="//apple_ref/occ/cl/void //apple_ref/occ/tdef/void //apple_ref/occ/tag/void //apple_ref/occ/struct/void //apple_ref/occ/intf/void //apple_ref/doc/anysymbol/void" machineGenerated="true" --><span class="type">void</span><!-- /a -->)<a machinegenerated="true" href="index.html#//apple_ref/occ/clm/OSSystem/setScreenBright:" logicalPath="//apple_ref/occ/instm/OSSystem/setScreenBright //apple_ref/occ/clm/OSSystem/setScreenBright" target="_top"><span class="function">setScreenBright</span></a>:(<!-- a logicalPath="//apple_ref/occ/cl/float //apple_ref/occ/tdef/float //apple_ref/occ/tag/float //apple_ref/occ/struct/float //apple_ref/occ/intf/float //apple_ref/doc/anysymbol/float" machineGenerated="true" --><span class="type">float</span><!-- /a -->)<!-- a logicalPath="//apple_ref/occ/econst/bright //apple_ref/occ/data/OSSystem/bright //apple_ref/occ/data/bright //apple_ref/occ/clconst/OSSystem/bright " machineGenerated="true" --><span class="var">bright</span><!-- /a -->; <!-- headerDoc=declaration;uid=//apple_ref/occ/clm/OSSystem/setScreenBright:;name=end --></pre>
+</div>
+<h5 class="tight"><font face="Lucida Grande,Helvetica,Arial">Parameters</font></h5>
+<div class="param_indent">
+<dl>
+<dt>
+<!-- headerDoc=methodparam;  uid=//apple_ref/doc/methodparam/OSSystem/setScreenBright:/Value;   name=setScreenBright:::Value -->
+<a name="//apple_ref/doc/methodparam/OSSystem/setScreenBright:/Value"></a>
+<code>Value</code>
+</dt>
+<dd><p>from 0.0 to 1.0</p></dd>
+</dl>
+</div>
 <p class="gapBeforeFooter">&nbsp;</p>
 <hr class="afterFooter">
 <div class="hd_copyright_and_timestamp">
-<p class="hd_timestamp">Last Updated: Saturday, July 30, 2011
+<p class="hd_timestamp">Last Updated: s&aacute;bado, julio 30, 2011
 </p>
 </div>
 </td>
