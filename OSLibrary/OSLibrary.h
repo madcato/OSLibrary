@@ -6,12 +6,6 @@
 //  Copyright 2011 veladan. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-#import <QuartzCore/QuartzCore.h>
-#import <CoreLocation/CoreLocation.h>
-#import <SystemConfiguration/SystemConfiguration.h>
-
 #import "OSSystem.h"
 #import "OSDate.h"
 #import "OSDateTime.h"
@@ -35,6 +29,7 @@
 #import "OSOperation.h"
 #import "OSTwitterOperation.h"
 #import "OSOperationQueues.h"
+#import "NSString+encodeString.h"
 
 @interface OSLibrary : NSObject
 

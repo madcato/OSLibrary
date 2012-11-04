@@ -25,6 +25,8 @@
 		108AD5DA15DA657700EE2443 /* OSAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 108AD5D815DA657700EE2443 /* OSAppearance.m */; };
 		108E2C6715B0483B003C0EB7 /* UIImageView+Downloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 108E2C6515B0483B003C0EB7 /* UIImageView+Downloader.h */; };
 		108E2C6815B0483B003C0EB7 /* UIImageView+Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 108E2C6615B0483B003C0EB7 /* UIImageView+Downloader.m */; };
+		10A3390015E381560059F012 /* NSString+encodeString.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A338FE15E381560059F012 /* NSString+encodeString.h */; };
+		10A3390115E381560059F012 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
 		10C58E4215DCDD7D00496A25 /* OSOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C58E4015DCDD7D00496A25 /* OSOperation.h */; };
 		10C58E4315DCDD7D00496A25 /* OSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C58E4115DCDD7D00496A25 /* OSOperation.m */; };
 		10C58E4715DCDF4C00496A25 /* OSTwitterOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C58E4515DCDF4C00496A25 /* OSTwitterOperation.h */; };
@@ -100,6 +102,8 @@
 		108AD5D815DA657700EE2443 /* OSAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSAppearance.m; sourceTree = "<group>"; };
 		108E2C6515B0483B003C0EB7 /* UIImageView+Downloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Downloader.h"; sourceTree = "<group>"; };
 		108E2C6615B0483B003C0EB7 /* UIImageView+Downloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Downloader.m"; sourceTree = "<group>"; };
+		10A338FE15E381560059F012 /* NSString+encodeString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+encodeString.h"; sourceTree = "<group>"; };
+		10A338FF15E381560059F012 /* NSString+encodeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encodeString.m"; sourceTree = "<group>"; };
 		10C58E4015DCDD7D00496A25 /* OSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperation.h; sourceTree = "<group>"; };
 		10C58E4115DCDD7D00496A25 /* OSOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSOperation.m; sourceTree = "<group>"; };
 		10C58E4515DCDF4C00496A25 /* OSTwitterOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTwitterOperation.h; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 				10C58E4615DCDF4C00496A25 /* OSTwitterOperation.m */,
 				10C58E4915DCEB2700496A25 /* OSOperationQueues.h */,
 				10C58E4A15DCEB2700496A25 /* OSOperationQueues.m */,
+				10A338FE15E381560059F012 /* NSString+encodeString.h */,
+				10A338FF15E381560059F012 /* NSString+encodeString.m */,
 			);
 			path = OSLibrary;
 			sourceTree = "<group>";
@@ -332,6 +338,7 @@
 				10C58E4215DCDD7D00496A25 /* OSOperation.h in Headers */,
 				10C58E4715DCDF4C00496A25 /* OSTwitterOperation.h in Headers */,
 				10C58E4B15DCEB2700496A25 /* OSOperationQueues.h in Headers */,
+				10A3390015E381560059F012 /* NSString+encodeString.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,6 +464,7 @@
 				10C58E4315DCDD7D00496A25 /* OSOperation.m in Sources */,
 				10C58E4815DCDF4C00496A25 /* OSTwitterOperation.m in Sources */,
 				10C58E4C15DCEB2700496A25 /* OSOperationQueues.m in Sources */,
+				10A3390115E381560059F012 /* NSString+encodeString.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

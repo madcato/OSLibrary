@@ -15,6 +15,10 @@
 
 #import "OSNetwork.h"
 
+@interface OSNetwork ()
+-(void)networkChanged;
+@end
+
 @implementation OSNetwork
 
 - (void) dealloc
