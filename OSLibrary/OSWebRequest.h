@@ -52,13 +52,13 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
 -(void)cancelRequest;
 
 /*!
- @method get:withHandler:
+ @method download:withHandler:
  @abstract Send a GET petition to a web server.
  @discussion Use this method to download any page or file in a HTTP server.
  @param url URL to download
  @param handler this method will be called at the end of request.
  */
--(void)get:(NSString*)url withHandler:(OSRequestHandler)handler;
+-(void)download:(NSString*)url withHandler:(OSRequestHandler)handler;
 
 /*!
  @method post:toURL:withHandler:
@@ -112,5 +112,15 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
  @abstract Send a file to a server using multipart/form-data
  */
 - (void)postFile:(NSData*)fileData withName:(NSString*)fileName withParams:(NSDictionary *)requestData toURL:(NSString*)u withHandler:(OSRequestHandler)handler;
+
+/*!
+ @method formatURLWith:andParams:
+ @abstract format an URL
+ @discussion Construct an URL using first parameter as de base URL and concatenating the params at the end of the URL. The params are formated using the method stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding, but only if they ares NSString type. If the type is NSNumber, no further format is done.
+ @param baseUrl The base URL to use.
+ @param params The params to put into the URL
+ @return The full final URL
+ */
++(NSString*)formatURLWith:(NSString*)baseUrl andParams:(NSDictionary*)params;
 
 @end
