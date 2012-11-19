@@ -36,7 +36,7 @@
 
 +(void)disableIdleTimer {
     // Disable the idle timer
-  //  [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
+    [[UIApplication sharedApplication] setIdleTimerDisabled: YES];
 }
 
 +(void)invokeMethod:(id)methodName forObject:(id)object {

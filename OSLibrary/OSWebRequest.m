@@ -39,7 +39,7 @@
 	[m_connection cancel];
 }
 
--(void)download:(NSString*)url withHandler:(OSRequestHandler)handler
+-(void)get:(NSString*)url withHandler:(OSRequestHandler)handler
 {
 	NSString *scaped_url = [url stringByAddingPercentEscapesUsingEncoding:encoding];
 
