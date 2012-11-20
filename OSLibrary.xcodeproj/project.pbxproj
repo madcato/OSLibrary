@@ -11,6 +11,10 @@
 		1008160515C11AB200429593 /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008160315C11AB200429593 /* UIView+Snapshot.m */; };
 		1008160815C11BA700429593 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1008160715C11BA700429593 /* UIKit.framework */; };
 		1008160915C11BE800429593 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1008160715C11BA700429593 /* UIKit.framework */; };
+		103FE0A9165BC7BD00F25586 /* OSDefaultTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 103FE0A7165BC7BD00F25586 /* OSDefaultTheme.h */; };
+		103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 103FE0A8165BC7BD00F25586 /* OSDefaultTheme.m */; };
+		103FE0AD165BC7CC00F25586 /* OSTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 103FE0AB165BC7CC00F25586 /* OSTheme.h */; };
+		103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 103FE0AC165BC7CC00F25586 /* OSTheme.m */; };
 		10532F4315DA569000AB115B /* OSLoadingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 10532F4115DA569000AB115B /* OSLoadingViewController.h */; };
 		10532F4415DA569000AB115B /* OSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10532F4215DA569000AB115B /* OSLoadingViewController.m */; };
 		10532F4815DA593F00AB115B /* OSViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 10532F4615DA593F00AB115B /* OSViewController.h */; };
@@ -91,6 +95,10 @@
 		1008160215C11AB200429593 /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
 		1008160315C11AB200429593 /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
 		1008160715C11BA700429593 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		103FE0A7165BC7BD00F25586 /* OSDefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDefaultTheme.h; sourceTree = "<group>"; };
+		103FE0A8165BC7BD00F25586 /* OSDefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDefaultTheme.m; sourceTree = "<group>"; };
+		103FE0AB165BC7CC00F25586 /* OSTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTheme.h; sourceTree = "<group>"; };
+		103FE0AC165BC7CC00F25586 /* OSTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTheme.m; sourceTree = "<group>"; };
 		10532F4115DA569000AB115B /* OSLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSLoadingViewController.h; sourceTree = "<group>"; };
 		10532F4215DA569000AB115B /* OSLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSLoadingViewController.m; sourceTree = "<group>"; };
 		10532F4615DA593F00AB115B /* OSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSViewController.h; sourceTree = "<group>"; };
@@ -190,6 +198,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		103FE0A5165BC7A800F25586 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				103FE0A7165BC7BD00F25586 /* OSDefaultTheme.h */,
+				103FE0A8165BC7BD00F25586 /* OSDefaultTheme.m */,
+				103FE0AB165BC7CC00F25586 /* OSTheme.h */,
+				103FE0AC165BC7CC00F25586 /* OSTheme.m */,
+			);
+			name = Theme;
+			sourceTree = "<group>";
+		};
 		27CB95EB13E4110000717380 = {
 			isa = PBXGroup;
 			children = (
@@ -223,6 +242,7 @@
 		27CB95FB13E4110100717380 /* OSLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				103FE0A5165BC7A800F25586 /* Theme */,
 				27CB95FC13E4110100717380 /* Supporting Files */,
 				278474B713EFF2E400CDD1CF /* OSWebRequest.h */,
 				278474B813EFF2E400CDD1CF /* OSWebRequest.m */,
@@ -350,6 +370,8 @@
 				10C58E4715DCDF4C00496A25 /* OSTwitterOperation.h in Headers */,
 				10C58E4B15DCEB2700496A25 /* OSOperationQueues.h in Headers */,
 				10A3390015E381560059F012 /* NSString+encodeString.h in Headers */,
+				103FE0A9165BC7BD00F25586 /* OSDefaultTheme.h in Headers */,
+				103FE0AD165BC7CC00F25586 /* OSTheme.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +498,8 @@
 				10C58E4815DCDF4C00496A25 /* OSTwitterOperation.m in Sources */,
 				10C58E4C15DCEB2700496A25 /* OSOperationQueues.m in Sources */,
 				10A3390115E381560059F012 /* NSString+encodeString.m in Sources */,
+				103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */,
+				103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
