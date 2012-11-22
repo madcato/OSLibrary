@@ -26,7 +26,7 @@
     OSDatabase* instance = [OSDatabase initWith:nil objectModel:nil andStore:nil];
     database.persistentStoreCoordinator = [instance persistentStoreCoordinator];
     database.managedObjectModel = [instance managedObjectModel];
-    database.managedObjectContext = [instance getNewObjectContext];
+    database.managedObjectContext = [instance createObjectContext];
     return database;
 }
 
@@ -68,14 +68,14 @@
     return managedObject;
 }
 
-- (NSManagedObject*)getObject:(NSString*)entityName withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments {
-    NSArray* array = [self getFetchedResults:entityName sortArray:nil withPredicate:predicateText andArguments:arguments];
+- (NSManagedObject*)selectObject:(NSString*)entityName withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments {
+    NSArray* array = [self getResultsFrom:entityName sortArray:nil withPredicate:predicateText andArguments:arguments];
     assert([array count] <= 1);
     if([array count] == 0) return nil;
     return [array objectAtIndex:0];
 }
 
-- (NSArray*)getFetchedResults:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments {
+- (NSArray*)getResultsFrom:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments {
     assert(self.managedObjectContext != nil);
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
@@ -107,7 +107,7 @@
     return fetchedObjects;
 }
 
-- (NSFetchedResultsController*)getFetchedResultsController:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments andSectionNameKeyPath:(NSString*)keyPath {
+- (NSFetchedResultsController*)createFetchedResultsController:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments andSectionNameKeyPath:(NSString*)keyPath {
     assert(self.managedObjectContext != nil);
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
@@ -139,7 +139,7 @@
     return aFetchedResultsController;
 }
 
-- (NSManagedObjectContext*)getNewObjectContext {
+- (NSManagedObjectContext*)createObjectContext {
     NSManagedObjectContext* newManagedObjectContext = nil;
     NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
     if (coordinator != nil) {
