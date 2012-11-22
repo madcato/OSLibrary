@@ -32,8 +32,6 @@
 		10A3390115E381560059F012 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
 		10C58E4215DCDD7D00496A25 /* OSOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C58E4015DCDD7D00496A25 /* OSOperation.h */; };
 		10C58E4315DCDD7D00496A25 /* OSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C58E4115DCDD7D00496A25 /* OSOperation.m */; };
-		10C58E4715DCDF4C00496A25 /* OSTwitterOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C58E4515DCDF4C00496A25 /* OSTwitterOperation.h */; };
-		10C58E4815DCDF4C00496A25 /* OSTwitterOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C58E4615DCDF4C00496A25 /* OSTwitterOperation.m */; };
 		10C58E4B15DCEB2700496A25 /* OSOperationQueues.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C58E4915DCEB2700496A25 /* OSOperationQueues.h */; };
 		10C58E4C15DCEB2700496A25 /* OSOperationQueues.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C58E4A15DCEB2700496A25 /* OSOperationQueues.m */; };
 		272C036215335261008DF260 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 272C036015335261008DF260 /* NSData+Base64.h */; };
@@ -112,8 +110,6 @@
 		10A338FF15E381560059F012 /* NSString+encodeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encodeString.m"; sourceTree = "<group>"; };
 		10C58E4015DCDD7D00496A25 /* OSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperation.h; sourceTree = "<group>"; };
 		10C58E4115DCDD7D00496A25 /* OSOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSOperation.m; sourceTree = "<group>"; };
-		10C58E4515DCDF4C00496A25 /* OSTwitterOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTwitterOperation.h; sourceTree = "<group>"; };
-		10C58E4615DCDF4C00496A25 /* OSTwitterOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTwitterOperation.m; sourceTree = "<group>"; };
 		10C58E4915DCEB2700496A25 /* OSOperationQueues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperationQueues.h; sourceTree = "<group>"; };
 		10C58E4A15DCEB2700496A25 /* OSOperationQueues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSOperationQueues.m; sourceTree = "<group>"; };
 		272C036015335261008DF260 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -199,7 +195,7 @@
 			name = Theme;
 			sourceTree = "<group>";
 		};
-		10BA49DE165E6CFD0069651F /* Net */ = {
+		10BA49DE165E6CFD0069651F /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				27FD9C6E14EAB2DB0091A0E3 /* OSNetwork.h */,
@@ -207,7 +203,7 @@
 				278474B713EFF2E400CDD1CF /* OSWebRequest.h */,
 				278474B813EFF2E400CDD1CF /* OSWebRequest.m */,
 			);
-			name = Net;
+			name = Network;
 			sourceTree = "<group>";
 		};
 		10BA49E0165E6D070069651F /* Date & Time */ = {
@@ -228,8 +224,6 @@
 			children = (
 				10C58E4015DCDD7D00496A25 /* OSOperation.h */,
 				10C58E4115DCDD7D00496A25 /* OSOperation.m */,
-				10C58E4515DCDF4C00496A25 /* OSTwitterOperation.h */,
-				10C58E4615DCDF4C00496A25 /* OSTwitterOperation.m */,
 				10C58E4915DCEB2700496A25 /* OSOperationQueues.h */,
 				10C58E4A15DCEB2700496A25 /* OSOperationQueues.m */,
 			);
@@ -345,7 +339,7 @@
 				10BA49E4165E6DBF0069651F /* Formats */,
 				10BA49E3165E6D7E0069651F /* Image */,
 				10BA49E7165E6F910069651F /* Location */,
-				10BA49DE165E6CFD0069651F /* Net */,
+				10BA49DE165E6CFD0069651F /* Network */,
 				103FE0A5165BC7A800F25586 /* Theme */,
 				10BA49E6165E6F7C0069651F /* Views */,
 				27CB95FE13E4110100717380 /* OSLibrary.h */,
@@ -422,7 +416,6 @@
 				10532F4315DA569000AB115B /* OSLoadingViewController.h in Headers */,
 				108AD5D915DA657700EE2443 /* OSAppearance.h in Headers */,
 				10C58E4215DCDD7D00496A25 /* OSOperation.h in Headers */,
-				10C58E4715DCDF4C00496A25 /* OSTwitterOperation.h in Headers */,
 				10C58E4B15DCEB2700496A25 /* OSOperationQueues.h in Headers */,
 				10A3390015E381560059F012 /* NSString+encodeString.h in Headers */,
 				103FE0A9165BC7BD00F25586 /* OSDefaultTheme.h in Headers */,
@@ -547,7 +540,6 @@
 				10532F4415DA569000AB115B /* OSLoadingViewController.m in Sources */,
 				108AD5DA15DA657700EE2443 /* OSAppearance.m in Sources */,
 				10C58E4315DCDD7D00496A25 /* OSOperation.m in Sources */,
-				10C58E4815DCDF4C00496A25 /* OSTwitterOperation.m in Sources */,
 				10C58E4C15DCEB2700496A25 /* OSOperationQueues.m in Sources */,
 				10A3390115E381560059F012 /* NSString+encodeString.m in Sources */,
 				103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */,
