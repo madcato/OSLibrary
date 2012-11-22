@@ -8,6 +8,7 @@
 
 #import "OSTheme.h"
 #import "OSDefaultTheme.h"
+#import "OSSystem.h"
 
 @implementation OSThemeManager
 
@@ -29,23 +30,28 @@
 
 + (void)customizeAppAppearance
 {
+    if(IOS_VERSION_LESS_THAN(@"5.0")) return;
+       
     id <OSTheme> theme = [self sharedTheme];
     
     UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
     [navigationBarAppearance setBackgroundImage:[theme navigationBackgroundForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
     [navigationBarAppearance setBackgroundImage:[theme navigationBackgroundForBarMetrics:UIBarMetricsLandscapePhone] forBarMetrics:UIBarMetricsLandscapePhone];
-    [navigationBarAppearance setShadowImage:[theme topShadow]];
+    
+    if(IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) [navigationBarAppearance setShadowImage:[theme topShadow]];
     
     UIBarButtonItem *barButtonItemAppearance = [UIBarButtonItem appearance];
-    [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault] forState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault];
-    [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault] forState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault];
-    [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone];
-    [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone];
+    if(IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault] forState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault];
+        [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault] forState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault];
+        [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone];
+        [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone];
     
-    [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault] forState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault];
-    [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault] forState:UIControlStateHighlighted style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault];
-    [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsLandscapePhone];
-    [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateHighlighted style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsLandscapePhone];
+        [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault] forState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault];
+        [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault] forState:UIControlStateHighlighted style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault];
+        [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsLandscapePhone];
+        [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateHighlighted style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsLandscapePhone];
+    }
     
     [barButtonItemAppearance setBackButtonBackgroundImage:[theme backBackgroundForState:UIControlStateNormal barMetrics:UIBarMetricsDefault] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [barButtonItemAppearance setBackButtonBackgroundImage:[theme backBackgroundForState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault] forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
@@ -64,12 +70,12 @@
     UITabBar *tabBarAppearance = [UITabBar appearance];
     [tabBarAppearance setBackgroundImage:[theme tabBarBackground]];
     [tabBarAppearance setSelectionIndicatorImage:[theme tabBarSelectionIndicator]];
-    [tabBarAppearance setShadowImage:[theme bottomShadow]];
+    if(IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) [tabBarAppearance setShadowImage:[theme bottomShadow]];
     
     UIToolbar *toolbarAppearance = [UIToolbar appearance];
     [toolbarAppearance setBackgroundImage:[theme toolbarBackgroundForBarMetrics:UIBarMetricsDefault] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsDefault];
     [toolbarAppearance setBackgroundImage:[theme toolbarBackgroundForBarMetrics:UIBarMetricsLandscapePhone] forToolbarPosition:UIToolbarPositionAny barMetrics:UIBarMetricsLandscapePhone];
-    [toolbarAppearance setShadowImage:[theme bottomShadow] forToolbarPosition:UIToolbarPositionAny];
+    if(IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) [toolbarAppearance setShadowImage:[theme bottomShadow] forToolbarPosition:UIToolbarPositionAny];
     
     UISearchBar *searchBarAppearance = [UISearchBar appearance];
     [searchBarAppearance setBackgroundImage:[theme searchBackground]];
@@ -93,21 +99,26 @@
     [progressAppearance setProgressImage:[theme progressProgressImage]];
     
     UISwitch *switchAppearance = [UISwitch appearance];
-    [switchAppearance setOnImage:[theme onSwitchImage]];
-    [switchAppearance setOffImage:[theme offSwitchImage]];
-    [switchAppearance setTintColor:[theme switchTintColor]];
+    if(IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        [switchAppearance setOnImage:[theme onSwitchImage]];
+        [switchAppearance setOffImage:[theme offSwitchImage]];
+        [switchAppearance setTintColor:[theme switchTintColor]];
+        [switchAppearance setThumbTintColor:[theme switchThumbColor]];
+    }
+    
     [switchAppearance setOnTintColor:[theme switchOnColor]];
-    [switchAppearance setThumbTintColor:[theme switchThumbColor]];
     
     UIStepper *stepperAppearance = [UIStepper appearance];
-    [stepperAppearance setBackgroundImage:[theme stepperBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
-    [stepperAppearance setBackgroundImage:[theme stepperBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
-    [stepperAppearance setBackgroundImage:[theme stepperBackgroundForState:UIControlStateDisabled] forState:UIControlStateDisabled];
-    [stepperAppearance setDividerImage:[theme stepperDividerForState:UIControlStateNormal] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal];
-    [stepperAppearance setDividerImage:[theme stepperDividerForState:UIControlStateHighlighted] forLeftSegmentState:UIControlStateHighlighted rightSegmentState:UIControlStateNormal];
-    [stepperAppearance setDividerImage:[theme stepperDividerForState:UIControlStateHighlighted] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateHighlighted];
-    [stepperAppearance setIncrementImage:[theme stepperIncrementImage] forState:UIControlStateNormal];
-    [stepperAppearance setDecrementImage:[theme stepperDecrementImage] forState:UIControlStateNormal];
+    if(IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        [stepperAppearance setBackgroundImage:[theme stepperBackgroundForState:UIControlStateNormal] forState:UIControlStateNormal];
+        [stepperAppearance setBackgroundImage:[theme stepperBackgroundForState:UIControlStateHighlighted] forState:UIControlStateHighlighted];
+        [stepperAppearance setBackgroundImage:[theme stepperBackgroundForState:UIControlStateDisabled] forState:UIControlStateDisabled];
+        [stepperAppearance setDividerImage:[theme stepperDividerForState:UIControlStateNormal] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateNormal];
+        [stepperAppearance setDividerImage:[theme stepperDividerForState:UIControlStateHighlighted] forLeftSegmentState:UIControlStateHighlighted rightSegmentState:UIControlStateNormal];
+        [stepperAppearance setDividerImage:[theme stepperDividerForState:UIControlStateHighlighted] forLeftSegmentState:UIControlStateNormal rightSegmentState:UIControlStateHighlighted];
+        [stepperAppearance setIncrementImage:[theme stepperIncrementImage] forState:UIControlStateNormal];
+        [stepperAppearance setDecrementImage:[theme stepperDecrementImage] forState:UIControlStateNormal];
+    }
     
     NSMutableDictionary *titleTextAttributes = [[NSMutableDictionary alloc] init];
     UIColor *mainColor = [theme mainColor];
@@ -146,7 +157,7 @@
         [sliderAppearance setThumbTintColor:baseTintColor];
         [sliderAppearance setMinimumTrackTintColor:baseTintColor];
         [progressAppearance setProgressTintColor:baseTintColor];
-        [stepperAppearance setTintColor:baseTintColor];
+        if(IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) [stepperAppearance setTintColor:baseTintColor];
         [headerLabelAppearance setTextColor:baseTintColor];
     } else if (mainColor) {
         [headerLabelAppearance setTextColor:mainColor];
