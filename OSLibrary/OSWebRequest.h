@@ -113,4 +113,14 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
  */
 - (void)postFile:(NSData*)fileData withName:(NSString*)fileName withParams:(NSDictionary *)requestData toURL:(NSString*)u withHandler:(OSRequestHandler)handler;
 
+/*!
+ @method formatURLWith:andParams:
+ @abstract format an URL
+ @discussion Construct an URL using first parameter as de base URL and concatenating the params at the end of the URL. The params are formated using the method stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding, but only if they ares NSString type. If the type is NSNumber, no further format is done.
+ @param baseUrl The base URL to use.
+ @param params The params to put into the URL
+ @return The full final URL
+ */
++(NSString*)formatURLWith:(NSString*)baseUrl andParams:(NSDictionary*)params;
+
 @end

@@ -249,4 +249,30 @@
 	requestHandler(responseData,httpResponse,nil);    
 }
 
++(NSString*)formatURLWith:(NSString*)baseUrl andParams:(NSDictionary*)params {
+    NSString* finalUrl = [baseUrl copy];
+    
+    if([params count] == 0) return finalUrl;
+    
+    finalUrl = [finalUrl stringByAppendingString:@"?"];
+    
+    for(NSString* paramName in [params allKeys]) {
+        NSString* paramValue = @"";
+        id paramValueObj = [params valueForKey:paramName];
+        if([paramValueObj isKindOfClass:[NSString class]]) {
+            paramValue = [(NSString*)paramValueObj stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        }
+
+        if([paramValueObj isKindOfClass:[NSNumber class]]) {
+            paramValue = [(NSNumber*)paramValueObj stringValue];
+        }
+        
+        finalUrl = [finalUrl stringByAppendingFormat:@"%@=%@&",paramName,paramValue];
+    }
+    
+    finalUrl = [finalUrl stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"&"]];
+
+    return finalUrl;
+}
+
 @end

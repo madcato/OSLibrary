@@ -23,14 +23,8 @@
 #import "UIImage+StackBlur.h"
 #import "OSDatabase.h"
 #import "OSLoadingViewController.h"
-#import "OSViewController.h"
-#import "OSTableViewController.h"
 #import "OSAppearance.h"
 #import "OSOperation.h"
 #import "OSTwitterOperation.h"
 #import "OSOperationQueues.h"
 #import "NSString+encodeString.h"
-
-@interface OSLibrary : NSObject
-
-@end
