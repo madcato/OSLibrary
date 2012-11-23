@@ -39,14 +39,14 @@
 	[m_connection cancel];
 }
 
--(void)get:(NSString*)url withHandler:(OSRequestHandler)handler
+-(void)download:(NSString*)url withHandler:(OSRequestHandler)handler
 {
 	NSString *scaped_url = [url stringByAddingPercentEscapesUsingEncoding:encoding];
 
 	requestHandler = handler;
 	
 	responseData = [NSMutableData data];
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:scaped_url] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:scaped_url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10.0];
  	m_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
@@ -206,10 +206,6 @@
 		return YES;
 	}
 	
-    if(authMethod == NSURLAuthenticationMethodHTTPBasic) {
-		return YES;
-	}
-    
 	return NO;
 }
 
