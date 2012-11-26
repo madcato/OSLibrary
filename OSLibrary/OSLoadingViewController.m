@@ -8,7 +8,7 @@
 
 #import "OSLoadingViewController.h"
 
-const CGFloat spinningWheelSize = 38.0;
+const CGFloat waitingViewSize = 60.0;
 
 @implementation OSLoadingViewController
 
@@ -18,27 +18,36 @@ const CGFloat spinningWheelSize = 38.0;
     return self;
 }
 
-- (void)showLoadingView {
-    if (loadingView == nil)
-    {
-        CGRect frame = _parentView.bounds;
-        loadingView = [[UIView alloc] initWithFrame:frame];
-        loadingView.opaque = NO;
-        loadingView.backgroundColor = _color;
-        loadingView.alpha = 1;
-        
-        CGFloat posx = (frame.size.width / 2) - (spinningWheelSize / 2);
-        CGFloat posy = (frame.size.height / 2) - (spinningWheelSize / 2);
-        UIActivityIndicatorView *spinningWheel = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(posx, posy, spinningWheelSize, spinningWheelSize)];
-        [spinningWheel startAnimating];
-        spinningWheel.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-        [loadingView addSubview:spinningWheel];
-    }    
-    [_parentView addSubview:loadingView];
+-(void)showLoadingView {
+    
+    if(loadingView != nil) {
+        [self hideLoadingView];
+    }
+    CGRect parentFrame = self.parentView.frame;
+    loadingView = [[UIView alloc]initWithFrame:CGRectMake((parentFrame.size.width / 2) - (waitingViewSize / 2), (parentFrame.size.height / 2) - (waitingViewSize /2), waitingViewSize, waitingViewSize)];
+    
+    loadingView.opaque = NO;
+    loadingView.layer.opacity = 0.5;
+    loadingView.backgroundColor = [UIColor blackColor];
+    loadingView.layer.cornerRadius = 15;
+    
+    UIActivityIndicatorView* activity = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    
+    CGRect frame = activity.frame;
+    frame.origin.x = 11;
+    frame.origin.y = 11;
+    activity.frame = frame;
+    [activity startAnimating];
+    [loadingView addSubview:activity];
+    
+    [self.parentView addSubview:loadingView];
+    
 }
 
-- (void)hideLoadingView {
+-(void)hideLoadingView {
     [loadingView removeFromSuperview];
+    
+    loadingView = nil;
 }
 
 @end
