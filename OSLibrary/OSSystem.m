@@ -131,5 +131,9 @@
     
 }
 
++(NSString*)appName
+{
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+}
 
 @end

@@ -39,7 +39,7 @@ static char kOSWebRequestObjectKey = 's';
         
         OSWebRequest* request = [[OSWebRequest alloc]init];
         [self setOsWebRequestObject:request];
-        [request get:url withHandler:^(NSData* response, NSHTTPURLResponse* urlResponse, NSError* error){
+        [request download:url withHandler:^(NSData* response, NSHTTPURLResponse* urlResponse, NSError* error){
             [self hideLoadingView];
             if(error == nil) {
                 UIImage* image;
