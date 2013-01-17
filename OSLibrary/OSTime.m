@@ -11,25 +11,19 @@
 
 @implementation OSTime
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         // Initialization code here.
     }
-    
     return self;
 }
 
 +(NSString*)now {
     NSString* format = [OSSystem getDateFormatForCurrentLocale:@"Hm"];
-    
     NSDateFormatter* fmt = [[NSDateFormatter alloc] init];
     [fmt setDateFormat:format];
-    
-    
     return [fmt stringFromDate:[NSDate new]];
-    
 }
 
 @end

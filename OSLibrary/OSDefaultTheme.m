@@ -8,216 +8,180 @@
 
 #import "OSDefaultTheme.h"
 
+
 @implementation OSDefaultTheme
 
-- (UIColor *)mainColor
-{
+- (UIColor *)mainColor {
     return nil;
 }
 
-- (UIColor *)highlightColor
-{
+- (UIColor *)highlightColor {
     return nil;
 }
 
-- (UIColor *)shadowColor
-{
+- (UIColor *)shadowColor {
     return nil;
 }
 
-- (UIColor *)backgroundColor
-{
+- (UIColor *)backgroundColor {
     return nil;
 }
 
-- (UIColor *)baseTintColor
-{
+- (UIColor *)baseTintColor {
     return nil;
 }
 
-- (UIColor *)accentTintColor
-{
+- (UIColor *)accentTintColor {
     return nil;
 }
 
-- (UIColor *)switchThumbColor
-{
+- (UIColor *)switchThumbColor {
     return nil;
 }
 
-- (UIColor *)switchOnColor
-{
+- (UIColor *)switchOnColor {
     return nil;
 }
 
-- (UIColor *)switchTintColor
-{
+- (UIColor *)switchTintColor {
     return nil;
 }
 
-- (CGSize)shadowOffset
-{
+- (CGSize)shadowOffset {
     return CGSizeZero;
 }
 
-- (UIImage *)topShadow
-{
+- (UIImage *)topShadow {
     return nil;
 }
 
-- (UIImage *)bottomShadow
-{
+- (UIImage *)bottomShadow {
     return nil;
 }
 
-- (UIImage *)navigationBackgroundForBarMetrics:(UIBarMetrics)metrics
-{
+- (UIImage *)navigationBackgroundForBarMetrics:(UIBarMetrics)metrics {
     return nil;
 }
 
-- (UIImage *)barButtonBackgroundForState:(UIControlState)state style:(UIBarButtonItemStyle)style barMetrics:(UIBarMetrics)barMetrics
-{
+- (UIImage *)barButtonBackgroundForState:(UIControlState)state
+                                   style:(UIBarButtonItemStyle)style
+                              barMetrics:(UIBarMetrics)barMetrics {
     return nil;
 }
 
-- (UIImage *)backBackgroundForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics
-{
+- (UIImage *)backBackgroundForState:(UIControlState)state
+                         barMetrics:(UIBarMetrics)barMetrics {
     return nil;
 }
 
-- (UIImage *)toolbarBackgroundForBarMetrics:(UIBarMetrics)metrics
-{
+- (UIImage *)toolbarBackgroundForBarMetrics:(UIBarMetrics)metrics {
     return nil;
 }
 
-- (UIImage *)searchBackground
-{
+- (UIImage *)searchBackground {
     return nil;
 }
 
-- (UIImage *)searchFieldImage
-{
+- (UIImage *)searchFieldImage {
     return nil;
 }
 
-- (UIImage *)searchImageForIcon:(UISearchBarIcon)icon state:(UIControlState)state
-{
+- (UIImage *)searchImageForIcon:(UISearchBarIcon)icon
+                          state:(UIControlState)state {
     return nil;
 }
 
-- (UIImage *)searchScopeButtonBackgroundForState:(UIControlState)state
-{
+- (UIImage *)searchScopeButtonBackgroundForState:(UIControlState)state {
     return nil;
 }
 
-- (UIImage *)searchScopeButtonDivider
-{
+- (UIImage *)searchScopeButtonDivider {
     return nil;
 }
 
-- (UIImage *)segmentedBackgroundForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;
-{
+- (UIImage *)segmentedBackgroundForState:(UIControlState)state
+                              barMetrics:(UIBarMetrics)barMetrics {
     return nil;
 }
 
-- (UIImage *)segmentedDividerForBarMetrics:(UIBarMetrics)barMetrics
-{
+- (UIImage *)segmentedDividerForBarMetrics:(UIBarMetrics)barMetrics {
     return nil;
 }
 
-- (UIImage *)tableBackground
-{
+- (UIImage *)tableBackground {
     return nil;
 }
 
-- (UIImage *)onSwitchImage
-{
+- (UIImage *)onSwitchImage {
     return nil;
 }
 
-- (UIImage *)offSwitchImage
-{
+- (UIImage *)offSwitchImage {
     return nil;
 }
 
-- (UIImage *)sliderThumbForState:(UIControlState)state
-{
+- (UIImage *)sliderThumbForState:(UIControlState)state {
     return nil;
 }
 
-- (UIImage *)sliderMinTrack
-{
+- (UIImage *)sliderMinTrack {
     return nil;
 }
 
-- (UIImage *)sliderMaxTrack
-{
+- (UIImage *)sliderMaxTrack {
     return nil;
 }
 
-- (UIImage *)speedSliderMinImage
-{
+- (UIImage *)speedSliderMinImage {
     return nil;
 }
 
-- (UIImage *)speedSliderMaxImage
-{
+- (UIImage *)speedSliderMaxImage {
     return nil;
 }
 
-- (UIImage *)progressTrackImage
-{
+- (UIImage *)progressTrackImage {
     return nil;
 }
 
-- (UIImage *)progressProgressImage
-{
+- (UIImage *)progressProgressImage {
     return nil;
 }
 
-- (UIImage *)stepperBackgroundForState:(UIControlState)state
-{
+- (UIImage *)stepperBackgroundForState:(UIControlState)state {
     return nil;
 }
 
-- (UIImage *)stepperDividerForState:(UIControlState)state
-{
+- (UIImage *)stepperDividerForState:(UIControlState)state {
     return nil;
 }
 
-- (UIImage *)stepperIncrementImage
-{
+- (UIImage *)stepperIncrementImage {
     return nil;
 }
 
-- (UIImage *)stepperDecrementImage
-{
+- (UIImage *)stepperDecrementImage {
     return nil;
 }
 
-- (UIImage *)buttonBackgroundForState:(UIControlState)state
-{
+- (UIImage *)buttonBackgroundForState:(UIControlState)state {
     return nil;
 }
 
-- (UIImage *)tabBarBackground
-{
+- (UIImage *)tabBarBackground {
     return nil;
 }
 
-- (UIImage *)tabBarSelectionIndicator
-{
+- (UIImage *)tabBarSelectionIndicator {
     return nil;
 }
 
-- (UIImage *)imageForTab:(NSInteger)tab
-{
+- (UIImage *)imageForTab:(NSInteger)tab {
     NSString* name = nil;
     return (name ? [UIImage imageNamed:name] : nil);
 }
 
-- (UIImage *)finishedImageForTab:(NSInteger)tab selected:(BOOL)selected
-{
+- (UIImage *)finishedImageForTab:(NSInteger)tab selected:(BOOL)selected {
     return nil;
 }
 

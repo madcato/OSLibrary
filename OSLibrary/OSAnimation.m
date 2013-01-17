@@ -10,19 +10,16 @@
 
 @implementation OSAnimation
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         // Initialization code here.
     }
-    
     return self;
 }
 
 +(void)blinkObject:(UIView*)object duringSeconds:(double)seconds {
     CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    
     animation.duration=seconds;
     animation.repeatCount=HUGE_VALF;
     animation.autoreverses=YES;

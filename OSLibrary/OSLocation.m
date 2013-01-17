@@ -8,27 +8,25 @@
 
 #import "OSLocation.h"
 
+
 @implementation OSLocation
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         // Initialization code here.
     }
-    
     return self;
 }
 
 + (BOOL)locationServiceEnabled {
 	BOOL result = NO;
-	if([CLLocationManager respondsToSelector:@selector(authorizationStatus)]){
-		result = ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorized);
+	if([CLLocationManager respondsToSelector:@selector(authorizationStatus)]) {
+		result = ([CLLocationManager authorizationStatus] ==
+                  kCLAuthorizationStatusAuthorized);
 	} else {
 		result = [CLLocationManager locationServicesEnabled];
 	}
-    
-	
 	return result;
 }
 

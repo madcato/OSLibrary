@@ -12,7 +12,9 @@
 #import <Foundation/Foundation.h>
 
 
-@interface UIImage (StackBlur) 
-	- (UIImage*) stackBlur:(NSUInteger)radius;
+@interface UIImage (StackBlur)
+
+-(UIImage*)stackBlur:(NSUInteger)radius;
+
 @end
 

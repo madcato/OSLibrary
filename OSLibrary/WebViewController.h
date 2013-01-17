@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+
 /*!
  @class WebViewController
  @abstract View controller for web control.
- @discussion Use this class when you need to embed a web control inside an app. This class includes a more button to load the url in the Safari.
+ @discussion Use this class when you need to embed a web control inside an app. 
+    This class includes a more button to load the url in the Safari.
 */
-@interface WebViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate> {
+@interface WebViewController : UIViewController <UIWebViewDelegate,
+                                                 UIActionSheetDelegate> {
+@private
 	UIWebView* web;
 	NSString* url;
 }
@@ -29,4 +33,5 @@
  @abstract Url to load
  */
 @property (nonatomic,retain) NSString* url;
+
 @end

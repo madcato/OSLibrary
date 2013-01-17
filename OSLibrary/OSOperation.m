@@ -8,6 +8,7 @@
 
 #import "OSOperation.h"
 
+
 @implementation OSOperation 
 
 - (id)init {
@@ -41,10 +42,11 @@
         [self didChangeValueForKey:@"isFinished"];
         return;
     }
-    
     // If the operation is not canceled, begin executing the task.
     [self willChangeValueForKey:@"isExecuting"];
-    [NSThread detachNewThreadSelector:@selector(main) toTarget:self withObject:nil];
+    [NSThread detachNewThreadSelector:@selector(main)
+                             toTarget:self
+                           withObject:nil];
     executing = YES;
     [self didChangeValueForKey:@"isExecuting"];
 }
@@ -52,9 +54,7 @@
 
 - (void)main {
     @try {
-        
         // Do the main work of the operation here.
-        
         [self completeOperation];
     }
     @catch(...) {
@@ -65,10 +65,8 @@
 - (void)completeOperation {
     [self willChangeValueForKey:@"isFinished"];
     [self willChangeValueForKey:@"isExecuting"];
-    
     executing = NO;
     finished = YES;
-    
     [self didChangeValueForKey:@"isExecuting"];
     [self didChangeValueForKey:@"isFinished"];
 }

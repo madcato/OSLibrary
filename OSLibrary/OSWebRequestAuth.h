@@ -8,7 +8,9 @@
 
 #import "OSWebRequest.h"
 
+
 @interface OSWebRequestAuth : OSWebRequest {
+@private
     NSString* _user;
     NSString* _password;
 }

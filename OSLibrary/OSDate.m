@@ -9,27 +9,22 @@
 #import "OSDate.h"
 #import "OSSystem.h"
 
+
 @implementation OSDate
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         // Initialization code here.
     }
-    
     return self;
 }
 
 +(NSString*)now {
     NSString* format = [OSSystem getDateFormatForCurrentLocale:@"yMd"];
-    
     NSDateFormatter* fmt = [[NSDateFormatter alloc] init];
     [fmt setDateFormat:format];
-    
-
     return [fmt stringFromDate:[NSDate new]];
-    
 }
 
 @end

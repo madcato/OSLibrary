@@ -20,7 +20,6 @@
     bar.layer.shadowRadius = 4 ;
     bar.layer.masksToBounds = NO;
     bar.layer.shouldRasterize = YES;
-    
     bar.layer.shadowPath = CGPathCreateWithRect(CGRectMake(-20, 0, 1020, 44),NULL);
 }
 
@@ -30,7 +29,6 @@
     bar.layer.shadowRadius = 4 ;
     bar.layer.masksToBounds = NO;
     bar.layer.shouldRasterize = YES;
-    
     bar.layer.shadowPath = CGPathCreateWithRect(CGRectMake(-20, 0, 380, 49),NULL);
 }
 

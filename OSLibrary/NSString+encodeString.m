@@ -11,12 +11,13 @@
 @implementation NSString (encodeString)
 
 -(NSString*)encodeStringForHTTPParam {
-    NSString * encodedString = (__bridge NSString* )CFURLCreateStringByAddingPercentEscapes(
-                                                                                          NULL,
-                                                                                          (__bridge CFStringRef)self,
-                                                                                          NULL,
-                                                                                          (CFStringRef)@"!'();:@&=+$,/?%#[]",
-                                                                                          kCFStringEncodingUTF8 );
+    NSString * encodedString = (__bridge NSString* )
+    CFURLCreateStringByAddingPercentEscapes(
+                              NULL,
+                              (__bridge CFStringRef)self,
+                              NULL,
+                              (CFStringRef)@"!'();:@&=+$,/?%#[]",
+                              kCFStringEncodingUTF8 );
     return encodedString;
 }
 
