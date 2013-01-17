@@ -46,13 +46,13 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
 -(void)cancelRequest;
 
 /*!
- @method get:withHandler:
+ @method download:withHandler:
  @abstract Send a GET petition to a web server.
  @discussion Use this method to download any page or file in a HTTP server.
  @param url URL to download
  @param handler this method will be called at the end of request.
  */
--(void)get:(NSString*)url withHandler:(OSRequestHandler)handler;
+-(void)download:(NSString*)url withHandler:(OSRequestHandler)handler;
 
 /*!
  @method post:toURL:withHandler:

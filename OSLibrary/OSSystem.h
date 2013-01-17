@@ -131,6 +131,13 @@
  */
 +(void)registerUserDefaults;
 
+/*!
+ @method appName
+ @abstract Get the app name
+ @return the app name
+*/
++(NSString*)appName;
+
 @end
 
 
