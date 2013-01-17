@@ -34,6 +34,8 @@
 		10C58E4315DCDD7D00496A25 /* OSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C58E4115DCDD7D00496A25 /* OSOperation.m */; };
 		10C58E4B15DCEB2700496A25 /* OSOperationQueues.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C58E4915DCEB2700496A25 /* OSOperationQueues.h */; };
 		10C58E4C15DCEB2700496A25 /* OSOperationQueues.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C58E4A15DCEB2700496A25 /* OSOperationQueues.m */; };
+		10C7CF24167B3F7100E9047F /* OSWebRequestAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C7CF22167B3F7100E9047F /* OSWebRequestAuth.h */; };
+		10C7CF25167B3F7100E9047F /* OSWebRequestAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C7CF23167B3F7100E9047F /* OSWebRequestAuth.m */; };
 		272C036215335261008DF260 /* NSData+Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 272C036015335261008DF260 /* NSData+Base64.h */; };
 		272C036315335261008DF260 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 272C036115335261008DF260 /* NSData+Base64.m */; };
 		272C0366153352F9008DF260 /* OSCrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 272C0364153352F9008DF260 /* OSCrypto.h */; };
@@ -112,6 +114,8 @@
 		10C58E4115DCDD7D00496A25 /* OSOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSOperation.m; sourceTree = "<group>"; };
 		10C58E4915DCEB2700496A25 /* OSOperationQueues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperationQueues.h; sourceTree = "<group>"; };
 		10C58E4A15DCEB2700496A25 /* OSOperationQueues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSOperationQueues.m; sourceTree = "<group>"; };
+		10C7CF22167B3F7100E9047F /* OSWebRequestAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSWebRequestAuth.h; sourceTree = "<group>"; };
+		10C7CF23167B3F7100E9047F /* OSWebRequestAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSWebRequestAuth.m; sourceTree = "<group>"; };
 		272C036015335261008DF260 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		272C036115335261008DF260 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		272C0364153352F9008DF260 /* OSCrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCrypto.h; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 				27FD9C6F14EAB2DB0091A0E3 /* OSNetwork.m */,
 				278474B713EFF2E400CDD1CF /* OSWebRequest.h */,
 				278474B813EFF2E400CDD1CF /* OSWebRequest.m */,
+				10C7CF22167B3F7100E9047F /* OSWebRequestAuth.h */,
+				10C7CF23167B3F7100E9047F /* OSWebRequestAuth.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 				10A3390015E381560059F012 /* NSString+encodeString.h in Headers */,
 				103FE0A9165BC7BD00F25586 /* OSDefaultTheme.h in Headers */,
 				103FE0AD165BC7CC00F25586 /* OSTheme.h in Headers */,
+				10C7CF24167B3F7100E9047F /* OSWebRequestAuth.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +551,7 @@
 				10A3390115E381560059F012 /* NSString+encodeString.m in Sources */,
 				103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */,
 				103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */,
+				10C7CF25167B3F7100E9047F /* OSWebRequestAuth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

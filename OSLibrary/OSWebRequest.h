@@ -22,12 +22,12 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
     
     NSStringEncoding encoding;
     
-    NSString* _user;
-    NSString* _password;
-    
     NSMutableData* responseData;
     NSHTTPURLResponse* httpResponse;
 };
+
++(OSWebRequest*)webRequest;
++(OSWebRequest*)webRequestWithAuth:(NSString*)login withPassword:(NSString*)password;
 
 /*!
  @method useEncoding
@@ -37,12 +37,6 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
  */
 -(void) useEncoding:(NSStringEncoding)enc;
 
-
-/*!
- @method useCredentials:withPassword
- @abstract set the credentials for a http digest authentication
- */
--(void)useCredentials:(NSString*)user withPassword:(NSString*)password;
 
 /*!
  @method cancelRequest

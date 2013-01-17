@@ -7,6 +7,7 @@
 //
 
 #import "OSWebRequest.h"
+#import "OSWebRequestAuth.h"
 
 @implementation OSWebRequest
 
@@ -22,13 +23,19 @@
     return self;
 }
 
--(void) useEncoding:(NSStringEncoding)enc {
-    encoding = enc;
++(OSWebRequest*)webRequest
+{
+    return [[OSWebRequest alloc] init];
 }
 
--(void)useCredentials:(NSString*)user withPassword:(NSString*)password {
-    _user = user;
-    _password = password;
++(OSWebRequest*)webRequestWithAuth:(NSString*)login withPassword:(NSString*)password
+{
+    return [[OSWebRequestAuth alloc] initWithCredentials:login withPassword:password];
+}
+
+
+-(void) useEncoding:(NSStringEncoding)enc {
+    encoding = enc;
 }
 
 -(void)dealloc {
@@ -207,22 +214,6 @@
 	}
 	
 	return NO;
-}
-
-
-
-- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge
-{
-	
-	if([challenge previousFailureCount] > 0){
-		[[challenge sender] cancelAuthenticationChallenge:challenge];
-	}
-    
-    NSString *user = _user;
-    NSString *pass = _password;
-    
-    NSURLCredential *creds = [NSURLCredential credentialWithUser:user password:pass persistence:NSURLCredentialPersistenceForSession];
-    [[challenge sender] useCredential:creds forAuthenticationChallenge:challenge];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
