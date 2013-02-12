@@ -136,6 +136,7 @@ withHandler:(OSRequestHandler)handler;
  @param params The params to put into the URL
  @return The full final URL
  */
-+(NSString*)formatURLWith:(NSString*)baseUrl andParams:(NSDictionary*)params;
+- (NSString*)formatURLWith:(NSString*)baseUrl andParams:(NSDictionary*)params;
 
+- (NSString*)formatPostParams:(NSDictionary*)params;
 @end

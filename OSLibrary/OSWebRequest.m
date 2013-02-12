@@ -12,6 +12,18 @@
 
 @implementation OSWebRequest
 
+static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding
+(NSString *string, NSStringEncoding encoding) {
+    static NSString * const kAFCharactersToBeEscaped = @":/?&=;+!@#$()~";
+    static NSString * const kAFCharactersToLeaveUnescaped = @"[].";
+	return (__bridge_transfer  NSString *)
+    CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                            (__bridge CFStringRef)string,
+                                            (__bridge CFStringRef)kAFCharactersToLeaveUnescaped,
+                                            (__bridge CFStringRef)kAFCharactersToBeEscaped,
+                                            CFStringConvertNSStringEncodingToEncoding(encoding));
+}
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -185,24 +197,24 @@ withHandler:(OSRequestHandler)handler {
 		NSString *formDataValue = [NSString stringWithFormat:@"%@\r\n",
                                    [requestData objectForKey:key]];
 		[postBody appendData:[boundarySeparator
-                              dataUsingEncoding:NSUTF8StringEncoding]];
+                              dataUsingEncoding:encoding]];
 		[postBody appendData:[formDataName
-                              dataUsingEncoding:NSUTF8StringEncoding]];
+                              dataUsingEncoding:encoding]];
 		[postBody appendData:[formDataValue
-                              dataUsingEncoding:NSUTF8StringEncoding]];
+                              dataUsingEncoding:encoding]];
 	}
 	// if file is defined, upload it...
-	[postBody appendData:[boundarySeparator dataUsingEncoding:NSUTF8StringEncoding]];
+	[postBody appendData:[boundarySeparator dataUsingEncoding:encoding]];
 	[postBody appendData:[[NSString stringWithFormat:
     @"Content-Disposition: form-data; name=\"audioBody\"; filename=\"%@\"\r\n",
                            fileName]
-                                   dataUsingEncoding:NSUTF8StringEncoding]];
+                                   dataUsingEncoding:encoding]];
 	[postBody appendData:[@"Content-Type: application/octet-stream\r\n\r\n"
-                              dataUsingEncoding:NSUTF8StringEncoding]];
+                              dataUsingEncoding:encoding]];
 	[postBody appendData:fileData];
 	[postBody appendData:[[NSString stringWithFormat:@"\r\n--%@--\r \n",
                            boundary]
-                                   dataUsingEncoding:NSUTF8StringEncoding]];
+                                   dataUsingEncoding:encoding]];
 	[request setHTTPBody:postBody];
 	 m_connection = [[NSURLConnection alloc] initWithRequest:request
                                                     delegate:self];
@@ -238,7 +250,7 @@ didReceiveResponse:(NSURLResponse *)response {
 	requestHandler(responseData,httpResponse,nil);    
 }
 
-+(NSString*)formatURLWith:(NSString*)baseUrl andParams:(NSDictionary*)params {
+- (NSString*)formatURLWith:(NSString*)baseUrl andParams:(NSDictionary*)params {
     NSString* finalUrl = [baseUrl copy];
     if([params count] == 0) return finalUrl;
     finalUrl = [finalUrl stringByAppendingString:@"?"];
@@ -248,18 +260,46 @@ didReceiveResponse:(NSURLResponse *)response {
         if([paramValueObj isKindOfClass:[NSString class]]) {
             paramValue = [(NSString*)paramValueObj
                           stringByAddingPercentEscapesUsingEncoding:
-                          NSUTF8StringEncoding];
+                          encoding];
         }
         if([paramValueObj isKindOfClass:[NSNumber class]]) {
             paramValue = [(NSNumber*)paramValueObj stringValue];
         }
         finalUrl = [finalUrl stringByAppendingFormat:@"%@=%@&",
-                    paramName,
-                    paramValue];
+                    [self URLEncodedStringValueWithEncoding:paramName],
+                    [self URLEncodedStringValueWithEncoding:paramValue]];
     }
     finalUrl = [finalUrl stringByTrimmingCharactersInSet:
                 [NSCharacterSet characterSetWithCharactersInString:@"&"]];
     return finalUrl;
+}
+
+- (NSString *)URLEncodedStringValueWithEncoding:(NSString*)value {
+    return AFPercentEscapedQueryStringPairMemberFromStringWithEncoding(value,
+                                                                       encoding);
+}
+
+- (NSString*)formatPostParams:(NSDictionary*)params {
+    if([params count] == 0) return @"";
+    NSString* finalString = @"";
+    for(NSString* paramName in [params allKeys]) {
+        NSString* paramValue = @"";
+        id paramValueObj = [params valueForKey:paramName];
+        if([paramValueObj isKindOfClass:[NSString class]]) {
+            paramValue = [(NSString*)paramValueObj
+                          stringByAddingPercentEscapesUsingEncoding:
+                          encoding];
+        }
+        if([paramValueObj isKindOfClass:[NSNumber class]]) {
+            paramValue = [(NSNumber*)paramValueObj stringValue];
+        }
+        finalString = [finalString stringByAppendingFormat:@"%@=%@&",
+                    [self URLEncodedStringValueWithEncoding:paramName],
+                    [self URLEncodedStringValueWithEncoding:paramValue]];
+    }
+    finalString = [finalString stringByTrimmingCharactersInSet:
+                [NSCharacterSet characterSetWithCharactersInString:@"&"]];
+    return finalString;
 }
 
 @end
