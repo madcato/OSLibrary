@@ -14,6 +14,6 @@
 
 @interface OSNetworkTest : SenTestCase <OSNetworkDelegate>
 {
-    OSNetwork* network;
+  OSNetwork* network;
 }
 @end

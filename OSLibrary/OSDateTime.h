@@ -22,7 +22,7 @@
  @method now
  @result NSString*
  @abstract This method return the current date and time with the system locale 
-    format
+  format
  */
 +(NSString*)now;
 
@@ -55,22 +55,22 @@
  @param seconds Number of seconds
  @result NSDate*
  @abstract This method generates a new NSDate object by adding the date 
-    components to fromDate param.
+  components to fromDate param.
  @discussion Use this method to add periods of time to a given date. 
-    Example: to add one year to today use: [
+  Example: to add one year to today use: [
  [OSDateTime dateByAddingToDate:[NsDate date] years:1 
-                                             months:0 
-                                               days:0
-                                              hours:0 
-                                            minutes:0 
-                                            seconds:0];
+                       months:0 
+                         days:0
+                        hours:0 
+                      minutes:0 
+                      seconds:0];
  */
 +(NSDate*)dateByAddingToDate:(NSDate*)fromDate
-                       years:(NSInteger)numYears
-                      months:(NSInteger)numMonths
-                        days:(NSInteger)numDays
-                       hours:(NSInteger)numHours
-                     minutes:(NSInteger)numMinutes
-                     seconds:(NSInteger)numSeconds;
+             years:(NSInteger)numYears
+            months:(NSInteger)numMonths
+            days:(NSInteger)numDays
+             hours:(NSInteger)numHours
+           minutes:(NSInteger)numMinutes
+           seconds:(NSInteger)numSeconds;
 
 @end

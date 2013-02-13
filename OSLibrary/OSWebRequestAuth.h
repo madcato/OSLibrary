@@ -11,8 +11,8 @@
 
 @interface OSWebRequestAuth : OSWebRequest {
 @private
-    NSString* _user;
-    NSString* _password;
+  NSString* _user;
+  NSString* _password;
 }
 
 -(id)initWithCredentials:(NSString*)user withPassword:(NSString*)password;

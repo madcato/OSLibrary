@@ -16,15 +16,15 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	UIBarButtonItem* moreButton = [[UIBarButtonItem alloc]
-                         initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                              target:self
-                                              action:@selector(moreTouched)];
+             initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                        target:self
+                        action:@selector(moreTouched)];
 	[self.navigationItem setRightBarButtonItem:moreButton];
-    [super viewDidLoad];
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+  [super viewDidLoad];
+  [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 	web.delegate = self;
 	NSURLRequest* request = [NSURLRequest requestWithURL:
-                                            [NSURL URLWithString:url]];
+                      [NSURL URLWithString:url]];
 	[web loadRequest:request];
 }
 
@@ -34,22 +34,22 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    NSString *errorMessage = [error localizedDescription];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ZgZmap"
+  NSString *errorMessage = [error localizedDescription];
+  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"ZgZmap"
 														message:errorMessage
 													   delegate:nil
 											  cancelButtonTitle:@"OK"
 											  otherButtonTitles:nil];
-    [alertView show];
+  [alertView show];
 }
 
 -(void)moreTouched {
 	UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                            initWithTitle:NSLocalizedString(@"",@"")
-                                 delegate:self
-                        cancelButtonTitle:NSLocalizedString(@"Cancelar",@"")
-                   destructiveButtonTitle:nil
-                        otherButtonTitles:@"Abrir en Safari",nil];
+              initWithTitle:NSLocalizedString(@"",@"")
+                 delegate:self
+            cancelButtonTitle:NSLocalizedString(@"Cancelar",@"")
+           destructiveButtonTitle:nil
+            otherButtonTitles:@"Abrir en Safari",nil];
 	actionSheet.actionSheetStyle = UIActionSheetStyleDefault;
 	[actionSheet showInView:self.view];
 }
@@ -74,15 +74,15 @@ clickedButtonAtIndex:(NSInteger)buttonIndex {
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 - (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc. that aren't in use.
+  // Releases the view if it doesn't have a superview.
+  [super didReceiveMemoryWarning];
+  // Release any cached data, images, etc. that aren't in use.
 }
 
 - (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+  [super viewDidUnload];
+  // Release any retained subviews of the main view.
+  // e.g. self.myOutlet = nil;
 	web.delegate = nil;
 	self.web = nil;
 }

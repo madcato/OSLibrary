@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 
 
-#define IOS_VERSION_EQUAL_TO(v)                  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
-#define IOS_VERSION_GREATER_THAN(v)              ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
+#define IOS_VERSION_EQUAL_TO(v)          ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedSame)
+#define IOS_VERSION_GREATER_THAN(v)        ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedDescending)
 #define IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-#define IOS_VERSION_LESS_THAN(v)                 ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
-#define IOS_VERSION_LESS_THAN_OR_EQUAL_TO(v)     ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
+#define IOS_VERSION_LESS_THAN(v)         ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+#define IOS_VERSION_LESS_THAN_OR_EQUAL_TO(v)   ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedDescending)
 
-#define INTERFACE_IS_PAD                         ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) 
-#define INTERFACE_IS_PHONE                       ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) 
+#define INTERFACE_IS_PAD             ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) 
+#define INTERFACE_IS_PHONE             ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPhone) 
 
 /*!
  @class OSDate
@@ -36,10 +36,10 @@
  @method getDateFormatForCurrentLocale
  @result NSString*
  @param dateComponents A string containing date format patterns 
-    (such as “MM” or “h”). For full details, 
-    see http://unicode.org/reports/tr35/tr35-6.html#Date_Format_Patterns
+  (such as “MM” or “h”). For full details, 
+  see http://unicode.org/reports/tr35/tr35-6.html#Date_Format_Patterns
  @abstract This method return the current locale format for the components 
-    specified.
+  specified.
  */
 + (NSString*)getDateFormatForCurrentLocale:(NSString*)dateComponents;
 
@@ -47,7 +47,7 @@
  @method disableIdleTimer
  @abstract Disable the idle timer of the app
  @discussion This method is used to avoid the screen to autolock when the
-    application is been idle for a time. Use this only for debugging.
+  application is been idle for a time. Use this only for debugging.
 */
 + (void)disableIdleTimer;
 
@@ -103,7 +103,7 @@
  @method getPreferredLanguage
  @abstract Return the user selected preferred language identificator.
  @return An string with the language id, like canonicalized IETF BCP 47 
-    language identifier such as “en” or “fr”
+  language identifier such as “en” or “fr”
  */
 + (NSString*)getPreferredLanguage;
 
@@ -132,8 +132,8 @@
  @method registerUserDefaults
  @abstract Register the default values in Settings.bundle
  @discussion iOS load the Settings bundle automatically. But it doesn't register
-    de default values. This method can do it. Call this method only once in
-    first load, because it overwrite any previous value user entered.
+  de default values. This method can do it. Call this method only once in
+  first load, because it overwrite any previous value user entered.
  */
 + (void)registerUserDefaults;
 
@@ -161,11 +161,11 @@
  - (id)startSpeakingString:(id)string; 
  - (id)startSpeakingString:(id)string toURL:(id)url; 
  - (id)startSpeakingString:(id)string toURL:(id)url withLanguageCode:(id)code; 
- - (float)rate;             // default rate: 1 
+ - (float)rate;       // default rate: 1 
  - (id)setRate:(float)rate; 
- - (float)pitch;           // default pitch: 0.5
+ - (float)pitch;       // default pitch: 0.5
  - (id)setPitch:(float)pitch; 
- - (float)volume;       // default volume: 0.8
+ - (float)volume;     // default volume: 0.8
  - (id)setVolume:(float)volume; 
  @end
 */

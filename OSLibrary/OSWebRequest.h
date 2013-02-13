@@ -17,24 +17,24 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
  */
 @interface OSWebRequest : NSObject {
 @private
-    OSRequestHandler requestHandler;
-    NSURLConnection* m_connection;
-    NSStringEncoding encoding;
-    NSMutableData* responseData;
-    NSHTTPURLResponse* httpResponse;
+  OSRequestHandler requestHandler;
+  NSURLConnection* m_connection;
+  NSStringEncoding encoding;
+  NSMutableData* responseData;
+  NSHTTPURLResponse* httpResponse;
 };
 
 +(OSWebRequest*)webRequest;
 
 +(OSWebRequest*)webRequestWithAuth:(NSString*)login
-                      withPassword:(NSString*)password;
+            withPassword:(NSString*)password;
 
 /*!
  @method useEncoding
  @abstract sets the text encoding for this http communication
  @discussion Default encoding is UTF8.
  @param enc Encoding. Examples: NSISOLatin1StringEncoding or 
-    NSUTF8StringEncoding or NSASCIIStringEncoding.
+  NSUTF8StringEncoding or NSASCIIStringEncoding.
  */
 -(void) useEncoding:(NSStringEncoding)enc;
 
@@ -43,8 +43,8 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
  @method cancelRequest
  @abstract Cancel the current request.
  @discussion It's important to call this method before destroying 
-    the WebRequest object. This is the way to avoid that the delegate 
-    object receive method invocations when not expected.
+  the WebRequest object. This is the way to avoid that the delegate 
+  object receive method invocations when not expected.
  */
 -(void)cancelRequest;
 
@@ -61,18 +61,18 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
  @method post:toURL:withHandler:
  @abstract Make a POST to an URL
  @discussion Use this method to send data using POST http verb to a server. 
-    Sample:
-        Name: Jonathan Doe
-        Age: 23
-        Formula: a + b == 13%!
-    are encoded as
-    Name=Jonathan+Doe&Age=23&Formula=a+%2B+b+%3D%3D+13%25%21
+  Sample:
+    Name: Jonathan Doe
+    Age: 23
+    Formula: a + b == 13%!
+  are encoded as
+  Name=Jonathan+Doe&Age=23&Formula=a+%2B+b+%3D%3D+13%25%21
  @param data Data to send
  @param url Destination URL
  @param handler this method will be called at the end of request.
  */
 -(void)post:(NSString*)data
-      toURL:(NSString*)url
+    toURL:(NSString*)url
 withHandler:(OSRequestHandler)handler;
 
 /*!
@@ -84,33 +84,33 @@ withHandler:(OSRequestHandler)handler;
  @param handler this method will be called at the end of request.
  */
 -(void)post2:(NSDictionary*)object
-       toURL:(NSString*)u
+     toURL:(NSString*)u
  withHandler:(OSRequestHandler)handler;
 
 /*!
  @method postJson:toURL:withHandler:
  @abstract Make a POST to an URL using JSON content-type.
  @discussion Use this method to send data using POST http verb to a server. 
-    Only when Content-type must be Json data.
+  Only when Content-type must be Json data.
  @param data Data to send
  @param url Destination URL
  @param handler this method will be called at the end of request.
  */
 -(void)postJson:(NSString*)data
-          toURL:(NSString*)u
-    withHandler:(OSRequestHandler)handler;
+      toURL:(NSString*)u
+  withHandler:(OSRequestHandler)handler;
 
 /*!
  @method puJson:toURL:withHandler:
  @abstract Make a PUT to an URL using JSON content-type.
  @discussion Use this method to send data using POST http verb to a server. 
-    Only when Content-type must be Json data.
+  Only when Content-type must be Json data.
  @param data Data to send
  @param url Destination URL
  @param handler this method will be called at the end of request.
  */
 -(void)putJson:(NSString*)data
-         toURL:(NSString*)u
+     toURL:(NSString*)u
    withHandler:(OSRequestHandler)handler;
 
 /*! 
@@ -118,20 +118,20 @@ withHandler:(OSRequestHandler)handler;
  @abstract Send a file to a server using multipart/form-data
  */
 - (void)postFile:(NSData*)fileData
-        withName:(NSString*)fileName
-      withParams:(NSDictionary *)requestData
-           toURL:(NSString*)u
-     withHandler:(OSRequestHandler)handler;
+    withName:(NSString*)fileName
+    withParams:(NSDictionary *)requestData
+       toURL:(NSString*)u
+   withHandler:(OSRequestHandler)handler;
 
 /*!
  @method formatURLWith:andParams:
  @abstract format an URL
  @discussion Construct an URL using first parameter as de base URL and 
-    concatenating the params at the end of the URL. The params are formated 
-    using the method 
-    stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding, 
-    but only if they ares NSString type. If the type is NSNumber,
-    no further format is done.
+  concatenating the params at the end of the URL. The params are formated 
+  using the method 
+  stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding, 
+  but only if they ares NSString type. If the type is NSNumber,
+  no further format is done.
  @param baseUrl The base URL to use.
  @param params The params to put into the URL
  @return The full final URL

@@ -21,7 +21,7 @@
 	if (radius<1){
 		return self;
 	}
-    //	return [other applyBlendFilter:filterOverlay  other:self context:nil];
+  //	return [other applyBlendFilter:filterOverlay  other:self context:nil];
 	// First get the image into your data buffer
 	CGImageRef inImage = self.CGImage;
 	CFDataRef m_DataRef = CGDataProviderCopyData(CGImageGetDataProvider(inImage));  

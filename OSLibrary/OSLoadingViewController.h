@@ -11,7 +11,7 @@
 
 @interface OSLoadingViewController : NSObject {
 @private
-    UIView* loadingView;
+  UIView* loadingView;
 }
 
 - (void)showLoadingView;

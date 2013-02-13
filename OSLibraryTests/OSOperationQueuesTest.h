@@ -10,7 +10,7 @@
 #import "OSOperationQueues.h"
 
 @interface OSOperationQueuesTest : SenTestCase {
-    OSOperationQueues* operationQueues;
+  OSOperationQueues* operationQueues;
 }
 
 @end

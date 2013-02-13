@@ -10,5 +10,5 @@
 @interface OSCrypto : NSObject
 
 + (NSString *)md5:(NSString *)str;
-    
+  
 @end

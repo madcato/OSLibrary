@@ -25,9 +25,9 @@
  */
 @interface OSNetwork : NSObject {
 @private
-    SCNetworkReachabilityRef reachabilityRef;
-    id<OSNetworkDelegate> delegate;
-    BOOL localWiFiRef;
+  SCNetworkReachabilityRef reachabilityRef;
+  id<OSNetworkDelegate> delegate;
+  BOOL localWiFiRef;
 }
 
 /*!
@@ -41,7 +41,7 @@
  @return The created OSNetwork.
  */
 + (OSNetwork*) reachabilityWithHostName:(NSString*)hostName
-                            andDelegate:(id<OSNetworkDelegate>) dele;
+              andDelegate:(id<OSNetworkDelegate>) dele;
 
 /*!
  @method reachabilityForInternetConnectionWithDelegate

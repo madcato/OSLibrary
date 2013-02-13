@@ -12,18 +12,18 @@
 @implementation OSLocation
 
 - (id)init {
-    self = [super init];
-    if (self) {
-        // Initialization code here.
-    }
-    return self;
+  self = [super init];
+  if (self) {
+    // Initialization code here.
+  }
+  return self;
 }
 
 + (BOOL)locationServiceEnabled {
 	BOOL result = NO;
 	if([CLLocationManager respondsToSelector:@selector(authorizationStatus)]) {
 		result = ([CLLocationManager authorizationStatus] ==
-                  kCLAuthorizationStatusAuthorized);
+          kCLAuthorizationStatusAuthorized);
 	} else {
 		result = [CLLocationManager locationServicesEnabled];
 	}

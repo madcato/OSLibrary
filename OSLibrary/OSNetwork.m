@@ -31,55 +31,55 @@
 }
 
 static void ReachabilityCallback(SCNetworkReachabilityRef target,
-                                 SCNetworkReachabilityFlags flags, void* info)
+                 SCNetworkReachabilityFlags flags, void* info)
 {
 #pragma unused (target, flags)
 	NSCAssert(info != NULL, @"info was NULL in ReachabilityCallback");
 	NSCAssert([(__bridge NSObject*) info isKindOfClass: [OSNetwork class]],
-              @"info was wrong class in ReachabilityCallback");
-    
+        @"info was wrong class in ReachabilityCallback");
+  
 	//We're on the main RunLoop, so an NSAutoreleasePool is not necessary,
-    // but is added defensively
+  // but is added defensively
 	// in case someon uses the Reachablity object in a different thread.
-    @autoreleasepool {
-        OSNetwork* noteObject = (__bridge OSNetwork*) info;
-        // Post a notification to notify the client that the network
-        // reachability changed.
-        [noteObject networkChanged];
-    }
+  @autoreleasepool {
+    OSNetwork* noteObject = (__bridge OSNetwork*) info;
+    // Post a notification to notify the client that the network
+    // reachability changed.
+    [noteObject networkChanged];
+  }
 }
 
 -(void)networkChanged {
-    [delegate networkStatusChanged:self];
+  [delegate networkStatusChanged:self];
 }
 
 +(OSNetwork*)reachabilityWithHostName:(NSString*)hostName
-                          andDelegate:(id<OSNetworkDelegate>) dele {
+              andDelegate:(id<OSNetworkDelegate>) dele {
 	OSNetwork* retVal = NULL;
 	SCNetworkReachabilityRef reachability =
-    SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
+  SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
 	if(reachability!= NULL) {
 		retVal= [[self alloc] init];
 		if(retVal!= NULL) {
 			retVal->reachabilityRef = reachability;
-            retVal->delegate = dele;
-        }
+      retVal->delegate = dele;
+    }
 	}
 	return retVal;
 }
 
 +(OSNetwork*)reachabilityWithAddress:(const struct sockaddr_in*)hostAddress
-                         andDelegate:(id<OSNetworkDelegate>) dele {
+             andDelegate:(id<OSNetworkDelegate>) dele {
 	SCNetworkReachabilityRef reachability =
-    SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault,
-                                           (const struct sockaddr*)hostAddress);
+  SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault,
+                       (const struct sockaddr*)hostAddress);
 	OSNetwork* retVal = NULL;
 	if(reachability!= NULL)	{
 		retVal= [[self alloc] init] ;
 		if(retVal!= NULL) {
 			retVal->reachabilityRef = reachability;
 			retVal->localWiFiRef = NO;
-            retVal->delegate = dele;
+      retVal->delegate = dele;
 		}
 	}
 	return retVal;
@@ -103,7 +103,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
 	// IN_LINKLOCALNETNUM is defined in <netinet/in.h> as 169.254.0.0
 	localWifiAddress.sin_addr.s_addr = htonl(IN_LINKLOCALNETNUM);
 	OSNetwork* retVal = [self reachabilityWithAddress: &localWifiAddress
-                                          andDelegate:dele];
+                      andDelegate:dele];
 	if(retVal!= NULL) {
 		retVal->localWiFiRef = YES;
 	}
@@ -113,16 +113,16 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
 - (BOOL) startNotifier {
 	BOOL retVal = NO;
 	SCNetworkReachabilityContext context = {0,
-        (__bridge void*) self,
-        NULL,
-        NULL,
-        NULL};
+    (__bridge void*) self,
+    NULL,
+    NULL,
+    NULL};
 	if(SCNetworkReachabilitySetCallback(reachabilityRef,
-                                        ReachabilityCallback,
-                                        &context)) {
+                    ReachabilityCallback,
+                    &context)) {
 		if(SCNetworkReachabilityScheduleWithRunLoop(reachabilityRef,
-                                                    CFRunLoopGetCurrent(),
-                                                    kCFRunLoopDefaultMode)) {
+                          CFRunLoopGetCurrent(),
+                          kCFRunLoopDefaultMode)) {
 			retVal = YES;
 		}
 	}
@@ -132,23 +132,23 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target,
 - (void) stopNotifier {
 	if(reachabilityRef != NULL)	{
 		SCNetworkReachabilityUnscheduleFromRunLoop(reachabilityRef,
-                                                   CFRunLoopGetCurrent(),
-                                                   kCFRunLoopDefaultMode);
+                           CFRunLoopGetCurrent(),
+                           kCFRunLoopDefaultMode);
 	}
 }
 
 #pragma mark Status funcs
 
 - (BOOL) isNetworkReachable {
-    NSAssert(reachabilityRef != NULL,
-             @"currentNetworkStatus called with NULL reachabilityRef");
+  NSAssert(reachabilityRef != NULL,
+       @"currentNetworkStatus called with NULL reachabilityRef");
 	SCNetworkReachabilityFlags flags;
-    if (SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) {
-        BOOL isReachable = flags & kSCNetworkFlagsReachable;
-        BOOL needsConnection = flags & kSCNetworkFlagsConnectionRequired;
-        return (isReachable && !needsConnection) ? YES : NO;
-    }
-    return NO;
+  if (SCNetworkReachabilityGetFlags(reachabilityRef, &flags)) {
+    BOOL isReachable = flags & kSCNetworkFlagsReachable;
+    BOOL needsConnection = flags & kSCNetworkFlagsConnectionRequired;
+    return (isReachable && !needsConnection) ? YES : NO;
+  }
+  return NO;
 }
 
 @end

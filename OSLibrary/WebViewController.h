@@ -13,10 +13,10 @@
  @class WebViewController
  @abstract View controller for web control.
  @discussion Use this class when you need to embed a web control inside an app. 
-    This class includes a more button to load the url in the Safari.
+  This class includes a more button to load the url in the Safari.
 */
 @interface WebViewController : UIViewController <UIWebViewDelegate,
-                                                 UIActionSheetDelegate> {
+                         UIActionSheetDelegate> {
 @private
 	UIWebView* web;
 	NSString* url;

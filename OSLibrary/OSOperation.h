@@ -11,8 +11,8 @@
 
 
 @interface OSOperation : NSOperation {
-    BOOL        executing;
-    BOOL        finished;
+  BOOL    executing;
+  BOOL    finished;
 }
 
 - (void)completeOperation;
