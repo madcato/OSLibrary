@@ -11,8 +11,8 @@
 @interface NSManagedObject (JSON)
 
 
--(id)initWithDictionary:(NSDictionary*)object;
+- (id)initWithDictionary:(NSDictionary*)object;
 
--(NSMutableDictionary*)toJSON;
+- (NSMutableDictionary*)toJSON;
 
 @end

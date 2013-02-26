@@ -15,6 +15,8 @@
 		103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 103FE0A8165BC7BD00F25586 /* OSDefaultTheme.m */; };
 		103FE0AD165BC7CC00F25586 /* OSTheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 103FE0AB165BC7CC00F25586 /* OSTheme.h */; };
 		103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 103FE0AC165BC7CC00F25586 /* OSTheme.m */; };
+		1051D9F016DD0638008DE17E /* NSManagedObject+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 1051D9EE16DD0638008DE17E /* NSManagedObject+JSON.h */; };
+		1051D9F116DD0638008DE17E /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1051D9EF16DD0638008DE17E /* NSManagedObject+JSON.m */; };
 		10532F4315DA569000AB115B /* OSLoadingViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 10532F4115DA569000AB115B /* OSLoadingViewController.h */; };
 		10532F4415DA569000AB115B /* OSLoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10532F4215DA569000AB115B /* OSLoadingViewController.m */; };
 		106F64A715C16B8700C22FC0 /* UIImage+StackBlur.h in Headers */ = {isa = PBXBuildFile; fileRef = 106F64A515C16B8700C22FC0 /* UIImage+StackBlur.h */; };
@@ -26,7 +28,6 @@
 		108E2C6715B0483B003C0EB7 /* UIImageView+Downloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 108E2C6515B0483B003C0EB7 /* UIImageView+Downloader.h */; };
 		108E2C6815B0483B003C0EB7 /* UIImageView+Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 108E2C6615B0483B003C0EB7 /* UIImageView+Downloader.m */; };
 		1097CC48165A761400330CD2 /* NSStirng+encodeStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1097CC47165A761300330CD2 /* NSStirng+encodeStringTest.m */; };
-		1097CC49165A77C800330CD2 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
 		1097CC4C165A789C00330CD2 /* OSOperationQueuesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1097CC4B165A789C00330CD2 /* OSOperationQueuesTest.m */; };
 		10A3390015E381560059F012 /* NSString+encodeString.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A338FE15E381560059F012 /* NSString+encodeString.h */; };
 		10A3390115E381560059F012 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
@@ -94,6 +95,8 @@
 		103FE0A8165BC7BD00F25586 /* OSDefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDefaultTheme.m; sourceTree = "<group>"; };
 		103FE0AB165BC7CC00F25586 /* OSTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTheme.h; sourceTree = "<group>"; };
 		103FE0AC165BC7CC00F25586 /* OSTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTheme.m; sourceTree = "<group>"; };
+		1051D9EE16DD0638008DE17E /* NSManagedObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+JSON.h"; sourceTree = "<group>"; };
+		1051D9EF16DD0638008DE17E /* NSManagedObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+JSON.m"; sourceTree = "<group>"; };
 		10532F4115DA569000AB115B /* OSLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSLoadingViewController.h; sourceTree = "<group>"; };
 		10532F4215DA569000AB115B /* OSLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSLoadingViewController.m; sourceTree = "<group>"; };
 		106F64A515C16B8700C22FC0 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 			children = (
 				106F667615D8DFC10016184F /* OSDatabase.h */,
 				106F667715D8DFC10016184F /* OSDatabase.m */,
+				1051D9EE16DD0638008DE17E /* NSManagedObject+JSON.h */,
+				1051D9EF16DD0638008DE17E /* NSManagedObject+JSON.m */,
 			);
 			name = DB;
 			sourceTree = "<group>";
@@ -427,6 +432,7 @@
 				103FE0A9165BC7BD00F25586 /* OSDefaultTheme.h in Headers */,
 				103FE0AD165BC7CC00F25586 /* OSTheme.h in Headers */,
 				10C7CF24167B3F7100E9047F /* OSWebRequestAuth.h in Headers */,
+				1051D9F016DD0638008DE17E /* NSManagedObject+JSON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -552,6 +558,7 @@
 				103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */,
 				103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */,
 				10C7CF25167B3F7100E9047F /* OSWebRequestAuth.m in Sources */,
+				1051D9F116DD0638008DE17E /* NSManagedObject+JSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,7 +572,6 @@
 				27CB963B13E418A300717380 /* OSDateTimeTest.m in Sources */,
 				27FD9C7A14EAB3BA0091A0E3 /* OSNetworkTest.m in Sources */,
 				1097CC48165A761400330CD2 /* NSStirng+encodeStringTest.m in Sources */,
-				1097CC49165A77C800330CD2 /* NSString+encodeString.m in Sources */,
 				1097CC4C165A789C00330CD2 /* OSOperationQueuesTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -677,6 +683,7 @@
 		27CB962113E4110100717380 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -694,6 +701,7 @@
 		27CB962213E4110100717380 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
