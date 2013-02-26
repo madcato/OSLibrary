@@ -15,14 +15,7 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
  @class OSWebRequest
  @abstract Web requests class
  */
-@interface OSWebRequest : NSObject {
-@private
-  OSRequestHandler requestHandler;
-  NSURLConnection* m_connection;
-  NSStringEncoding encoding;
-  NSMutableData* responseData;
-  NSHTTPURLResponse* httpResponse;
-};
+@interface OSWebRequest : NSObject 
 
 +(OSWebRequest*)webRequest;
 

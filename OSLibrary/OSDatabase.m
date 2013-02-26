@@ -86,7 +86,7 @@
                andArguments:arguments];
   assert([array count] <= 1);
   if([array count] == 0) return nil;
-  return [array objectAtIndex:0];
+  return array[0];
 }
 
 - (NSArray*)getResultsFrom:(NSString*)entityName

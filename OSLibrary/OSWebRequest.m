@@ -9,6 +9,18 @@
 #import "OSWebRequest.h"
 #import "OSWebRequestAuth.h"
 
+static const NSTimeInterval defaultTimeout = 10.0; // default time out in seconds
+
+@interface OSWebRequest () {
+  OSRequestHandler requestHandler;
+  NSURLConnection* m_connection;
+  NSStringEncoding encoding;
+  NSMutableData* responseData;
+  NSHTTPURLResponse* httpResponse;
+  NSTimeInterval timeout;
+};
+
+@end
 
 @implementation OSWebRequest
 
@@ -29,6 +41,7 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding
   if (self) {
     // Initialization code here.
     encoding = NSUTF8StringEncoding;
+    timeout = defaultTimeout;
   }
   return self;
 }
@@ -42,12 +55,13 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding
   return [[OSWebRequestAuth alloc] initWithCredentials:login withPassword:password];
 }
 
--(void) useEncoding:(NSStringEncoding)enc {
+- (void)useEncoding:(NSStringEncoding)enc {
   encoding = enc;
 }
 
--(void)dealloc {
-  [self cancelRequest];
+- (void)setTimeout:(NSTimeInterval)to
+{
+  timeout = to;
 }
 
 -(void)cancelRequest {
@@ -63,7 +77,7 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding
                [NSURL URLWithString:scaped_url]
                        cachePolicy:
                NSURLRequestUseProtocolCachePolicy
-                     timeoutInterval:10.0];
+                     timeoutInterval:timeout];
  	m_connection = [[NSURLConnection alloc] initWithRequest:request
                            delegate:self];
 }
@@ -81,7 +95,7 @@ withHandler:(OSRequestHandler)handler {
                   initWithURL:url
                   cachePolicy:
                   NSURLRequestReloadIgnoringCacheData
-                timeoutInterval:20.0];
+                timeoutInterval:timeout];
   [request setHTTPMethod:@"POST"];
   [request setHTTPBody:buffer];
   [request setValue:[NSString stringWithFormat:@"%d", [buffer length]]
@@ -111,7 +125,7 @@ withHandler:(OSRequestHandler)handler {
                   initWithURL:url
                   cachePolicy:
                   NSURLRequestReloadIgnoringCacheData
-                timeoutInterval:20.0];
+                timeoutInterval:timeout];
   [request setHTTPMethod:@"POST"];
   [request setHTTPBody:buffer];
   [request setValue:[NSString stringWithFormat:@"%d", [buffer length]]
@@ -133,7 +147,7 @@ withHandler:(OSRequestHandler)handler {
                   initWithURL:url
                   cachePolicy:
                   NSURLRequestReloadIgnoringCacheData
-                timeoutInterval:20.0];
+                timeoutInterval:timeout];
   [request setHTTPMethod:@"POST"];
   [request setHTTPBody:buffer];
   [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
@@ -155,7 +169,7 @@ withHandler:(OSRequestHandler)handler {
                   initWithURL:url
                   cachePolicy:
                   NSURLRequestReloadIgnoringCacheData
-                timeoutInterval:20.0];
+                timeoutInterval:timeout];
   [request setHTTPMethod:@"PUT"];
   [request setHTTPBody:buffer];
   [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
@@ -176,7 +190,7 @@ withHandler:(OSRequestHandler)handler {
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:theURL 
                                cachePolicy:
                   NSURLRequestReloadIgnoringCacheData
-                             timeoutInterval:20.0f];
+                             timeoutInterval:timeout];
 	[request setHTTPMethod:@"POST"];
 	// define post boundary...
 	NSString *boundary = [[NSProcessInfo processInfo] globallyUniqueString];
