@@ -144,6 +144,13 @@
 */
 + (NSString*)appName;
 
+/*!
+ @method appVersion
+ @abstract Get the app version
+ @return the app version
+ */
++ (NSString*)appVersion;
+
 @end
 
 

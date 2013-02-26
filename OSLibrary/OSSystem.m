@@ -128,4 +128,8 @@
   return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
 }
 
++ (NSString*)appVersion {
+  return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
 @end
