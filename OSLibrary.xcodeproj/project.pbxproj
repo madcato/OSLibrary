@@ -37,6 +37,9 @@
 		109D113116DE723800FC0F02 /* NSManagedObject+JSONTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D112916DE6ABB00FC0F02 /* NSManagedObject+JSONTest.m */; };
 		10A3390015E381560059F012 /* NSString+encodeString.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A338FE15E381560059F012 /* NSString+encodeString.h */; };
 		10A3390115E381560059F012 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
+		10AEC39B16DF6AE2004A36F9 /* OSCryptoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AEC39A16DF6AE2004A36F9 /* OSCryptoTest.m */; };
+		10AEC39D16DF6CCD004A36F9 /* NSData+Base64Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AEC39C16DF6CCD004A36F9 /* NSData+Base64Test.m */; };
+		10AEC39E16DF7118004A36F9 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 272C036115335261008DF260 /* NSData+Base64.m */; };
 		10C58E4215DCDD7D00496A25 /* OSOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C58E4015DCDD7D00496A25 /* OSOperation.h */; };
 		10C58E4315DCDD7D00496A25 /* OSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C58E4115DCDD7D00496A25 /* OSOperation.m */; };
 		10C58E4B15DCEB2700496A25 /* OSOperationQueues.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C58E4915DCEB2700496A25 /* OSOperationQueues.h */; };
@@ -122,6 +125,8 @@
 		109D112F16DE71A700FC0F02 /* OSLibraryTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OSLibraryTest.xcdatamodel; sourceTree = "<group>"; };
 		10A338FE15E381560059F012 /* NSString+encodeString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+encodeString.h"; sourceTree = "<group>"; };
 		10A338FF15E381560059F012 /* NSString+encodeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encodeString.m"; sourceTree = "<group>"; };
+		10AEC39A16DF6AE2004A36F9 /* OSCryptoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCryptoTest.m; sourceTree = "<group>"; };
+		10AEC39C16DF6CCD004A36F9 /* NSData+Base64Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Test.m"; sourceTree = "<group>"; };
 		10C58E4015DCDD7D00496A25 /* OSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperation.h; sourceTree = "<group>"; };
 		10C58E4115DCDD7D00496A25 /* OSOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSOperation.m; sourceTree = "<group>"; };
 		10C58E4915DCEB2700496A25 /* OSOperationQueues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperationQueues.h; sourceTree = "<group>"; };
@@ -399,6 +404,8 @@
 				1097CC4B165A789C00330CD2 /* OSOperationQueuesTest.m */,
 				109D112916DE6ABB00FC0F02 /* NSManagedObject+JSONTest.m */,
 				109D112E16DE71A700FC0F02 /* OSLibraryTest.xcdatamodeld */,
+				10AEC39A16DF6AE2004A36F9 /* OSCryptoTest.m */,
+				10AEC39C16DF6CCD004A36F9 /* NSData+Base64Test.m */,
 			);
 			path = OSLibraryTests;
 			sourceTree = SOURCE_ROOT;
@@ -591,6 +598,9 @@
 				109D112A16DE6ABB00FC0F02 /* NSManagedObject+JSONTest.m in Sources */,
 				109D112B16DE6C1F00FC0F02 /* NSManagedObject+JSON.m in Sources */,
 				109D113016DE71A700FC0F02 /* OSLibraryTest.xcdatamodeld in Sources */,
+				10AEC39B16DF6AE2004A36F9 /* OSCryptoTest.m in Sources */,
+				10AEC39D16DF6CCD004A36F9 /* NSData+Base64Test.m in Sources */,
+				10AEC39E16DF7118004A36F9 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
