@@ -29,6 +29,12 @@
 		108E2C6815B0483B003C0EB7 /* UIImageView+Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 108E2C6615B0483B003C0EB7 /* UIImageView+Downloader.m */; };
 		1097CC48165A761400330CD2 /* NSStirng+encodeStringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1097CC47165A761300330CD2 /* NSStirng+encodeStringTest.m */; };
 		1097CC4C165A789C00330CD2 /* OSOperationQueuesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1097CC4B165A789C00330CD2 /* OSOperationQueuesTest.m */; };
+		109D112816DE68FD00FC0F02 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
+		109D112A16DE6ABB00FC0F02 /* NSManagedObject+JSONTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D112916DE6ABB00FC0F02 /* NSManagedObject+JSONTest.m */; };
+		109D112B16DE6C1F00FC0F02 /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 1051D9EF16DD0638008DE17E /* NSManagedObject+JSON.m */; };
+		109D112D16DE6C4900FC0F02 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 109D112C16DE6C4900FC0F02 /* CoreData.framework */; };
+		109D113016DE71A700FC0F02 /* OSLibraryTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 109D112E16DE71A700FC0F02 /* OSLibraryTest.xcdatamodeld */; };
+		109D113116DE723800FC0F02 /* NSManagedObject+JSONTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 109D112916DE6ABB00FC0F02 /* NSManagedObject+JSONTest.m */; };
 		10A3390015E381560059F012 /* NSString+encodeString.h in Headers */ = {isa = PBXBuildFile; fileRef = 10A338FE15E381560059F012 /* NSString+encodeString.h */; };
 		10A3390115E381560059F012 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
 		10C58E4215DCDD7D00496A25 /* OSOperation.h in Headers */ = {isa = PBXBuildFile; fileRef = 10C58E4015DCDD7D00496A25 /* OSOperation.h */; };
@@ -111,6 +117,9 @@
 		1097CC47165A761300330CD2 /* NSStirng+encodeStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStirng+encodeStringTest.m"; sourceTree = "<group>"; };
 		1097CC4A165A789C00330CD2 /* OSOperationQueuesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperationQueuesTest.h; sourceTree = "<group>"; };
 		1097CC4B165A789C00330CD2 /* OSOperationQueuesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSOperationQueuesTest.m; sourceTree = "<group>"; };
+		109D112916DE6ABB00FC0F02 /* NSManagedObject+JSONTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+JSONTest.m"; sourceTree = "<group>"; };
+		109D112C16DE6C4900FC0F02 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		109D112F16DE71A700FC0F02 /* OSLibraryTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OSLibraryTest.xcdatamodel; sourceTree = "<group>"; };
 		10A338FE15E381560059F012 /* NSString+encodeString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+encodeString.h"; sourceTree = "<group>"; };
 		10A338FF15E381560059F012 /* NSString+encodeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encodeString.m"; sourceTree = "<group>"; };
 		10C58E4015DCDD7D00496A25 /* OSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperation.h; sourceTree = "<group>"; };
@@ -180,6 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				109D112D16DE6C4900FC0F02 /* CoreData.framework in Frameworks */,
 				1008160915C11BE800429593 /* UIKit.framework in Frameworks */,
 				27FD9C7B14EAB5940091A0E3 /* SystemConfiguration.framework in Frameworks */,
 				27CB960813E4110100717380 /* SenTestingKit.framework in Frameworks */,
@@ -332,6 +342,7 @@
 		27CB95F813E4110100717380 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				109D112C16DE6C4900FC0F02 /* CoreData.framework */,
 				1008160715C11BA700429593 /* UIKit.framework */,
 				27FD9C7314EAB3200091A0E3 /* SystemConfiguration.framework */,
 				27CB95F913E4110100717380 /* Foundation.framework */,
@@ -386,6 +397,8 @@
 				1097CC47165A761300330CD2 /* NSStirng+encodeStringTest.m */,
 				1097CC4A165A789C00330CD2 /* OSOperationQueuesTest.h */,
 				1097CC4B165A789C00330CD2 /* OSOperationQueuesTest.m */,
+				109D112916DE6ABB00FC0F02 /* NSManagedObject+JSONTest.m */,
+				109D112E16DE71A700FC0F02 /* OSLibraryTest.xcdatamodeld */,
 			);
 			path = OSLibraryTests;
 			sourceTree = SOURCE_ROOT;
@@ -481,7 +494,7 @@
 		27CB95ED13E4110000717380 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 27CB95F013E4110000717380 /* Build configuration list for PBXProject "OSLibrary" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -559,6 +572,7 @@
 				103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */,
 				10C7CF25167B3F7100E9047F /* OSWebRequestAuth.m in Sources */,
 				1051D9F116DD0638008DE17E /* NSManagedObject+JSON.m in Sources */,
+				109D113116DE723800FC0F02 /* NSManagedObject+JSONTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +587,10 @@
 				27FD9C7A14EAB3BA0091A0E3 /* OSNetworkTest.m in Sources */,
 				1097CC48165A761400330CD2 /* NSStirng+encodeStringTest.m in Sources */,
 				1097CC4C165A789C00330CD2 /* OSOperationQueuesTest.m in Sources */,
+				109D112816DE68FD00FC0F02 /* NSString+encodeString.m in Sources */,
+				109D112A16DE6ABB00FC0F02 /* NSManagedObject+JSONTest.m in Sources */,
+				109D112B16DE6C1F00FC0F02 /* NSManagedObject+JSON.m in Sources */,
+				109D113016DE71A700FC0F02 /* OSLibraryTest.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,7 +702,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
@@ -702,7 +719,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
@@ -747,6 +763,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		109D112E16DE71A700FC0F02 /* OSLibraryTest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				109D112F16DE71A700FC0F02 /* OSLibraryTest.xcdatamodel */,
+			);
+			currentVersion = 109D112F16DE71A700FC0F02 /* OSLibraryTest.xcdatamodel */;
+			path = OSLibraryTest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 27CB95ED13E4110000717380 /* Project object */;
 }

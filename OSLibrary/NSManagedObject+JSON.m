@@ -68,6 +68,7 @@
           break;
         case NSFloatAttributeType:
           [self setValue:[NSNumber numberWithFloat:[[object valueForKey:description.name] floatValue]] forKey:description.name];
+          break;
         case NSBooleanAttributeType:
           //NSNumber;
           [self setValue:[NSNumber numberWithBool:[[object valueForKey:description.name] boolValue]] forKey:description.name];

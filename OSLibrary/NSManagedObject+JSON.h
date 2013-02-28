@@ -10,6 +10,8 @@
 
 @interface NSManagedObject (JSON)
 
+-(NSDate*)dateFromString:(NSString*)str;
+-(NSString*)stringFromDate:(NSDate*)date;
 
 - (id)initWithDictionary:(NSDictionary*)object;
 
