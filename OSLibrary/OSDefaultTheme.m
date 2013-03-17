@@ -13,6 +13,9 @@
 
 - (UIColor *)mainColor {
   return nil;
+
+- (UIFont *)defaultFont {
+  return nil;
 }
 
 - (UIColor *)highlightColor {
