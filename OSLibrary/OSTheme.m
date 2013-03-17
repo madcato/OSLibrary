@@ -12,17 +12,22 @@
 
 @implementation OSThemeManager
 
-+ (id <OSTheme>)sharedTheme
-{
-    static id <OSTheme> sharedTheme = nil;
+static id <OSTheme> sharedTheme = nil;
+
++ (void)setDefaultTheme:(id<OSTheme>)theme {
+  sharedTheme = theme;
+}
+
++ (id <OSTheme>)sharedTheme {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         // Create and return the theme:
         //      sharedTheme = [[UnavTheme alloc] init];
         //        sharedTheme = [[SSTintedTheme alloc] init];
         //        sharedTheme = [[SSMetalTheme alloc] init];
-        
+      if(sharedTheme == nil) {
         sharedTheme = [[OSDefaultTheme alloc] init];
+      }
     });
     
     return sharedTheme;
@@ -131,6 +136,11 @@
         CGSize shadowOffset = [theme shadowOffset];
         [titleTextAttributes setObject:[NSValue valueWithCGSize:shadowOffset] forKey:UITextAttributeTextShadowOffset];
     }
+  UIFont *font = [theme defaultFont];
+  if (font) {
+    [titleTextAttributes setObject:font forKey:UITextAttributeFont];
+  }
+  
     [navigationBarAppearance setTitleTextAttributes:titleTextAttributes];
     [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateHighlighted];

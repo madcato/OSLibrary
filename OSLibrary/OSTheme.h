@@ -10,6 +10,7 @@
 
 @protocol OSTheme <NSObject>
 
+- (UIFont *)defaultFont;
 - (UIColor *)mainColor;
 - (UIColor *)highlightColor;
 - (UIColor *)shadowColor;
@@ -75,6 +76,8 @@
 
 
 @interface OSThemeManager : NSObject
+
++ (void)setDefaultTheme:(id<OSTheme>)theme;
 
 + (id <OSTheme>)sharedTheme;
 

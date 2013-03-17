@@ -10,6 +10,10 @@
 
 @implementation OSDefaultTheme
 
+- (UIFont *)defaultFont {
+  return nil;
+}
+
 - (UIColor *)mainColor
 {
     return nil;
