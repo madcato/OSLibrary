@@ -13,20 +13,24 @@
 @implementation OSDatabase
 
 +(OSDatabase*)defaultDatabase {
-    OSDatabase* database = [[OSDatabase alloc] init];
-    OSDatabase* instance = [OSDatabase initWith:nil objectModel:nil andStore:nil];
-    database.persistentStoreCoordinator = [instance persistentStoreCoordinator];
-    database.managedObjectContext = [instance managedObjectContext];
-    database.managedObjectModel = [instance managedObjectModel];
-    return database;
+    static OSDatabase* instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[OSDatabase alloc] init];
+    });
+    return instance;
 }
 
 +(OSDatabase*)backgroundDatabase {
-    OSDatabase* database = [[OSDatabase alloc] init];
-    OSDatabase* instance = [OSDatabase initWith:nil objectModel:nil andStore:nil];
-    database.persistentStoreCoordinator = [instance persistentStoreCoordinator];
-    database.managedObjectModel = [instance managedObjectModel];
-    database.managedObjectContext = [instance createObjectContext];
+    static OSDatabase* database = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        database = [[OSDatabase alloc] init];
+        OSDatabase* instance = [OSDatabase defaultDatabase];
+        database.persistentStoreCoordinator = [instance persistentStoreCoordinator];
+        database.managedObjectModel = [instance managedObjectModel];
+        database.managedObjectContext = [instance createObjectContext];
+    });
     return database;
 }
 
@@ -36,7 +40,7 @@
     static OSDatabase* instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        instance = [[OSDatabase alloc] init];
+        OSDatabase* instance = [OSDatabase defaultDatabase];
         [instance setManagedObjectContext:managedObjectContext];
         [instance setManagedObjectModel:managedObjectModel];
         [instance setPersistentStoreCoordinator:persistentStoreCoordinator];

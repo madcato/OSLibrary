@@ -7,29 +7,111 @@
 //
 // Inspired in http://www.raywenderlich.com/15916/how-to-synchronize-core-data-with-a-web-service-part-1
 // and http://www.raywenderlich.com/17927/how-to-synchronize-core-data-with-a-web-service-part-2
+//
+// And then add this to application:didFinishLaunchingWithOptions:
+// - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions :(NSDictionary *)launchOptions
+// {
+//     [[OSCoreDataSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Holiday class]];
+//     [[OSCoreDataSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Birthday class]];
+//
+//     return YES;
+// }
+//
+//
+// Then call startSync in applicationDidBecomeActive:
+// - (void)applicationDidBecomeActive:(UIApplication *)application
+// {
+//     [[SDSyncEngine sharedEngine] startSync];
+// }
+//
+//
+// In the ViewController
+//
+// - (void)viewDidAppear:(BOOL)animated {
+// [super viewDidAppear:animated];
+//
+// [[NSNotificationCenter defaultCenter] addObserverForName:kOSCoreDataSyncEngineInitialCompleteKey object:nil queue:nil usingBlock:^(NSNotification *note) {
+//    [self loadRecordsFromCoreData];
+//    [self.tableView reloadData];
+// }];
+// }
+//
+// - (void)viewDidDisappear:(BOOL)animated {
+//    [super viewDidDisappear:animated];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kOSCoreDataSyncEngineInitialCompleteKey object:nil];
+// }
 
 #import <Foundation/Foundation.h>
+#import "HTTPAPIClient.h"
 
-@protocol HTTPAPIClient <NSObject>
+typedef enum {
+    OSObjectSynced = 0,
+    OSObjectCreated,
+    OSObjectDeleted,
+} OSObjectSyncStatus;
 
-- (NSMutableURLRequest *)GETRequestForAllRecordsOfClass:(NSString *)className
-                                       updatedAfterDate:(NSDate *)mostRecentUpdatedDate;
+NSString * const kOSCoreDataSyncEngineInitialCompleteKey;
+NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
 
-//enqueueBatchOfHTTPRequestOperations:operations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
-//
-//} completionBlock:^(NSArray *operations) {
-//    NSLog(@"All operations completed");
-//    // 2
-//    // Need to process JSON records into Core Data
-//}
-@end
+
 
 @interface OSCoreDataSyncEngine : NSObject
 
 + (OSCoreDataSyncEngine *)sharedEngine;
-
 - (void)registerNSManagedObjectClassToSync:(Class)aClass;
-
 - (void)registerHTTPAPIClient:(id<HTTPAPIClient>)apiClient;
+- (void)startSync;
+- (NSString *)dateStringForAPIUsingDate:(NSDate *)date;
+
+@property (atomic, readonly) BOOL syncInProgress;
 
 @end
+
+
+//
+//- (IBAction)refreshButtonTouched:(id)sender {
+//    [[SDSyncEngine sharedEngine] startSync];
+//}
+//
+//- (void)checkSyncStatus {
+//    if ([[SDSyncEngine sharedEngine] syncInProgress]) {
+//        [self replaceRefreshButtonWithActivityIndicator];
+//    } else {
+//        [self removeActivityIndicatorFromRefreshButton];
+//    }
+//}
+//
+//- (void)replaceRefreshButtonWithActivityIndicator {
+//    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
+//    [activityIndicator setAutoresizingMask:(UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin)];
+//    [activityIndicator startAnimating];
+//    UIBarButtonItem *activityItem = [[UIBarButtonItem alloc] initWithCustomView:activityIndicator];
+//    self.navigationItem.leftBarButtonItem = activityItem;
+//}
+//
+//- (void)removeActivityIndicatorFromRefreshButton {
+//    self.navigationItem.leftBarButtonItem = self.refreshButton;
+//}
+//
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+//{
+//    if ([keyPath isEqualToString:@"syncInProgress"]) {
+//        [self checkSyncStatus];
+//    }
+//}
+
+//
+// In each NSManagedObjectModel implement
+//
+//- (NSDictionary *)JSONToCreateObjectOnServer {
+//    NSDictionary *date = [NSDictionary dictionaryWithObjectsAndKeys:
+//                          @"Date", @"__type",
+//                          [[OSCoreDataSyncEngine sharedEngine] dateStringForAPIUsingDate:self.date], @"iso" , nil];
+//
+//    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+//                                    self.name, @"name",
+//                                    self.details, @"details",
+//                                    self.wikipediaLink, @"wikipediaLink",
+//                                    date, @"date", nil];
+//    return jsonDictionary;
+//}
