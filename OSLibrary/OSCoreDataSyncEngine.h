@@ -100,18 +100,3 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
 //    }
 //}
 
-//
-// In each NSManagedObjectModel implement
-//
-//- (NSDictionary *)JSONToCreateObjectOnServer {
-//    NSDictionary *date = [NSDictionary dictionaryWithObjectsAndKeys:
-//                          @"Date", @"__type",
-//                          [[OSCoreDataSyncEngine sharedEngine] dateStringForAPIUsingDate:self.date], @"iso" , nil];
-//
-//    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-//                                    self.name, @"name",
-//                                    self.details, @"details",
-//                                    self.wikipediaLink, @"wikipediaLink",
-//                                    date, @"date", nil];
-//    return jsonDictionary;
-//}

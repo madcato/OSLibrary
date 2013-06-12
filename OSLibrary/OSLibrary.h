@@ -27,7 +27,6 @@
 #import "OSLoadingViewController.h"
 #import "OSAppearance.h"
 #import "OSOperation.h"
-#import "OSTwitterOperation.h"
 #import "OSOperationQueues.h"
 #import "NSString+encodeString.h"
 // Version 0.2

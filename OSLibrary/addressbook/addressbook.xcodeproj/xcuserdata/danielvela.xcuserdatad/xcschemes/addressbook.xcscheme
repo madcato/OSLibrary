@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "27CB95F513E4110000717380"
-               BuildableName = "libOSLibrary.a"
-               BlueprintName = "OSLibrary"
-               ReferencedContainer = "container:OSLibrary.xcodeproj">
+               BlueprintIdentifier = "0B52EEAA1768E73900F7D477"
+               BuildableName = "addressbook.app"
+               BlueprintName = "addressbook"
+               ReferencedContainer = "container:addressbook.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,13 +32,22 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "27CB960513E4110100717380"
-               BuildableName = "OSLibraryTests.octest"
-               BlueprintName = "OSLibraryTests"
-               ReferencedContainer = "container:OSLibrary.xcodeproj">
+               BlueprintIdentifier = "0B52EEDB1768E73A00F7D477"
+               BuildableName = "addressbookTests.octest"
+               BlueprintName = "addressbookTests"
+               ReferencedContainer = "container:addressbook.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "0B52EEAA1768E73900F7D477"
+            BuildableName = "addressbook.app"
+            BlueprintName = "addressbook"
+            ReferencedContainer = "container:addressbook.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -49,6 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "0B52EEAA1768E73900F7D477"
+            BuildableName = "addressbook.app"
+            BlueprintName = "addressbook"
+            ReferencedContainer = "container:addressbook.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -58,6 +76,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "0B52EEAA1768E73900F7D477"
+            BuildableName = "addressbook.app"
+            BlueprintName = "addressbook"
+            ReferencedContainer = "container:addressbook.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
