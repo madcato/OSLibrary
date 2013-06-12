@@ -30,3 +30,5 @@
 #import "OSTwitterOperation.h"
 #import "OSOperationQueues.h"
 #import "NSString+encodeString.h"
+// Version 0.2
+#import "OSCoreDataSyncEngine.h"
