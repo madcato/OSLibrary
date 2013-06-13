@@ -26,7 +26,6 @@
 @interface NSManagedObject (JSON)
 
 - (NSDictionary *)JSONToCreateObjectOnServer;
-- (id)formatValue:(id)value forKey:(NSString*)key;
 
 @end
 

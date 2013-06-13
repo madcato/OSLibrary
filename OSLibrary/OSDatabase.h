@@ -13,9 +13,7 @@
 /** 
  Call this method in the applicationDidFinishLaunching
 */
-+(OSDatabase*)initWith:(NSManagedObjectContext *)managedObjectContext
-    objectModel:(NSManagedObjectModel *)managedObjectModel
-       andStore:(NSPersistentStoreCoordinator *)persistentStoreCoordinator;
++(OSDatabase*)initWithModelName:(NSString *)modelName;
 +(OSDatabase*)defaultDatabase;
 +(OSDatabase*)backgroundDatabase;
 - (NSManagedObject*)insertObject:(NSString*)entityName values:(NSDictionary*)values;
@@ -26,7 +24,8 @@
 -(void)save;
 -(void)deleteObjects:(NSString*)entityName withPredicate:(NSString*)format andArguments:(NSArray*)arguments;
 -(NSManagedObject*)objectWithID:(NSManagedObjectID*)objectID;
-@property (atomic, strong) NSManagedObjectContext *managedObjectContext;
-@property (atomic, strong) NSManagedObjectModel *managedObjectModel;
-@property (atomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong)  NSString *modelName;
 @end

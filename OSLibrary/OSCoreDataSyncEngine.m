@@ -153,7 +153,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         if ([key isEqualToString:@"id"]) {
             return; // rails id not needed
         }
-        id formattedValue = [managedObject formatValue:value forKey:key];
+        id formattedValue = [self formatValue:value forKey:key forObject:managedObject];
         [managedObject setValue:formattedValue forKey:key];
     }
 }
@@ -577,6 +577,56 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             NSLog(@"Failed all attempts to save response to disk: %@", response);
         }
     }
+}
+
+-(id)formatValue:(id)value
+          forKey:(NSString*)key
+       forObject:(NSManagedObject*) object {
+    NSDictionary* properties = [[object entity] propertiesByName];
+    NSAttributeDescription* description = properties[key];
+    if([description isKindOfClass:[NSAttributeDescription class]]) {
+        NSAttributeType type = description.attributeType;
+        switch (type) {
+            case NSInteger16AttributeType:
+            case NSInteger32AttributeType:
+            case NSInteger64AttributeType:
+                return value;
+                break;
+            case NSDoubleAttributeType:
+                return value;
+                break;
+            case NSFloatAttributeType:
+                return value;
+                break;
+            case NSBooleanAttributeType:
+                //NSNumber;
+
+                return value;
+                break;
+            case NSDecimalAttributeType:
+                //NSDecimalNumber;
+                return value;
+                break;
+            case NSStringAttributeType:
+                //NSString;
+                return value;
+                break;
+            case NSDateAttributeType:
+                //NSDate;
+                return [[OSCoreDataSyncEngine sharedEngine] dateUsingStringFromAPI:value];
+                break;
+            case NSBinaryDataAttributeType:
+                //NSData;
+                if ([value length] == 0) {
+                    return [NSData data];
+                }
+                return value;
+                break;
+
+        }
+    }
+    
+    return value;
 }
 
 @end
