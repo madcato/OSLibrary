@@ -6,7 +6,8 @@ class Person < ActiveRecord::Base
   end
   
   def as_json(options={})
-    result = super.as_json
+    options.merge!({:except => [:id]})
+    result = super.as_json(options)
     resul = result.merge({:objectId => self.objectId})
   end
 end

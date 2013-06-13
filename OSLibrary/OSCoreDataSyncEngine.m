@@ -150,9 +150,6 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             }
         }
     } else {
-        if ([key isEqualToString:@"id"]) {
-            return; // rails id not needed
-        }
         id formattedValue = [self formatValue:value forKey:key forObject:managedObject];
         [managedObject setValue:formattedValue forKey:key];
     }

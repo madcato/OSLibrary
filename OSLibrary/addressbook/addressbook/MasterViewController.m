@@ -31,9 +31,17 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self
+                            action:@selector(refresh)
+                  forControlEvents:UIControlEventValueChanged];
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+}
+
+- (void)refresh {
+    [[OSCoreDataSyncEngine sharedEngine] startSync];
 }
 
  - (void)viewDidAppear:(BOOL)animated {
@@ -50,6 +58,7 @@
      }
 
      [self.tableView reloadData];
+     [self.refreshControl endRefreshing];
  }];
  }
 
