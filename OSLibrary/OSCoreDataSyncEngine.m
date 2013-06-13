@@ -70,6 +70,8 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 - (void)executeSyncCompletedOperations {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self setInitialSyncCompleted];
+        [[OSDatabase backgroundDatabase] save];
+        [[OSDatabase defaultDatabase] save];
         [[NSNotificationCenter defaultCenter]
          postNotificationName:kOSCoreDataSyncEngineSyncCompletedNotificationName
          object:nil];
@@ -86,10 +88,10 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     //
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     //
-    // Set the sort descriptors on the request to sort by updatedAt in descending order
+    // Set the sort descriptors on the request to sort by updated_at in descending order
     //
     [request setSortDescriptors:[NSArray arrayWithObject:
-                                 [NSSortDescriptor sortDescriptorWithKey:@"updatedAt" ascending:NO]]];
+                                 [NSSortDescriptor sortDescriptorWithKey:@"updated_at" ascending:NO]]];
     //
     // You are only interested in 1 result so limit the request to 1
     //
@@ -101,7 +103,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             //
             // Set date to the fetched result
             //
-            date = [[results lastObject] valueForKey:@"updatedAt"];
+            date = [[results lastObject] valueForKey:@"updated_at"];
         }
     }];
 
@@ -124,7 +126,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key forManagedObject:(NSManagedObject *)managedObject {
-    if ([key isEqualToString:@"createdAt"] || [key isEqualToString:@"updatedAt"]) {
+    if ([key isEqualToString:@"created_at"] || [key isEqualToString:@"updated_at"]) {
         NSDate *date = [self dateUsingStringFromAPI:value];
         [managedObject setValue:date forKey:key];
     } else if ([value isKindOfClass:[NSDictionary class]]) {
@@ -148,7 +150,11 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             }
         }
     } else {
-        [managedObject setValue:value forKey:key];
+        if ([key isEqualToString:@"id"]) {
+            return; // rails id not needed
+        }
+        id formattedValue = [managedObject formatValue:value forKey:key];
+        [managedObject setValue:formattedValue forKey:key];
     }
 }
 
@@ -199,8 +205,8 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             // If this is the initial sync then the logic is pretty simple, you will fetch the JSON data from disk
             // for the class of the current iteration and create new NSManagedObjects for each record
             //
-            NSDictionary *JSONDictionary = [self JSONDictionaryForClassWithName:className];
-            NSArray *records = [JSONDictionary objectForKey:@"results"];
+            NSArray *JSONArray = [self JSONArrayForClassWithName:className];
+            NSArray *records = JSONArray;
             for (NSDictionary *record in records) {
                 [self newManagedObjectWithClassName:className forRecord:record];
             }
@@ -349,8 +355,8 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                 //
                 NSLog(@"Success creation: %@", responseObject);
                 NSDictionary *responseDictionary = responseObject;
-                NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"createdAt"]];
-                [objectToCreate setValue:createdDate forKey:@"createdAt"];
+                NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"created_at"]];
+                [objectToCreate setValue:createdDate forKey:@"created_at"];
                 [objectToCreate setValue:[responseDictionary valueForKey:@"objectId"] forKey:@"objectId"];
                 [objectToCreate setValue:[NSNumber numberWithInt:OSObjectSynced] forKey:@"syncStatus"];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -375,16 +381,12 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     [self.registeredAPIClient enqueueBatchOfHTTPRequestOperations:operations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
         NSLog(@"Completed %d of %d create operations", numberOfCompletedOperations, totalNumberOfOperations);
     } completionBlock:^(NSArray *operations) {
-        //
-        // Set the completion block to save the backgroundContext
-        //
         if ([operations count] > 0) {
+            NSLog(@"Creation of objects on server compelete, updated objects in context: %@", [[[OSDatabase backgroundDatabase] managedObjectContext] updatedObjects]);
             [[OSDatabase backgroundDatabase] save];
+            NSLog(@"SBC After call creation");
         }
 
-        //
-        // Invoke executeSyncCompletionOperations as this is now the final step of the sync engine's flow
-        //
         [self deleteObjectsOnServer];
     }];
 }
@@ -432,16 +434,11 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 
     } completionBlock:^(NSArray *operations) {
         if ([operations count] > 0) {
-            //
-            // Save the background context after all operations have completed
-            //
-            [[OSDatabase backgroundDatabase] save];
+            NSLog(@"Deletion of objects on server compelete, updated objects in context: %@", [[[OSDatabase backgroundDatabase] managedObjectContext] updatedObjects]);
         }
 
-        //
-        // Execute the sync completed operations
-        //
         [self executeSyncCompletedOperations];
+
     }];
 }
 
@@ -457,7 +454,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                                         GETRequestForAllRecordsOfClass:className
                                         updatedAfterDate:mostRecentUpdatedDate];
         AFHTTPRequestOperation *operation = [self.registeredAPIClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            if ([responseObject isKindOfClass:[NSArray class]]) {
                 NSLog(@"Response for %@: %@", className, responseObject);
                 // Need to write JSON files to disk
                 [self writeJSONResponse:responseObject toDiskForClassWithName:className];
@@ -498,9 +495,14 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     return [NSDictionary dictionaryWithContentsOfURL:fileURL];
 }
 
+- (NSArray *)JSONArrayForClassWithName:(NSString *)className {
+    NSURL *fileURL = [NSURL URLWithString:className relativeToURL:[self JSONDataRecordsDirectory]];
+    return [NSArray arrayWithContentsOfURL:fileURL];
+}
+
 - (NSArray *)JSONDataRecordsForClass:(NSString *)className sortedByKey:(NSString *)key {
-    NSDictionary *JSONDictionary = [self JSONDictionaryForClassWithName:className];
-    NSArray *records = [JSONDictionary objectForKey:@"results"];
+    NSArray *JSONArray = [self JSONArrayForClassWithName:className];
+    NSArray *records = JSONArray;
     return [records sortedArrayUsingDescriptors:[NSArray arrayWithObject:
                                                  [NSSortDescriptor sortDescriptorWithKey:key ascending:YES]]];
 }
@@ -526,20 +528,12 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 
 - (NSDate *)dateUsingStringFromAPI:(NSString *)dateString {
     [self initializeDateFormatter];
-    // NSDateFormatter does not like ISO 8601 so strip the milliseconds and timezone
-    dateString = [dateString substringWithRange:NSMakeRange(0, [dateString length]-5)];
-
     return [self.dateFormatter dateFromString:dateString];
 }
 
 - (NSString *)dateStringForAPIUsingDate:(NSDate *)date {
     [self initializeDateFormatter];
     NSString *dateString = [self.dateFormatter stringFromDate:date];
-    // remove Z
-    dateString = [dateString substringWithRange:NSMakeRange(0, [dateString length]-1)];
-    // add milliseconds and put Z back on
-    dateString = [dateString stringByAppendingFormat:@".000Z"];
-
     return dateString;
 }
 
@@ -564,10 +558,10 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 
 - (void)writeJSONResponse:(id)response toDiskForClassWithName:(NSString *)className {
     NSURL *fileURL = [NSURL URLWithString:className relativeToURL:[self JSONDataRecordsDirectory]];
-    if (![(NSDictionary *)response writeToFile:[fileURL path] atomically:YES]) {
+    if (![(NSArray *)response writeToFile:[fileURL path] atomically:YES]) {
         NSLog(@"Error saving response to disk, will attempt to remove NSNull values and try again.");
         // remove NSNulls and try again...
-        NSArray *records = [response objectForKey:@"results"];
+        NSArray *records = response;
         NSMutableArray *nullFreeRecords = [NSMutableArray array];
         for (NSDictionary *record in records) {
             NSMutableDictionary *nullFreeRecord = [NSMutableDictionary dictionaryWithDictionary:record];
@@ -579,9 +573,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             [nullFreeRecords addObject:nullFreeRecord];
         }
 
-        NSDictionary *nullFreeDictionary = [NSDictionary dictionaryWithObject:nullFreeRecords forKey:@"results"];
-
-        if (![nullFreeDictionary writeToFile:[fileURL path] atomically:YES]) {
+        if (![nullFreeRecords writeToFile:[fileURL path] atomically:YES]) {
             NSLog(@"Failed all attempts to save response to disk: %@", response);
         }
     }

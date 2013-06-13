@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 #import "MasterViewController.h"
+#import "Person.h"
+#import "ABHTTPAPIClient.h"
 
 @implementation AppDelegate
 
@@ -21,6 +23,9 @@
     [OSDatabase initWith:self.managedObjectContext
              objectModel:self.managedObjectModel
                 andStore:self.persistentStoreCoordinator];
+
+    [[OSCoreDataSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Person class]];
+    [[OSCoreDataSyncEngine sharedEngine] registerHTTPAPIClient:[ABHTTPAPIClient sharedClient]];
 
     // Override point for customization after application launch.
     return YES;
@@ -45,7 +50,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[OSCoreDataSyncEngine sharedEngine] startSync];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -80,7 +85,7 @@
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return _managedObjectContext;

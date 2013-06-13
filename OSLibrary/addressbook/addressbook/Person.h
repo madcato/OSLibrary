@@ -18,4 +18,10 @@
 @property (nonatomic, retain) NSData * avatar;
 @property (nonatomic, retain) NSNumber * programmer;
 
+// OSCoreDataSync fields
+@property (nonatomic, retain) NSDate * updated_at;
+@property (nonatomic, retain) NSDate * created_at;
+@property (nonatomic, retain) NSNumber * syncStatus;
+@property (nonatomic, retain) NSString * objectId;
+
 @end

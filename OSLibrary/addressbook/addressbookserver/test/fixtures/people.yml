@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  programmer: false
+  height: 1.5
+  birthDate: 2013-06-12 20:26:50
+  avatar: 
+
+two:
+  name: MyString
+  programmer: false
+  height: 1.5
+  birthDate: 2013-06-12 20:26:50
+  avatar: 

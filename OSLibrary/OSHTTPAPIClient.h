@@ -13,6 +13,6 @@
 
 @interface OSHTTPAPIClient : AFHTTPClient <HTTPAPIClient>
 
-- (NSMutableURLRequest *)POSTRequestForClass:(NSString *)className parameters:(NSDictionary *)parameters;
+
 
 @end

@@ -26,5 +26,14 @@
 @interface NSManagedObject (JSON)
 
 - (NSDictionary *)JSONToCreateObjectOnServer;
+- (id)formatValue:(id)value forKey:(NSString*)key;
 
 @end
+
+
+//// OSCoreDataSync fields
+//  @property (nonatomic, retain) NSDate * updated_at;
+//  @property (nonatomic, retain) NSDate * created_at;
+//  @property (nonatomic, retain) NSNumber * syncStatus;
+//  @property (nonatomic, retain) NSString * objectId;
+//

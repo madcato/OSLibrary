@@ -53,7 +53,7 @@ static NSString * const kOSAPIKey = @"YOUR_API_KEY";
         [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
 
         NSString *jsonString = [NSString
-                                stringWithFormat:@"{\"updatedAt\":{\"$gte\":{\"__type\":\"Date\",\"iso\":\"%@\"}}}",
+                                stringWithFormat:@"{\"updated_at\":{\"$gte\":{\"__type\":\"Date\",\"iso\":\"%@\"}}}",
                                 [dateFormatter stringFromDate:updatedDate]];
 
         paramters = [NSDictionary dictionaryWithObject:jsonString forKey:@"where"];

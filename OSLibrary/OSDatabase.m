@@ -147,8 +147,11 @@
     NSManagedObjectContext* newManagedObjectContext = nil;
     NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
     if (coordinator != nil) {
-        newManagedObjectContext = [[NSManagedObjectContext alloc] init];
-        [newManagedObjectContext setPersistentStoreCoordinator:coordinator];
+        newManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [newManagedObjectContext performBlockAndWait:^{
+            [newManagedObjectContext setPersistentStoreCoordinator:coordinator];
+        }];
+
     }
     assert(newManagedObjectContext != nil);
     self.managedObjectContext = newManagedObjectContext;

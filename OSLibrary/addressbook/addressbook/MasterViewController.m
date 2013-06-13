@@ -36,6 +36,27 @@
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
+ - (void)viewDidAppear:(BOOL)animated {
+ [super viewDidAppear:animated];
+
+ [[NSNotificationCenter defaultCenter] addObserverForName:kOSCoreDataSyncEngineSyncCompletedNotificationName object:nil queue:nil usingBlock:^(NSNotification *note){
+     [NSFetchedResultsController deleteCacheWithName:@"Master"];
+     NSError *error = nil;
+     if (![self.fetchedResultsController performFetch:&error]) {
+	     // Replace this implementation with code to handle the error appropriately.
+	     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+         abort();
+     }
+
+     [self.tableView reloadData];
+ }];
+ }
+
+ - (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kOSCoreDataSyncEngineSyncCompletedNotificationName object:nil];
+ }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -54,7 +75,8 @@
     [newManagedObject setValue:@1.80f forKey:@"height"];
     [newManagedObject setValue:@"Dani Vela" forKey:@"name"];
     [newManagedObject setValue:@YES forKey:@"programmer"];
-
+    [newManagedObject setValue:[NSData data] forKey:@"avatar"];
+    [newManagedObject setValue:[NSNumber numberWithInt:OSObjectCreated] forKey:@"syncStatus"];
     // Save the context.
     NSError *error = nil;
     if (![context save:&error]) {
@@ -63,6 +85,8 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
+
+    [[OSCoreDataSyncEngine sharedEngine] startSync];
 }
 
 #pragma mark - Table View
@@ -95,16 +119,28 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-        [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
-        
-        NSError *error = nil;
-        if (![context save:&error]) {
-             // Replace this implementation with code to handle the error appropriately.
-             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }   
+        NSManagedObject* object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [context performBlockAndWait:^{
+            // 1
+            if ([[object valueForKey:@"objectId"] isEqualToString:@""] || [object valueForKey:@"objectId"] == nil) {
+                [context deleteObject:object];
+            } else {
+                [object setValue:[NSNumber numberWithInt:OSObjectDeleted] forKey:@"syncStatus"];
+            }
+// FIXME: No funciona el borrar objetos.
+            NSError *error = nil;
+            if (![context save:&error]) {
+                // Replace this implementation with code to handle the error appropriately.
+                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+                abort();
+            }
+
+            [[OSDatabase defaultDatabase] save];
+            [self.tableView reloadData];
+            [[OSCoreDataSyncEngine sharedEngine] startSync];
+        }];
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
@@ -151,10 +187,13 @@
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
-    
+
+    // 1
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"syncStatus != %d", OSObjectDeleted]];
+
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[OSDatabase defaultDatabase] managedObjectContext] sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[OSDatabase defaultDatabase] managedObjectContext] sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     
@@ -232,7 +271,7 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"name"] description];
+    cell.textLabel.text = [object valueForKey:@"name"];
 }
 
 @end

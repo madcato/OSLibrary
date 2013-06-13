@@ -30,7 +30,7 @@
 // - (void)viewDidAppear:(BOOL)animated {
 // [super viewDidAppear:animated];
 //
-// [[NSNotificationCenter defaultCenter] addObserverForName:kOSCoreDataSyncEngineInitialCompleteKey object:nil queue:nil usingBlock:^(NSNotification *note) {
+// [[NSNotificationCenter defaultCenter] addObserverForName:kOSCoreDataSyncEngineSyncCompletedNotificationName object:nil queue:nil usingBlock:^(NSNotification *note) {
 //    [self loadRecordsFromCoreData];
 //    [self.tableView reloadData];
 // }];
@@ -38,7 +38,7 @@
 //
 // - (void)viewDidDisappear:(BOOL)animated {
 //    [super viewDidDisappear:animated];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kOSCoreDataSyncEngineInitialCompleteKey object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:kOSCoreDataSyncEngineSyncCompletedNotificationName object:nil];
 // }
 
 #import <Foundation/Foundation.h>
@@ -62,6 +62,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
 - (void)registerHTTPAPIClient:(id<HTTPAPIClient>)apiClient;
 - (void)startSync;
 - (NSString *)dateStringForAPIUsingDate:(NSDate *)date;
+- (NSDate *)dateUsingStringFromAPI:(NSString *)dateString;
 
 @property (atomic, readonly) BOOL syncInProgress;
 
