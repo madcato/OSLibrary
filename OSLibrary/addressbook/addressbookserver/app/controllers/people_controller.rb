@@ -2,8 +2,12 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
-
+    if params[:updated_at].nil?
+      @people = Person.all
+    else
+      @people = Person.where("updated_at > ?",params[:updated_at])
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @people }

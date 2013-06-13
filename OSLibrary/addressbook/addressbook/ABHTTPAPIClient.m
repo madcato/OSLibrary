@@ -54,14 +54,11 @@ static NSString * const kOSAPIKey = @"YOUR_API_KEY";
     NSDictionary *paramters = nil;
     if (updatedDate) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.'999Z'"];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
         [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
 
-        NSString *jsonString = [NSString
-                                stringWithFormat:@"{\"updated_at\":{\"$gte\":{\"__type\":\"Date\",\"iso\":\"%@\"}}}",
-                                [dateFormatter stringFromDate:updatedDate]];
-
-        paramters = [NSDictionary dictionaryWithObject:jsonString forKey:@"where"];
+        NSString *jsonString = [dateFormatter stringFromDate:updatedDate];
+        paramters = [NSDictionary dictionaryWithObject:jsonString forKey:@"updated_at"];
     }
 
     request = [self GETRequestForClass:className parameters:paramters];
