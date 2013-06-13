@@ -620,7 +620,12 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                 if ([value length] == 0) {
                     return [NSData data];
                 }
-                return value;
+                NSURL *url = [NSURL URLWithString:value];
+                NSURLRequest *request = [NSURLRequest requestWithURL:url];
+                NSURLResponse *response = nil;
+                NSError *error = nil;
+                NSData *dataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+                return dataResponse;
                 break;
 
         }

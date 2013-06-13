@@ -5,7 +5,9 @@ class PeopleController < ApplicationController
     if params[:updated_at].nil?
       @people = Person.all
     else
-      @people = Person.where("updated_at > ?",params[:updated_at])
+      strDateTime = params[:updated_at];
+      dateTime = DateTime.parse(strDateTime)
+      @people = Person.where("updated_at > ?",dateTime)
     end
     
     respond_to do |format|
