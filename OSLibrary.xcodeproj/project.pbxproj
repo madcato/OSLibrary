@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B52EE941768C71B00F7D477 /* OSCoreDataSyncEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE921768C71B00F7D477 /* OSCoreDataSyncEngine.h */; };
+		0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE931768C71B00F7D477 /* OSCoreDataSyncEngine.m */; };
+		0B52EE971768CC9900F7D477 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */; };
+		0B52EE991768CEFA00F7D477 /* HTTPAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE981768CEFA00F7D477 /* HTTPAPIClient.h */; };
+		0B52EE9C1768D7E800F7D477 /* OSHTTPAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE9A1768D7E700F7D477 /* OSHTTPAPIClient.h */; };
+		0B52EE9D1768D7E800F7D477 /* OSHTTPAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE9B1768D7E700F7D477 /* OSHTTPAPIClient.m */; };
+		0B52EEA01768D93500F7D477 /* NSManagedObject+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE9E1768D93500F7D477 /* NSManagedObject+JSON.h */; };
+		0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE9F1768D93500F7D477 /* NSManagedObject+JSON.m */; };
 		1008160415C11AB200429593 /* UIView+Snapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 1008160215C11AB200429593 /* UIView+Snapshot.h */; };
 		1008160515C11AB200429593 /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008160315C11AB200429593 /* UIView+Snapshot.m */; };
 		1008160815C11BA700429593 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1008160715C11BA700429593 /* UIKit.framework */; };
@@ -72,6 +80,7 @@
 		27FEF71113ED4FBE00BC78B0 /* OSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF70F13ED4FBE00BC78B0 /* OSImage.m */; };
 		27FEF71513ED54B200BC78B0 /* WebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF71213ED54B100BC78B0 /* WebViewController.h */; };
 		27FEF71613ED54B200BC78B0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF71313ED54B200BC78B0 /* WebViewController.m */; };
+		FC78668206944508A24DE74F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84136008BC254DAE8D9FC971 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +94,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B52EE921768C71B00F7D477 /* OSCoreDataSyncEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCoreDataSyncEngine.h; sourceTree = "<group>"; };
+		0B52EE931768C71B00F7D477 /* OSCoreDataSyncEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCoreDataSyncEngine.m; sourceTree = "<group>"; };
+		0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0B52EE981768CEFA00F7D477 /* HTTPAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTTPAPIClient.h; sourceTree = "<group>"; };
+		0B52EE9A1768D7E700F7D477 /* OSHTTPAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSHTTPAPIClient.h; sourceTree = "<group>"; };
+		0B52EE9B1768D7E700F7D477 /* OSHTTPAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSHTTPAPIClient.m; sourceTree = "<group>"; };
+		0B52EE9E1768D93500F7D477 /* NSManagedObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+JSON.h"; sourceTree = "<group>"; };
+		0B52EE9F1768D93500F7D477 /* NSManagedObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+JSON.m"; sourceTree = "<group>"; };
 		1008160215C11AB200429593 /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
 		1008160315C11AB200429593 /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
 		1008160715C11BA700429593 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -156,6 +173,8 @@
 		27FEF71213ED54B100BC78B0 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		27FEF71313ED54B200BC78B0 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		27FEF71413ED54B200BC78B0 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		84136008BC254DAE8D9FC971 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1432CE74079436BA5E091CA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,9 +182,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B52EE971768CC9900F7D477 /* MobileCoreServices.framework in Frameworks */,
 				1008160815C11BA700429593 /* UIKit.framework in Frameworks */,
 				27FD9C7414EAB3200091A0E3 /* SystemConfiguration.framework in Frameworks */,
 				27CB95FA13E4110100717380 /* Foundation.framework in Frameworks */,
+				FC78668206944508A24DE74F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +293,13 @@
 			children = (
 				106F667615D8DFC10016184F /* OSDatabase.h */,
 				106F667715D8DFC10016184F /* OSDatabase.m */,
+				0B52EE921768C71B00F7D477 /* OSCoreDataSyncEngine.h */,
+				0B52EE931768C71B00F7D477 /* OSCoreDataSyncEngine.m */,
+				0B52EE981768CEFA00F7D477 /* HTTPAPIClient.h */,
+				0B52EE9A1768D7E700F7D477 /* OSHTTPAPIClient.h */,
+				0B52EE9B1768D7E700F7D477 /* OSHTTPAPIClient.m */,
+				0B52EE9E1768D93500F7D477 /* NSManagedObject+JSON.h */,
+				0B52EE9F1768D93500F7D477 /* NSManagedObject+JSON.m */,
 			);
 			name = DB;
 			sourceTree = "<group>";
@@ -306,6 +334,7 @@
 				27CB961113E4110100717380 /* OSLibraryTests */,
 				27CB95F813E4110100717380 /* Frameworks */,
 				27CB95F713E4110100717380 /* Products */,
+				F1432CE74079436BA5E091CA /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -321,10 +350,12 @@
 		27CB95F813E4110100717380 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */,
 				1008160715C11BA700429593 /* UIKit.framework */,
 				27FD9C7314EAB3200091A0E3 /* SystemConfiguration.framework */,
 				27CB95F913E4110100717380 /* Foundation.framework */,
 				27CB960713E4110100717380 /* SenTestingKit.framework */,
+				84136008BC254DAE8D9FC971 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -420,6 +451,10 @@
 				10A3390015E381560059F012 /* NSString+encodeString.h in Headers */,
 				103FE0A9165BC7BD00F25586 /* OSDefaultTheme.h in Headers */,
 				103FE0AD165BC7CC00F25586 /* OSTheme.h in Headers */,
+				0B52EE941768C71B00F7D477 /* OSCoreDataSyncEngine.h in Headers */,
+				0B52EE991768CEFA00F7D477 /* HTTPAPIClient.h in Headers */,
+				0B52EE9C1768D7E800F7D477 /* OSHTTPAPIClient.h in Headers */,
+				0B52EEA01768D93500F7D477 /* NSManagedObject+JSON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,9 +465,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27CB961D13E4110100717380 /* Build configuration list for PBXNativeTarget "OSLibrary" */;
 			buildPhases = (
+				DF285568B1714F4DA04D79AB /* Check Pods Manifest.lock */,
 				27CB95F213E4110000717380 /* Sources */,
 				27CB95F313E4110000717380 /* Frameworks */,
 				27CB95F413E4110000717380 /* Headers */,
+				61440B781DD24974AB6E11D2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -468,7 +505,7 @@
 		27CB95ED13E4110000717380 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 27CB95F013E4110000717380 /* Build configuration list for PBXProject "OSLibrary" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -514,6 +551,34 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		61440B781DD24974AB6E11D2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+		DF285568B1714F4DA04D79AB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -544,6 +609,9 @@
 				10A3390115E381560059F012 /* NSString+encodeString.m in Sources */,
 				103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */,
 				103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */,
+				0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */,
+				0B52EE9D1768D7E800F7D477 /* OSHTTPAPIClient.m in Sources */,
+				0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,7 +671,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -622,7 +690,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -632,6 +700,7 @@
 		};
 		27CB961E13E4110100717380 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1432CE74079436BA5E091CA /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/OSLibrary.dst;
@@ -650,6 +719,7 @@
 		};
 		27CB961F13E4110100717380 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F1432CE74079436BA5E091CA /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/OSLibrary.dst;
@@ -669,7 +739,6 @@
 		27CB962113E4110100717380 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
@@ -686,7 +755,6 @@
 		27CB962213E4110100717380 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_WARN_OBJCPP_ARC_ABI = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",

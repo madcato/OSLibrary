@@ -6,6 +6,8 @@
 //  Copyright 2011 veladan. All rights reserved.
 //
 
+// Version 0.2
+
 #import "OSSystem.h"
 #import "OSDate.h"
 #import "OSDateTime.h"
@@ -25,6 +27,7 @@
 #import "OSLoadingViewController.h"
 #import "OSAppearance.h"
 #import "OSOperation.h"
-#import "OSTwitterOperation.h"
 #import "OSOperationQueues.h"
 #import "NSString+encodeString.h"
+// Version 0.2
+#import "OSCoreDataSyncEngine.h"
