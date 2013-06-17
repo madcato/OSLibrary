@@ -40,12 +40,13 @@
     return database;
 }
 
-+(OSDatabase*)initWithModelName:(NSString *)modelName {
++(OSDatabase*)initWithModelName:(NSString *)modelName testing:(BOOL)testing {
     static OSDatabase* instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        OSDatabase* instance = [OSDatabase defaultDatabase];
+        instance = [OSDatabase defaultDatabase];
         instance.modelName = modelName;
+        instance.unittesting = testing;
     });
     return instance;
 }
@@ -212,7 +213,8 @@
     if (_managedObjectModel != nil) {
         return _managedObjectModel;
     }
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:self.modelName withExtension:@"momd"];
+    NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+    NSURL *modelURL = [bundle URLForResource:self.modelName withExtension:@"momd"];
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return _managedObjectModel;
 }
@@ -229,6 +231,8 @@
 
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    
+    if(self.unittesting == NO){
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
@@ -256,6 +260,37 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
+    } else {
+        
+        // Unit testing: store in memory
+        if (![_persistentStoreCoordinator addPersistentStoreWithType:NSInMemoryStoreType configuration:nil URL:nil options:nil error:&error]) {
+            /*
+             Replace this implementation with code to handle the error appropriately.
+             
+             abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+             
+             Typical reasons for an error here include:
+             * The persistent store is not accessible;
+             * The schema for the persistent store is incompatible with current managed object model.
+             Check the error message to determine what the actual problem was.
+             
+             
+             If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
+             
+             If you encounter schema incompatibility errors during development, you can reduce their frequency by:
+             * Simply deleting the existing store:
+             [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
+             
+             * Performing automatic lightweight migration by passing the following dictionary as the options parameter:
+             @{NSMigratePersistentStoresAutomaticallyOption:@YES, NSInferMappingModelAutomaticallyOption:@YES}
+             
+             Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
+             
+             */
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
 
     return _persistentStoreCoordinator;
 }
@@ -265,7 +300,32 @@
 // Returns the URL to the application's Documents directory.
 - (NSURL *)applicationDocumentsDirectory
 {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSURL *url;
+    url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return url;
 }
 
+- (void)resetDatabaseFile {
+    NSPersistentStore* store = [[_persistentStoreCoordinator persistentStores] lastObject];
+    
+    NSError *error = nil;
+    NSURL *storeURL = store.URL;
+    
+    // release context and model
+    _managedObjectModel = nil;
+    _managedObjectContext = nil;
+    
+    [_persistentStoreCoordinator removePersistentStore:store error:nil];
+    
+    _persistentStoreCoordinator = nil;
+    
+    [[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
+    if (error) {
+        NSLog(@"filemanager error %@", error);
+    }
+    
+    // recreate the stack
+//    _managedObjectContext = [self managedObjectContext];
+    
+}
 @end

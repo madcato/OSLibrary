@@ -20,7 +20,7 @@
 //    [OSDatabase initWith:self.managedObjectContext
 //             objectModel:self.managedObjectModel
 //                andStore:self.persistentStoreCoordinator];
-    [OSDatabase initWithModelName:@"addressbook"];
+    [OSDatabase initWithModelName:@"addressbook" testing:NO];
     [[OSCoreDataSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Person class]];
     [[OSCoreDataSyncEngine sharedEngine] registerHTTPAPIClient:[ABHTTPAPIClient sharedClient]];
 
