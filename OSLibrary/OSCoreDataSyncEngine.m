@@ -631,4 +631,25 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     return value;
 }
 
++ (void)deleteObject:(NSManagedObject*)object inContext:(NSManagedObjectContext *)context {
+    [context performBlockAndWait:^{
+        // 1
+        if ([[object valueForKey:@"objectId"] isEqualToString:@""] || [object valueForKey:@"objectId"] == nil) {
+            [context deleteObject:object];
+        } else {
+            [object setValue:[NSNumber numberWithInt:OSObjectDeleted] forKey:@"syncStatus"];
+        }
+        // FIXME: No funciona el borrar objetos.
+        NSError *error = nil;
+        if (![context save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+        
+        [[OSDatabase defaultDatabase] save];
+        [[OSCoreDataSyncEngine sharedEngine] startSync];
+    }];
+}
 @end

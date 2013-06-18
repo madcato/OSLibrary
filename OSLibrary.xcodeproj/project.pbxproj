@@ -10,6 +10,7 @@
 		0B0CF5D3176FB23F00CBEF64 /* OSDatabaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0CF5D2176FB23F00CBEF64 /* OSDatabaseTest.m */; };
 		0B0CF5D6176FB26600CBEF64 /* OSDatabaseTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B0CF5D4176FB26600CBEF64 /* OSDatabaseTest.xcdatamodeld */; };
 		0B0CF5D8176FB79500CBEF64 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0CF5D7176FB79500CBEF64 /* CoreData.framework */; };
+		0B0CF5DF176FDA5B00CBEF64 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0CF5DE176FDA5B00CBEF64 /* Security.framework */; };
 		0B52EE941768C71B00F7D477 /* OSCoreDataSyncEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE921768C71B00F7D477 /* OSCoreDataSyncEngine.h */; };
 		0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE931768C71B00F7D477 /* OSCoreDataSyncEngine.m */; };
 		0B52EE971768CC9900F7D477 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */; };
@@ -101,6 +102,7 @@
 		0B0CF5D2176FB23F00CBEF64 /* OSDatabaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDatabaseTest.m; sourceTree = "<group>"; };
 		0B0CF5D5176FB26600CBEF64 /* OSDatabaseTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OSDatabaseTest.xcdatamodel; sourceTree = "<group>"; };
 		0B0CF5D7176FB79500CBEF64 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		0B0CF5DE176FDA5B00CBEF64 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		0B52EE921768C71B00F7D477 /* OSCoreDataSyncEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCoreDataSyncEngine.h; sourceTree = "<group>"; };
 		0B52EE931768C71B00F7D477 /* OSCoreDataSyncEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCoreDataSyncEngine.m; sourceTree = "<group>"; };
 		0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -201,6 +203,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B0CF5DF176FDA5B00CBEF64 /* Security.framework in Frameworks */,
 				0B0CF5D8176FB79500CBEF64 /* CoreData.framework in Frameworks */,
 				1008160915C11BE800429593 /* UIKit.framework in Frameworks */,
 				27FD9C7B14EAB5940091A0E3 /* SystemConfiguration.framework in Frameworks */,
@@ -338,6 +341,7 @@
 		27CB95EB13E4110000717380 = {
 			isa = PBXGroup;
 			children = (
+				0B0CF5DE176FDA5B00CBEF64 /* Security.framework */,
 				0B0CF5D7176FB79500CBEF64 /* CoreData.framework */,
 				27CB95FB13E4110100717380 /* OSLibrary */,
 				27CB961113E4110100717380 /* OSLibraryTests */,
@@ -753,6 +757,7 @@
 		27CB962113E4110100717380 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
@@ -774,6 +779,7 @@
 		27CB962213E4110100717380 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",

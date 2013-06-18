@@ -20,7 +20,8 @@
 - (NSManagedObject*)selectObject:(NSString*)entityName withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments;
 - (NSArray*)getResultsFrom:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments;
 - (NSFetchedResultsController*)createFetchedResultsController:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments andSectionNameKeyPath:(NSString*)keyPath;
-- (NSManagedObjectContext*)createObjectContext;
+- (NSManagedObjectContext*)createObjectContextForMainThread;
+- (NSManagedObjectContext*)createObjectContextForPrivateThread;
 - (void)save;
 - (void)deleteObjects:(NSString*)entityName withPredicate:(NSString*)format andArguments:(NSArray*)arguments;
 - (NSManagedObject*)objectWithID:(NSManagedObjectID*)objectID;

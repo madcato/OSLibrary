@@ -47,25 +47,41 @@
  - (void)viewDidAppear:(BOOL)animated {
  [super viewDidAppear:animated];
 
- [[NSNotificationCenter defaultCenter] addObserverForName:kOSCoreDataSyncEngineSyncCompletedNotificationName object:nil queue:nil usingBlock:^(NSNotification *note){
-     [NSFetchedResultsController deleteCacheWithName:@"Master"];
-     NSError *error = nil;
-     if (![self.fetchedResultsController performFetch:&error]) {
-	     // Replace this implementation with code to handle the error appropriately.
-	     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-         abort();
-     }
-
-     [self.tableView reloadData];
-     [self.refreshControl endRefreshing];
- }];
+// [[NSNotificationCenter defaultCenter] addObserverForName:kOSCoreDataSyncEngineSyncCompletedNotificationName object:nil queue:nil usingBlock:^(NSNotification *note){
+//     [NSFetchedResultsController deleteCacheWithName:@"Master"];
+//     NSError *error = nil;
+//     if (![self.fetchedResultsController performFetch:&error]) {
+//	     // Replace this implementation with code to handle the error appropriately.
+//	     // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//         abort();
+//     }
+//
+//     [self.tableView reloadData];
+//     [self.refreshControl endRefreshing];
+// }];
+     
+     [[NSNotificationCenter defaultCenter] addObserver:self
+                                              selector:@selector(updateContext:)
+                                                  name:NSManagedObjectContextDidSaveNotification
+                                                object:[[OSDatabase backgroundDatabase] managedObjectContext]];
  }
 
- - (void)viewDidDisappear:(BOOL)animated {
+// this is called from mergeChanges: method,
+// requested to be made on the main thread so we can update our table with our new earthquake objects
+//
+- (void)updateContext:(NSNotification *)notification
+{
+    [self.refreshControl endRefreshing];
+	NSManagedObjectContext *mainContext = [self.fetchedResultsController managedObjectContext];
+	[mainContext mergeChangesFromContextDidSaveNotification:notification];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kOSCoreDataSyncEngineSyncCompletedNotificationName object:nil];
- }
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -127,28 +143,8 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
         NSManagedObject* object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [context performBlockAndWait:^{
-            // 1
-            if ([[object valueForKey:@"objectId"] isEqualToString:@""] || [object valueForKey:@"objectId"] == nil) {
-                [context deleteObject:object];
-            } else {
-                [object setValue:[NSNumber numberWithInt:OSObjectDeleted] forKey:@"syncStatus"];
-            }
-// FIXME: No funciona el borrar objetos.
-            NSError *error = nil;
-            if (![context save:&error]) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                abort();
-            }
-
-            [[OSDatabase defaultDatabase] save];
-            [self.tableView reloadData];
-            [[OSCoreDataSyncEngine sharedEngine] startSync];
-        }];
+        [OSCoreDataSyncEngine deleteObject:object inContext:[self.fetchedResultsController managedObjectContext]];
     }
 }
 

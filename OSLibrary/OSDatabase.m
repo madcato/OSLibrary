@@ -35,7 +35,7 @@
         OSDatabase* instance = [OSDatabase defaultDatabase];
         database.persistentStoreCoordinator = [instance persistentStoreCoordinator];
         database.managedObjectModel = [instance managedObjectModel];
-        database.managedObjectContext = [instance createObjectContext];
+        database.managedObjectContext = [instance createObjectContextForPrivateThread];
     });
     return database;
 }
@@ -146,7 +146,22 @@
     return aFetchedResultsController;
 }
 
-- (NSManagedObjectContext*)createObjectContext {
+- (NSManagedObjectContext*)createObjectContextForMainThread {
+    NSManagedObjectContext* newManagedObjectContext = nil;
+    NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
+    if (coordinator != nil) {
+        newManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [newManagedObjectContext performBlockAndWait:^{
+            [newManagedObjectContext setPersistentStoreCoordinator:coordinator];
+        }];
+
+    }
+    assert(newManagedObjectContext != nil);
+    self.managedObjectContext = newManagedObjectContext;
+    return newManagedObjectContext;
+}
+
+- (NSManagedObjectContext*)createObjectContextForPrivateThread {
     NSManagedObjectContext* newManagedObjectContext = nil;
     NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
     if (coordinator != nil) {
@@ -154,7 +169,7 @@
         [newManagedObjectContext performBlockAndWait:^{
             [newManagedObjectContext setPersistentStoreCoordinator:coordinator];
         }];
-
+        
     }
     assert(newManagedObjectContext != nil);
     self.managedObjectContext = newManagedObjectContext;
@@ -319,13 +334,14 @@
     
     _persistentStoreCoordinator = nil;
     
-    [[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
-    if (error) {
-        NSLog(@"filemanager error %@", error);
+    if (self.unittesting == NO) {
+        [[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
+        if (error) {
+            NSLog(@"filemanager error %@", error);
+        }
     }
-    
     // recreate the stack
-//    _managedObjectContext = [self managedObjectContext];
+    _managedObjectContext = [self managedObjectContext];
     
 }
 @end
