@@ -6,6 +6,8 @@
 //  Copyright 2011 veladan. All rights reserved.
 //
 
+// Version 0.1
+
 #import "OSSystem.h"
 #import "OSDate.h"
 #import "OSDateTime.h"

@@ -1,0 +1,1970 @@
+Connecting to database specified by database.yml
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at Tue Jun 18 00:03:19 +0200 2013
+Served asset /rails.png - 200 OK (7ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 00:03:23 +0200 2013
+Processing by PeopleController#index as HTML
+Completed 500 Internal Server Error in 53ms
+
+ActiveRecord::StatementInvalid (Could not find table 'people'):
+  app/controllers/people_controller.rb:6:in `index'
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.2ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (11.9ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 00:03:26 +0200 2013
+Processing by PeopleController#index as HTML
+Completed 500 Internal Server Error in 1ms
+
+ActiveRecord::StatementInvalid (Could not find table 'people'):
+  app/controllers/people_controller.rb:6:in `index'
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.9ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (13.1ms)
+Connecting to database specified by database.yml
+  [1m[36m (0.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Migrating to CreatePeople (20130612182650)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "people" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "programmer" boolean, "height" float, "birthDate" datetime, "avatar" blob, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130612182650')[0m
+  [1m[35m (1.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 00:04:01 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (2.1ms)
+Compiled people.css  (5ms)  (pid 42045)
+Compiled scaffolds.css  (25ms)  (pid 42045)
+Compiled application.css  (48ms)  (pid 42045)
+Compiled jquery.js  (5ms)  (pid 42045)
+Compiled jquery_ujs.js  (0ms)  (pid 42045)
+Compiled people.js  (114ms)  (pid 42045)
+Compiled application.js  (157ms)  (pid 42045)
+Completed 200 OK in 387ms (Views: 375.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 00:04:01 +0200 2013
+Served asset /application.css - 200 OK (9ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:01 +0200 2013
+Served asset /jquery.js - 200 OK (10ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:01 +0200 2013
+Served asset /jquery_ujs.js - 200 OK (3ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 00:04:01 +0200 2013
+Served asset /scaffolds.css - 200 OK (2ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 00:04:01 +0200 2013
+Served asset /people.css - 200 OK (3ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:01 +0200 2013
+Served asset /people.js - 200 OK (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:01 +0200 2013
+Served asset /application.js - 200 OK (7ms)
+
+
+Started GET "/people/new" for 127.0.0.1 at Tue Jun 18 00:04:03 +0200 2013
+Processing by PeopleController#new as HTML
+  Rendered people/_form.html.erb (15.9ms)
+  Rendered people/new.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 97ms (Views: 89.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/people" for 127.0.0.1 at Tue Jun 18 00:04:12 +0200 2013
+Processing by PeopleController#create as HTML
+  Parameters: {"authenticity_token"=>"S+xo6k2P8JkPv1K5p2oYlonR0sF+ionPbX/uVB+JAE8=", "person"=>{"name"=>"Pepe", "height"=>"1.3", "birthDate(1i)"=>"2013", "birthDate(2i)"=>"6", "birthDate(3i)"=>"17", "birthDate(4i)"=>"22", "birthDate(5i)"=>"04", "avatar"=>"", "programmer"=>"1"}, "commit"=>"Create Person", "utf8"=>"✓"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.0ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Mon, 17 Jun 2013 22:04:00 UTC +00:00], ["created_at", Mon, 17 Jun 2013 22:04:12 UTC +00:00], ["height", 1.3], ["name", "Pepe"], ["programmer", true], ["updated_at", Mon, 17 Jun 2013 22:04:12 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/people/1
+Completed 302 Found in 15ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/people/1" for 127.0.0.1 at Tue Jun 18 00:04:13 +0200 2013
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "1"]]
+  Rendered people/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 29ms (Views: 24.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:13 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:13 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 00:04:22 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 00:04:22 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 00:04:22 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "height"=>1.8, "birthDate"=>"2013-06-17T22:03:04Z", "avatar"=>"", "person"=>{"height"=>1.8, "name"=>"Dani Vela", "birthDate"=>"2013-06-17T22:03:04Z", "avatar"=>"", "programmer"=>"true"}, "programmer"=>"true"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Mon, 17 Jun 2013 22:03:04 UTC +00:00], ["created_at", Mon, 17 Jun 2013 22:04:22 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Mon, 17 Jun 2013 22:04:22 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 201 Created in 7ms (Views: 1.6ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 00:04:22 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "height"=>1.8, "birthDate"=>"2013-06-17T22:03:04Z", "avatar"=>"", "person"=>{"height"=>1.8, "name"=>"Dani Vela", "birthDate"=>"2013-06-17T22:03:04Z", "avatar"=>"", "programmer"=>"true"}, "programmer"=>"true"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["avatar", ""], ["birthDate", Mon, 17 Jun 2013 22:03:04 UTC +00:00], ["created_at", Mon, 17 Jun 2013 22:04:22 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Mon, 17 Jun 2013 22:04:22 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 7ms (Views: 1.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 00:04:26 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" 
+  Rendered people/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 105ms (Views: 102.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:27 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:27 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started DELETE "/people/2" for 127.0.0.1 at Tue Jun 18 00:04:29 +0200 2013
+Processing by PeopleController#destroy as HTML
+  Parameters: {"authenticity_token"=>"S+xo6k2P8JkPv1K5p2oYlonR0sF+ionPbX/uVB+JAE8=", "id"=>"2"}
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "2"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 2]]
+  [1m[35m (1.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/people
+Completed 302 Found in 6ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 00:04:29 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 35ms (Views: 33.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:29 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:29 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started DELETE "/people/3" for 127.0.0.1 at Tue Jun 18 00:04:31 +0200 2013
+Processing by PeopleController#destroy as HTML
+  Parameters: {"authenticity_token"=>"S+xo6k2P8JkPv1K5p2oYlonR0sF+ionPbX/uVB+JAE8=", "id"=>"3"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "3"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 3]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/people
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 00:04:31 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+  Rendered people/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:31 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 00:04:31 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 00:04:34 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')[0m
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 00:04:34 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 02:37:04 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')[0m
+Completed 200 OK in 74ms (Views: 60.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:37:04 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 02:37:05 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')[0m
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:37:05 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:37:06 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:37:05Z", "person"=>{"birthDate"=>"2013-06-18T00:37:05Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:37:05 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:37:06 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:37:06 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 8ms (Views: 1.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 02:37:06 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:37:06 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:37:06 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:37:06Z", "person"=>{"birthDate"=>"2013-06-18T00:37:06Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:37:06 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:37:06 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:37:06 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 201 Created in 6ms (Views: 1.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:37:06 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')[0m
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:37:06 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:37:06 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:37:06Z", "person"=>{"birthDate"=>"2013-06-18T00:37:06Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:37:06 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:37:06 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:37:06 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 6ms (Views: 1.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/person" for 127.0.0.1 at Tue Jun 18 02:37:24 +0200 2013
+
+ActionController::RoutingError (No route matches [GET] "/person"):
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+  rack (1.4.5) lib/rack/handler/webrick.rb:13:in `run'
+  rack (1.4.5) lib/rack/server.rb:268:in `start'
+  railties (3.2.13) lib/rails/commands/server.rb:70:in `start'
+  railties (3.2.13) lib/rails/commands.rb:55
+  railties (3.2.13) lib/rails/commands.rb:50:in `tap'
+  railties (3.2.13) lib/rails/commands.rb:50
+  script/rails:6:in `require'
+  script/rails:6
+
+
+  Rendered /Library/Ruby/Gems/1.8/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (1.4ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 02:37:40 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+  Rendered people/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 99ms (Views: 97.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 02:37:40 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 02:37:40 +0200 2013
+Served asset /jquery.js - 304 Not Modified (3ms)
+
+
+Started DELETE "/people/6" for 127.0.0.1 at Tue Jun 18 02:39:02 +0200 2013
+Processing by PeopleController#destroy as HTML
+  Parameters: {"id"=>"6", "authenticity_token"=>"S+xo6k2P8JkPv1K5p2oYlonR0sF+ionPbX/uVB+JAE8="}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "6"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 6]]
+  [1m[35m (2.7ms)[0m  commit transaction
+Redirected to http://localhost:3000/people
+Completed 302 Found in 8ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 02:39:02 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 33ms (Views: 31.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 02:39:02 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 02:39:02 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:39:04 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:39:04 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 57ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:46:53 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:47:02 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:47:16 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:47:16 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:47:39 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:47:39 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:47:41 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:47:41 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people/new" for 127.0.0.1 at Tue Jun 18 02:47:46 +0200 2013
+Processing by PeopleController#new as HTML
+  Rendered people/_form.html.erb (11.8ms)
+  Rendered people/new.html.erb within layouts/application (16.5ms)
+Completed 200 OK in 45ms (Views: 43.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 02:47:46 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 02:47:46 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started POST "/people" for 127.0.0.1 at Tue Jun 18 02:47:56 +0200 2013
+Processing by PeopleController#create as HTML
+  Parameters: {"utf8"=>"✓", "person"=>{"name"=>"guriguri", "birthDate(1i)"=>"2013", "birthDate(2i)"=>"6", "programmer"=>"0", "birthDate(3i)"=>"18", "birthDate(4i)"=>"00", "birthDate(5i)"=>"47", "avatar"=>"", "height"=>"1.8"}, "commit"=>"Create Person", "authenticity_token"=>"S+xo6k2P8JkPv1K5p2oYlonR0sF+ionPbX/uVB+JAE8="}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:47:00 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:47:56 UTC +00:00], ["height", 1.8], ["name", "guriguri"], ["programmer", false], ["updated_at", Tue, 18 Jun 2013 00:47:56 UTC +00:00]]
+  [1m[35m (5.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/people/7
+Completed 302 Found in 12ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/people/7" for 127.0.0.1 at Tue Jun 18 02:47:56 +0200 2013
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "7"]]
+  Rendered people/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 78ms (Views: 75.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 02:47:56 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 02:47:56 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 02:47:57 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+  Rendered people/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 30ms (Views: 27.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 02:47:58 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 02:47:58 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:47:59 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')[0m
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:47:59 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A47%3A56Z" for 127.0.0.1 at Tue Jun 18 02:48:53 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:47:56Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:47:56')[0m
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:48:53 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A47%3A56Z" for 127.0.0.1 at Tue Jun 18 02:48:54 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:47:56Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:47:56')[0m
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:48:54 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A47%3A56Z" for 127.0.0.1 at Tue Jun 18 02:48:59 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:47:56Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:47:56')[0m
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:48:59 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/7.json" for 127.0.0.1 at Tue Jun 18 02:48:59 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"7"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "7"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 7]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 204 No Content in 3ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:49:03 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')[0m
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:03 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/people/5.json" for 127.0.0.1 at Tue Jun 18 02:49:03 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"5"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "5"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 5]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Completed 204 No Content in 3ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:49:17 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')[0m
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:17 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:49:21 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')[0m
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:21 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A37%3A06Z" for 127.0.0.1 at Tue Jun 18 02:49:48 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:37:06Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:37:06')[0m
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:48 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/4.json" for 127.0.0.1 at Tue Jun 18 02:49:48 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"4"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "4"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 4]]
+  [1m[35m (0.8ms)[0m  commit transaction
+Completed 204 No Content in 5ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')[0m
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:49:51Z", "person"=>{"birthDate"=>"2013-06-18T00:49:51Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:49:51 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:49:51 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:49:51 UTC +00:00]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 7ms (Views: 1.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:49:51Z", "person"=>{"birthDate"=>"2013-06-18T00:49:51Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:49:51 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:49:51 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:49:51 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  commit transaction
+Completed 201 Created in 6ms (Views: 1.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A49%3A51Z" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:49:51Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:49:51')[0m
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:49:51Z", "person"=>{"birthDate"=>"2013-06-18T00:49:51Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:49:51 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:49:51 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:49:51 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 63ms (Views: 1.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A49%3A51Z" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:49:51Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:49:51')
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:51 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:49:51Z", "person"=>{"birthDate"=>"2013-06-18T00:49:51Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:49:51 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:49:51 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:49:51 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 201 Created in 5ms (Views: 1.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A49%3A51Z" for 127.0.0.1 at Tue Jun 18 02:49:52 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:49:51Z"}
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:49:51')[0m
+Completed 200 OK in 7ms (Views: 3.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:52 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:52 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:49:51Z", "person"=>{"birthDate"=>"2013-06-18T00:49:51Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (2.7ms)[0m  INSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:49:51 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:49:52 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:49:52 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 12ms (Views: 1.7ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A49%3A51Z" for 127.0.0.1 at Tue Jun 18 02:49:54 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:49:51Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:49:51')
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:54 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/9.json" for 127.0.0.1 at Tue Jun 18 02:49:54 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"9"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "9"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 9]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 3ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A49%3A52Z" for 127.0.0.1 at Tue Jun 18 02:49:56 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:49:52Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:49:52')
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:56 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/10.json" for 127.0.0.1 at Tue Jun 18 02:49:56 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"10"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "10"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 10]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 3ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A49%3A52Z" for 127.0.0.1 at Tue Jun 18 02:49:58 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:49:52Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:49:52')
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:58 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/12.json" for 127.0.0.1 at Tue Jun 18 02:49:58 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"12"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "12"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 12]]
+  [1m[36m (0.8ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 3ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A49%3A51Z" for 127.0.0.1 at Tue Jun 18 02:49:59 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:49:51Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:49:51')
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:49:59 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/8.json" for 127.0.0.1 at Tue Jun 18 02:49:59 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"8"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "8"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 8]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 3ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A49%3A51Z" for 127.0.0.1 at Tue Jun 18 02:50:01 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:49:51Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:49:51')
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:50:01 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/11.json" for 127.0.0.1 at Tue Jun 18 02:50:01 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"11"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "11"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 11]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 3ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 02:50:03 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:50:03 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 02:50:04 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:50:04 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:50:04 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:50:04Z", "person"=>{"birthDate"=>"2013-06-18T00:50:04Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:50:04 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:50:04 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:50:04 UTC +00:00]]
+  [1m[35m (0.9ms)[0m  commit transaction
+Completed 201 Created in 6ms (Views: 1.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 02:50:04 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')[0m
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:50:04 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:50:04 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:50:04Z", "person"=>{"birthDate"=>"2013-06-18T00:50:04Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:50:04 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:50:04 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:50:04 UTC +00:00]]
+  [1m[36m (0.9ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 5ms (Views: 1.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A50%3A04Z" for 127.0.0.1 at Tue Jun 18 02:50:05 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:50:04Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:50:04')
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:50:05 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A50%3A04Z" for 127.0.0.1 at Tue Jun 18 02:51:26 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:50:04Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:50:04')
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:51:26 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A50%3A04Z" for 127.0.0.1 at Tue Jun 18 02:51:30 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:50:04Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:50:04')
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:51:30 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/14.json" for 127.0.0.1 at Tue Jun 18 02:51:30 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"14"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "14"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 14]]
+  [1m[36m (1.1ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 4ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A50%3A04Z" for 127.0.0.1 at Tue Jun 18 02:51:34 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:50:04Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:50:04')
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:51:34 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/13.json" for 127.0.0.1 at Tue Jun 18 02:51:34 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"13"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "13"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 13]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 3ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 02:51:36 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:51:36 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:51:36 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:51:36Z", "person"=>{"birthDate"=>"2013-06-18T00:51:36Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:51:36 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:51:36 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:51:36 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 201 Created in 5ms (Views: 1.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-17T22%3A04%3A12Z" for 127.0.0.1 at Tue Jun 18 02:51:36 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-17T22:04:12Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-17 22:04:12')[0m
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:51:36 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:51:36 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:51:36Z", "person"=>{"birthDate"=>"2013-06-18T00:51:36Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:51:36 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:51:36 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:51:36 UTC +00:00]]
+  [1m[36m (1.0ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 6ms (Views: 1.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A36Z" for 127.0.0.1 at Tue Jun 18 02:51:37 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:36Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:36')
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:51:37 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 02:51:37 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T00:51:37Z", "person"=>{"birthDate"=>"2013-06-18T00:51:37Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 00:51:37 UTC +00:00], ["created_at", Tue, 18 Jun 2013 00:51:37 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 00:51:37 UTC +00:00]]
+  [1m[35m (1.4ms)[0m  commit transaction
+Completed 201 Created in 6ms (Views: 1.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A36Z" for 127.0.0.1 at Tue Jun 18 02:57:23 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:36Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:36')[0m
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:57:23 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 02:57:25 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:57:25 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 02:57:28 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:57:28 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 02:57:31 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:57:31 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 02:57:32 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:57:32 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 02:57:35 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 85ms (Views: 83.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:36 +0200 2013
+Served asset /application.css - 304 Not Modified (8ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:36 +0200 2013
+Served asset /people.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:36 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:36 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:36 +0200 2013
+Served asset /people.js - 304 Not Modified (2ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:36 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:36 +0200 2013
+Served asset /application.js - 304 Not Modified (8ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 02:57:37 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" 
+  Rendered people/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 30ms (Views: 28.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:37 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:37 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:37 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:37 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:37 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:37 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:37 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 02:57:40 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:57:40 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 02:57:41 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 31ms (Views: 28.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:42 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:42 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:42 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:42 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:42 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:42 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:42 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 02:57:53 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+  Rendered people/index.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 41ms (Views: 39.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:53 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:53 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:53 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:53 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:53 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 02:57:53 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 02:57:53 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 02:57:57 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:57:57 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 02:58:34 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:58:34 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 02:58:58 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:58:58 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 02:59:48 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 02:59:48 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 03:01:55 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:01:55 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 03:02:25 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:02:25 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 03:02:50 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:02:50 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 03:03:25 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:03:25 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 03:03:32 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:03:32 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 03:04:11 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:04:11 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 03:04:19 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:04:19 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 03:07:13 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:07:13 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 03:07:22 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')[0m
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:07:22 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/15.json" for 127.0.0.1 at Tue Jun 18 03:07:31 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"15"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "15"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 15]]
+  [1m[35m (2.7ms)[0m  commit transaction
+Completed 204 No Content in 6ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 03:08:03 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 27ms (Views: 25.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 03:08:03 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 03:08:03 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 03:08:03 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 03:08:03 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 03:08:03 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 03:08:03 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 03:08:03 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A37Z" for 127.0.0.1 at Tue Jun 18 03:08:43 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:37Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:37')
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:08:43 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/17.json" for 127.0.0.1 at Tue Jun 18 03:08:43 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"17"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "17"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 17]]
+  [1m[36m (0.6ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 105ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A36Z" for 127.0.0.1 at Tue Jun 18 03:09:13 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:36Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:36')
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:09:13 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/1.json" for 127.0.0.1 at Tue Jun 18 03:09:13 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"1"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "1"]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 1]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Completed 204 No Content in 4ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 03:09:15 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+  Rendered people/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 03:09:15 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 03:09:15 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 03:09:15 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 03:09:15 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 03:09:15 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 03:09:15 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 03:09:15 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A36Z" for 127.0.0.1 at Tue Jun 18 03:11:12 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:36Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:36')[0m
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:12 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T00%3A51%3A36Z" for 127.0.0.1 at Tue Jun 18 03:11:14 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T00:51:36Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 00:51:36')[0m
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:14 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/people/16.json" for 127.0.0.1 at Tue Jun 18 03:11:14 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"16"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "16"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 16]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 204 No Content in 4ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 03:11:19 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 103ms (Views: 101.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:20 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:20 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:20 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:20 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:20 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:20 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:20 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:21 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:21 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:21 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T01:11:21Z", "person"=>{"birthDate"=>"2013-06-18T01:11:21Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 01:11:21 UTC +00:00], ["created_at", Tue, 18 Jun 2013 01:11:21 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 01:11:21 UTC +00:00]]
+  [1m[35m (0.6ms)[0m  commit transaction
+Completed 201 Created in 8ms (Views: 1.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:21 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:21 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:21 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T01:11:21Z", "person"=>{"birthDate"=>"2013-06-18T01:11:21Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 01:11:21 UTC +00:00], ["created_at", Tue, 18 Jun 2013 01:11:21 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 01:11:21 UTC +00:00]]
+  [1m[36m (0.5ms)[0m  [1mcommit transaction[0m
+Completed 201 Created in 5ms (Views: 1.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T01%3A11%3A21Z" for 127.0.0.1 at Tue Jun 18 03:11:22 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T01:11:21Z"}
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 01:11:21')
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:22 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:22 +0200 2013
+Processing by PeopleController#create as JSON
+  Parameters: {"name"=>"Dani Vela", "birthDate"=>"2013-06-18T01:11:22Z", "person"=>{"birthDate"=>"2013-06-18T01:11:22Z", "name"=>"Dani Vela", "avatar"=>"", "programmer"=>"true", "height"=>1.8}, "avatar"=>"", "programmer"=>"true", "height"=>1.8}
+WARNING: Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 01:11:22 UTC +00:00], ["created_at", Tue, 18 Jun 2013 01:11:22 UTC +00:00], ["height", 1.8], ["name", "Dani Vela"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 01:11:22 UTC +00:00]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 201 Created in 5ms (Views: 1.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 03:11:23 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 86ms (Views: 84.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:24 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:24 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:24 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:24 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:24 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:24 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:24 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/people/new" for 127.0.0.1 at Tue Jun 18 03:11:25 +0200 2013
+Processing by PeopleController#new as HTML
+  Rendered people/_form.html.erb (12.9ms)
+  Rendered people/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 41ms (Views: 40.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:25 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:25 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:25 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:25 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:25 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:25 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:25 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started POST "/people" for 127.0.0.1 at Tue Jun 18 03:11:34 +0200 2013
+Processing by PeopleController#create as HTML
+  Parameters: {"utf8"=>"✓", "person"=>{"name"=>"Cosa", "birthDate(1i)"=>"2013", "birthDate(2i)"=>"6", "programmer"=>"1", "birthDate(3i)"=>"18", "birthDate(4i)"=>"01", "birthDate(5i)"=>"11", "avatar"=>"", "height"=>"1.9"}, "commit"=>"Create Person", "authenticity_token"=>"S+xo6k2P8JkPv1K5p2oYlonR0sF+ionPbX/uVB+JAE8="}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "people" ("avatar", "birthDate", "created_at", "height", "name", "programmer", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["avatar", ""], ["birthDate", Tue, 18 Jun 2013 01:11:00 UTC +00:00], ["created_at", Tue, 18 Jun 2013 01:11:34 UTC +00:00], ["height", 1.9], ["name", "Cosa"], ["programmer", true], ["updated_at", Tue, 18 Jun 2013 01:11:34 UTC +00:00]]
+  [1m[35m (2.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/people/21
+Completed 302 Found in 7ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/people/21" for 127.0.0.1 at Tue Jun 18 03:11:34 +0200 2013
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"21"}
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "21"]]
+  Rendered people/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 76ms (Views: 74.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:34 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:34 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:34 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:34 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:34 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:34 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:34 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 03:11:35 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+  Rendered people/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 29ms (Views: 27.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:35 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:35 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:35 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:35 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:35 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:35 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:35 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T01%3A11%3A21Z" for 127.0.0.1 at Tue Jun 18 03:11:36 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T01:11:21Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 01:11:21')[0m
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:36 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2013-06-18T01%3A11%3A34Z" for 127.0.0.1 at Tue Jun 18 03:11:40 +0200 2013
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2013-06-18T01:11:34Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2013-06-18 01:11:34')[0m
+Completed 200 OK in 4ms (Views: 1.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at Tue Jun 18 03:11:40 +0200 2013
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.2ms)
+
+
+Started DELETE "/people/21.json" for 127.0.0.1 at Tue Jun 18 03:11:40 +0200 2013
+Processing by PeopleController#destroy as JSON
+  Parameters: {"id"=>"21"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "21"]]
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 21]]
+  [1m[35m (0.7ms)[0m  commit transaction
+Completed 204 No Content in 3ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/people" for 127.0.0.1 at Tue Jun 18 03:11:43 +0200 2013
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 33ms (Views: 31.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:43 +0200 2013
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:43 +0200 2013
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:43 +0200 2013
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at Tue Jun 18 03:11:43 +0200 2013
+Served asset /people.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:43 +0200 2013
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:43 +0200 2013
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at Tue Jun 18 03:11:43 +0200 2013
+Served asset /application.js - 304 Not Modified (0ms)
