@@ -341,8 +341,6 @@
 		27CB95EB13E4110000717380 = {
 			isa = PBXGroup;
 			children = (
-				0B0CF5DE176FDA5B00CBEF64 /* Security.framework */,
-				0B0CF5D7176FB79500CBEF64 /* CoreData.framework */,
 				27CB95FB13E4110100717380 /* OSLibrary */,
 				27CB961113E4110100717380 /* OSLibraryTests */,
 				27CB95F813E4110100717380 /* Frameworks */,
@@ -363,6 +361,8 @@
 		27CB95F813E4110100717380 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B0CF5DE176FDA5B00CBEF64 /* Security.framework */,
+				0B0CF5D7176FB79500CBEF64 /* CoreData.framework */,
 				0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */,
 				1008160715C11BA700429593 /* UIKit.framework */,
 				27FD9C7314EAB3200091A0E3 /* SystemConfiguration.framework */,
