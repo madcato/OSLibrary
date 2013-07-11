@@ -151,6 +151,21 @@
  */
 + (NSString*)appVersion;
 
+/*!
+ @method appBuildVersion
+ @abstract Get the app build version
+ @return the app build version
+ */
++ (NSString*)appBuildVersion;
+
+/*!
+ @method updateAppVersionInSettings
+ @abstract Sets the app version and the app build versions in settings
+ @discussion In root.plist file inside Settings.bundle must exist the key
+            preference_app_version of type Title
+ */
++ (void)updateAppVersionInSettings;
+
 @end
 
 

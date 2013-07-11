@@ -129,7 +129,20 @@
 }
 
 + (NSString*)appVersion {
-  return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+  return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+
++ (NSString*)appBuildVersion {
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
++ (void)updateAppVersionInSettings {
+    NSString *appVersionText = [NSString stringWithFormat:@"%@ (%@)",
+                                [OSSystem appVersion], [OSSystem appBuildVersion]];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:appVersionText
+                                              forKey:@"preference_app_version"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end
