@@ -131,6 +131,10 @@
  */
 +(void)registerUserDefaults;
 
++ (NSString*)appVersion;
++ (NSString*)appBuildVersion;
++ (void)updateAppVersionInSettings;
+
 @end
 
 
