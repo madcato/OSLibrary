@@ -1,6 +1,5 @@
 //
 //  OSTheme.m
-//  reservas-unav
 //
 //  Created by Daniel Vela on 20/11/12.
 //  Copyright (c) 2012 inycom. All rights reserved.
@@ -10,19 +9,25 @@
 #import "OSDefaultTheme.h"
 #import "OSSystem.h"
 
+
 @implementation OSThemeManager
 
-+ (id <OSTheme>)sharedTheme
-{
-    static id <OSTheme> sharedTheme = nil;
+static id <OSTheme> sharedTheme = nil;
+
++ (void)setDefaultTheme:(id<OSTheme>)theme {
+    sharedTheme = theme;
+}
+
++ (id <OSTheme>)sharedTheme {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         // Create and return the theme:
         //      sharedTheme = [[UnavTheme alloc] init];
         //        sharedTheme = [[SSTintedTheme alloc] init];
         //        sharedTheme = [[SSMetalTheme alloc] init];
-        
-        sharedTheme = [[OSDefaultTheme alloc] init];
+        if(sharedTheme == nil) {
+            sharedTheme = [[OSDefaultTheme alloc] init];
+        }
     });
     
     return sharedTheme;
@@ -31,7 +36,7 @@
 + (void)customizeAppAppearance
 {
     if(IOS_VERSION_LESS_THAN(@"5.0")) return;
-       
+    
     id <OSTheme> theme = [self sharedTheme];
     
     UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
@@ -46,7 +51,7 @@
         [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault] forState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsDefault];
         [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateNormal style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone];
         [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateHighlighted style:UIBarButtonItemStyleBordered barMetrics:UIBarMetricsLandscapePhone];
-    
+        
         [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault] forState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault];
         [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateHighlighted style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault] forState:UIControlStateHighlighted style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsDefault];
         [barButtonItemAppearance setBackgroundImage:[theme barButtonBackgroundForState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsLandscapePhone] forState:UIControlStateNormal style:UIBarButtonItemStyleDone barMetrics:UIBarMetricsLandscapePhone];
@@ -131,6 +136,11 @@
         CGSize shadowOffset = [theme shadowOffset];
         [titleTextAttributes setObject:[NSValue valueWithCGSize:shadowOffset] forKey:UITextAttributeTextShadowOffset];
     }
+    UIFont *font = [theme defaultFont];
+    if (font) {
+        [titleTextAttributes setObject:font forKey:UITextAttributeFont];
+    }
+    
     [navigationBarAppearance setTitleTextAttributes:titleTextAttributes];
     [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     [barButtonItemAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateHighlighted];
@@ -164,8 +174,7 @@
     }
 }
 
-+ (void)customizeView:(UIView *)view
-{
++ (void)customizeView:(UIView *)view {
     id <OSTheme> theme = [self sharedTheme];
     UIColor *backgroundColor = [theme backgroundColor];
     if (backgroundColor) {
@@ -173,13 +182,13 @@
     }
 }
 
-+ (void)customizeTableView:(UITableView *)tableView
-{
++ (void)customizeTableView:(UITableView *)tableView {
     id <OSTheme> theme = [self sharedTheme];
     UIImage *backgroundImage = [theme tableBackground];
     UIColor *backgroundColor = [theme backgroundColor];
     if (backgroundImage) {
-        UIImageView *background = [[UIImageView alloc] initWithImage:backgroundImage];
+        UIImageView *background = [[UIImageView alloc]
+                                   initWithImage:backgroundImage];
         [tableView setBackgroundView:background];
     } else if (backgroundColor) {
         [tableView setBackgroundView:nil];
@@ -187,8 +196,7 @@
     }
 }
 
-+ (void)customizeTabBarItem:(UITabBarItem *)item forTab:(NSInteger)tab
-{
++ (void)customizeTabBarItem:(UITabBarItem *)item forTab:(NSInteger)tab {
     id <OSTheme> theme = [self sharedTheme];
     UIImage *image = [theme imageForTab:tab];
     if (image) {
@@ -198,7 +206,8 @@
         // Otherwise, set the finished images
         UIImage *selectedImage = [theme finishedImageForTab:tab selected:YES];
         UIImage *unselectedImage = [theme finishedImageForTab:tab selected:NO];
-        [item setFinishedSelectedImage:selectedImage withFinishedUnselectedImage:unselectedImage];
+        [item setFinishedSelectedImage:selectedImage
+           withFinishedUnselectedImage:unselectedImage];
     }
 }
 

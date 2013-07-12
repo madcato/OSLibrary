@@ -46,6 +46,7 @@
 		0B7F1341179061F10068B3F8 /* OSAppearance.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 108AD5D715DA657700EE2443 /* OSAppearance.h */; };
 		0B7F1342179061F10068B3F8 /* OSLibrary.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27CB95FE13E4110100717380 /* OSLibrary.h */; };
 		0B7F13431790622B0068B3F8 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FEF71413ED54B200BC78B0 /* WebViewController.xib */; };
+		0BBB01D917906A6000969ACD /* OSSystem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27CB962F13E4124400717380 /* OSSystem.h */; };
 		1008160415C11AB200429593 /* UIView+Snapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = 1008160215C11AB200429593 /* UIView+Snapshot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1008160515C11AB200429593 /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008160315C11AB200429593 /* UIView+Snapshot.m */; };
 		1008160815C11BA700429593 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1008160715C11BA700429593 /* UIKit.framework */; };
@@ -111,7 +112,6 @@
 		27FEF71113ED4FBE00BC78B0 /* OSImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF70F13ED4FBE00BC78B0 /* OSImage.m */; };
 		27FEF71513ED54B200BC78B0 /* WebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 27FEF71213ED54B100BC78B0 /* WebViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27FEF71613ED54B200BC78B0 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 27FEF71313ED54B200BC78B0 /* WebViewController.m */; };
-		FC78668206944508A24DE74F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84136008BC254DAE8D9FC971 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,9 +128,10 @@
 		0B7F132A17905FCB0068B3F8 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = include;
+			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				0BBB01D917906A6000969ACD /* OSSystem.h in CopyFiles */,
 				0B7F132B179061F00068B3F8 /* OSDatabase.h in CopyFiles */,
 				0B7F132C179061F00068B3F8 /* OSCoreDataSyncEngine.h in CopyFiles */,
 				0B7F132D179061F00068B3F8 /* HTTPAPIClient.h in CopyFiles */,
@@ -274,7 +275,6 @@
 				1008160815C11BA700429593 /* UIKit.framework in Frameworks */,
 				27FD9C7414EAB3200091A0E3 /* SystemConfiguration.framework in Frameworks */,
 				27CB95FA13E4110100717380 /* Foundation.framework in Frameworks */,
-				FC78668206944508A24DE74F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1026,6 +1026,7 @@
 				0B7F130F17905DF90068B3F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27CB95F013E4110000717380 /* Build configuration list for PBXProject "OSLibrary" */ = {
 			isa = XCConfigurationList;
