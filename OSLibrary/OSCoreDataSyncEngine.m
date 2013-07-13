@@ -42,18 +42,18 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             [self.registeredClassesToSync addObject:NSStringFromClass(aClass)];
         } else {
             NSLog(@"Unable to register %@ as it is already registered", NSStringFromClass(aClass));
-            abort();
+            NSAssert(false, @"Unable to register class in OSCoreDataSyncEngine");
         }
     } else {
         NSLog(@"Unable to register %@ as it is not a subclass of NSManagedObject", NSStringFromClass(aClass));
-        abort();
+        
     }
 }
 
 - (void)registerHTTPAPIClient:(id<HTTPAPIClient>)apiClient {
     if (self.registeredAPIClient) {
         NSLog(@"Already registered HTTPAPIClient");
-        abort();
+        NSAssert(false, @"Already registered HTTPAPIClient");
     }
     self.registeredAPIClient = apiClient;
 }
@@ -645,7 +645,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
+            [OSDatabase displayValidationError:error];
         }
         
         [[OSDatabase defaultDatabase] save];

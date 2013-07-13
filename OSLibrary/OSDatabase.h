@@ -31,4 +31,7 @@
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong)  NSString *modelName;
 @property (nonatomic, assign)  BOOL unittesting;
+
++ (void)displayValidationError:(NSError *)anError;
+
 @end
