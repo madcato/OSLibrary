@@ -16,7 +16,6 @@
 		0B52EE971768CC9900F7D477 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */; };
 		0B52EE991768CEFA00F7D477 /* HTTPAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE981768CEFA00F7D477 /* HTTPAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B52EE9C1768D7E800F7D477 /* OSHTTPAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE9A1768D7E700F7D477 /* OSHTTPAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0B52EE9D1768D7E800F7D477 /* OSHTTPAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE9B1768D7E700F7D477 /* OSHTTPAPIClient.m */; };
 		0B52EEA01768D93500F7D477 /* NSManagedObject+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE9E1768D93500F7D477 /* NSManagedObject+JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE9F1768D93500F7D477 /* NSManagedObject+JSON.m */; };
 		0B7F130117905DF90068B3F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7F130017905DF90068B3F8 /* Cocoa.framework */; };
@@ -772,7 +771,6 @@
 				103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */,
 				103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */,
 				0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */,
-				0B52EE9D1768D7E800F7D477 /* OSHTTPAPIClient.m in Sources */,
 				0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

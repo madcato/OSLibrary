@@ -40,13 +40,16 @@
     return database;
 }
 
-+(OSDatabase*)initWithModelName:(NSString *)modelName testing:(BOOL)testing {
++(OSDatabase*)initWithModelName:(NSString *)modelName
+                      storeName:(NSString*)storeName
+                        testing:(BOOL)testing {
     static OSDatabase* instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [OSDatabase defaultDatabase];
         instance.modelName = modelName;
         instance.unittesting = testing;
+        instance.storeName = storeName;
     });
     return instance;
 }
@@ -242,7 +245,7 @@
         return _persistentStoreCoordinator;
     }
 
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",self.modelName]];
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",self.storeName]];
 
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
