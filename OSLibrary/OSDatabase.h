@@ -13,7 +13,9 @@
 /** 
  Call this method in the applicationDidFinishLaunching
 */
-+(OSDatabase*)initWithModelName:(NSString *)modelName testing:(BOOL)testing;
++(OSDatabase*)initWithModelName:(NSString *)modelName
+                      storeName:(NSString*)storeName
+                        testing:(BOOL)testing;
 +(OSDatabase*)defaultDatabase;
 +(OSDatabase*)backgroundDatabase;
 - (NSManagedObject*)insertObject:(NSString*)entityName values:(NSDictionary*)values;
@@ -30,6 +32,7 @@
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong)  NSString *modelName;
+@property (nonatomic, strong)  NSString *storeName;
 @property (nonatomic, assign)  BOOL unittesting;
 
 + (void)displayValidationError:(NSError *)anError;
