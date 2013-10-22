@@ -19,7 +19,7 @@
 
 -(void)setUp
 {
-    database = [OSDatabase initWithModelName:@"OSDatabaseTest" testing:YES];
+    database = [OSDatabase initWithModelName:@"OSDatabaseTest" storeName:@"OSDatabaseTest" testing:YES];
 }
 
 -(void)tearDown
