@@ -40,7 +40,7 @@
     return database;
 }
 
-+(OSDatabase*)initWithsModelName:(NSString *)modelName
++(OSDatabase*)initWithModelName:(NSString *)modelName
                       storeName:(NSString*)storeName
                         testing:(BOOL)testing {
     static OSDatabase* instance = nil;
