@@ -166,6 +166,10 @@
  */
 + (void)updateAppVersionInSettings;
 
++ (NSString*)appVersion;
++ (NSString*)appBuildVersion;
++ (void)updateAppVersionInSettings;
+
 @end
 
 

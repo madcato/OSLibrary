@@ -136,6 +136,21 @@
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
++ (NSString*)appName
+{
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+}
+
++ (NSString*)appVersion
+{
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+
++ (NSString*)appBuildVersion
+{
+    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
 + (void)updateAppVersionInSettings {
     NSString *appVersionText = [NSString stringWithFormat:@"%@ (%@)",
                                 [OSSystem appVersion], [OSSystem appBuildVersion]];

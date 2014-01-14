@@ -12,181 +12,181 @@
 @implementation OSDefaultTheme
 
 - (UIColor *)mainColor {
-  return nil;
+    return nil;
 }
 
 - (UIFont *)defaultFont {
-  return nil;
+    return nil;
 }
 
 - (UIColor *)highlightColor {
-  return nil;
+    return nil;
 }
 
 - (UIColor *)shadowColor {
-  return nil;
+    return nil;
 }
 
 - (UIColor *)backgroundColor {
-  return nil;
+    return nil;
 }
 
 - (UIColor *)baseTintColor {
-  return nil;
+    return nil;
 }
 
 - (UIColor *)accentTintColor {
-  return nil;
+    return nil;
 }
 
 - (UIColor *)switchThumbColor {
-  return nil;
+    return nil;
 }
 
 - (UIColor *)switchOnColor {
-  return nil;
+    return nil;
 }
 
 - (UIColor *)switchTintColor {
-  return nil;
+    return nil;
 }
 
 - (CGSize)shadowOffset {
-  return CGSizeZero;
+    return CGSizeZero;
 }
 
 - (UIImage *)topShadow {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)bottomShadow {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)navigationBackgroundForBarMetrics:(UIBarMetrics)metrics {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)barButtonBackgroundForState:(UIControlState)state
-                   style:(UIBarButtonItemStyle)style
-                barMetrics:(UIBarMetrics)barMetrics {
-  return nil;
+                                   style:(UIBarButtonItemStyle)style
+                              barMetrics:(UIBarMetrics)barMetrics {
+    return nil;
 }
 
 - (UIImage *)backBackgroundForState:(UIControlState)state
-             barMetrics:(UIBarMetrics)barMetrics {
-  return nil;
+                         barMetrics:(UIBarMetrics)barMetrics {
+    return nil;
 }
 
 - (UIImage *)toolbarBackgroundForBarMetrics:(UIBarMetrics)metrics {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)searchBackground {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)searchFieldImage {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)searchImageForIcon:(UISearchBarIcon)icon
-              state:(UIControlState)state {
-  return nil;
+                          state:(UIControlState)state {
+    return nil;
 }
 
 - (UIImage *)searchScopeButtonBackgroundForState:(UIControlState)state {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)searchScopeButtonDivider {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)segmentedBackgroundForState:(UIControlState)state
-                barMetrics:(UIBarMetrics)barMetrics {
-  return nil;
+                              barMetrics:(UIBarMetrics)barMetrics {
+    return nil;
 }
 
 - (UIImage *)segmentedDividerForBarMetrics:(UIBarMetrics)barMetrics {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)tableBackground {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)onSwitchImage {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)offSwitchImage {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)sliderThumbForState:(UIControlState)state {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)sliderMinTrack {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)sliderMaxTrack {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)speedSliderMinImage {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)speedSliderMaxImage {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)progressTrackImage {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)progressProgressImage {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)stepperBackgroundForState:(UIControlState)state {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)stepperDividerForState:(UIControlState)state {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)stepperIncrementImage {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)stepperDecrementImage {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)buttonBackgroundForState:(UIControlState)state {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)tabBarBackground {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)tabBarSelectionIndicator {
-  return nil;
+    return nil;
 }
 
 - (UIImage *)imageForTab:(NSInteger)tab {
-  NSString* name = nil;
-  return (name ? [UIImage imageNamed:name] : nil);
+    NSString* name = nil;
+    return (name ? [UIImage imageNamed:name] : nil);
 }
 
 - (UIImage *)finishedImageForTab:(NSInteger)tab selected:(BOOL)selected {
-  return nil;
+    return nil;
 }
 
 

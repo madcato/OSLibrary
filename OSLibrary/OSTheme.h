@@ -38,11 +38,11 @@
 - (UIImage *)navigationBackgroundForBarMetrics:(UIBarMetrics)metrics;
 
 - (UIImage *)barButtonBackgroundForState:(UIControlState)state
-                   style:(UIBarButtonItemStyle)style
-                barMetrics:(UIBarMetrics)barMetrics;
+                                   style:(UIBarButtonItemStyle)style
+                              barMetrics:(UIBarMetrics)barMetrics;
 
 - (UIImage *)backBackgroundForState:(UIControlState)state
-             barMetrics:(UIBarMetrics)barMetrics;
+                         barMetrics:(UIBarMetrics)barMetrics;
 
 - (UIImage *)toolbarBackgroundForBarMetrics:(UIBarMetrics)metrics;
 
@@ -51,14 +51,14 @@
 - (UIImage *)searchFieldImage;
 
 - (UIImage *)searchImageForIcon:(UISearchBarIcon)icon
-              state:(UIControlState)state;
+                          state:(UIControlState)state;
 
 - (UIImage *)searchScopeButtonBackgroundForState:(UIControlState)state;
 
 - (UIImage *)searchScopeButtonDivider;
 
 - (UIImage *)segmentedBackgroundForState:(UIControlState)state
-                barMetrics:(UIBarMetrics)barMetrics;
+                              barMetrics:(UIBarMetrics)barMetrics;
 
 - (UIImage *)segmentedDividerForBarMetrics:(UIBarMetrics)barMetrics;
 

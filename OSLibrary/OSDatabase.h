@@ -14,46 +14,30 @@
 /** 
  Call this method in the applicationDidFinishLaunching
 */
-+(OSDatabase*)initWith:(NSManagedObjectContext *)managedObjectContext
-  objectModel:(NSManagedObjectModel *)managedObjectModel
-     andStore:(NSPersistentStoreCoordinator *)persistentStoreCoordinator;
++(OSDatabase*)initWithModelName:(NSString *)modelName
+                      storeName:(NSString*)storeName
+                        testing:(BOOL)testing;
 
 +(OSDatabase*)defaultDatabase;
 
 +(OSDatabase*)backgroundDatabase;
+- (NSManagedObject*)insertObject:(NSString*)entityName values:(NSDictionary*)values;
+- (NSManagedObject*)selectObject:(NSString*)entityName withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments;
+- (NSArray*)getResultsFrom:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments;
+- (NSFetchedResultsController*)createFetchedResultsController:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments andSectionNameKeyPath:(NSString*)keyPath;
+- (NSManagedObjectContext*)createObjectContextForMainThread;
+- (NSManagedObjectContext*)createObjectContextForPrivateThread;
+- (void)save;
+- (void)deleteObjects:(NSString*)entityName withPredicate:(NSString*)format andArguments:(NSArray*)arguments;
+- (NSManagedObject*)objectWithID:(NSManagedObjectID*)objectID;
+- (void)resetDatabaseFile;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
+@property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (nonatomic, strong)  NSString *modelName;
+@property (nonatomic, strong)  NSString *storeName;
+@property (nonatomic, assign)  BOOL unittesting;
 
-- (NSManagedObject*)insertObject:(NSString*)entityName
-              values:(NSDictionary*)values;
-
-- (NSManagedObject*)selectObject:(NSString*)entityName
-           withPredicate:(NSString*)predicateText
-          andArguments:(NSArray*)arguments;
-
-- (NSArray*)getResultsFrom:(NSString*)entityName
-         sortArray:(NSArray*)sortArray
-       withPredicate:(NSString*)predicateText
-        andArguments:(NSArray*)arguments;
-
-- (NSFetchedResultsController*)createFetchedResultsController:(NSString*)entityName
-                          sortArray:(NSArray*)sortArray
-                        withPredicate:(NSString*)predicateText
-                         andArguments:(NSArray*)arguments
-                    andSectionNameKeyPath:(NSString*)keyPath;
-
-- (NSManagedObjectContext*)createObjectContext;
-
--(void)save;
-
--(void)deleteObjects:(NSString*)entityName
-     withPredicate:(NSString*)format
-    andArguments:(NSArray*)arguments;
-
--(NSManagedObject*)objectWithID:(NSManagedObjectID*)objectID;
-
-@property (atomic, strong) NSManagedObjectContext *managedObjectContext;
-
-@property (atomic, strong) NSManagedObjectModel *managedObjectModel;
-
-@property (atomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
++ (void)displayValidationError:(NSError *)anError;
 
 @end
