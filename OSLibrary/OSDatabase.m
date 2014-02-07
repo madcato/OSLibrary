@@ -78,21 +78,11 @@
     return managedObject;
 }
 
-- (NSManagedObject*)insertObject:(NSString*)entityName
-              values:(NSDictionary*)values {
-  // Insert new object
-  NSManagedObject *managedObject = [NSEntityDescription
-                    insertNewObjectForEntityForName:entityName
-                inManagedObjectContext:self.managedObjectContext];
-  assert(managedObject != nil);
-  // If appropriate, configure the new managed object.
-  // Normally you should use accessor methods,
-  //but using KVC here avoids the need to add a custom class to the template.
-  NSArray* keyArray = [values allKeys];
-  for(NSString* key in keyArray) {
-    [managedObject setValue:[values valueForKey:key] forKey:key];
-  }
-  return managedObject;
+- (NSManagedObject*)selectObject:(NSString*)entityName withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments {
+    NSArray* array = [self getResultsFrom:entityName sortArray:nil withPredicate:predicateText andArguments:arguments];
+    assert([array count] <= 1);
+    if([array count] == 0) return nil;
+    return [array objectAtIndex:0];
 }
 
 - (NSArray*)getResultsFrom:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments {
@@ -125,48 +115,6 @@
         [OSDatabase displayValidationError:error];
     }
     return fetchedObjects;
-}
-
-- (NSArray*)getResultsFrom:(NSString*)entityName
-         sortArray:(NSArray*)sortArray
-       withPredicate:(NSString*)predicateText
-        andArguments:(NSArray*)arguments {
-  assert(self.managedObjectContext != nil);
-  NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-  // Edit the entity name as appropriate.
-  NSEntityDescription *entity = [NSEntityDescription
-                   entityForName:entityName
-              inManagedObjectContext:self.managedObjectContext];
-  assert(entity != nil);
-  [fetchRequest setEntity:entity];
-  // Set the batch size to a suitable number.
-  [fetchRequest setFetchBatchSize:20];
-  // Edit the sort key as appropriate.
-  if(sortArray) {
-    NSMutableArray *sortDescriptors = [NSMutableArray array];
-    for(NSString* sortName in sortArray) {
-      NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                        initWithKey:sortName
-                          ascending:YES];
-      [sortDescriptors addObject:sortDescriptor];
-    }
-    [fetchRequest setSortDescriptors:sortDescriptors];
-  }
-  NSPredicate* predicate = [NSPredicate predicateWithFormat:predicateText
-                        argumentArray:arguments];
-  assert(predicate != nil);
-  [fetchRequest setPredicate:predicate];
-  // Edit the section name key path and cache name if appropriate.
-  // nil for section name key path means "no sections".
-  NSError* error = nil;
-  NSArray *fetchedObjects = [self.managedObjectContext
-                 executeFetchRequest:fetchRequest
-                       error:&error];
-  if (error != nil) {
-    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-    abort();
-  }
-  return fetchedObjects;
 }
 
 - (NSFetchedResultsController*)

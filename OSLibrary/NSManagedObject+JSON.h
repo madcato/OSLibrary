@@ -34,3 +34,5 @@
 //  @property (nonatomic, retain) NSNumber * syncStatus;
 //  @property (nonatomic, retain) NSString * objectId;
 //
+
+@end
