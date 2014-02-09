@@ -13,5 +13,9 @@ iOS Utility library
 5. In "Build Phases" add SystemConfiguration.framework, QuartzCore.framework, CoreLocation.framework and CoreData.framework to "Linked Binary Wit Libraries".
 6. Include the following line in your precompiled file (.pch):  
 
+	```#import <SystemConfiguration/SystemConfiguration.h>```
+    	```#import <QuartzCore/QuartzCore.h>```
+    	```#import <CoreLocation/CoreLocation.h>```
+    	```#import <CoreData/CoreData.h>```
 	```#import <OSLibrary.h>```
 
