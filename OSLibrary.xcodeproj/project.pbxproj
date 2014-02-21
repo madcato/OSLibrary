@@ -18,6 +18,7 @@
 		0B52EE9C1768D7E800F7D477 /* OSHTTPAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE9A1768D7E700F7D477 /* OSHTTPAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B52EEA01768D93500F7D477 /* NSManagedObject+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE9E1768D93500F7D477 /* NSManagedObject+JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE9F1768D93500F7D477 /* NSManagedObject+JSON.m */; };
+		0B5D1E1B18B75BF800B14A7B /* OSWebRequestAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C7CF23167B3F7100E9047F /* OSWebRequestAuth.m */; };
 		0B7F130117905DF90068B3F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7F130017905DF90068B3F8 /* Cocoa.framework */; };
 		0B7F130B17905DF90068B3F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F130917905DF90068B3F8 /* InfoPlist.strings */; };
 		0B7F132B179061F00068B3F8 /* OSDatabase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 106F667615D8DFC10016184F /* OSDatabase.h */; };
@@ -188,8 +189,6 @@
 		103FE0A8165BC7BD00F25586 /* OSDefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDefaultTheme.m; sourceTree = "<group>"; };
 		103FE0AB165BC7CC00F25586 /* OSTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTheme.h; sourceTree = "<group>"; };
 		103FE0AC165BC7CC00F25586 /* OSTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTheme.m; sourceTree = "<group>"; };
-		1051D9EE16DD0638008DE17E /* NSManagedObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+JSON.h"; sourceTree = "<group>"; };
-		1051D9EF16DD0638008DE17E /* NSManagedObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+JSON.m"; sourceTree = "<group>"; };
 		10532F4115DA569000AB115B /* OSLoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSLoadingViewController.h; sourceTree = "<group>"; };
 		10532F4215DA569000AB115B /* OSLoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSLoadingViewController.m; sourceTree = "<group>"; };
 		106F64A515C16B8700C22FC0 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
@@ -204,13 +203,8 @@
 		1097CC47165A761300330CD2 /* NSStirng+encodeStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSStirng+encodeStringTest.m"; sourceTree = "<group>"; };
 		1097CC4A165A789C00330CD2 /* OSOperationQueuesTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperationQueuesTest.h; sourceTree = "<group>"; };
 		1097CC4B165A789C00330CD2 /* OSOperationQueuesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSOperationQueuesTest.m; sourceTree = "<group>"; };
-		109D112916DE6ABB00FC0F02 /* NSManagedObject+JSONTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+JSONTest.m"; sourceTree = "<group>"; };
-		109D112C16DE6C4900FC0F02 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		109D112F16DE71A700FC0F02 /* OSLibraryTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OSLibraryTest.xcdatamodel; sourceTree = "<group>"; };
 		10A338FE15E381560059F012 /* NSString+encodeString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+encodeString.h"; sourceTree = "<group>"; };
 		10A338FF15E381560059F012 /* NSString+encodeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encodeString.m"; sourceTree = "<group>"; };
-		10AEC39A16DF6AE2004A36F9 /* OSCryptoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCryptoTest.m; sourceTree = "<group>"; };
-		10AEC39C16DF6CCD004A36F9 /* NSData+Base64Test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64Test.m"; sourceTree = "<group>"; };
 		10C58E4015DCDD7D00496A25 /* OSOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperation.h; sourceTree = "<group>"; };
 		10C58E4115DCDD7D00496A25 /* OSOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSOperation.m; sourceTree = "<group>"; };
 		10C58E4915DCEB2700496A25 /* OSOperationQueues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSOperationQueues.h; sourceTree = "<group>"; };
@@ -759,6 +753,7 @@
 			files = (
 				27CB962613E4115700717380 /* OSDate.m in Sources */,
 				27CB962A13E411CD00717380 /* OSTime.m in Sources */,
+				0B5D1E1B18B75BF800B14A7B /* OSWebRequestAuth.m in Sources */,
 				27CB962E13E411DC00717380 /* OSDateTime.m in Sources */,
 				27CB963213E4124400717380 /* OSSystem.m in Sources */,
 				27FEF6E513ED459800BC78B0 /* OSAnimation.m in Sources */,
