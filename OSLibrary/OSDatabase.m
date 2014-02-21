@@ -42,7 +42,8 @@
 
 +(OSDatabase*)initWithModelName:(NSString *)modelName
                       storeName:(NSString*)storeName
-                        testing:(BOOL)testing {
+                        testing:(BOOL)testing
+                       delegate:(id<OSDatabaseDelegate>) dele {
     static OSDatabase* instance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -50,6 +51,7 @@
         instance.modelName = modelName;
         instance.unittesting = testing;
         instance.storeName = storeName;
+        instance.delegate = dele;
     });
     return instance;
 }
@@ -348,8 +350,11 @@
     
 }
 
-
 + (void)displayValidationError:(NSError *)anError {
+    [[[OSDatabase defaultDatabase] delegate] displayError:anError];
+}
+    
++ (void)displayValidationErrorSample:(NSError *)anError {
     if (anError && [[anError domain] isEqualToString:@"NSCocoaErrorDomain"]) {
         NSArray *errors = nil;
         
