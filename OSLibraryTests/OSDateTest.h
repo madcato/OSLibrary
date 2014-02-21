@@ -19,9 +19,9 @@
 @interface OSDateTest : SenTestCase
 
 #if USE_APPLICATION_UNIT_TEST
-- (void)testAppDelegate;       // simple test on application
+- (void)testAppDelegate;     // simple test on application
 #else
-- (void)testMath;              // simple standalone test
+- (void)testMath;        // simple standalone test
 - (void)testNotNil;
 #endif
 

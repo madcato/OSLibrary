@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface NSString (encodeString)
+
 -(NSString*)encodeStringForHTTPParam;
+
 @end

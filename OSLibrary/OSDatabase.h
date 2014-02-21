@@ -24,6 +24,7 @@
                         testing:(BOOL)testing
                        delegate:(id<OSDatabaseDelegate>) dele;
 +(OSDatabase*)defaultDatabase;
+
 +(OSDatabase*)backgroundDatabase;
 - (NSManagedObject*)insertObject:(NSString*)entityName values:(NSDictionary*)values;
 - (NSManagedObject*)selectObject:(NSString*)entityName withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments;

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 /*!
  @class OSDateTime
  @abstract Date and time manipulation functions
@@ -20,7 +21,8 @@
 /*!
  @method now
  @result NSString*
- @abstract This method return the current date and time with the system locale format
+ @abstract This method return the current date and time with the system locale 
+  format
  */
 +(NSString*)now;
 
@@ -52,9 +54,23 @@
  @param minutes Number of minutes
  @param seconds Number of seconds
  @result NSDate*
- @abstract This method generates a new NSDate object by adding the date components to fromDate param.
- @discussion Use this method to add periods of time to a given date. Example: to add one year to today use: [
- [OSDateTime dateByAddingToDate:[NsDate date] years:1 months:0 days:0 hours:0 minutes:0 seconds:0];
+ @abstract This method generates a new NSDate object by adding the date 
+  components to fromDate param.
+ @discussion Use this method to add periods of time to a given date. 
+  Example: to add one year to today use: [
+ [OSDateTime dateByAddingToDate:[NsDate date] years:1 
+                       months:0 
+                         days:0
+                        hours:0 
+                      minutes:0 
+                      seconds:0];
  */
-+(NSDate*)dateByAddingToDate:(NSDate*)fromDate years:(NSInteger)numYears months:(NSInteger)numMonths days:(NSInteger)numDays hours:(NSInteger)numHours minutes:(NSInteger)numMinutes seconds:(NSInteger)numSeconds;
++(NSDate*)dateByAddingToDate:(NSDate*)fromDate
+             years:(NSInteger)numYears
+            months:(NSInteger)numMonths
+            days:(NSInteger)numDays
+             hours:(NSInteger)numHours
+           minutes:(NSInteger)numMinutes
+           seconds:(NSInteger)numSeconds;
+
 @end

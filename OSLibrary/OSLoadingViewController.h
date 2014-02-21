@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface OSLoadingViewController : NSObject {
-    UIView* loadingView;
+@private
+  UIView* loadingView;
 }
 
 - (void)showLoadingView;

@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OSLocation : NSObject
 
+@interface OSLocation : NSObject
 
 /*! 
  @method locationServiceEnabled 

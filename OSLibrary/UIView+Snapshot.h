@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 /*!
  @class UIView (Snapshot)
  @abstract Take snapshot form a view
