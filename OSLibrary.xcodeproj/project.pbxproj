@@ -18,6 +18,7 @@
 		0B52EE9C1768D7E800F7D477 /* OSHTTPAPIClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE9A1768D7E700F7D477 /* OSHTTPAPIClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B52EEA01768D93500F7D477 /* NSManagedObject+JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B52EE9E1768D93500F7D477 /* NSManagedObject+JSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE9F1768D93500F7D477 /* NSManagedObject+JSON.m */; };
+		0B5D1E1B18B75BF800B14A7B /* OSWebRequestAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C7CF23167B3F7100E9047F /* OSWebRequestAuth.m */; };
 		0B7F130117905DF90068B3F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7F130017905DF90068B3F8 /* Cocoa.framework */; };
 		0B7F130B17905DF90068B3F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F130917905DF90068B3F8 /* InfoPlist.strings */; };
 		0B7F132B179061F00068B3F8 /* OSDatabase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 106F667615D8DFC10016184F /* OSDatabase.h */; };
@@ -753,6 +754,7 @@
 			files = (
 				27CB962613E4115700717380 /* OSDate.m in Sources */,
 				27CB962A13E411CD00717380 /* OSTime.m in Sources */,
+				0B5D1E1B18B75BF800B14A7B /* OSWebRequestAuth.m in Sources */,
 				27CB962E13E411DC00717380 /* OSDateTime.m in Sources */,
 				27CB963213E4124400717380 /* OSSystem.m in Sources */,
 				27FEF6E513ED459800BC78B0 /* OSAnimation.m in Sources */,

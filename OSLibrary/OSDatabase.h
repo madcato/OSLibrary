@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol OSDatabaseDelegate <NSObject>
+
+- (void)displayError:(NSError*) error;
+
+@end
 
 @interface OSDatabase : NSObject
 
@@ -16,8 +21,8 @@
 */
 +(OSDatabase*)initWithModelName:(NSString *)modelName
                       storeName:(NSString*)storeName
-                        testing:(BOOL)testing;
-
+                        testing:(BOOL)testing
+                       delegate:(id<OSDatabaseDelegate>) dele;
 +(OSDatabase*)defaultDatabase;
 
 +(OSDatabase*)backgroundDatabase;
@@ -37,6 +42,7 @@
 @property (nonatomic, strong)  NSString *modelName;
 @property (nonatomic, strong)  NSString *storeName;
 @property (nonatomic, assign)  BOOL unittesting;
+@property (nonatomic, assign)  id<OSDatabaseDelegate> delegate;
 
 + (void)displayValidationError:(NSError *)anError;
 
