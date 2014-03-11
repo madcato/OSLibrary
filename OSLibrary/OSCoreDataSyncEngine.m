@@ -63,7 +63,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 }
 
 - (void)setInitialSyncCompleted {
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:kOSCoreDataSyncEngineInitialCompleteKey];
+    [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:kOSCoreDataSyncEngineInitialCompleteKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -90,8 +90,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     //
     // Set the sort descriptors on the request to sort by updated_at in descending order
     //
-    [request setSortDescriptors:[NSArray arrayWithObject:
-                                 [NSSortDescriptor sortDescriptorWithKey:@"updated_at" ascending:NO]]];
+    [request setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"updated_at" ascending:NO]]];
     //
     // You are only interested in 1 result so limit the request to 1
     //
@@ -116,7 +115,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     [record enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [self setValue:obj forKey:key forManagedObject:newManagedObject];
     }];
-    [record setValue:[NSNumber numberWithInt:OSObjectSynced] forKey:@"syncStatus"];
+    [record setValue:@(OSObjectSynced) forKey:@"syncStatus"];
 }
 
 - (void)updateManagedObject:(NSManagedObject *)managedObject withRecord:(NSDictionary *)record {
@@ -130,14 +129,14 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         NSDate *date = [self dateUsingStringFromAPI:value];
         [managedObject setValue:date forKey:key];
     } else if ([value isKindOfClass:[NSDictionary class]]) {
-        if ([value objectForKey:@"__type"]) {
-            NSString *dataType = [value objectForKey:@"__type"];
+        if (value[@"__type"]) {
+            NSString *dataType = value[@"__type"];
             if ([dataType isEqualToString:@"Date"]) {
-                NSString *dateString = [value objectForKey:@"iso"];
+                NSString *dateString = value[@"iso"];
                 NSDate *date = [self dateUsingStringFromAPI:dateString];
                 [managedObject setValue:date forKey:key];
             } else if ([dataType isEqualToString:@"File"]) {
-                NSString *urlString = [value objectForKey:@"url"];
+                NSString *urlString = value[@"url"];
                 NSURL *url = [NSURL URLWithString:urlString];
                 NSURLRequest *request = [NSURLRequest requestWithURL:url];
                 NSURLResponse *response = nil;
@@ -181,8 +180,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     }
 
     [fetchRequest setPredicate:predicate];
-    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:
-                                      [NSSortDescriptor sortDescriptorWithKey:@"objectId" ascending:YES]]];
+    [fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"objectId" ascending:YES]]];
     [managedObjectContext performBlockAndWait:^{
         NSError *error = nil;
         results = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
@@ -232,7 +230,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 
                     // Make sure we don't access an index that is out of bounds as we are iterating over both collections together
                     if ([storedRecords count] > currentIndex) {
-                        storedManagedObject = [storedRecords objectAtIndex:currentIndex];
+                        storedManagedObject = storedRecords[currentIndex];
                     }
 
                     if ([[storedManagedObject valueForKey:@"objectId"] isEqualToString:[record valueForKey:@"objectId"]]) {
@@ -240,7 +238,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                         // Do a quick spot check to validate the objectIds in fact do match, if they do update the stored
                         // object with the values received from the remote service
                         //
-                        [self updateManagedObject:[storedRecords objectAtIndex:currentIndex] withRecord:record];
+                        [self updateManagedObject:storedRecords[currentIndex] withRecord:record];
                     } else {
                         //
                         // Otherwise you have a new object coming in from your remote service so create a new
@@ -355,7 +353,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                 NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"created_at"]];
                 [objectToCreate setValue:createdDate forKey:@"created_at"];
                 [objectToCreate setValue:[responseDictionary valueForKey:@"objectId"] forKey:@"objectId"];
-                [objectToCreate setValue:[NSNumber numberWithInt:OSObjectSynced] forKey:@"syncStatus"];
+                [objectToCreate setValue:@(OSObjectSynced) forKey:@"syncStatus"];
             } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 //
                 // Log an error if there was one, proper error handling should be done if necessary, in this case it may not
@@ -376,7 +374,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     // Pass off operations array to the sharedClient so that they are all executed
     //
     [self.registeredAPIClient enqueueBatchOfHTTPRequestOperations:operations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
-        NSLog(@"Completed %d of %d create operations", numberOfCompletedOperations, totalNumberOfOperations);
+        NSLog(@"Completed %lu of %lu create operations", (unsigned long)numberOfCompletedOperations, (unsigned long)totalNumberOfOperations);
     } completionBlock:^(NSArray *operations) {
         if ([operations count] > 0) {
             NSLog(@"Creation of objects on server compelete, updated objects in context: %@", [[[OSDatabase backgroundDatabase] managedObjectContext] updatedObjects]);
@@ -500,8 +498,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 - (NSArray *)JSONDataRecordsForClass:(NSString *)className sortedByKey:(NSString *)key {
     NSArray *JSONArray = [self JSONArrayForClassWithName:className];
     NSArray *records = JSONArray;
-    return [records sortedArrayUsingDescriptors:[NSArray arrayWithObject:
-                                                 [NSSortDescriptor sortDescriptorWithKey:key ascending:YES]]];
+    return [records sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:key ascending:YES]]];
 }
 
 - (void)deleteJSONDataRecordsForClassWithName:(NSString *)className {
@@ -637,7 +634,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         if ([[object valueForKey:@"objectId"] isEqualToString:@""] || [object valueForKey:@"objectId"] == nil) {
             [context deleteObject:object];
         } else {
-            [object setValue:[NSNumber numberWithInt:OSObjectDeleted] forKey:@"syncStatus"];
+            [object setValue:@(OSObjectDeleted) forKey:@"syncStatus"];
         }
         // FIXME: No funciona el borrar objetos.
         NSError *error = nil;

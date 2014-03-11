@@ -19,7 +19,10 @@
 
 -(void)setUp
 {
-    database = [OSDatabase initWithModelName:@"OSDatabaseTest" storeName:@"OSDatabaseTest" testing:YES];
+    database = [OSDatabase initWithModelName:@"OSDatabaseTest"
+                                   storeName:@"OSDatabaseTest"
+                                     testing:YES
+                                    delegate:nil];
 }
 
 -(void)tearDown
@@ -37,7 +40,7 @@
     id object = [database selectObject:@"Person"
                          withPredicate:@"name = 'pepe1'"
                           andArguments:nil];
-    STAssertNotNil(object, @"OSDatabase doesn't find Person object");
+    XCTAssertNotNil(object, @"OSDatabase doesn't find Person object");
 }
 
 -(void)testFetchArray {
@@ -49,7 +52,7 @@
                                  withPredicate:@"programmer = NO"
                                   andArguments:nil];
 
-    STAssertTrue([result count] == 2, @"OSDatabase ha fallado al devolver dos objetos de la consulta");
+    XCTAssertTrue([result count] == 2, @"OSDatabase ha fallado al devolver dos objetos de la consulta");
 }
 
 
@@ -63,14 +66,14 @@
                                  withPredicate:@"programmer = NO"
                                   andArguments:nil];
     
-    STAssertTrue([result count] == 1, @"OSDatabase ha fallado al devolver el objeto que queda.");
+    XCTAssertTrue([result count] == 1, @"OSDatabase ha fallado al devolver el objeto que queda.");
 }
 
 - (id)createPepe1 {
     id object = [database insertObject:@"Person" values:@{@"name": @"pepe1",
                  @"programmer": @NO,
                  @"height": @1.3f}];
-    STAssertNotNil(object, @"OSDatabase doesn't create Person object");
+    XCTAssertNotNil(object, @"OSDatabase doesn't create Person object");
     return object;
 }
 
@@ -78,7 +81,7 @@
     id object = [database insertObject:@"Person" values:@{@"name": @"pepe2",
                  @"programmer": @NO,
                  @"height": @1.3f}];
-    STAssertNotNil(object, @"OSDatabase doesn't create Person object");
+    XCTAssertNotNil(object, @"OSDatabase doesn't create Person object");
     return object;
 }
 

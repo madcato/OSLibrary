@@ -82,7 +82,6 @@
 		278474B913EFF2E400CDD1CF /* OSWebRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 278474B713EFF2E400CDD1CF /* OSWebRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		278474BA13EFF2E400CDD1CF /* OSWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 278474B813EFF2E400CDD1CF /* OSWebRequest.m */; };
 		27CB95FA13E4110100717380 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CB95F913E4110100717380 /* Foundation.framework */; };
-		27CB960813E4110100717380 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CB960713E4110100717380 /* SenTestingKit.framework */; };
 		27CB960B13E4110100717380 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CB95F913E4110100717380 /* Foundation.framework */; };
 		27CB961013E4110100717380 /* libOSLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CB95F613E4110100717380 /* libOSLibrary.a */; };
 		27CB961613E4110100717380 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27CB961413E4110100717380 /* InfoPlist.strings */; };
@@ -222,8 +221,7 @@
 		27CB95F913E4110100717380 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27CB95FD13E4110100717380 /* OSLibrary-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibrary-Prefix.pch"; sourceTree = "<group>"; };
 		27CB95FE13E4110100717380 /* OSLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSLibrary.h; sourceTree = "<group>"; };
-		27CB960613E4110100717380 /* OSLibraryTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSLibraryTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		27CB960713E4110100717380 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		27CB960613E4110100717380 /* OSLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CB961313E4110100717380 /* OSLibraryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSLibraryTests-Info.plist"; sourceTree = "<group>"; };
 		27CB961513E4110100717380 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27CB961713E4110100717380 /* OSLibraryTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSLibraryTests.h; sourceTree = "<group>"; };
@@ -288,7 +286,6 @@
 				0B0CF5D8176FB79500CBEF64 /* CoreData.framework in Frameworks */,
 				1008160915C11BE800429593 /* UIKit.framework in Frameworks */,
 				27FD9C7B14EAB5940091A0E3 /* SystemConfiguration.framework in Frameworks */,
-				27CB960813E4110100717380 /* SenTestingKit.framework in Frameworks */,
 				27CB960B13E4110100717380 /* Foundation.framework in Frameworks */,
 				27CB961013E4110100717380 /* libOSLibrary.a in Frameworks */,
 			);
@@ -465,7 +462,7 @@
 			isa = PBXGroup;
 			children = (
 				27CB95F613E4110100717380 /* libOSLibrary.a */,
-				27CB960613E4110100717380 /* OSLibraryTests.octest */,
+				27CB960613E4110100717380 /* OSLibraryTests.xctest */,
 				0B7F12FF17905DF90068B3F8 /* OSLibraryBundle.bundle */,
 			);
 			name = Products;
@@ -480,7 +477,6 @@
 				1008160715C11BA700429593 /* UIKit.framework */,
 				27FD9C7314EAB3200091A0E3 /* SystemConfiguration.framework */,
 				27CB95F913E4110100717380 /* Foundation.framework */,
-				27CB960713E4110100717380 /* SenTestingKit.framework */,
 				84136008BC254DAE8D9FC971 /* libPods.a */,
 				0B7F130017905DF90068B3F8 /* Cocoa.framework */,
 				0B7F130217905DF90068B3F8 /* Other Frameworks */,
@@ -645,8 +641,8 @@
 			);
 			name = OSLibraryTests;
 			productName = OSLibraryTests;
-			productReference = 27CB960613E4110100717380 /* OSLibraryTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = 27CB960613E4110100717380 /* OSLibraryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -654,7 +650,8 @@
 		27CB95ED13E4110000717380 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastTestingUpgradeCheck = 0510;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 27CB95F013E4110000717380 /* Build configuration list for PBXProject "OSLibrary" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -831,7 +828,6 @@
 		0B7F130E17905DF90068B3F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -862,7 +858,6 @@
 		0B7F130F17905DF90068B3F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -982,7 +977,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSLibrary/OSLibrary-Prefix.pch";
@@ -994,7 +989,6 @@
 				PODS_PUBLIC_HEADERS_SEARCH_PATHS = "\"${PODS_ROOT}/Headers\" \"${PODS_ROOT}/Headers/AFNetworking\"";
 				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -1004,7 +998,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(inherited)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSLibrary/OSLibrary-Prefix.pch";
@@ -1016,7 +1010,6 @@
 				PODS_PUBLIC_HEADERS_SEARCH_PATHS = "\"${PODS_ROOT}/Headers\" \"${PODS_ROOT}/Headers/AFNetworking\"";
 				PODS_ROOT = "${SRCROOT}/Pods";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Release;
 		};

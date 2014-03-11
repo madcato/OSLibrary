@@ -15,7 +15,7 @@
 {
   NSString* data = @"Hola";
   NSLog(@"%@",[data encodeStringForHTTPParam]);
-  STAssertEqualObjects(@"Hola", [data encodeStringForHTTPParam], @"String encode for string 'hola' must be 'hola'");
+  XCTAssertEqualObjects(@"Hola", [data encodeStringForHTTPParam], @"String encode for string 'hola' must be 'hola'");
 }
 
 @end

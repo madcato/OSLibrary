@@ -73,7 +73,7 @@
 }
 
 + (NSString*)getPreferredLanguage {
-  return [[NSLocale preferredLanguages] objectAtIndex:0];
+  return [NSLocale preferredLanguages][0];
 }
 
 
@@ -107,17 +107,15 @@
                 [settingsBundle
                   stringByAppendingPathComponent:
                     @"Root.plist"]];
-  NSArray *preferences = [settings objectForKey:@"PreferenceSpecifiers"];
+  NSArray *preferences = settings[@"PreferenceSpecifiers"];
   NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc]
                         initWithCapacity:
                           [preferences count]];
   for(NSDictionary *prefSpecification in preferences) {
-    NSString *key = [prefSpecification objectForKey:@"Key"];
+    NSString *key = prefSpecification[@"Key"];
     if(key) {
       if([[NSUserDefaults standardUserDefaults] objectForKey:key] == nil) {
-        [defaultsToRegister setObject:[prefSpecification
-                        objectForKey:@"DefaultValue"]
-                     forKey:key];
+        defaultsToRegister[key] = prefSpecification[@"DefaultValue"];
       }
     }
   }
@@ -125,15 +123,15 @@
 }
 
 + (NSString*)appName {
-  return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
+  return [[NSBundle mainBundle] infoDictionary][@"CFBundleName"];
 }
 
 + (NSString*)appVersion {
-  return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+  return [[NSBundle mainBundle] infoDictionary][@"CFBundleShortVersionString"];
 }
 
 + (NSString*)appBuildVersion {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    return [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"];
 }
 
 + (void)updateAppVersionInSettings {

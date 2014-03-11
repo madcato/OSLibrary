@@ -24,13 +24,13 @@
 
 - (void)testMath {
   
-  STAssertTrue((1+1)==2, @"Compiler isn't feeling well today :-(" );
+  XCTAssertTrue((1+1)==2, @"Compiler isn't feeling well today :-(" );
   
 }
 
 - (void)testNotNil {
   NSLog(@"Time now: %@", [OSTime now]);
-  STAssertNotNil([OSTime now], @"[OSTime now] no ha devuelto nada");
+  XCTAssertNotNil([OSTime now], @"[OSTime now] no ha devuelto nada");
 }
 
 #endif
