@@ -5,6 +5,7 @@
 //  Created by Daniel Vela on 13/08/12.
 //
 //
+// http://www.objc.io/issue-10/icloud-core-data.html
 
 #import <Foundation/Foundation.h>
 
@@ -45,5 +46,9 @@
 @property (nonatomic, assign)  id<OSDatabaseDelegate> delegate;
 
 + (void)displayValidationError:(NSError *)anError;
+
+- (void)registerForiCloudNotifications;
+
+- (void)registerObjectForStoreChanges:(id)object;
 
 @end

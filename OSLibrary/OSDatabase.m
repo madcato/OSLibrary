@@ -260,13 +260,11 @@ createFetchedResultsController:(NSString*)entityName
         return _persistentStoreCoordinator;
     }
 
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[NSString stringWithFormat:@"%@.sqlite",self.storeName]];
-
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
     if(self.unittesting == NO){
-    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:[self storeURL] options:[self iCloudPersistentStoreOptions] error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.
 
@@ -337,6 +335,51 @@ createFetchedResultsController:(NSString*)entityName
     url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     return url;
 }
+
+//- (NSURL *)storeURL {
+////    return [[self applicationDocumentsDirectory]
+////            URLByAppendingPathComponent:[NSString
+////                                         stringWithFormat:@"%@.sqlite"
+////                                                          ,self.storeName]];
+//    return [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:@"TW65EXAM4U.org.veladan.listacompra2"];
+//}
+
+
+- (NSURL *)storeURL {
+    return [[[self URLForCloudStoreDirectory] URLByAppendingPathComponent:@"TW65EXAM4U.org.veladan.listacompra2" isDirectory:NO]
+            URLByAppendingPathExtension:@"sqlite"];
+}
+
+
+
+
+- (NSURL *)URLForCloudStoreDirectory {
+    
+    return [self URLForCloudStoreDirectoryForCloudVersion];
+}
+
+
+- (NSURL *)URLForCloudStoreDirectoryForCloudVersion {
+    
+    // On iOS7+ the store needs to be in the application container and is managed by the iCloud framework.
+    return [[self URLForApplicationContainer] URLByAppendingPathComponent:@"CloudStore" isDirectory:YES];
+}
+
+- (NSURL *)URLForApplicationContainer {
+    
+    NSURL *applicationSupportURL = [[[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory
+                                                                           inDomains:NSUserDomainMask] lastObject];
+    
+    // On iOS, each app is in a sandbox so we don't need to app-scope this directory.
+    return applicationSupportURL;
+}
+//- (NSURL *)URLForCloudContainer {
+//    
+//    return [[NSFileManager defaultManager] URLForUbiquityContainerIdentifier:self.containerIdentifier];
+//}
+//
+
+#pragma mark - Reset
 
 - (void)resetDatabaseFile {
     NSPersistentStore* store = [[_persistentStoreCoordinator persistentStores] lastObject];
@@ -440,5 +483,108 @@ createFetchedResultsController:(NSString*)entityName
         }
     }
 }
+
+#pragma mark - Notification Observers
+
+- (void)registerForiCloudNotifications {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+	
+    [notificationCenter addObserver:self
+                           selector:@selector(storesWillChange:)
+                               name:NSPersistentStoreCoordinatorStoresWillChangeNotification
+                             object:self.persistentStoreCoordinator];
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(storesDidChange:)
+                               name:NSPersistentStoreCoordinatorStoresDidChangeNotification
+                             object:self.persistentStoreCoordinator];
+    
+    [notificationCenter addObserver:self
+                           selector:@selector(persistentStoreDidImportUbiquitousContentChanges:)
+                               name:NSPersistentStoreDidImportUbiquitousContentChangesNotification
+                             object:self.persistentStoreCoordinator];
+}
+
+# pragma mark - iCloud Support
+
+/// Use these options in your call to -addPersistentStore:
+- (NSDictionary *)iCloudPersistentStoreOptions {
+    return @{NSPersistentStoreUbiquitousContentNameKey: @"LiShopStoreNameKey",
+             NSPersistentStoreRebuildFromUbiquitousContentOption: @NO}; // Reload local store with icloud data
+}
+
+- (void) persistentStoreDidImportUbiquitousContentChanges:(NSNotification *)notification {
+    NSManagedObjectContext *context = self.managedObjectContext;
+	
+    [context performBlock:^{
+        [context mergeChangesFromContextDidSaveNotification:notification];
+    }];
+}
+
+- (void)storesWillChange:(NSNotification *)notification {
+    NSManagedObjectContext *context = self.managedObjectContext;
+	
+    [context performBlockAndWait:^{
+        NSError *error;
+		
+        if ([context hasChanges]) {
+            BOOL success = [context save:&error];
+            
+            if (!success && error) {
+                // perform error handling
+                NSLog(@"%@",[error localizedDescription]);
+            }
+        }
+        
+        [context reset];
+    }];
+    
+    // Refresh your User Interface.
+}
+
+- (void)storesDidChange:(NSNotification *)notification {
+   // Refresh UI
+}
+
+- (void)registerObjectForStoreChanges:(id)object {
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:object
+                           selector:@selector(storesDidChange:)
+                               name:NSPersistentStoreCoordinatorStoresDidChangeNotification
+                             object:self.persistentStoreCoordinator];
+    
+}
+
+#pragma mark - iCloud ON/OFF
+
+- (void)migrateiCloudStoreToLocalStore {
+    // assuming you only have one store.
+    NSPersistentStore *store = [[_persistentStoreCoordinator persistentStores]
+                                                            firstObject];
+    
+    NSMutableDictionary *localStoreOptions = [NSMutableDictionary dictionary];
+    [localStoreOptions setObject:@YES
+                          forKey:NSPersistentStoreRemoveUbiquitousMetadataOption];
+    
+    NSPersistentStore *newStore =  [_persistentStoreCoordinator
+                                    migratePersistentStore:store
+                                                     toURL:[self storeURL]
+                                                   options:localStoreOptions
+                                                  withType:NSSQLiteStoreType
+                                                     error:nil];
+    [self reloadStore:newStore];
+}
+
+- (void)reloadStore:(NSPersistentStore *)store {
+    if (store) {
+        [_persistentStoreCoordinator removePersistentStore:store error:nil];
+    }
+    [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
+                                              configuration:nil
+                                                        URL:[self storeURL]
+                                                    options:nil
+                                                      error:nil];
+}
+
 
 @end
