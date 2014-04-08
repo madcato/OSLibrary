@@ -42,6 +42,8 @@
 		0B7F1341179061F10068B3F8 /* OSAppearance.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 108AD5D715DA657700EE2443 /* OSAppearance.h */; };
 		0B7F1342179061F10068B3F8 /* OSLibrary.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27CB95FE13E4110100717380 /* OSLibrary.h */; };
 		0B7F13431790622B0068B3F8 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FEF71413ED54B200BC78B0 /* WebViewController.xib */; };
+		0B95C45118F47918003FA730 /* OSWebRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 278474B713EFF2E400CDD1CF /* OSWebRequest.h */; };
+		0B95C45218F4797F003FA730 /* OSLoadingViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10532F4115DA569000AB115B /* OSLoadingViewController.h */; };
 		0BBB01D917906A6000969ACD /* OSSystem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27CB962F13E4124400717380 /* OSSystem.h */; };
 		0BFAB56B18A55B9000F30FC3 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
 		1008160515C11AB200429593 /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008160315C11AB200429593 /* UIView+Snapshot.m */; };
@@ -102,6 +104,8 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				0B95C45218F4797F003FA730 /* OSLoadingViewController.h in CopyFiles */,
+				0B95C45118F47918003FA730 /* OSWebRequest.h in CopyFiles */,
 				0BBB01D917906A6000969ACD /* OSSystem.h in CopyFiles */,
 				0B7F132B179061F00068B3F8 /* OSDatabase.h in CopyFiles */,
 				0B7F132C179061F00068B3F8 /* OSCoreDataSyncEngine.h in CopyFiles */,
