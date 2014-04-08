@@ -7,8 +7,6 @@
 //
 
 #import "NSManagedObject+JSON.h"
-#import "NSData+Base64.h"
-#import "OSCoreDataSyncEngine.h"
 
 @implementation NSManagedObject (JSON)
 
@@ -16,6 +14,5 @@
     @throw [NSException exceptionWithName:@"JSONStringToCreateObjectOnServer Not Overridden" reason:@"Must override JSONStringToCreateObjectOnServer on NSManagedObject class" userInfo:nil];
     return nil;
 }
-
 
 @end

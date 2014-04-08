@@ -11,39 +11,39 @@
 
 @implementation OSDateTimeTest
 
-#if USE_APPLICATION_UNIT_TEST     // all code under test is in the iPhone Application
+#if USE_APPLICATION_UNIT_TEST   // all code under test is in the iPhone Application
 
 - (void)testAppDelegate {
-    
-    id yourApplicationDelegate = [[UIApplication sharedApplication] delegate];
-    STAssertNotNil(yourApplicationDelegate, @"UIApplication failed to find the AppDelegate");
-    
+  
+  id yourApplicationDelegate = [[UIApplication sharedApplication] delegate];
+  STAssertNotNil(yourApplicationDelegate, @"UIApplication failed to find the AppDelegate");
+  
 }
 
-#else                           // all code under test must be linked into the Unit Test bundle
+#else               // all code under test must be linked into the Unit Test bundle
 
 - (void)testMath {
-    
-    STAssertTrue((1+1)==2, @"Compiler isn't feeling well today :-(" );
-    
+  
+  XCTAssertTrue((1+1)==2, @"Compiler isn't feeling well today :-(" );
+  
 }
 
 - (void)testNotNil {
-    STAssertNotNil([OSDateTime now], @"[OSDateTime now] no ha devuelto nada");
+  XCTAssertNotNil([OSDateTime now], @"[OSDateTime now] no ha devuelto nada");
 }
 
 -(void)testFormatFromDateToString {
-    NSString* str = @"1976-04-22T12:46:22.000+0000";
-    NSDate* date = [OSDateTime dateFromString:str];
-    STAssertNotNil(date, @"[OSDateTime dateFromString] doesn't return anything");
-    STAssertTrue([[date description] isEqualToString:@"1976-04-22 12:46:22 +0000"], @"[OSDateTime dateFromString] failed");
+  NSString* str = @"1976-04-22T12:46:22.000+0000";
+  NSDate* date = [OSDateTime dateFromString:str];
+  XCTAssertNotNil(date, @"[OSDateTime dateFromString] doesn't return anything");
+  XCTAssertTrue([[date description] isEqualToString:@"1976-04-22 12:46:22 +0000"], @"[OSDateTime dateFromString] failed");
 }
 
 -(void)testFormatFromStringToDate {
-    NSDate* date = [[NSDate alloc] initWithTimeIntervalSince1970:21022002];
-    NSString* str = [OSDateTime stringFromDate:date];
-    STAssertNotNil(str, @"[OSDateTime stringFromDate] doesn't return anything");
-    STAssertTrue([str isEqualToString:@"1970-09-01T07:26:42.000+0000"], @"[OSDateTime stringFromDate] failed");
+  NSDate* date = [[NSDate alloc] initWithTimeIntervalSince1970:21022002];
+  NSString* str = [OSDateTime stringFromDate:date];
+  XCTAssertNotNil(str, @"[OSDateTime stringFromDate] doesn't return anything");
+  XCTAssertTrue([str isEqualToString:@"1970-09-01T07:26:42.000+0000"], @"[OSDateTime stringFromDate] failed");
 }
 
 #endif

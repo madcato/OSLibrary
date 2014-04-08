@@ -6,11 +6,11 @@
 //
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "OSOperationQueues.h"
 
-@interface OSOperationQueuesTest : SenTestCase {
-    OSOperationQueues* operationQueues;
+@interface OSOperationQueuesTest : XCTestCase {
+  OSOperationQueues* operationQueues;
 }
 
 @end

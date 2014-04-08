@@ -6,8 +6,8 @@
 //
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface NSStirng_encodeStringTest : SenTestCase
+@interface NSStirng_encodeStringTest : XCTestCase
 
 @end

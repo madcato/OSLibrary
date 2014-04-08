@@ -6,8 +6,8 @@
 //
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface OSDatabaseTest : SenTestCase
+@interface OSDatabaseTest : XCTestCase
 
 @end

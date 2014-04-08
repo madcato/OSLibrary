@@ -9,9 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface OSOperationQueues : NSObject {
-    NSMutableDictionary* queues;
+  NSMutableDictionary* queues;
 }
+
 +(OSOperationQueues*)defaultQueues;
--(void)createOperationQueueNamed:(const NSString*)queueName withMaxConcurrentOpeartionCount:(NSInteger)count;
--(void)addOperation:(NSOperation*)operation toQueueNamed:(const NSString*)queueName;
+
+-(void)createOperationQueueNamed:(const NSString*)queueName
+ withMaxConcurrentOpeartionCount:(NSInteger)count;
+
+-(void)addOperation:(NSOperation*)operation
+     toQueueNamed:(const NSString*)queueName;
 @end

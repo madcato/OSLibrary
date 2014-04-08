@@ -12,16 +12,16 @@
 
 #define USE_APPLICATION_UNIT_TEST 0
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 //#import "application_headers" as required
 
-@interface OSTimeTest : SenTestCase
+@interface OSTimeTest : XCTestCase
 
 #if USE_APPLICATION_UNIT_TEST
-- (void)testAppDelegate;       // simple test on application
+- (void)testAppDelegate;     // simple test on application
 #else
-- (void)testMath;              // simple standalone test
+- (void)testMath;        // simple standalone test
 - (void)testNotNil;
 #endif
 

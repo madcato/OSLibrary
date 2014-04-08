@@ -5,16 +5,27 @@
 //  Created by Daniel Vela on 13/08/12.
 //
 //
+// http://www.objc.io/issue-10/icloud-core-data.html
 
 #import <Foundation/Foundation.h>
+
+@protocol OSDatabaseDelegate <NSObject>
+
+- (void)displayError:(NSError*) error;
+
+@end
 
 @interface OSDatabase : NSObject
 
 /** 
  Call this method in the applicationDidFinishLaunching
 */
-+(OSDatabase*)initWithModelName:(NSString *)modelName testing:(BOOL)testing;
++(OSDatabase*)initWithModelName:(NSString *)modelName
+                      storeName:(NSString*)storeName
+                        testing:(BOOL)testing
+                       delegate:(id<OSDatabaseDelegate>) dele;
 +(OSDatabase*)defaultDatabase;
+
 +(OSDatabase*)backgroundDatabase;
 - (NSManagedObject*)insertObject:(NSString*)entityName values:(NSDictionary*)values;
 - (NSManagedObject*)selectObject:(NSString*)entityName withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments;
@@ -30,5 +41,10 @@
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, strong)  NSString *modelName;
+@property (nonatomic, strong)  NSString *storeName;
 @property (nonatomic, assign)  BOOL unittesting;
+@property (nonatomic, assign)  id<OSDatabaseDelegate> delegate;
+
++ (void)displayValidationError:(NSError *)anError;
+
 @end
