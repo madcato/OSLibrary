@@ -24,7 +24,7 @@
   if(queues == nil) {
     queues = [NSMutableDictionary dictionary];
   }
-  id object = [queues objectForKey:queueName];
+  id object = queues[queueName];
   if(object) {
     // Queue already exits, throw an exception to notify programmer.
     @throw [NSException exceptionWithName:@"OSOperationQueuesException"
@@ -35,7 +35,7 @@
   }
   NSOperationQueue* queue = [[NSOperationQueue alloc] init];
   [queue setMaxConcurrentOperationCount:count];
-  [queues setObject:queue forKey:queueName];
+  queues[queueName] = queue;
 }
 
 -(void)addOperation:(NSOperation*)operation
@@ -48,7 +48,7 @@
          @"You must create a queue before calling this method."]
                    userInfo:nil];
   }
-  NSOperationQueue* object = [queues objectForKey:queueName];
+  NSOperationQueue* object = queues[queueName];
   if(object == nil) {
     // Queue already exits, throw an exception to notify programmer.
     @throw [NSException exceptionWithName:@"OSOperationQueuesException"

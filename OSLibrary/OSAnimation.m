@@ -23,8 +23,8 @@
   animation.duration=seconds;
   animation.repeatCount=HUGE_VALF;
   animation.autoreverses=YES;
-  animation.fromValue=[NSNumber numberWithFloat:1.0];
-  animation.toValue=[NSNumber numberWithFloat:0.0];
+  animation.fromValue=@1.0f;
+  animation.toValue=@0.0f;
   [object.layer addAnimation:animation forKey:@"animateOpacity"];
 }
 @end

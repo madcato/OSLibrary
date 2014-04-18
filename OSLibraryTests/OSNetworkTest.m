@@ -12,14 +12,14 @@
 
 -(void)networkStatusChanged:(OSNetwork*)net {
   
-  STAssertTrue([net isNetworkReachable] == NO, @"Network must not be reachable");
+  XCTAssertTrue([net isNetworkReachable] == NO, @"Network must not be reachable");
   
 }
 
 // All code under test must be linked into the Unit Test bundle
 - (void)testMath
 {
-  STAssertTrue((1 + 1) == 2, @"Compiler isn't feeling well today :-(");
+  XCTAssertTrue((1 + 1) == 2, @"Compiler isn't feeling well today :-(");
 }
 
 -(void)testNetworkNotReachable

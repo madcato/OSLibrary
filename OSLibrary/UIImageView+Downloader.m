@@ -70,14 +70,14 @@ static char kOSWebRequestObjectKey = 's';
   if(imageCache == nil) {
     imageCache = [NSMutableDictionary dictionary];
   }
-  [imageCache setObject:image forKey:key];
+  imageCache[key] = image;
 }
 
 -(UIImage*)getCachedImage:(NSString*)key {
   if(imageCache == nil) {
     imageCache = [NSMutableDictionary dictionary];
   }
-  return [imageCache objectForKey:key];
+  return imageCache[key];
 }
 
 - (void)showLoadingView {

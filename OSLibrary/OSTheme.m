@@ -128,17 +128,17 @@ static id <OSTheme> sharedTheme = nil;
     NSMutableDictionary *titleTextAttributes = [[NSMutableDictionary alloc] init];
     UIColor *mainColor = [theme mainColor];
     if (mainColor) {
-        [titleTextAttributes setObject:mainColor forKey:UITextAttributeTextColor];
+        titleTextAttributes[UITextAttributeTextColor] = mainColor;
     }
     UIColor *shadowColor = [theme shadowColor];
     if (shadowColor) {
-        [titleTextAttributes setObject:shadowColor forKey:UITextAttributeTextShadowColor];
+        titleTextAttributes[UITextAttributeTextShadowColor] = shadowColor;
         CGSize shadowOffset = [theme shadowOffset];
-        [titleTextAttributes setObject:[NSValue valueWithCGSize:shadowOffset] forKey:UITextAttributeTextShadowOffset];
+        titleTextAttributes[UITextAttributeTextShadowOffset] = [NSValue valueWithCGSize:shadowOffset];
     }
     UIFont *font = [theme defaultFont];
     if (font) {
-        [titleTextAttributes setObject:font forKey:UITextAttributeFont];
+        titleTextAttributes[UITextAttributeFont] = font;
     }
     
     [navigationBarAppearance setTitleTextAttributes:titleTextAttributes];

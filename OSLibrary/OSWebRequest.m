@@ -98,7 +98,7 @@ withHandler:(OSRequestHandler)handler {
                 timeoutInterval:timeout];
   [request setHTTPMethod:@"POST"];
   [request setHTTPBody:buffer];
-  [request setValue:[NSString stringWithFormat:@"%d", [buffer length]]
+  [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[buffer length]]
    forHTTPHeaderField:@"Content-Length"];
   m_connection = [[NSURLConnection alloc] initWithRequest:request
                            delegate:self];
@@ -128,7 +128,7 @@ withHandler:(OSRequestHandler)handler {
                 timeoutInterval:timeout];
   [request setHTTPMethod:@"POST"];
   [request setHTTPBody:buffer];
-  [request setValue:[NSString stringWithFormat:@"%d", [buffer length]]
+  [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[buffer length]]
    forHTTPHeaderField:@"Content-Length"];
   m_connection = [[NSURLConnection alloc] initWithRequest:request
                            delegate:self];
@@ -151,7 +151,7 @@ withHandler:(OSRequestHandler)handler {
   [request setHTTPMethod:@"POST"];
   [request setHTTPBody:buffer];
   [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
-  [request setValue:[NSString stringWithFormat:@"%d", [buffer length]]
+  [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[buffer length]]
    forHTTPHeaderField:@"Content-Length"];
   m_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self] ;
 }
@@ -173,7 +173,7 @@ withHandler:(OSRequestHandler)handler {
   [request setHTTPMethod:@"PUT"];
   [request setHTTPBody:buffer];
   [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
-  [request setValue:[NSString stringWithFormat:@"%d", [buffer length]]
+  [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[buffer length]]
    forHTTPHeaderField:@"Content-Length"];
   m_connection = [[NSURLConnection alloc] initWithRequest:request delegate:self] ;
 }
@@ -209,7 +209,7 @@ withHandler:(OSRequestHandler)handler {
              @"Content-Disposition: form-data; name=\"%@\"\r\n\r\n",
                   key];
 		NSString *formDataValue = [NSString stringWithFormat:@"%@\r\n",
-                   [requestData objectForKey:key]];
+                   requestData[key]];
 		[postBody appendData:[boundarySeparator
                 dataUsingEncoding:encoding]];
 		[postBody appendData:[formDataName

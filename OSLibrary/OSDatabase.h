@@ -47,8 +47,4 @@
 
 + (void)displayValidationError:(NSError *)anError;
 
-- (void)registerForiCloudNotifications;
-
-- (void)registerObjectForStoreChanges:(id)object;
-
 @end
