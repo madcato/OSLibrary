@@ -11,7 +11,7 @@
 
 static NSString * const kOSAPIBaseURLString = @"http://localhost:3000/";
 
-static NSString * const kPSAPIApplicationId = @"YOUR_APPLICATION_ID";
+static NSString * const kOSAPIApplicationId = @"YOUR_APPLICATION_ID";
 static NSString * const kOSAPIKey = @"YOUR_API_KEY";
 
 @implementation ABHTTPAPIClient
@@ -29,10 +29,10 @@ static NSString * const kOSAPIKey = @"YOUR_API_KEY";
 - (id)initWithBaseURL:(NSURL *)url {
     self = [super initWithBaseURL:url];
     if (self) {
-        [self registerHTTPOperationClass:[AFJSONRequestOperation class]];
-        [self setParameterEncoding:AFJSONParameterEncoding];
-//        [self setDefaultHeader:@"X-Parse-Application-Id" value:kOSAPIApplicationId];
-//        [self setDefaultHeader:@"X-Parse-REST-API-Key" value:kOSAPIKey];
+        [self registerHTTPOperationClass:[OSJSONRequestOperation class]];
+        [self setParameterEncoding:OSJSONParameterEncoding];
+        [self setDefaultHeader:@"X-Parse-Application-Id" value:kOSAPIApplicationId];
+        [self setDefaultHeader:@"X-Parse-REST-API-Key" value:kOSAPIKey];
     }
 
     return self;

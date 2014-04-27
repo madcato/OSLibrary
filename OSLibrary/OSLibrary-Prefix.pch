@@ -12,5 +12,4 @@
     #import <Twitter/Twitter.h>
     #import <Accounts/Accounts.h>
     #import <MobileCoreServices/MobileCoreServices.h>
-    #import <AFNetworking/AFNetworking.h>
 #endif

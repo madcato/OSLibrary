@@ -17,7 +17,7 @@
 // by  Mario Klingemann
 
 -(UIImage*)stackBlur:(NSUInteger)inradius {
-	int radius=inradius; // Transform unsigned into signed for further operations
+	int radius=(int)inradius; // Transform unsigned into signed for further operations
 	if (radius<1){
 		return self;
 	}
@@ -34,8 +34,8 @@
 											 CGImageGetColorSpace(inImage),  
 											 CGImageGetBitmapInfo(inImage) 
 											 );
-	int w=CGImageGetWidth(inImage);
-	int h=CGImageGetHeight(inImage);
+	int w=(int)CGImageGetWidth(inImage);
+	int h=(int)CGImageGetHeight(inImage);
 	int wm=w-1;
 	int hm=h-1;
 	int wh=w*h;

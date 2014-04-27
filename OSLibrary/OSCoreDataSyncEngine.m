@@ -6,9 +6,11 @@
 //
 //
 
+#import "OSHTTPRequestOperation.h"
 #import "OSCoreDataSyncEngine.h"
 #import "OSDatabase.h"
 #import "NSManagedObject+JSON.h"
+
 
 NSString * const kOSCoreDataSyncEngineInitialCompleteKey = @"OSCoreDataSyncEngineInitialSyncCompleted";
 NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDataSyncEngineSyncCompleted";
@@ -342,19 +344,19 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             //
             NSMutableURLRequest *request = [self.registeredAPIClient POSTRequestForClass:className parameters:jsonString];
 
-            AFHTTPRequestOperation *operation = [self.registeredAPIClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            OSHTTPRequestOperation *operation = [self.registeredAPIClient HTTPRequestOperationWithRequest:request success:^(OSHTTPRequestOperation *operation, id responseObject) {
                 //
                 // Set the completion block for the operation to update the NSManagedObject with the createdDate from the
                 // remote service and objectId, then set the syncStatus to SDObjectSynced so that the sync engine does not
                 // attempt to create it again
                 //
-                NSLog(@"Success creation: %@", responseObject);
+//                NSLog(@"Success creation: %@", responseObject);
                 NSDictionary *responseDictionary = responseObject;
                 NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"created_at"]];
                 [objectToCreate setValue:createdDate forKey:@"created_at"];
                 [objectToCreate setValue:[responseDictionary valueForKey:@"objectId"] forKey:@"objectId"];
                 [objectToCreate setValue:@(OSObjectSynced) forKey:@"syncStatus"];
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            } failure:^(OSHTTPRequestOperation *operation, NSError *error) {
                 //
                 // Log an error if there was one, proper error handling should be done if necessary, in this case it may not
                 // be required to do anything as the object will attempt to sync again next time. There could be a possibility
@@ -374,12 +376,12 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     // Pass off operations array to the sharedClient so that they are all executed
     //
     [self.registeredAPIClient enqueueBatchOfHTTPRequestOperations:operations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
-        NSLog(@"Completed %lu of %lu create operations", (unsigned long)numberOfCompletedOperations, (unsigned long)totalNumberOfOperations);
+//        NSLog(@"Completed %lu of %lu create operations", (unsigned long)numberOfCompletedOperations, (unsigned long)totalNumberOfOperations);
     } completionBlock:^(NSArray *operations) {
         if ([operations count] > 0) {
-            NSLog(@"Creation of objects on server compelete, updated objects in context: %@", [[[OSDatabase backgroundDatabase] managedObjectContext] updatedObjects]);
+//            NSLog(@"Creation of objects on server compelete, updated objects in context: %@", [[[OSDatabase backgroundDatabase] managedObjectContext] updatedObjects]);
             [[OSDatabase backgroundDatabase] save];
-            NSLog(@"SBC After call creation");
+//            NSLog(@"SBC After call creation");
         }
 
         [self deleteObjectsOnServer];
@@ -407,14 +409,14 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                                             DELETERequestForClass:className
                                             forObjectWithId:[objectToDelete valueForKey:@"objectId"]];
 
-            AFHTTPRequestOperation *operation = [self.registeredAPIClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                NSLog(@"Success deletion: %@", responseObject);
+            OSHTTPRequestOperation *operation = [self.registeredAPIClient HTTPRequestOperationWithRequest:request success:^(OSHTTPRequestOperation *operation, id responseObject) {
+//                NSLog(@"Success deletion: %@", responseObject);
                 //
                 // In the operations completion block delete the NSManagedObject from Core data locally since it has been
                 // deleted on the server
                 //
                 [[[OSDatabase backgroundDatabase] managedObjectContext] deleteObject:objectToDelete];
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            } failure:^(OSHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"Failed to delete: %@", error);
             }];
 
@@ -428,9 +430,9 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     [self.registeredAPIClient enqueueBatchOfHTTPRequestOperations:operations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
 
     } completionBlock:^(NSArray *operations) {
-        if ([operations count] > 0) {
-            NSLog(@"Deletion of objects on server compelete, updated objects in context: %@", [[[OSDatabase backgroundDatabase] managedObjectContext] updatedObjects]);
-        }
+//        if ([operations count] > 0) {
+//            NSLog(@"Deletion of objects on server compelete, updated objects in context: %@", [[[OSDatabase backgroundDatabase] managedObjectContext] updatedObjects]);
+//        }
 
         [self executeSyncCompletedOperations];
 
@@ -448,13 +450,13 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         NSMutableURLRequest *request = [self.registeredAPIClient
                                         GETRequestForAllRecordsOfClass:className
                                         updatedAfterDate:mostRecentUpdatedDate];
-        AFHTTPRequestOperation *operation = [self.registeredAPIClient HTTPRequestOperationWithRequest:request success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        OSHTTPRequestOperation *operation = [self.registeredAPIClient HTTPRequestOperationWithRequest:request success:^(OSHTTPRequestOperation *operation, id responseObject) {
             if ([responseObject isKindOfClass:[NSArray class]]) {
-                NSLog(@"Response for %@: %@", className, responseObject);
+//                NSLog(@"Response for %@: %@", className, responseObject);
                 // Need to write JSON files to disk
                 [self writeJSONResponse:responseObject toDiskForClassWithName:className];
             }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        } failure:^(OSHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Request for class %@ failed with error: %@", className, error);
         }];
 
@@ -464,7 +466,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     [self.registeredAPIClient enqueueBatchOfHTTPRequestOperations:operations progressBlock:^(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations) {
 
     } completionBlock:^(NSArray *operations) {
-        NSLog(@"All operations completed");
+//        NSLog(@"All operations completed");
         // Need to process JSON records into Core Data
         if (!toDelete) {
             [self processJSONDataRecordsIntoCoreData];

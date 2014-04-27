@@ -11,7 +11,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface ABHTTPAPIClient : AFHTTPClient <HTTPAPIClient>
+@interface ABHTTPAPIClient : OSHTTPClient <HTTPAPIClient>
 
 + (ABHTTPAPIClient *)sharedClient;
 

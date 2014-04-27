@@ -45,6 +45,12 @@
 		0B95C45118F47918003FA730 /* OSWebRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 278474B713EFF2E400CDD1CF /* OSWebRequest.h */; };
 		0B95C45218F4797F003FA730 /* OSLoadingViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10532F4115DA569000AB115B /* OSLoadingViewController.h */; };
 		0BBB01D917906A6000969ACD /* OSSystem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27CB962F13E4124400717380 /* OSSystem.h */; };
+		0BD9FCD6190B99C300F7D8B6 /* OSHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9FCD5190B99C300F7D8B6 /* OSHTTPRequestOperation.m */; };
+		0BD9FCD7190B9BBC00F7D8B6 /* OSHTTPRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BD9FCD4190B99C300F7D8B6 /* OSHTTPRequestOperation.h */; };
+		0BD9FCDA190B9EE700F7D8B6 /* OSHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9FCD9190B9EE700F7D8B6 /* OSHTTPClient.m */; };
+		0BD9FCDB190B9F0D00F7D8B6 /* OSHTTPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BD9FCD8190B9EE700F7D8B6 /* OSHTTPClient.h */; };
+		0BD9FCDE190BA18000F7D8B6 /* OSJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9FCDD190BA18000F7D8B6 /* OSJSONRequestOperation.m */; };
+		0BD9FCDF190BA19D00F7D8B6 /* OSJSONRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BD9FCDC190BA18000F7D8B6 /* OSJSONRequestOperation.h */; };
 		0BFAB56B18A55B9000F30FC3 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
 		1008160515C11AB200429593 /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008160315C11AB200429593 /* UIView+Snapshot.m */; };
 		1008160815C11BA700429593 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1008160715C11BA700429593 /* UIKit.framework */; };
@@ -104,6 +110,9 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				0BD9FCDF190BA19D00F7D8B6 /* OSJSONRequestOperation.h in CopyFiles */,
+				0BD9FCDB190B9F0D00F7D8B6 /* OSHTTPClient.h in CopyFiles */,
+				0BD9FCD7190B9BBC00F7D8B6 /* OSHTTPRequestOperation.h in CopyFiles */,
 				0B95C45218F4797F003FA730 /* OSLoadingViewController.h in CopyFiles */,
 				0B95C45118F47918003FA730 /* OSWebRequest.h in CopyFiles */,
 				0BBB01D917906A6000969ACD /* OSSystem.h in CopyFiles */,
@@ -158,6 +167,12 @@
 		0B7F130817905DF90068B3F8 /* OSLibraryBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSLibraryBundle-Info.plist"; sourceTree = "<group>"; };
 		0B7F130A17905DF90068B3F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0B7F130C17905DF90068B3F8 /* OSLibraryBundle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibraryBundle-Prefix.pch"; sourceTree = "<group>"; };
+		0BD9FCD4190B99C300F7D8B6 /* OSHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSHTTPRequestOperation.h; sourceTree = "<group>"; };
+		0BD9FCD5190B99C300F7D8B6 /* OSHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSHTTPRequestOperation.m; sourceTree = "<group>"; };
+		0BD9FCD8190B9EE700F7D8B6 /* OSHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSHTTPClient.h; sourceTree = "<group>"; };
+		0BD9FCD9190B9EE700F7D8B6 /* OSHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSHTTPClient.m; sourceTree = "<group>"; };
+		0BD9FCDC190BA18000F7D8B6 /* OSJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSJSONRequestOperation.h; sourceTree = "<group>"; };
+		0BD9FCDD190BA18000F7D8B6 /* OSJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSJSONRequestOperation.m; sourceTree = "<group>"; };
 		1008160215C11AB200429593 /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
 		1008160315C11AB200429593 /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
 		1008160715C11BA700429593 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -230,8 +245,6 @@
 		27FEF71213ED54B100BC78B0 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		27FEF71313ED54B200BC78B0 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		27FEF71413ED54B200BC78B0 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
-		84136008BC254DAE8D9FC971 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F1432CE74079436BA5E091CA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +331,12 @@
 				278474B813EFF2E400CDD1CF /* OSWebRequest.m */,
 				10C7CF22167B3F7100E9047F /* OSWebRequestAuth.h */,
 				10C7CF23167B3F7100E9047F /* OSWebRequestAuth.m */,
+				0BD9FCD4190B99C300F7D8B6 /* OSHTTPRequestOperation.h */,
+				0BD9FCD5190B99C300F7D8B6 /* OSHTTPRequestOperation.m */,
+				0BD9FCD8190B9EE700F7D8B6 /* OSHTTPClient.h */,
+				0BD9FCD9190B9EE700F7D8B6 /* OSHTTPClient.m */,
+				0BD9FCDC190BA18000F7D8B6 /* OSJSONRequestOperation.h */,
+				0BD9FCDD190BA18000F7D8B6 /* OSJSONRequestOperation.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -430,7 +449,6 @@
 				0B7F130617905DF90068B3F8 /* OSLibraryBundle */,
 				27CB95F813E4110100717380 /* Frameworks */,
 				27CB95F713E4110100717380 /* Products */,
-				F1432CE74079436BA5E091CA /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -453,7 +471,6 @@
 				1008160715C11BA700429593 /* UIKit.framework */,
 				27FD9C7314EAB3200091A0E3 /* SystemConfiguration.framework */,
 				27CB95F913E4110100717380 /* Foundation.framework */,
-				84136008BC254DAE8D9FC971 /* libPods.a */,
 				0B7F130017905DF90068B3F8 /* Cocoa.framework */,
 				0B7F130217905DF90068B3F8 /* Other Frameworks */,
 			);
@@ -547,10 +564,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27CB961D13E4110100717380 /* Build configuration list for PBXNativeTarget "OSLibrary" */;
 			buildPhases = (
-				DF285568B1714F4DA04D79AB /* Check Pods Manifest.lock */,
 				27CB95F213E4110000717380 /* Sources */,
 				27CB95F313E4110000717380 /* Frameworks */,
-				61440B781DD24974AB6E11D2 /* Copy Pods Resources */,
 				0B7F132A17905FCB0068B3F8 /* CopyFiles */,
 			);
 			buildRules = (
@@ -644,34 +659,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		61440B781DD24974AB6E11D2 /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
-		};
-		DF285568B1714F4DA04D79AB /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -697,12 +684,14 @@
 				27FEF71613ED54B200BC78B0 /* WebViewController.m in Sources */,
 				278474BA13EFF2E400CDD1CF /* OSWebRequest.m in Sources */,
 				27FD9C7114EAB2DB0091A0E3 /* OSNetwork.m in Sources */,
+				0BD9FCD6190B99C300F7D8B6 /* OSHTTPRequestOperation.m in Sources */,
 				272C036315335261008DF260 /* NSData+Base64.m in Sources */,
 				272C0367153352F9008DF260 /* OSCrypto.m in Sources */,
 				108E2C6815B0483B003C0EB7 /* UIImageView+Downloader.m in Sources */,
 				1008160515C11AB200429593 /* UIView+Snapshot.m in Sources */,
 				106F64A815C16B8700C22FC0 /* UIImage+StackBlur.m in Sources */,
 				106F667915D8DFC10016184F /* OSDatabase.m in Sources */,
+				0BD9FCDA190B9EE700F7D8B6 /* OSHTTPClient.m in Sources */,
 				10532F4415DA569000AB115B /* OSLoadingViewController.m in Sources */,
 				108AD5DA15DA657700EE2443 /* OSAppearance.m in Sources */,
 				10C58E4315DCDD7D00496A25 /* OSOperation.m in Sources */,
@@ -710,6 +699,7 @@
 				10A3390115E381560059F012 /* NSString+encodeString.m in Sources */,
 				103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */,
 				103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */,
+				0BD9FCDE190BA18000F7D8B6 /* OSJSONRequestOperation.m in Sources */,
 				0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */,
 				0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */,
 			);
@@ -872,7 +862,6 @@
 		};
 		27CB961E13E4110100717380 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1432CE74079436BA5E091CA /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/OSLibrary.dst;
@@ -891,7 +880,6 @@
 		};
 		27CB961F13E4110100717380 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F1432CE74079436BA5E091CA /* Pods.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/OSLibrary.dst;

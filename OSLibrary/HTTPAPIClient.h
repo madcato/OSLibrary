@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "OSHTTPRequestOperation.h"
 
 @protocol HTTPAPIClient <NSObject>
 
@@ -14,9 +15,9 @@
                                        updatedAfterDate:(NSDate *)mostRecentUpdatedDate;
 
 
-- (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSMutableURLRequest *)request
-                                                    success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-                                                    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+- (OSHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSMutableURLRequest *)request
+                                                    success:(void (^)(OSHTTPRequestOperation *operation, id responseObject))success
+                                                    failure:(void (^)(OSHTTPRequestOperation *operation, NSError *error))failure;
 
 - (void)enqueueBatchOfHTTPRequestOperations:(NSMutableArray *)operations
                               progressBlock:(void (^)(NSUInteger numberOfCompletedOperations, NSUInteger totalNumberOfOperations))progressBlock

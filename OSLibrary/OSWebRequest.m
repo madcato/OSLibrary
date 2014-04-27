@@ -9,7 +9,7 @@
 #import "OSWebRequest.h"
 #import "OSWebRequestAuth.h"
 
-static const NSTimeInterval defaultTimeout = 10.0; // default time out in seconds
+const NSTimeInterval defaultTimeout = 10.0; // default time out in seconds
 
 @interface OSWebRequest () {
   OSRequestHandler requestHandler;
@@ -316,4 +316,13 @@ didReceiveResponse:(NSURLResponse *)response {
   return finalString;
 }
 
+-(void)doSyncRequest:(NSURLRequest *)urlRequest
+     withHandler:(OSRequestHandler)handler {
+    requestHandler = handler;
+    NSHTTPURLResponse* urlResponse;
+    NSError *error;
+    NSData * data = [NSURLConnection sendSynchronousRequest:urlRequest
+                                              returningResponse:&urlResponse error:&error];
+    requestHandler(data,urlResponse,error);
+}
 @end

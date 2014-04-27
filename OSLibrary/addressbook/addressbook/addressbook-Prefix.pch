@@ -18,6 +18,5 @@
     #import <Twitter/Twitter.h>
     #import <Accounts/Accounts.h>
     #import <MobileCoreServices/MobileCoreServices.h>
-    #import "../../../Pods/AFNetworking/AFNetworking/AFNetworking.h"
-    #import "../../OSLibrary.h"
+    #import <OSLibrary/OSLibrary.h>
 #endif

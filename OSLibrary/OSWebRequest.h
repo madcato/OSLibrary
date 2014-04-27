@@ -132,4 +132,15 @@ withHandler:(OSRequestHandler)handler;
 - (NSString*)formatURLWith:(NSString*)baseUrl andParams:(NSDictionary*)params;
 
 - (NSString*)formatPostParams:(NSDictionary*)params;
+
+/*!
+ @method doRequest:withHandler:
+ @abstract Make a request previously created and configured.
+ @discussion Use this method to send a generic request to a server.
+ Only when Content-type must be Json data.
+ @param handler this method will be called at the end of request.
+ */
+-(void)doSyncRequest:(NSURLRequest *)urlRequest
+    withHandler:(OSRequestHandler)handler;
+
 @end

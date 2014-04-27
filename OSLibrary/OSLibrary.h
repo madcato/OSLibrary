@@ -31,3 +31,6 @@
 #import "NSString+encodeString.h"
 // Version 0.2
 #import "OSCoreDataSyncEngine.h"
+#import "OSHTTPRequestOperation.h"
+#import "OSHTTPClient.h"
+#import "OSJSONRequestOperation.h"
