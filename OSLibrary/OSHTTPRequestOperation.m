@@ -16,12 +16,12 @@
 @implementation OSHTTPRequestOperation
 
 - (void)setCompletionBlocksForSuccess:(void ( ^ ) ( OSHTTPRequestOperation *operation , id responseObject ))success failure:(void ( ^ ) ( OSHTTPRequestOperation *operation , NSError *error ))failure {
-    
+    __weak OSHTTPRequestOperation *weakSelf = self;
     self.completionBlock = ^{
-            if(self.error) {
-                failure(self,self.error);
+            if(weakSelf.error) {
+                failure(weakSelf,weakSelf.error);
             } else {
-                success(self,self.responseObject);
+                success(weakSelf,weakSelf.responseObject);
             }
     };
 }
