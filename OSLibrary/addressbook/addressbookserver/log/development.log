@@ -7182,3 +7182,77 @@ Started GET "/people.json" for 127.0.0.1 at 2014-04-27 21:17:48 +0200
 Processing by PeopleController#index as JSON
   [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
 Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people/new" for 127.0.0.1 at 2014-04-27 21:20:31 +0200
+Processing by PeopleController#new as HTML
+  Rendered people/_form.html.erb (4.7ms)
+  Rendered people/new.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 16ms (Views: 15.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at 2014-04-27 21:20:31 +0200
+Served asset /people.css - 200 OK (0ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-04-27 21:20:31 +0200
+Served asset /application.css - 304 Not Modified (5ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-04-27 21:20:31 +0200
+Served asset /scaffolds.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-04-27 21:20:31 +0200
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-04-27 21:20:31 +0200
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at 2014-04-27 21:20:31 +0200
+Served asset /people.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-04-27 21:20:31 +0200
+Served asset /application.js - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/people.json" for 127.0.0.1 at 2014-04-28 20:34:59 +0200
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.4ms)[0m  [1mSELECT "people".* FROM "people" [0m
+Completed 200 OK in 35ms (Views: 3.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at 2014-04-28 20:34:59 +0200
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.4ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/people.json?updated_at=2014-04-27T19%3A17%3A43Z" for 127.0.0.1 at 2014-04-28 20:35:03 +0200
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2014-04-27T19:17:43Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2014-04-27 19:17:43')[0m
+Completed 200 OK in 15ms (Views: 1.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at 2014-04-28 20:35:03 +0200
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?updated_at=2014-04-27T19%3A17%3A43Z" for 127.0.0.1 at 2014-04-28 20:35:07 +0200
+Processing by PeopleController#index as JSON
+  Parameters: {"updated_at"=>"2014-04-27T19:17:43Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2014-04-27 19:17:43')[0m
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at 2014-04-28 20:35:07 +0200
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.3ms)

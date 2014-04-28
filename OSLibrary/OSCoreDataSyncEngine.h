@@ -101,4 +101,14 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
 //        [self checkSyncStatus];
 //    }
 //}
+//
+// - (void)viewDidAppear:(BOOL)animated {
+// [super viewDidAppear:animated];
+// [self checkSyncStatus];
+// [[SDSyncEngine sharedEngine] addObserver:self forKeyPath:@"syncInProgress" options:NSKeyValueObservingOptionNew context:nil];
+// }
 
+// - (void)viewDidDisappear:(BOOL)animated {
+// [super viewDidDisappear:animated];
+// [[SDSyncEngine sharedEngine] removeObserver:self forKeyPath:@"syncInProgress"];
+// }

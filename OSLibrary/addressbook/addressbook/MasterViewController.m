@@ -30,7 +30,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
+    [[OSCoreDataSyncEngine sharedEngine] addObserver:self
+                                          forKeyPath:@"syncInProgress"
+                                             options:NSKeyValueObservingOptionNew
+                                             context:nil];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
                             action:@selector(refresh)
@@ -39,6 +42,36 @@
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
+
+
+- (void)checkSyncStatus {
+    if ([[OSCoreDataSyncEngine sharedEngine] syncInProgress]) {
+        [self replaceRefreshButtonWithActivityIndicator];
+    } else {
+        [self removeActivityIndicatorFromRefreshButton];
+    }
+}
+
+- (void)replaceRefreshButtonWithActivityIndicator {
+    [self.refreshControl beginRefreshing];
+}
+
+- (void)removeActivityIndicatorFromRefreshButton {
+    [self.refreshControl endRefreshing];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:@"syncInProgress"]) {
+        [self checkSyncStatus];
+    }
+}
+
+
+// - (void)viewDidDisappear:(BOOL)animated {
+// [super viewDidDisappear:animated];
+// [[SDSyncEngine sharedEngine] removeObserver:self forKeyPath:@"syncInProgress"];
+// }
 
 - (void)refresh {
     [[OSCoreDataSyncEngine sharedEngine] startSync];
@@ -80,6 +113,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kOSCoreDataSyncEngineSyncCompletedNotificationName object:nil];
+    [[OSCoreDataSyncEngine sharedEngine] removeObserver:self forKeyPath:@"syncInProgress"];
 }
 
 - (void)didReceiveMemoryWarning
