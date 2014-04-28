@@ -76,6 +76,17 @@ static NSString * const kOSAPIKey = @"YOUR_API_KEY";
     return request;
 }
 
+- (NSMutableURLRequest *)PUTRequestForClass:(NSString *)className parameters:(NSDictionary *)parameters objectId:(NSString*)objectId {
+    NSMutableURLRequest *request = nil;
+    
+    NSString* className2 = className;
+    if([className isEqualToString:@"Person"]) {
+        className2 = @"people";
+    }
+    request = [self requestWithMethod:@"PUT" path:[NSString stringWithFormat:@"%@/%@.json", className2, objectId] parameters:parameters];
+    return request;
+}
+
 - (NSMutableURLRequest *)DELETERequestForClass:(NSString *)className forObjectWithId:(NSString *)objectId {
 
     NSString* className2 = className;

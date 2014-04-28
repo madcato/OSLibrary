@@ -46,8 +46,9 @@
 
 typedef enum {
     OSObjectSynced = 0,
-    OSObjectCreated,
-    OSObjectDeleted,
+    OSObjectCreated = 1,
+    OSObjectDeleted = 2,
+    OSObjectUpdated = 3
 } OSObjectSyncStatus;
 
 NSString * const kOSCoreDataSyncEngineInitialCompleteKey;
@@ -64,6 +65,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
 - (NSString *)dateStringForAPIUsingDate:(NSDate *)date;
 - (NSDate *)dateUsingStringFromAPI:(NSString *)dateString;
 + (void)deleteObject:(NSManagedObject*)object inContext:(NSManagedObjectContext *)context;
++ (void)updateObjectAndSave:(NSManagedObject*)object inContext:(NSManagedObjectContext *)context;
     
 @property (atomic, readonly) BOOL syncInProgress;
 

@@ -59,6 +59,8 @@ urlRequest success:(void ( ^ ) ( OSHTTPRequestOperation *operation , id response
         [self configureRequestForGET:request parameters:parameters];
     } else if ([method isEqualToString:@"POST"]) {
         [self configureRequestForPOST:request parameters:parameters];
+    } else if ([method isEqualToString:@"PUT"]) {
+        [self configureRequestForPOST:request parameters:parameters];
     } else if ([method isEqualToString:@"DELETE"]) {
         [self configureRequestForGET:request parameters:parameters];
     }

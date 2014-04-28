@@ -30,10 +30,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    [[OSCoreDataSyncEngine sharedEngine] addObserver:self
-                                          forKeyPath:@"syncInProgress"
-                                             options:NSKeyValueObservingOptionNew
-                                             context:nil];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self
                             action:@selector(refresh)
@@ -41,32 +37,10 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    UIBarButtonItem *modButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(updateObject:)];
+    self.navigationItem.leftBarButtonItem = modButton;
 }
-
-
-- (void)checkSyncStatus {
-    if ([[OSCoreDataSyncEngine sharedEngine] syncInProgress]) {
-        [self replaceRefreshButtonWithActivityIndicator];
-    } else {
-        [self removeActivityIndicatorFromRefreshButton];
-    }
-}
-
-- (void)replaceRefreshButtonWithActivityIndicator {
-    [self.refreshControl beginRefreshing];
-}
-
-- (void)removeActivityIndicatorFromRefreshButton {
-    [self.refreshControl endRefreshing];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-    if ([keyPath isEqualToString:@"syncInProgress"]) {
-        [self checkSyncStatus];
-    }
-}
-
 
 // - (void)viewDidDisappear:(BOOL)animated {
 // [super viewDidDisappear:animated];
@@ -145,6 +119,18 @@
         abort();
     }
 
+    [[OSCoreDataSyncEngine sharedEngine] startSync];
+}
+
+- (void)updateObject:(id)sender
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
+    NSManagedObject* object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    if (object == nil) return;
+    
+    [object setValue:@"Star Wars" forKey:@"name"];
+    [OSCoreDataSyncEngine updateObjectAndSave:object inContext:[self.fetchedResultsController managedObjectContext]];
     [[OSCoreDataSyncEngine sharedEngine] startSync];
 }
 

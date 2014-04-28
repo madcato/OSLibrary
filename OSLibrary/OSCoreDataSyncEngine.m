@@ -318,10 +318,10 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     //
     // Execute the sync completion operations as this is now the final step of the sync process
     //
-    [self postLocalObjectsToServer];
+    [self postLocalObjectsToServer:NO];
 }
 
-- (void)postLocalObjectsToServer {
+- (void)postLocalObjectsToServer:(BOOL)putUpdates {
     NSMutableArray *operations = [NSMutableArray array];
     //
     // Iterate over all register classes to sync
@@ -330,7 +330,12 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         //
         // Fetch all objects from Core Data whose syncStatus is equal to SDObjectCreated
         //
-        NSArray *objectsToCreate = [self managedObjectsForClass:className withSyncStatus:OSObjectCreated];
+        NSArray *objectsToCreate;
+        if (putUpdates == NO) {
+            objectsToCreate = [self managedObjectsForClass:className withSyncStatus:OSObjectCreated];
+        } else {
+            objectsToCreate = [self managedObjectsForClass:className withSyncStatus:OSObjectUpdated];
+        }
         //
         // Iterate over all fetched objects who syncStatus is equal to SDObjectCreated
         //
@@ -342,8 +347,12 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             //
             // Create a request using your POST method with the JSON representation of the NSManagedObject
             //
-            NSMutableURLRequest *request = [self.registeredAPIClient POSTRequestForClass:className parameters:jsonString];
-
+            NSMutableURLRequest *request;
+            if (putUpdates == NO) {
+                request = [self.registeredAPIClient POSTRequestForClass:className parameters:jsonString];
+            } else {
+                request = [self.registeredAPIClient PUTRequestForClass:className parameters:jsonString objectId:[objectToCreate valueForKey:@"objectId"]];
+            }
             OSHTTPRequestOperation *operation = [self.registeredAPIClient HTTPRequestOperationWithRequest:request success:^(OSHTTPRequestOperation *operation, id responseObject) {
                 //
                 // Set the completion block for the operation to update the NSManagedObject with the createdDate from the
@@ -383,7 +392,12 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             [[OSDatabase backgroundDatabase] save];
 //            NSLog(@"SBC After call creation");
         }
-
+//        if (putUpdates == NO) {
+//            [self deleteObjectsOnServer];
+//        } else {
+//            [self postLocalObjectsToServer:YES];
+//        }
+        
         [self deleteObjectsOnServer];
     }];
 }
@@ -482,7 +496,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         _syncInProgress = YES;
         [self didChangeValueForKey:@"syncInProgress"];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            [self downloadDataForRegisteredObjects:YES toDeleteLocalRecords:NO];
+                [self downloadDataForRegisteredObjects:YES toDeleteLocalRecords:NO];
         });
     }
 }
@@ -555,7 +569,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 - (void)writeJSONResponse:(id)response toDiskForClassWithName:(NSString *)className {
     NSURL *fileURL = [NSURL URLWithString:className relativeToURL:[self JSONDataRecordsDirectory]];
     if (![(NSArray *)response writeToFile:[fileURL path] atomically:YES]) {
-        NSLog(@"Error saving response to disk, will attempt to remove NSNull values and try again.");
+//        NSLog(@"Error saving response to disk, will attempt to remove NSNull values and try again.");
         // remove NSNulls and try again...
         NSArray *records = response;
         NSMutableArray *nullFreeRecords = [NSMutableArray array];
@@ -638,7 +652,6 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         } else {
             [object setValue:@(OSObjectDeleted) forKey:@"syncStatus"];
         }
-        // FIXME: No funciona el borrar objetos.
         NSError *error = nil;
         if (![context save:&error]) {
             // Replace this implementation with code to handle the error appropriately.
@@ -651,4 +664,24 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         [[OSCoreDataSyncEngine sharedEngine] startSync];
     }];
 }
+
++ (void)updateObjectAndSave:(NSManagedObject*)object inContext:(NSManagedObjectContext *)context {
+    [context performBlockAndWait:^{
+        // 1
+        if ([[object valueForKey:@"syncStatus"] isEqualToValue:@(OSObjectSynced)]) {
+            [object setValue:@(OSObjectUpdated) forKey:@"syncStatus"];
+        }
+        NSError *error = nil;
+        if (![context save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            [OSDatabase displayValidationError:error];
+        }
+        
+        [[OSDatabase defaultDatabase] save];
+        [[OSCoreDataSyncEngine sharedEngine] startSync];
+    }];
+}
+
 @end

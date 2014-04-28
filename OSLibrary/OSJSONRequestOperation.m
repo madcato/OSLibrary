@@ -33,10 +33,13 @@
          if (error) {
              self.error = error;
          } else {
-             NSError *error2;
-             self.responseObject = [NSJSONSerialization JSONObjectWithData:responseData options:nil error:&error2];
-             if (error2) {
-                 self.error = error2;
+             // Solo se necesita respuesta para GET y para POST
+             if (([self.request.HTTPMethod isEqualToString:@"GET"]) || ([self.request.HTTPMethod isEqualToString:@"POST"])) {
+                 NSError *error2;
+                 self.responseObject = [NSJSONSerialization JSONObjectWithData:responseData options:nil error:&error2];
+                 if (error2) {
+                    self.error = error2;
+                 }
              }
          }
          [self completionBlock];
