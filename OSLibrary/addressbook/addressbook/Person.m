@@ -30,7 +30,7 @@
     NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
                                     self.name, @"name",
                                     self.height, @"height",
-                                    self.avatar == nil ? @"": self.avatar, @"avatar",
+//                                    self.avatar == nil ? [NSData data]: self.avatar, @"avatar",
                                     [[OSCoreDataSyncEngine sharedEngine] dateStringForAPIUsingDate:self.birthDate], @"birthDate",
                                     isProgrammer, @"programmer",
                                     nil];

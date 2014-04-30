@@ -174,6 +174,7 @@ createFetchedResultsController:(NSString*)entityName
         }];
 
     }
+    newManagedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy;
     assert(newManagedObjectContext != nil);
     self.managedObjectContext = newManagedObjectContext;
     return newManagedObjectContext;
@@ -189,6 +190,7 @@ createFetchedResultsController:(NSString*)entityName
         }];
         
     }
+    newManagedObjectContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy;
     assert(newManagedObjectContext != nil);
     self.managedObjectContext = newManagedObjectContext;
     return newManagedObjectContext;
@@ -236,6 +238,7 @@ createFetchedResultsController:(NSString*)entityName
         _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
+    _managedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy;
     return _managedObjectContext;
 }
 

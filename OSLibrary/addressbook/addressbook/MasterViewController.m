@@ -119,7 +119,7 @@
         abort();
     }
 
-    [[OSCoreDataSyncEngine sharedEngine] startSync];
+//    [[OSCoreDataSyncEngine sharedEngine] startSync];
 }
 
 - (void)updateObject:(id)sender
@@ -131,7 +131,6 @@
     
     [object setValue:@"Star Wars" forKey:@"name"];
     [OSCoreDataSyncEngine updateObjectAndSave:object inContext:[self.fetchedResultsController managedObjectContext]];
-    [[OSCoreDataSyncEngine sharedEngine] startSync];
 }
 
 #pragma mark - Table View

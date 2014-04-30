@@ -30,6 +30,10 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedEngine = [[OSCoreDataSyncEngine alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:sharedEngine
+                                                 selector:@selector(updateBackgroundContext:)
+                                                     name:NSManagedObjectContextDidSaveNotification
+                                                   object:[[OSDatabase defaultDatabase] managedObjectContext]];
     });
     return sharedEngine;
 }
@@ -308,7 +312,6 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                 }
             }];
         }
-
         //
         // Delete all JSON Record response files to clean up after yourself
         //
@@ -360,10 +363,12 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                 // attempt to create it again
                 //
 //                NSLog(@"Success creation: %@", responseObject);
-                NSDictionary *responseDictionary = responseObject;
-                NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"created_at"]];
-                [objectToCreate setValue:createdDate forKey:@"created_at"];
-                [objectToCreate setValue:[responseDictionary valueForKey:@"objectId"] forKey:@"objectId"];
+                if (putUpdates == NO) {
+                    NSDictionary *responseDictionary = responseObject;
+                    NSDate *createdDate = [self dateUsingStringFromAPI:[responseDictionary valueForKey:@"created_at"]];
+                    [objectToCreate setValue:createdDate forKey:@"created_at"];
+                    [objectToCreate setValue:[responseDictionary valueForKey:@"objectId"] forKey:@"objectId"];
+                }
                 [objectToCreate setValue:@(OSObjectSynced) forKey:@"syncStatus"];
             } failure:^(OSHTTPRequestOperation *operation, NSError *error) {
                 //
@@ -392,13 +397,11 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             [[OSDatabase backgroundDatabase] save];
 //            NSLog(@"SBC After call creation");
         }
-//        if (putUpdates == NO) {
-//            [self deleteObjectsOnServer];
-//        } else {
-//            [self postLocalObjectsToServer:YES];
-//        }
-        
-        [self deleteObjectsOnServer];
+        if (putUpdates == NO) {
+            [self postLocalObjectsToServer:YES];
+        } else {
+            [self deleteObjectsOnServer];
+        }
     }];
 }
 
@@ -466,7 +469,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                                         updatedAfterDate:mostRecentUpdatedDate];
         OSHTTPRequestOperation *operation = [self.registeredAPIClient HTTPRequestOperationWithRequest:request success:^(OSHTTPRequestOperation *operation, id responseObject) {
             if ([responseObject isKindOfClass:[NSArray class]]) {
-//                NSLog(@"Response for %@: %@", className, responseObject);
+                NSLog(@"Response for %@: %@", className, responseObject);
                 // Need to write JSON files to disk
                 [self writeJSONResponse:responseObject toDiskForClassWithName:className];
             }
@@ -659,8 +662,6 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             [OSDatabase displayValidationError:error];
         }
-        
-        [[OSDatabase defaultDatabase] save];
         [[OSCoreDataSyncEngine sharedEngine] startSync];
     }];
 }
@@ -678,10 +679,12 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             [OSDatabase displayValidationError:error];
         }
-        
-        [[OSDatabase defaultDatabase] save];
-        [[OSCoreDataSyncEngine sharedEngine] startSync];
+//        [[OSCoreDataSyncEngine sharedEngine] startSync];
     }];
+}
+
+- (void)updateBackgroundContext:(NSNotification *)notification {
+//    [[[OSDatabase backgroundDatabase] managedObjectContext] mergeChangesFromContextDidSaveNotification:notification];
 }
 
 @end

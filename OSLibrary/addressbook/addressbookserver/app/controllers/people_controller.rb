@@ -7,6 +7,7 @@ class PeopleController < ApplicationController
     else
       strDateTime = params[:updated_at];
       dateTime = DateTime.parse(strDateTime)
+      dateTime = dateTime + 1.second
       @people = Person.where("updated_at > ?",dateTime)
     end
     
