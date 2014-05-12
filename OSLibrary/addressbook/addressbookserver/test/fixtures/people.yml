@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: Daniel Vela
   programmer: false
   height: 1.5
   birthDate: 2013-06-12 20:26:50
   avatar: 
 
 two:
-  name: MyString
+  name: Juan Ibanez
   programmer: false
   height: 1.5
   birthDate: 2013-06-12 20:26:50
