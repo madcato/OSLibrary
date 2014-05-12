@@ -121,49 +121,58 @@
 
 - (NSFetchedResultsController*)
 createFetchedResultsController:(NSString*)entityName
-           sortArray:(NSArray*)sortArray
-         withPredicate:(NSString*)predicateText
-          andArguments:(NSArray*)arguments
-     andSectionNameKeyPath:(NSString*)keyPath {
-  assert(self.managedObjectContext != nil);
-  NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-  // Edit the entity name as appropriate.
-  NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
-              inManagedObjectContext:self.managedObjectContext];
-  assert(entity != nil);
-  [fetchRequest setEntity:entity];
-  // Set the batch size to a suitable number.
-  [fetchRequest setFetchBatchSize:20];
-  // Edit the sort key as appropriate.
-  NSMutableArray *sortDescriptors = [NSMutableArray array];
-  for(NSString* sortName in sortArray) {
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                      initWithKey:sortName
-                        ascending:YES];
-    [sortDescriptors addObject:sortDescriptor];
-  }
-  [fetchRequest setSortDescriptors:sortDescriptors];
-  NSPredicate* predicate = [NSPredicate predicateWithFormat:predicateText
-                        argumentArray:arguments];
-  assert(predicate != nil);
-  [fetchRequest setPredicate:predicate];
-  // Edit the section name key path and cache name if appropriate.
-  // nil for section name key path means "no sections".
-  NSFetchedResultsController *aFetchedResultsController =
-  [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                managedObjectContext:self.managedObjectContext
-                  sectionNameKeyPath:keyPath
-                       cacheName:@"MasterList"];
-	NSError *error = nil;
-	if (![aFetchedResultsController performFetch:&error]) {
+sortArray:(NSArray*)sortArray
+withPredicate:(NSString*)predicateText
+andArguments:(NSArray*)arguments
+andSectionNameKeyPath:(NSString*)keyPath {
+    assert(self.managedObjectContext != nil);
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
+                                              inManagedObjectContext:self.managedObjectContext];
+    assert(entity != nil);
+    [fetchRequest setEntity:entity];
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    // Edit the sort key as appropriate.
+    NSMutableArray *sortDescriptors = [NSMutableArray array];
+    for(id element in sortArray) {
+        if ([element isKindOfClass:[NSString class]]) {
+            NSString* sortName = (NSString *)element;
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                                initWithKey:sortName
+                                                ascending:YES];
+            [sortDescriptors addObject:sortDescriptor];
+        } else if ([element isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = (NSDictionary *)element;
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                                initWithKey:dict[@"sort"]
+                                                ascending:dict[@"ascending"]];
+            [sortDescriptors addObject:sortDescriptor];
+        }
+        
+    }
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:predicateText
+                                                argumentArray:arguments];
+    assert(predicate != nil);
+    [fetchRequest setPredicate:predicate];
+    // Edit the section name key path and cache name if appropriate.
+    // nil for section name key path means "no sections".
+    NSFetchedResultsController *aFetchedResultsController =
+    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                        managedObjectContext:self.managedObjectContext
+                                          sectionNameKeyPath:keyPath
+                                                   cacheName:@"MasterList"];
+    NSError *error = nil;
+    if (![aFetchedResultsController performFetch:&error]) {
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [OSDatabase displayValidationError:error];
-	}    
+    }    
     return aFetchedResultsController;
 }
-
 - (NSManagedObjectContext*)createObjectContextForMainThread {
     NSManagedObjectContext* newManagedObjectContext = nil;
     NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
