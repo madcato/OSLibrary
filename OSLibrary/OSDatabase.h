@@ -37,6 +37,12 @@
 - (void)deleteObjects:(NSString*)entityName withPredicate:(NSString*)format andArguments:(NSArray*)arguments;
 - (NSManagedObject*)objectWithID:(NSManagedObjectID*)objectID;
 - (void)resetDatabaseFile;
+- (id)calculate:(NSString*)entityName
+  withPredicate:(NSString*)predicateText
+      arguments:(NSArray*)arguments
+        keyPath:(NSString*)keyPath
+       function:(NSString*)function
+           type:(NSAttributeType)type;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, strong) NSPersistentStoreCoordinator *persistentStoreCoordinator;

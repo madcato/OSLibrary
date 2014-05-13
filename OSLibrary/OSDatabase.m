@@ -97,14 +97,9 @@
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     // Edit the sort key as appropriate.
-    if(sortArray) {
-        NSMutableArray *sortDescriptors = [NSMutableArray array];
-        for(NSString* sortName in sortArray) {
-            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortName ascending:YES];
-            [sortDescriptors addObject:sortDescriptor];
-        }
-        [fetchRequest setSortDescriptors:sortDescriptors];
-    }
+    NSMutableArray *sortDescriptors;
+    sortDescriptors = [self sortDesciptors:sortArray];
+    [fetchRequest setSortDescriptors:sortDescriptors];
     NSPredicate* predicate = [NSPredicate predicateWithFormat:predicateText argumentArray:arguments];
     assert(predicate != nil);
     [fetchRequest setPredicate:predicate];
@@ -117,6 +112,27 @@
         [OSDatabase displayValidationError:error];
     }
     return fetchedObjects;
+}
+
+- (NSMutableArray *)sortDesciptors:(NSArray *)sortArray {
+    // Edit the sort key as appropriate.
+    NSMutableArray *sortDescriptors = [NSMutableArray array];
+    for(id element in sortArray) {
+        if ([element isKindOfClass:[NSString class]]) {
+            NSString* sortName = (NSString *)element;
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                                initWithKey:sortName
+                                                ascending:YES];
+            [sortDescriptors addObject:sortDescriptor];
+        } else if ([element isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dict = (NSDictionary *)element;
+            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                                initWithKey:dict[@"sort"]
+                                                ascending:dict[@"ascending"]];
+            [sortDescriptors addObject:sortDescriptor];
+        }
+    }
+    return sortDescriptors;
 }
 
 - (NSFetchedResultsController*)
@@ -134,24 +150,8 @@ andSectionNameKeyPath:(NSString*)keyPath {
     [fetchRequest setEntity:entity];
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
-    // Edit the sort key as appropriate.
-    NSMutableArray *sortDescriptors = [NSMutableArray array];
-    for(id element in sortArray) {
-        if ([element isKindOfClass:[NSString class]]) {
-            NSString* sortName = (NSString *)element;
-            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                                initWithKey:sortName
-                                                ascending:YES];
-            [sortDescriptors addObject:sortDescriptor];
-        } else if ([element isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *dict = (NSDictionary *)element;
-            NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                                initWithKey:dict[@"sort"]
-                                                ascending:dict[@"ascending"]];
-            [sortDescriptors addObject:sortDescriptor];
-        }
-        
-    }
+    NSMutableArray *sortDescriptors;
+    sortDescriptors = [self sortDesciptors:sortArray];
     [fetchRequest setSortDescriptors:sortDescriptors];
     NSPredicate* predicate = [NSPredicate predicateWithFormat:predicateText
                                                 argumentArray:arguments];
@@ -173,6 +173,62 @@ andSectionNameKeyPath:(NSString*)keyPath {
     }    
     return aFetchedResultsController;
 }
+
+- (id)calculate:(NSString*)entityName
+  withPredicate:(NSString*)predicateText
+      arguments:(NSArray*)arguments
+        keyPath:(NSString*)keyPath
+       function:(NSString*)function
+           type:(NSAttributeType)type {
+    assert(self.managedObjectContext != nil);
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName
+                                              inManagedObjectContext:self.managedObjectContext];
+    assert(entity != nil);
+    [fetchRequest setEntity:entity];
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:predicateText
+                                                argumentArray:arguments];
+    assert(predicate != nil);
+    [fetchRequest setPredicate:predicate];
+
+    // Specify that the request should return dictionaries.
+    [fetchRequest setResultType:NSManagedObjectResultType];
+    
+    // Create an expression for the key path.
+    NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:keyPath];
+    
+    // Create an expression to represent the minimum value at the key path 'creationDate'
+    NSExpression *minExpression = [NSExpression expressionForFunction:function arguments:@[keyPathExpression]];
+    
+    // Create an expression description using the minExpression and returning a date.
+    NSExpressionDescription *expressionDescription = [[NSExpressionDescription alloc] init];
+    
+    // The name is the key that will be used in the dictionary for the return value.
+    [expressionDescription setName:@"result"];
+    [expressionDescription setExpression:minExpression];
+    [expressionDescription setExpressionResultType:type];
+    
+    // Set the request's properties to fetch just the property represented by the expressions.
+    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
+    NSError *error = nil;
+    NSArray *objects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+
+    if (objects == nil) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        [OSDatabase displayValidationError:error];
+    }
+    else {
+
+        if ([objects count] > 0) {
+            return [[objects objectAtIndex:0] valueForKey:@"result"];
+        } 
+    }
+    return nil;
+}
+
 - (NSManagedObjectContext*)createObjectContextForMainThread {
     NSManagedObjectContext* newManagedObjectContext = nil;
     NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
