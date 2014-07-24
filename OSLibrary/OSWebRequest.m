@@ -155,6 +155,40 @@ withHandler:(OSRequestHandler)handler {
                            delegate:self];
 }
 
+-(void)post3:(NSDictionary*)object
+       toURL:(NSString*)u
+     headers:(NSDictionary*)headers
+ withHandler:(OSRequestHandler)handler {
+    NSString* data = @"";
+    for(NSString* key in [object allKeys]) {
+        NSString* value = [object valueForKey:key];
+        data = [NSString stringWithFormat:@"%@=%@&%@",
+                [key stringByAddingPercentEscapesUsingEncoding:encoding],
+                [value stringByAddingPercentEscapesUsingEncoding:encoding],
+                data];
+    }
+    NSString *scaped_url = [u stringByAddingPercentEscapesUsingEncoding:encoding];
+    requestHandler = handler;
+    NSURL *url = [[NSURL alloc] initWithString:scaped_url];
+    responseData = [NSMutableData data];
+    NSData* buffer;
+    buffer = [data dataUsingEncoding:encoding];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
+                                    initWithURL:url
+                                    cachePolicy:
+                                    NSURLRequestReloadIgnoringCacheData
+                                    timeoutInterval:timeout];
+    for (NSString* key in [headers allKeys]) {
+        [request setValue:headers[key] forHTTPHeaderField:key];
+    }
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:buffer];
+    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[buffer length]]
+   forHTTPHeaderField:@"Content-Length"];
+    m_connection = [[NSURLConnection alloc] initWithRequest:request
+                                                   delegate:self];
+}
+
 -(void)postJson:(NSString*)data
       toURL:(NSString*)u
   withHandler:(OSRequestHandler)handler {
@@ -180,7 +214,7 @@ withHandler:(OSRequestHandler)handler {
 -(void)putJson:(NSString*)data
      toURL:(NSString*)u
    withHandler:(OSRequestHandler)handler {
-  NSString *scaped_url = [u stringByAddingPercentEscapesUsingEncoding:encoding];
+NSString *scaped_url = [u stringByAddingPercentEscapesUsingEncoding:encoding];
   requestHandler = handler;
   NSURL *url = [[NSURL alloc] initWithString:scaped_url];
   responseData = [NSMutableData data];

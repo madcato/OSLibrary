@@ -82,6 +82,12 @@ withHandler:(OSRequestHandler)handler;
      toURL:(NSString*)u
  withHandler:(OSRequestHandler)handler;
 
+-(void)post3:(NSDictionary*)object
+       toURL:(NSString*)u
+     headers:(NSDictionary*)headers
+ withHandler:(OSRequestHandler)handler;
+
+
 /*!
  @method postJson:toURL:withHandler:
  @abstract Make a POST to an URL using JSON content-type.
