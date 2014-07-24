@@ -50,6 +50,8 @@ typedef void(^OSRequestHandler)(NSData *responseData, NSHTTPURLResponse *urlResp
  */
 -(void)download:(NSString*)url withHandler:(OSRequestHandler)handler;
 
+-(void)get:(NSString*)url headers:(NSDictionary*)headers withHandler:(OSRequestHandler)handler;
+
 /*!
  @method post:toURL:withHandler:
  @abstract Make a POST to an URL

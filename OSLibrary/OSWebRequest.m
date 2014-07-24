@@ -82,6 +82,27 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding
                            delegate:self];
 }
 
+-(void)get:(NSString*)url
+       headers:(NSDictionary*)headers
+   withHandler:(OSRequestHandler)handler {
+	NSString *scaped_url = [url
+                            stringByAddingPercentEscapesUsingEncoding:encoding];
+	requestHandler = handler;
+	responseData = [NSMutableData data];
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:
+                             [NSURL URLWithString:scaped_url]
+                                             cachePolicy:
+                             NSURLRequestUseProtocolCachePolicy
+                                         timeoutInterval:timeout];
+    [request setHTTPMethod:@"GET"];
+    for (NSString* key in [headers allKeys]) {
+        [request setValue:headers[key] forHTTPHeaderField:key];
+    }
+
+ 	m_connection = [[NSURLConnection alloc] initWithRequest:request
+                                                   delegate:self];
+}
+
 -(void)post:(NSString*)data
     toURL:(NSString*)u
 withHandler:(OSRequestHandler)handler {
@@ -242,7 +263,17 @@ canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace {
 	if(authMethod == NSURLAuthenticationMethodHTTPDigest) {
 		return YES;
 	}
+    if(authMethod == NSURLAuthenticationMethodServerTrust) {
+		return YES;
+	}
 	return NO;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge {
+
+    [challenge.sender useCredential:[NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust] forAuthenticationChallenge:challenge];
+
+    [challenge.sender continueWithoutCredentialForAuthenticationChallenge:challenge];
 }
 
 - (void)connection:(NSURLConnection *)connection

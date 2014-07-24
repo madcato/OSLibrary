@@ -99,6 +99,8 @@
 */
 + (void)createObjectInConfiguration:(id)object forKey:(NSString*)objectName;
 
++ (id)loadFromConfig:(NSString*)key;
+
 /*!
  @method getPreferredLanguage
  @abstract Return the user selected preferred language identificator.

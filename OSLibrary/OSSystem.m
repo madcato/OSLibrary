@@ -70,6 +70,11 @@
 
 + (void)createObjectInConfiguration:(id)object forKey:(NSString*)objectName {
   [[NSUserDefaults standardUserDefaults] setObject:object forKey:objectName];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
++ (id)loadFromConfig:(NSString*)key {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:key];
 }
 
 + (NSString*)getPreferredLanguage {
