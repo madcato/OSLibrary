@@ -82,7 +82,7 @@ withHandler:(OSRequestHandler)handler;
      toURL:(NSString*)u
  withHandler:(OSRequestHandler)handler;
 
--(void)post3:(NSDictionary*)object
+-(void)postJsonObject:(NSDictionary*)object
        toURL:(NSString*)u
      headers:(NSDictionary*)headers
  withHandler:(OSRequestHandler)handler;

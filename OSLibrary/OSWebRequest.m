@@ -155,24 +155,23 @@ withHandler:(OSRequestHandler)handler {
                            delegate:self];
 }
 
--(void)post3:(NSDictionary*)object
+-(void)postJsonObject:(NSDictionary*)object
        toURL:(NSString*)u
      headers:(NSDictionary*)headers
  withHandler:(OSRequestHandler)handler {
-    NSString* data = @"";
-    for(NSString* key in [object allKeys]) {
-        NSString* value = [object valueForKey:key];
-        data = [NSString stringWithFormat:@"%@=%@&%@",
-                [key stringByAddingPercentEscapesUsingEncoding:encoding],
-                [value stringByAddingPercentEscapesUsingEncoding:encoding],
-                data];
+
+    NSError* error;
+    NSData* data = [NSJSONSerialization dataWithJSONObject:object options:NSJSONReadingAllowFragments error:&error];
+
+    if (error) {
+        NSLog(@"JSON ERROR: %@",error);
+        return;
     }
+
     NSString *scaped_url = [u stringByAddingPercentEscapesUsingEncoding:encoding];
     requestHandler = handler;
     NSURL *url = [[NSURL alloc] initWithString:scaped_url];
     responseData = [NSMutableData data];
-    NSData* buffer;
-    buffer = [data dataUsingEncoding:encoding];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc]
                                     initWithURL:url
                                     cachePolicy:
@@ -182,8 +181,9 @@ withHandler:(OSRequestHandler)handler {
         [request setValue:headers[key] forHTTPHeaderField:key];
     }
     [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:buffer];
-    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[buffer length]]
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-type"];
+    [request setHTTPBody:data];
+    [request setValue:[NSString stringWithFormat:@"%lu", (unsigned long)[data length]]
    forHTTPHeaderField:@"Content-Length"];
     m_connection = [[NSURLConnection alloc] initWithRequest:request
                                                    delegate:self];
