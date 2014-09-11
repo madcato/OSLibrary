@@ -168,6 +168,14 @@
  */
 + (void)updateAppVersionInSettings;
 
+/*!
+ @method getOrCreateAppUniqueIdentifier
+ @abstract return the app unique identifier. If this identifier is not created,
+            then create and returns it.
+ @discussion The unique identifier is an UUID. This value is stored in the keychain.
+ */
++ (NSString*)getOrCreateAppUniqueIdentifier;
+
 @end
 
 

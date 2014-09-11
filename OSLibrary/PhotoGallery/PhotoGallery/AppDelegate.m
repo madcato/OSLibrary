@@ -12,6 +12,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSString* str = [OSSystem getOrCreateAppUniqueIdentifier];
+
     return YES;
 }
 

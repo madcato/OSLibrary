@@ -44,6 +44,7 @@
 		0B7F13431790622B0068B3F8 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FEF71413ED54B200BC78B0 /* WebViewController.xib */; };
 		0B95C45118F47918003FA730 /* OSWebRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 278474B713EFF2E400CDD1CF /* OSWebRequest.h */; };
 		0B95C45218F4797F003FA730 /* OSLoadingViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10532F4115DA569000AB115B /* OSLoadingViewController.h */; };
+		0BAB7DF219C1AFEB00BA044E /* OSSystemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */; };
 		0BBB01D917906A6000969ACD /* OSSystem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27CB962F13E4124400717380 /* OSSystem.h */; };
 		0BD9FCD6190B99C300F7D8B6 /* OSHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9FCD5190B99C300F7D8B6 /* OSHTTPRequestOperation.m */; };
 		0BD9FCD7190B9BBC00F7D8B6 /* OSHTTPRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BD9FCD4190B99C300F7D8B6 /* OSHTTPRequestOperation.h */; };
@@ -167,6 +168,7 @@
 		0B7F130817905DF90068B3F8 /* OSLibraryBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSLibraryBundle-Info.plist"; sourceTree = "<group>"; };
 		0B7F130A17905DF90068B3F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0B7F130C17905DF90068B3F8 /* OSLibraryBundle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibraryBundle-Prefix.pch"; sourceTree = "<group>"; };
+		0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSystemTest.m; sourceTree = "<group>"; };
 		0BD9FCD4190B99C300F7D8B6 /* OSHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSHTTPRequestOperation.h; sourceTree = "<group>"; };
 		0BD9FCD5190B99C300F7D8B6 /* OSHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSHTTPRequestOperation.m; sourceTree = "<group>"; };
 		0BD9FCD8190B9EE700F7D8B6 /* OSHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSHTTPClient.h; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				0B0CF5D1176FB23F00CBEF64 /* OSDatabaseTest.h */,
 				0B0CF5D2176FB23F00CBEF64 /* OSDatabaseTest.m */,
 				0B0CF5D4176FB26600CBEF64 /* OSDatabaseTest.xcdatamodeld */,
+				0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */,
 			);
 			path = OSLibraryTests;
 			sourceTree = SOURCE_ROOT;
@@ -714,6 +717,7 @@
 				27CB963513E4140600717380 /* OSDateTest.m in Sources */,
 				27CB963813E4162F00717380 /* OSTimeTest.m in Sources */,
 				27CB963B13E418A300717380 /* OSDateTimeTest.m in Sources */,
+				0BAB7DF219C1AFEB00BA044E /* OSSystemTest.m in Sources */,
 				27FD9C7A14EAB3BA0091A0E3 /* OSNetworkTest.m in Sources */,
 				1097CC48165A761400330CD2 /* NSStirng+encodeStringTest.m in Sources */,
 				1097CC4C165A789C00330CD2 /* OSOperationQueuesTest.m in Sources */,
