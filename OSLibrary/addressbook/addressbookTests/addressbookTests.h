@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Daniel Vela. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface addressbookTests : SenTestCase
+@interface addressbookTests : XCTestCase
 
 @end

@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>6EA0969B-FD40-444D-B443-7617D6528818</string>
+	<string>B5852472-3ECC-48FB-AC1C-FBABBA6B8E08</string>
 	<key>IDESourceControlProjectName</key>
 	<string>addressbook</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>808BE1A1-EC65-4F6D-9EAD-213B4FD723C1</key>
-		<string>ssh://redmine.local/git/OSlibrary.git</string>
+		<key>5C8B50AF-8A97-42DF-818D-476235D72A35</key>
+		<string>ssh://github.com/madcato/OSLibrary.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>OSLibrary/addressbook/addressbook.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>808BE1A1-EC65-4F6D-9EAD-213B4FD723C1</key>
+		<key>5C8B50AF-8A97-42DF-818D-476235D72A35</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://redmine.local/git/OSlibrary.git</string>
+	<string>ssh://github.com/madcato/OSLibrary.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>808BE1A1-EC65-4F6D-9EAD-213B4FD723C1</string>
+	<string>5C8B50AF-8A97-42DF-818D-476235D72A35</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>808BE1A1-EC65-4F6D-9EAD-213B4FD723C1</string>
+			<string>5C8B50AF-8A97-42DF-818D-476235D72A35</string>
 			<key>IDESourceControlWCCName</key>
 			<string>OSLibrary</string>
 		</dict>
