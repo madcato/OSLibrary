@@ -628,7 +628,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                 //NSDate;
                 return [[OSCoreDataSyncEngine sharedEngine] dateUsingStringFromAPI:value];
                 break;
-            case NSBinaryDataAttributeType:
+            case NSBinaryDataAttributeType: {
                 //NSData;
                 if ([value length] == 0) {
                     return [NSData data];
@@ -640,7 +640,9 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                 NSData *dataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
                 return dataResponse;
                 break;
-
+            }
+            default:
+                break;
         }
     }
     
