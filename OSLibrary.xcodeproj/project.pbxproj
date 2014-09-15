@@ -15,6 +15,7 @@
 		0B52EE971768CC9900F7D477 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */; };
 		0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE9F1768D93500F7D477 /* NSManagedObject+JSON.m */; };
 		0B5D1E1B18B75BF800B14A7B /* OSWebRequestAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C7CF23167B3F7100E9047F /* OSWebRequestAuth.m */; };
+		0B6917F619C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6917F519C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.m */; };
 		0B7F130117905DF90068B3F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7F130017905DF90068B3F8 /* Cocoa.framework */; };
 		0B7F130B17905DF90068B3F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F130917905DF90068B3F8 /* InfoPlist.strings */; };
 		0B7F132B179061F00068B3F8 /* OSDatabase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 106F667615D8DFC10016184F /* OSDatabase.h */; };
@@ -160,6 +161,8 @@
 		0B52EE9B1768D7E700F7D477 /* OSHTTPAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSHTTPAPIClient.m; sourceTree = "<group>"; };
 		0B52EE9E1768D93500F7D477 /* NSManagedObject+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+JSON.h"; sourceTree = "<group>"; };
 		0B52EE9F1768D93500F7D477 /* NSManagedObject+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+JSON.m"; sourceTree = "<group>"; };
+		0B6917F419C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEditablePickerViewTableViewCell.h; sourceTree = "<group>"; };
+		0B6917F519C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEditablePickerViewTableViewCell.m; sourceTree = "<group>"; };
 		0B7F12FF17905DF90068B3F8 /* OSLibraryBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSLibraryBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B7F130017905DF90068B3F8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		0B7F130317905DF90068B3F8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -430,6 +433,8 @@
 				10532F4215DA569000AB115B /* OSLoadingViewController.m */,
 				108AD5D715DA657700EE2443 /* OSAppearance.h */,
 				108AD5D815DA657700EE2443 /* OSAppearance.m */,
+				0B6917F419C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.h */,
+				0B6917F519C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -678,6 +683,7 @@
 			files = (
 				27CB962613E4115700717380 /* OSDate.m in Sources */,
 				27CB962A13E411CD00717380 /* OSTime.m in Sources */,
+				0B6917F619C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.m in Sources */,
 				0B5D1E1B18B75BF800B14A7B /* OSWebRequestAuth.m in Sources */,
 				27CB962E13E411DC00717380 /* OSDateTime.m in Sources */,
 				27CB963213E4124400717380 /* OSSystem.m in Sources */,
