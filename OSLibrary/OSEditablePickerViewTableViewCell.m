@@ -46,10 +46,10 @@
 
 - (void)initControls {
 
-    CGRect contentFrame = CGRectMake(0, 0, 320, 192);
-    CGRect addButtonFrame = CGRectMake(277, 0, 30, 30);
-    CGRect minusButtonFrame = CGRectMake(248, 0, 30, 30);
-    CGRect pickerViewFrame = CGRectMake(0, 29, 320, 162);
+    CGRect contentFrame = CGRectMake(0, 0, 320, 206);
+    CGRect addButtonFrame = CGRectMake(263, 0, 44, 44);
+    CGRect minusButtonFrame = CGRectMake(218, 0, 44, 44);
+    CGRect pickerViewFrame = CGRectMake(0, 43, 320, 162);
 
     [self.contentView setFrame:contentFrame];
 
@@ -62,6 +62,7 @@
     [addButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [addButton setUserInteractionEnabled:YES];
     addButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    [addButton.titleLabel setFont:[UIFont systemFontOfSize:28.0f]];
     [self.contentView addSubview:addButton];
 
     UIButton* minusButton = [[UIButton alloc] initWithFrame:minusButtonFrame];
@@ -73,6 +74,7 @@
     [minusButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [minusButton setUserInteractionEnabled:YES];
     minusButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    [minusButton.titleLabel setFont:[UIFont systemFontOfSize:28.0f]];
     [self.contentView addSubview:minusButton];
 
     self.pickerView = [[UIPickerView alloc] initWithFrame:
@@ -87,42 +89,42 @@
     [self.contentView addSubview:pickerView];
 
 
-    // Constraints
-    NSDictionary *views = NSDictionaryOfVariableBindings(addButton,minusButton,pickerView);
-
-
-    [self.contentView addConstraints:[NSLayoutConstraint
-                               constraintsWithVisualFormat:@"[addButton]-13-|"
-                               options:0
-                               metrics:nil
-                               views:views]];
-    [self.contentView addConstraints:[NSLayoutConstraint
-                                      constraintsWithVisualFormat:@"V:|[addButton]"
-                                      options:0
-                                      metrics:nil
-                                      views:views]];
-
-    [self.contentView addConstraints:[NSLayoutConstraint
-                                      constraintsWithVisualFormat:@"[minusButton]-42-|"
-                                      options:0
-                                      metrics:nil
-                                      views:views]];
-    [self.contentView addConstraints:[NSLayoutConstraint
-                                      constraintsWithVisualFormat:@"V:|[minusButton]"
-                                      options:0
-                                      metrics:nil
-                                      views:views]];
-
-    [self.contentView addConstraints:[NSLayoutConstraint
-                                      constraintsWithVisualFormat:@"|[pickerView]|"
-                                      options:0
-                                      metrics:nil
-                                      views:views]];
-    [self.contentView addConstraints:[NSLayoutConstraint
-                                      constraintsWithVisualFormat:@"V:|-29-[pickerView]"
-                                      options:0
-                                      metrics:nil
-                                      views:views]];
+//    // Constraints
+//    NSDictionary *views = NSDictionaryOfVariableBindings(addButton,minusButton,pickerView);
+//
+//
+//    [self.contentView addConstraints:[NSLayoutConstraint
+//                               constraintsWithVisualFormat:@"[addButton]-13-|"
+//                               options:0
+//                               metrics:nil
+//                               views:views]];
+//    [self.contentView addConstraints:[NSLayoutConstraint
+//                                      constraintsWithVisualFormat:@"V:|[addButton]"
+//                                      options:0
+//                                      metrics:nil
+//                                      views:views]];
+//
+//    [self.contentView addConstraints:[NSLayoutConstraint
+//                                      constraintsWithVisualFormat:@"[minusButton]-42-|"
+//                                      options:0
+//                                      metrics:nil
+//                                      views:views]];
+//    [self.contentView addConstraints:[NSLayoutConstraint
+//                                      constraintsWithVisualFormat:@"V:|[minusButton]"
+//                                      options:0
+//                                      metrics:nil
+//                                      views:views]];
+//
+//    [self.contentView addConstraints:[NSLayoutConstraint
+//                                      constraintsWithVisualFormat:@"|[pickerView]|"
+//                                      options:0
+//                                      metrics:nil
+//                                      views:views]];
+//    [self.contentView addConstraints:[NSLayoutConstraint
+//                                      constraintsWithVisualFormat:@"V:|-29-[pickerView]"
+//                                      options:0
+//                                      metrics:nil
+//                                      views:views]];
 
 }
 
@@ -132,7 +134,12 @@
 }
 
 -(void)minusPressed {
-    [self.delegate2 minusPressed];
+    NSInteger row = [self.pickerView selectedRowInComponent:0];
+    [self.delegate2 minusPressed:row];
+    [self.pickerView reloadAllComponents];
+
+    row = [self.pickerView selectedRowInComponent:0];
+    [self.delegate pickerView:self.pickerView didSelectRow:row inComponent:0];
 }
 
 @end

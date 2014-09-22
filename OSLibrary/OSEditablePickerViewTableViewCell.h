@@ -11,7 +11,7 @@
 @protocol OSFloatingPickerViewDelegate
 
 -(void)addPressed;
--(void)minusPressed;
+-(void)minusPressed:(NSInteger)selectedRow;
 
 @end
 
