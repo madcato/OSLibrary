@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "OSOperation.h"
 
-typedef void (^OSCompletionBlock) (void);
-
 @interface OSHTTPRequestOperation : OSOperation
 
 @property (nonatomic, strong) NSError *error;

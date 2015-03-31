@@ -69,6 +69,18 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
     
 @property (atomic, readonly) BOOL syncInProgress;
 
+
+- (NSDate *)mostRecentUpdatedAtDateForEntityWithName:(NSString *)entityName;
+- (BOOL)initialSyncComplete;
+- (NSArray *)JSONArrayForClassWithName:(NSString *)className;
+- (void)newManagedObjectWithClassName:(NSString *)className forRecord:(NSDictionary *)record;
+- (NSArray *)JSONDataRecordsForClass:(NSString *)className sortedByKey:(NSString *)key;
+- (NSArray *)managedObjectsForClass:(NSString *)className sortedByKey:(NSString *)key usingArrayOfIds:(NSArray *)idArray inArrayOfIds:(BOOL)inIds;
+- (void)updateManagedObject:(NSManagedObject *)managedObject withRecord:(NSDictionary *)record;
+- (void)deleteJSONDataRecordsForClassWithName:(NSString *)className;
+- (void)executeSyncCompletedOperations;
+- (void)writeJSONResponse:(id)response toDiskForClassWithName:(NSString *)className;
+
 @end
 
 

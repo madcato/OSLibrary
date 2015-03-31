@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "OSWebRequest.h"
 
+typedef void (^OSCompletionBlock) (void);
 
 @interface OSOperation : NSOperation {
   BOOL    executing;
