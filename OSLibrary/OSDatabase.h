@@ -15,9 +15,29 @@
 
 @end
 
+/**
+ // In order to be notificated when the background is saved, use this code.
+ //
+ - (void)viewDidLoad {
+	[[NSNotificationCenter defaultCenter] addObserver:self
+ selector:@selector(updateContext:)
+ name:NSManagedObjectContextDidSaveNotification
+ object:[[OSDatabase backgroundDatabase] managedObjectContext]];
+ }
+ 
+ // this is called from mergeChanges: method,
+ // requested to be made on the main thread so we can update our table with our new earthquake objects
+ //
+ - (void)updateContext:(NSNotification *)notification
+ {
+ NSManagedObjectContext *mainContext = [self.fetchedResultsController managedObjectContext];
+ [mainContext mergeChangesFromContextDidSaveNotification:notification];
+ }
+ 
+ */
 @interface OSDatabase : NSObject
 
-/** 
+/**
  Call this method in the applicationDidFinishLaunching
 */
 +(OSDatabase*)initWithModelName:(NSString *)modelName
