@@ -9,7 +9,7 @@
 #import "OSDatabase.h"
 
 @interface OSDatabase()
-
+ @property (nonatomic ,strong)OSDatabase* backgroundDatabase;
 @end
 
 @implementation OSDatabase
@@ -33,6 +33,7 @@
     dispatch_once(&onceToken, ^{
         database = [[OSDatabase alloc] init];
         OSDatabase* instance = [OSDatabase defaultDatabase];
+        instance.backgroundDatabase = instance;
         database.persistentStoreCoordinator = [instance persistentStoreCoordinator];
         database.managedObjectModel = [instance managedObjectModel];
         database.managedObjectContext = [instance createObjectContextForPrivateThread];
@@ -128,7 +129,7 @@
             NSDictionary *dict = (NSDictionary *)element;
             NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
                                                 initWithKey:dict[@"sort"]
-                                                ascending:dict[@"ascending"]];
+                                                ascending:[dict[@"ascending"] boolValue]];
             [sortDescriptors addObject:sortDescriptor];
         }
     }
@@ -411,28 +412,47 @@ andSectionNameKeyPath:(NSString*)keyPath {
 }
 
 - (void)resetDatabaseFile {
-    NSPersistentStore* store = [[_persistentStoreCoordinator persistentStores] lastObject];
+//    NSPersistentStore* store = [[_persistentStoreCoordinator persistentStores] lastObject];
+//    
+//    NSError *error = nil;
+//    NSURL *storeURL = store.URL;
+//    
+//    // release context and model
+//    _managedObjectModel = nil;
+//    _managedObjectContext = nil;
+//    
+////    [_persistentStoreCoordinator removePersistentStore:store error:nil];
+//    
+//    _persistentStoreCoordinator = nil;
+//    
+//    if (self.unittesting == NO) {
+//        [[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
+//        if (error) {
+//            NSLog(@"filemanager error %@", error);
+//        }
+//    }
+//    // recreate the stack
+//    _managedObjectContext = [self managedObjectContext];
+//    self.backgroundDatabase.persistentStoreCoordinator = [self persistentStoreCoordinator];
+//    self.backgroundDatabase.managedObjectModel = [self managedObjectModel];
+//    self.backgroundDatabase.managedObjectContext = [self createObjectContextForPrivateThread];
     
-    NSError *error = nil;
-    NSURL *storeURL = store.URL;
+}
+
+- (void)deleteAllEntities:(NSString *)nameEntity
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:nameEntity];
+    [fetchRequest setIncludesPropertyValues:NO]; //only fetch the managedObjectID
     
-    // release context and model
-    _managedObjectModel = nil;
-    _managedObjectContext = nil;
-    
-    [_persistentStoreCoordinator removePersistentStore:store error:nil];
-    
-    _persistentStoreCoordinator = nil;
-    
-    if (self.unittesting == NO) {
-        [[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
-        if (error) {
-            NSLog(@"filemanager error %@", error);
-        }
+    NSError *error;
+    NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    for (NSManagedObject *object in fetchedObjects)
+    {
+        [self.managedObjectContext deleteObject:object];
     }
-    // recreate the stack
-    _managedObjectContext = [self managedObjectContext];
     
+    error = nil;
+    [self.managedObjectContext save:&error];
 }
 
 + (void)displayValidationError:(NSError *)anError {

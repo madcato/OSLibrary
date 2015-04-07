@@ -10,29 +10,29 @@
 	<string>addressbook</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>5C8B50AF-8A97-42DF-818D-476235D72A35</key>
-		<string>ssh://github.com/madcato/OSLibrary.git</string>
+		<key>F7A42C99DD0AA9BFB01AF3270C5D63EBD7A8D907</key>
+		<string>github.com:madcato/OSLibrary.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>OSLibrary/addressbook/addressbook.xcodeproj/project.xcworkspace</string>
+	<string>OSLibrary/addressbook/addressbook.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>5C8B50AF-8A97-42DF-818D-476235D72A35</key>
+		<key>F7A42C99DD0AA9BFB01AF3270C5D63EBD7A8D907</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/madcato/OSLibrary.git</string>
+	<string>github.com:madcato/OSLibrary.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5C8B50AF-8A97-42DF-818D-476235D72A35</string>
+	<string>F7A42C99DD0AA9BFB01AF3270C5D63EBD7A8D907</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5C8B50AF-8A97-42DF-818D-476235D72A35</string>
+			<string>F7A42C99DD0AA9BFB01AF3270C5D63EBD7A8D907</string>
 			<key>IDESourceControlWCCName</key>
 			<string>OSLibrary</string>
 		</dict>

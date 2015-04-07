@@ -87,7 +87,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:kOSCoreDataSyncEngineSyncCompletedNotificationName object:nil];
-    [[OSCoreDataSyncEngine sharedEngine] removeObserver:self forKeyPath:@"syncInProgress"];
+//    [[OSCoreDataSyncEngine sharedEngine] removeObserver:self forKeyPath:@"syncInProgress"];
 }
 
 - (void)didReceiveMemoryWarning

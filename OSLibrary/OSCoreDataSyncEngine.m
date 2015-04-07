@@ -88,7 +88,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 }
 
 - (NSDate *)mostRecentUpdatedAtDateForEntityWithName:(NSString *)entityName {
-    __block NSDate *date = nil;
+    __block NSDate *date = [NSDate dateWithTimeIntervalSince1970:0];
     //
     // Create a new fetch request for the specified entity
     //
