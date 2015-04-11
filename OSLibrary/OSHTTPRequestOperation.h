@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) NSError *error;
 @property (nonatomic, strong) id responseObject;
-@property (nonatomic, strong) OSCompletionBlock completionBlock;
+@property (nonatomic, strong) OSCompletionBlock completionBlock2;
 @property (nonatomic, strong) NSURLRequest* request;
 @property (nonatomic, assign) dispatch_queue_t successCallbackQueue;
 

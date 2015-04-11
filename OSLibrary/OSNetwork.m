@@ -28,6 +28,7 @@
 	if(reachabilityRef!= NULL) {
 		CFRelease(reachabilityRef);
 	}
+    localWiFiRef = NO;
 }
 
 static void ReachabilityCallback(SCNetworkReachabilityRef target,

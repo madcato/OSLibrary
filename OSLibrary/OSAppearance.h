@@ -11,8 +11,4 @@
 
 @interface OSAppearance : NSObject
 
-+(void)setShadowToNavigationBar:(UINavigationBar*)bar;
-
-+(void)setShadowToTabBar:(UITabBar*)bar;
-
 @end

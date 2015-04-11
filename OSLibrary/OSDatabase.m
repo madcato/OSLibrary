@@ -412,30 +412,27 @@ andSectionNameKeyPath:(NSString*)keyPath {
 }
 
 - (void)resetDatabaseFile {
-//    NSPersistentStore* store = [[_persistentStoreCoordinator persistentStores] lastObject];
-//    
-//    NSError *error = nil;
-//    NSURL *storeURL = store.URL;
-//    
-//    // release context and model
-//    _managedObjectModel = nil;
-//    _managedObjectContext = nil;
-//    
-////    [_persistentStoreCoordinator removePersistentStore:store error:nil];
-//    
-//    _persistentStoreCoordinator = nil;
-//    
-//    if (self.unittesting == NO) {
-//        [[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
-//        if (error) {
-//            NSLog(@"filemanager error %@", error);
-//        }
-//    }
-//    // recreate the stack
-//    _managedObjectContext = [self managedObjectContext];
-//    self.backgroundDatabase.persistentStoreCoordinator = [self persistentStoreCoordinator];
-//    self.backgroundDatabase.managedObjectModel = [self managedObjectModel];
-//    self.backgroundDatabase.managedObjectContext = [self createObjectContextForPrivateThread];
+    NSPersistentStore* store = [[_persistentStoreCoordinator persistentStores] lastObject];
+    
+    NSError *error = nil;
+    NSURL *storeURL = store.URL;
+    
+    // release context and model
+    _managedObjectModel = nil;
+    _managedObjectContext = nil;
+    
+    [_persistentStoreCoordinator removePersistentStore:store error:nil];
+    
+    _persistentStoreCoordinator = nil;
+    
+    if (self.unittesting == NO) {
+        [[NSFileManager defaultManager] removeItemAtPath:storeURL.path error:&error];
+        if (error) {
+            NSLog(@"filemanager error %@", error);
+        }
+    }
+    // recreate the stack
+    _managedObjectContext = [self managedObjectContext];
     
 }
 

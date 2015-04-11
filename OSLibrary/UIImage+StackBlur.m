@@ -52,6 +52,7 @@
 	int divsum=(div+1)>>1;
 	divsum*=divsum;
 	int *dv=malloc(sizeof(int)*(256*divsum));
+    dv[0] = 0;
 	for (i=0;i<256*divsum;i++){
 		dv[i]=(i/divsum);
 	}
