@@ -34,6 +34,9 @@
         
         sharedEngine.ckContainer = [CKContainer defaultContainer];
         sharedEngine.ckPublicDB = [sharedEngine.ckContainer publicCloudDatabase];
+        sharedEngine.operationQueue = [[NSOperationQueue alloc] init];
+        [sharedEngine.operationQueue setMaxConcurrentOperationCount:NSOperationQueueDefaultMaxConcurrentOperationCount];
+
     });
     return sharedEngine;
 }
@@ -49,6 +52,21 @@
     }
 }
 
+- (void)executeSyncCompletedOperations {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self setInitialSyncCompleted];
+        [[OSDatabase backgroundDatabase] save];
+        [[OSDatabase defaultDatabase] save];
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:kOSCoreDataSyncEngineSyncCompletedNotificationName
+         object:nil];
+        [self willChangeValueForKey:@"syncInProgress"];
+        _syncInProgress = NO;
+        [self didChangeValueForKey:@"syncInProgress"];
+    });
+}
+
+
 - (void)downloadDataForRegisteredObjects:(BOOL)useUpdatedAtDate toDeleteLocalRecords:(BOOL)toDelete {
     NSMutableArray *operations = [NSMutableArray array];
     
@@ -60,9 +78,11 @@
         
         // FIXME: create a query with date when mostRecentUpdatedDate != null
         // Download data
-        NSMutableArray* operations = [NSMutableArray array];
         for (NSString *className in self.registeredClassesToSync) {
             NSPredicate* predicate = [NSPredicate predicateWithValue:YES];
+            if (mostRecentUpdatedDate != nil) {
+                predicate = [NSPredicate predicateWithFormat:@"modificationDate > %@", mostRecentUpdatedDate];
+            }
             CKQuery* query = [[CKQuery alloc] initWithRecordType:className predicate:predicate];
             OSCloudKitRequestOperation* operation = [OSCloudKitRequestOperation operationWithDatabase:self.ckPublicDB query:query completionHandler:^(NSArray* results, NSError* error) {
             // Insert downloaded objects into Core Data
@@ -73,7 +93,7 @@
                         // (based on objectId) from your Core Data store. Iterate over all of the downloaded records
                         // from the remote service.
                         //
-                        NSArray *storedRecords = [self managedObjectsForClass:className sortedByKey:@"objectId" usingArrayOfIds:[results valueForKey:@"recordID.recordName"] inArrayOfIds:YES];
+                        NSArray *storedRecords = [self managedObjectsForClass:className sortedByKey:@"objectId" usingArrayOfIds:[[results valueForKey:@"recordID"] valueForKey:@"recordName" ] inArrayOfIds:YES];
                         int currentIndex = 0;
                         //
                         // If the number of records in your Core Data store is less than the currentIndex, you know that
@@ -106,32 +126,25 @@
                     }
                 } else {
                     // Delete objects when toDelete == YES
-                    if ([results count] > 0) {
-                        //
-                        // If there are any records fetch all locally stored records that are NOT in the list of downloaded records
-                        //
-                        NSArray *storedRecords = [self
-                                                  managedObjectsForClass:className
-                                                  sortedByKey:@"objectId"
-                                                  usingArrayOfIds:[results valueForKey:@"recordID.recordName"]
-                                                  inArrayOfIds:NO];
-                        
-                        //
-                        // Schedule the NSManagedObject for deletion and save the context
-                        //
-                        NSManagedObjectContext *managedObjectContext = [[OSDatabase backgroundDatabase] managedObjectContext];
-                        [managedObjectContext performBlockAndWait:^{
-                            for (NSManagedObject *managedObject in storedRecords) {
-                                [managedObjectContext deleteObject:managedObject];
-                            }
-                            NSError *error = nil;
-                            BOOL saved = [managedObjectContext save:&error];
-                            if (!saved) {
-                                NSLog(@"Unable to save context after deleting records for class %@ because %@", className, error);
-                            }
-                        }];
-                    }
-
+                   
+                    //
+                    // If there are any records fetch all locally stored records that are NOT in the list of downloaded records
+                    //
+                    NSArray *storedRecords = [self
+                                              managedObjectsForClass:className
+                                              sortedByKey:@"objectId"
+                                              usingArrayOfIds:[[results valueForKey:@"recordID"] valueForKey:@"recordName" ]
+                                              inArrayOfIds:NO];
+                    
+                    //
+                    // Schedule the NSManagedObject for deletion and save the context
+                    //
+                    NSManagedObjectContext *managedObjectContext = [[OSDatabase backgroundDatabase] managedObjectContext];
+                    [managedObjectContext performBlockAndWait:^{
+                        for (NSManagedObject *managedObject in storedRecords) {
+                            [managedObjectContext deleteObject:managedObject];
+                        }
+                    }];
                 }
             }];
             [operations addObject:operation];
@@ -163,7 +176,7 @@
         }
 
         NSManagedObject* object = nil;
-        if ((object = [objectsToProcces lastObject]) != nil) {
+        while ((object = [objectsToProcces lastObject]) != nil) {
             [objectsToProcces removeLastObject];
             
             if (putUpdates == NO) {
@@ -175,6 +188,8 @@
                 [self.ckPublicDB saveRecord:record completionHandler:^(CKRecord* record, NSError* error){
                     if (error != nil) {
                         NSLog(@"Unable to create record of class: %@ with error %@", className, error);
+                    } else {
+                        [self updateManagedObject:object withRecord:record];
                     }
                 }];
             } else {
@@ -187,6 +202,8 @@
                     [self.ckPublicDB saveRecord:record completionHandler:^(CKRecord* record, NSError* error){
                         if (error != nil) {
                             NSLog(@"Unable to update record of class: %@ with error %@", className, error);
+                        } else {
+                            [self updateManagedObject:object withRecord:record];
                         }
                     }];
                 }];
@@ -225,6 +242,11 @@
                 //
                 if (error != nil) {
                     NSLog(@"Unable to delete record of class: %@ with error %@", className, error);
+                } else {
+                    NSManagedObjectContext *managedObjectContext = [[OSDatabase backgroundDatabase] managedObjectContext];
+                    [managedObjectContext performBlockAndWait:^{
+                        [managedObjectContext deleteObject:objectToDelete];
+                    }];
                 }
             }];
 
@@ -236,16 +258,26 @@
 
 
 - (void)updateManagedObject:(NSManagedObject *)managedObject withRecord:(CKRecord *)record {
-    for (NSString* key in record.allKeys) {
+    NSEntityDescription *attDesc = [managedObject entity];
+    NSDictionary *attributesByName = [attDesc attributesByName];
+    for (NSString* key in attributesByName.allKeys) {
         id obj = [record objectForKey:key];
         [managedObject setValue:obj forKey:key];
     }
+    [managedObject setValue:@(OSObjectSynced) forKey:@"syncStatus"];
+    [managedObject setValue:record.recordID.recordName forKey:@"objectId"];
+    [managedObject setValue:record.modificationDate forKey:@"updated_at"];
+    [managedObject setValue:record.creationDate forKey:@"created_at"];
 }
 
 - (void)updateRecord:(CKRecord *)record withManagedObject:(NSManagedObject *)managedObject {
-    for (NSString* key in record.allKeys) {
-        id obj = [managedObject valueForKey:key];
-        [record setObject:obj forKey:key];
+    NSEntityDescription *attDesc = [managedObject entity];
+    NSDictionary *attributesByName = [attDesc attributesByName];
+    for (NSString* key in attributesByName.allKeys) {
+        if ([key isEqualToString:@"syncStatus"] == NO) {
+            id obj = [managedObject valueForKey:key];
+            [record setObject:obj forKey:key];
+        }
     }
 }
 
@@ -258,6 +290,8 @@
     }
     [newManagedObject setValue:@(OSObjectSynced) forKey:@"syncStatus"];
     [newManagedObject setValue:record.recordID.recordName forKey:@"objectId"];
+    [newManagedObject setValue:record.modificationDate forKey:@"updated_at"];
+    [newManagedObject setValue:record.creationDate forKey:@"created_at"];
 }
 
 - (void)enqueueBatchOperations:(NSArray *)operations

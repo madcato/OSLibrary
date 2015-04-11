@@ -27,13 +27,15 @@
 }
 
 -(void)run {
-    [self.database performQuery:self.query inZoneWithID:nil completionHandler:self.completionOperation];
+    [self.database performQuery:self.query inZoneWithID:nil completionHandler:^(NSArray* results, NSError* error) {
+        self.completionOperation(results,error);
+        [self completeOperation];
+    }];
 }
 
 - (void)main {
     @try {
         [self run];
-        [self completeOperation];
     }
     @catch(...) {
         // Do not rethrow exceptions.

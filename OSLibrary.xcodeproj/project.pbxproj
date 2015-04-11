@@ -13,6 +13,10 @@
 		0B0CF5DF176FDA5B00CBEF64 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0CF5DE176FDA5B00CBEF64 /* Security.framework */; };
 		0B2477A81AD99A7900B00728 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2477A71AD99A7900B00728 /* CloudKit.framework */; };
 		0B2477AB1AD99DB700B00728 /* OSCloudKitRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2477AA1AD99DB700B00728 /* OSCloudKitRequestOperation.m */; };
+		0B2477B01AD9B78C00B00728 /* OSCloudKitSyncEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BB1EB041A8E8C730038B564 /* OSCloudKitSyncEngine.h */; };
+		0B2477B11AD9B78C00B00728 /* OSCloudKitRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B2477A91AD99DB700B00728 /* OSCloudKitRequestOperation.h */; };
+		0B2477B21AD9B7D000B00728 /* OSCloudKitSyncEngine.h in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1EB041A8E8C730038B564 /* OSCloudKitSyncEngine.h */; };
+		0B2477B31AD9B7D000B00728 /* OSCloudKitRequestOperation.h in Sources */ = {isa = PBXBuildFile; fileRef = 0B2477A91AD99DB700B00728 /* OSCloudKitRequestOperation.h */; };
 		0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE931768C71B00F7D477 /* OSCoreDataSyncEngine.m */; };
 		0B52EE971768CC9900F7D477 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */; };
 		0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE9F1768D93500F7D477 /* NSManagedObject+JSON.m */; };
@@ -115,6 +119,8 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				0B2477B01AD9B78C00B00728 /* OSCloudKitSyncEngine.h in CopyFiles */,
+				0B2477B11AD9B78C00B00728 /* OSCloudKitRequestOperation.h in CopyFiles */,
 				0BD9FCDF190BA19D00F7D8B6 /* OSJSONRequestOperation.h in CopyFiles */,
 				0BD9FCDB190B9F0D00F7D8B6 /* OSHTTPClient.h in CopyFiles */,
 				0BD9FCD7190B9BBC00F7D8B6 /* OSHTTPRequestOperation.h in CopyFiles */,
@@ -695,6 +701,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B2477B21AD9B7D000B00728 /* OSCloudKitSyncEngine.h in Sources */,
+				0B2477B31AD9B7D000B00728 /* OSCloudKitRequestOperation.h in Sources */,
 				27CB962613E4115700717380 /* OSDate.m in Sources */,
 				27CB962A13E411CD00717380 /* OSTime.m in Sources */,
 				0B6917F619C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.m in Sources */,

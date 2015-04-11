@@ -10,6 +10,5 @@
 
 @interface OSCloudKitSyncEngine : OSCoreDataSyncEngine
 
-@property (atomic, readonly) BOOL syncInProgress;
 
 @end

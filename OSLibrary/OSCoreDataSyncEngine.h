@@ -79,6 +79,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
 - (void)executeSyncCompletedOperations;
 - (void)writeJSONResponse:(id)response toDiskForClassWithName:(NSString *)className;
 - (NSArray *)managedObjectsForClass:(NSString *)className withSyncStatus:(OSObjectSyncStatus)syncStatus;
+- (void)setInitialSyncCompleted;
 
 @end
 

@@ -182,7 +182,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     if (inIds) {
         predicate = [NSPredicate predicateWithFormat:@"objectId IN %@", idArray];
     } else {
-        predicate = [NSPredicate predicateWithFormat:@"NOT (objectId IN %@)", idArray];
+        predicate = [NSPredicate predicateWithFormat:@"NOT (objectId IN %@) AND syncStatus != %d", idArray, OSObjectCreated];
     }
 
     [fetchRequest setPredicate:predicate];
