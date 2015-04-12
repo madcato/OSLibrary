@@ -53,17 +53,13 @@
 }
 
 - (void)executeSyncCompletedOperations {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self setInitialSyncCompleted];
-        [[OSDatabase backgroundDatabase] save];
-        [[OSDatabase defaultDatabase] save];
-        [[NSNotificationCenter defaultCenter]
-         postNotificationName:kOSCoreDataSyncEngineSyncCompletedNotificationName
-         object:nil];
-        [self willChangeValueForKey:@"syncInProgress"];
-        _syncInProgress = NO;
-        [self didChangeValueForKey:@"syncInProgress"];
-    });
+    [self setInitialSyncCompleted];
+    [[OSDatabase backgroundDatabase] save];
+    [self willChangeValueForKey:@"syncInProgress"];
+    _syncInProgress = NO;
+    [self didChangeValueForKey:@"syncInProgress"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kOSCoreDataSyncEngineSyncCompletedNotificationName
+                                                        object:nil];
 }
 
 
