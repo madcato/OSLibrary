@@ -44,7 +44,7 @@ static NSString * const kOSAPIKey = @"YOUR_API_KEY";
     return request;
 }
 
-- (NSMutableURLRequest *)GETRequestForAllRecordsOfClass:(NSString *)className updatedAfterDate:(NSDate *)updatedDate {
+- (NSMutableURLRequest *)GETRequestForAllRecordsOfClass:(NSString *)className updatedAfterDate:(NSDate *)updatedDate onlyIds:(BOOL)onlyIds {
     NSMutableURLRequest *request = nil;
     NSDictionary *paramters = nil;
     if (updatedDate) {
@@ -58,7 +58,9 @@ static NSString * const kOSAPIKey = @"YOUR_API_KEY";
 
         paramters = [NSDictionary dictionaryWithObject:jsonString forKey:@"where"];
     }
-
+    if (onlyIds) {
+        [paramters setValue:@"1" forKey:@"onlyIds"];
+    }
     request = [self GETRequestForClass:className parameters:paramters];
     return request;
 }

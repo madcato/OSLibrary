@@ -13,7 +13,7 @@ class PeopleController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { @people = Person.select('id') if params[:updated_at].nil?;render :json => @people; }
+      format.json { render :json => @people; }
     end
   end
 

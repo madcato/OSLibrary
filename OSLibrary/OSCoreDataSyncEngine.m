@@ -288,7 +288,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         // Retrieve the JSON response records from disk
         //
         NSArray *JSONRecords = [self JSONDataRecordsForClass:className sortedByKey:@"objectId"];
-        if ([JSONRecords count] > 0) {
+        if (JSONRecords != nil) {
             //
             // If there are any records fetch all locally stored records that are NOT in the list of downloaded records
             //
@@ -311,11 +311,11 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                     NSLog(@"Unable to save context after deleting records for class %@ because %@", className, error);
                 }
             }];
+            //
+            // Delete all JSON Record response files to clean up after yourself
+            //
+            [self deleteJSONDataRecordsForClassWithName:className];
         }
-        //
-        // Delete all JSON Record response files to clean up after yourself
-        //
-        [self deleteJSONDataRecordsForClassWithName:className];
     }
 
     //
@@ -466,7 +466,8 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         }
         NSMutableURLRequest *request = [self.registeredAPIClient
                                         GETRequestForAllRecordsOfClass:className
-                                        updatedAfterDate:mostRecentUpdatedDate];
+                                        updatedAfterDate:mostRecentUpdatedDate
+                                                 onlyIds:!toDelete];
         OSHTTPRequestOperation *operation = [self.registeredAPIClient HTTPRequestOperationWithRequest:request success:^(OSHTTPRequestOperation *operation, id responseObject) {
             if ([responseObject isKindOfClass:[NSArray class]]) {
                 NSLog(@"Response for %@: %@", className, responseObject);

@@ -12,7 +12,8 @@
 @protocol HTTPAPIClient <NSObject>
 
 - (NSMutableURLRequest *)GETRequestForAllRecordsOfClass:(NSString *)className
-                                       updatedAfterDate:(NSDate *)mostRecentUpdatedDate;
+                                       updatedAfterDate:(NSDate *)mostRecentUpdatedDate
+                                                onlyIds:(BOOL)onlyIds;
 
 
 - (OSHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSMutableURLRequest *)request

@@ -49,18 +49,20 @@ static NSString * const kOSAPIKey = @"YOUR_API_KEY";
     return request;
 }
 
-- (NSMutableURLRequest *)GETRequestForAllRecordsOfClass:(NSString *)className updatedAfterDate:(NSDate *)updatedDate {
+- (NSMutableURLRequest *)GETRequestForAllRecordsOfClass:(NSString *)className updatedAfterDate:(NSDate *)updatedDate onlyIds:(BOOL)onlyIds {
     NSMutableURLRequest *request = nil;
-    NSDictionary *paramters = nil;
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
     if (updatedDate) {
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
         [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
 
         NSString *jsonString = [dateFormatter stringFromDate:updatedDate];
-        paramters = [NSDictionary dictionaryWithObject:jsonString forKey:@"updated_at"];
+        paramters = [NSMutableDictionary dictionaryWithObject:jsonString forKey:@"updated_at"];
     }
-
+    if (onlyIds) {
+        [paramters setValue:@"1" forKey:@"onlyIds"];
+    }
     request = [self GETRequestForClass:className parameters:paramters];
     return request;
 }
