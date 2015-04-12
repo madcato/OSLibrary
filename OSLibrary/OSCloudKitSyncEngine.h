@@ -10,5 +10,6 @@
 
 @interface OSCloudKitSyncEngine : OSCoreDataSyncEngine
 
+-(void)fetchUserInfo;
 
 @end

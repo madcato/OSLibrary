@@ -344,4 +344,17 @@
     [self.operationQueue addOperation:batchedOperation];
 }
 
+-(void)fetchUserInfo {
+    OSCloudKitSyncEngine* engine = (OSCloudKitSyncEngine *)[OSCloudKitSyncEngine sharedEngine];
+    [engine.ckContainer fetchUserRecordIDWithCompletionHandler:^(CKRecordID* recordID, NSError* error) {
+        NSString* recordid = recordID.recordName;
+        [engine.ckContainer discoverUserInfoWithUserRecordID:recordID completionHandler:^(CKDiscoveredUserInfo* userInfo, NSError* error){
+            int a = 0;
+        }];
+        [engine.ckContainer discoverAllContactUserInfosWithCompletionHandler:^(NSArray* userInfos, NSError* error){
+            int a = 0;
+        }];
+    }];
+}
+
 @end

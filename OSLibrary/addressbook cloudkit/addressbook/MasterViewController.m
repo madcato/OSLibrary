@@ -40,6 +40,9 @@
     
     UIBarButtonItem *modButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(updateObject:)];
     self.navigationItem.leftBarButtonItem = modButton;
+    
+    OSCloudKitSyncEngine* engine = [OSCloudKitSyncEngine sharedEngine];
+    [engine fetchUserInfo];
 }
 
 // - (void)viewDidDisappear:(BOOL)animated {
