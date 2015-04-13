@@ -13,7 +13,7 @@ class PeopleController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @people; }
+      format.json { @people = Person.select('id') if params[:onlyIds].nil?;render :json => @people; }
     end
   end
 

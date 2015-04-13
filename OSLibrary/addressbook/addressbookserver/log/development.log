@@ -25286,3 +25286,46 @@ Served asset /jquery.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2015-04-12 11:22:39 +0200
 Served asset /application.js - 304 Not Modified (1ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/people.json?onlyIds=1&updated_at=2015-04-12T09%3A22%3A30Z" for 127.0.0.1 at 2015-04-13 08:39:42 +0200
+Processing by PeopleController#index as JSON
+  Parameters: {"onlyIds"=>"1", "updated_at"=>"2015-04-12T09:22:30Z"}
+  [1m[36mPerson Load (0.6ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2015-04-12 09:22:31')[0m
+Completed 200 OK in 35ms (Views: 11.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at 2015-04-13 08:39:42 +0200
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" 
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT id FROM "people" [0m
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?onlyIds=1&updated_at=2015-04-12T09%3A22%3A37Z" for 127.0.0.1 at 2015-04-13 08:39:44 +0200
+Processing by PeopleController#index as JSON
+  Parameters: {"onlyIds"=>"1", "updated_at"=>"2015-04-12T09:22:37Z"}
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" WHERE (updated_at > '2015-04-12 09:22:38')
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at 2015-04-13 08:39:44 +0200
+Processing by PeopleController#index as JSON
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  [1m[35mPerson Load (0.1ms)[0m  SELECT id FROM "people" 
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/people.json?onlyIds=1&updated_at=2015-04-12T09%3A22%3A37Z" for 127.0.0.1 at 2015-04-13 08:40:41 +0200
+Processing by PeopleController#index as JSON
+  Parameters: {"onlyIds"=>"1", "updated_at"=>"2015-04-12T09:22:37Z"}
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" WHERE (updated_at > '2015-04-12 09:22:38')[0m
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at 2015-04-13 08:40:59 +0200
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.2ms)[0m  SELECT "people".* FROM "people" 
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT id FROM "people" [0m
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
