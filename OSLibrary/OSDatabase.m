@@ -29,15 +29,12 @@
 
 +(OSDatabase*)backgroundDatabase {
     static OSDatabase* database = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        database = [[OSDatabase alloc] init];
-        OSDatabase* instance = [OSDatabase defaultDatabase];
-        instance.backgroundDatabase = instance;
-        database.persistentStoreCoordinator = [instance persistentStoreCoordinator];
-        database.managedObjectModel = [instance managedObjectModel];
-        database.managedObjectContext = [instance createObjectContextForPrivateThread];
-    });
+    database = [[OSDatabase alloc] init];
+    OSDatabase* instance = [OSDatabase defaultDatabase];
+    instance.backgroundDatabase = instance;
+    database.persistentStoreCoordinator = [instance persistentStoreCoordinator];
+    database.managedObjectModel = [instance managedObjectModel];
+    database.managedObjectContext = [instance createObjectContextForPrivateThread];
     return database;
 }
 

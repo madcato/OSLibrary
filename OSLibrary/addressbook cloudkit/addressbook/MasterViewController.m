@@ -51,18 +51,14 @@
 // }
 
 - (void)refresh {
-    [[OSCloudKitSyncEngine sharedEngine] startSync];
+    [[OSCloudKitSyncEngine sharedEngine] startSync:self selector:@selector(updateContext:)];
 }
 
  - (void)viewDidAppear:(BOOL)animated {
  [super viewDidAppear:animated];
 
      
-     [[NSNotificationCenter defaultCenter] addObserver:self
-                                              selector:@selector(updateContext:)
-                                                  name:NSManagedObjectContextDidSaveNotification
-                                                object:[[OSDatabase backgroundDatabase] managedObjectContext]];
- }
+}
 
 // this is called from mergeChanges: method,
 // requested to be made on the main thread so we can update our table with our new earthquake objects
@@ -117,7 +113,24 @@
     if (object == nil) return;
     
     [object setValue:@"Star Wars" forKey:@"name"];
-    [OSCloudKitSyncEngine updateObjectAndSave:object inContext:[self.fetchedResultsController managedObjectContext]];
+    [self updateObjectAndSave:object inContext:[self.fetchedResultsController managedObjectContext]];
+}
+
+- (void)updateObjectAndSave:(NSManagedObject*)object inContext:(NSManagedObjectContext *)context {
+    [context performBlockAndWait:^{
+        // 1
+        if ([[object valueForKey:@"syncStatus"] isEqualToValue:@(OSObjectSynced)]) {
+            [object setValue:@(OSObjectUpdated) forKey:@"syncStatus"];
+        }
+        NSError *error = nil;
+        if (![context save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            [OSDatabase displayValidationError:error];
+        }
+        //        [[OSCoreDataSyncEngine sharedEngine] startSync];
+    }];
 }
 
 #pragma mark - Table View
@@ -150,8 +163,27 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSManagedObject* object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [OSCloudKitSyncEngine deleteObject:object inContext:[self.fetchedResultsController managedObjectContext]];
+        [self deleteObject:object inContext:[self.fetchedResultsController managedObjectContext]];
     }
+}
+
+- (void)deleteObject:(NSManagedObject*)object inContext:(NSManagedObjectContext *)context {
+    [context performBlockAndWait:^{
+        // 1
+        if ([[object valueForKey:@"objectId"] isEqualToString:@""] || [object valueForKey:@"objectId"] == nil) {
+            [context deleteObject:object];
+        } else {
+            [object setValue:@(OSObjectDeleted) forKey:@"syncStatus"];
+        }
+        NSError *error = nil;
+        if (![context save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            [OSDatabase displayValidationError:error];
+        }
+        [[OSCoreDataSyncEngine sharedEngine] startSync];
+    }];
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath

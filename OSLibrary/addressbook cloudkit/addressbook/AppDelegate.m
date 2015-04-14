@@ -45,7 +45,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [[OSCloudKitSyncEngine sharedEngine] startSync];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

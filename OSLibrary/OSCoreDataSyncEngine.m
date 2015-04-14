@@ -20,7 +20,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 @property (nonatomic, strong) NSMutableArray *registeredClassesToSync;
 @property (nonatomic, strong) id<HTTPAPIClient> registeredAPIClient;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
-
+@property (nonatomic, strong) OSDatabase* backgroundDatabase;
 @end
 
 @implementation OSCoreDataSyncEngine
@@ -30,10 +30,6 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedEngine = [[OSCoreDataSyncEngine alloc] init];
-        [[NSNotificationCenter defaultCenter] addObserver:sharedEngine
-                                                 selector:@selector(updateBackgroundContext:)
-                                                     name:NSManagedObjectContextDidSaveNotification
-                                                   object:[[OSDatabase defaultDatabase] managedObjectContext]];
     });
     return sharedEngine;
 }
@@ -74,10 +70,9 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 }
 
 - (void)executeSyncCompletedOperations {
+    [self.backgroundDatabase save];
     dispatch_async(dispatch_get_main_queue(), ^{
         [self setInitialSyncCompleted];
-        [[OSDatabase backgroundDatabase] save];
-        [[OSDatabase defaultDatabase] save];
         [[NSNotificationCenter defaultCenter]
          postNotificationName:kOSCoreDataSyncEngineSyncCompletedNotificationName
          object:nil];
@@ -101,9 +96,9 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
     // You are only interested in 1 result so limit the request to 1
     //
     [request setFetchLimit:1];
-    [[[OSDatabase backgroundDatabase] managedObjectContext] performBlockAndWait:^{
+    [[self.backgroundDatabase  managedObjectContext] performBlockAndWait:^{
         NSError *error = nil;
-        NSArray *results = [[[OSDatabase backgroundDatabase] managedObjectContext]  executeFetchRequest:request error:&error];
+        NSArray *results = [[self.backgroundDatabase managedObjectContext]  executeFetchRequest:request error:&error];
         if ([results lastObject])   {
             //
             // Set date to the fetched result
@@ -117,7 +112,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 
 - (void)newManagedObjectWithClassName:(NSString *)className
                             forRecord:(NSDictionary *)record {
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:className inManagedObjectContext:[[OSDatabase backgroundDatabase] managedObjectContext]];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:className inManagedObjectContext:[self.backgroundDatabase managedObjectContext]];
     [record enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         [self setValue:obj forKey:key forManagedObject:newManagedObject];
     }];
@@ -162,7 +157,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 
 - (NSArray *)managedObjectsForClass:(NSString *)className withSyncStatus:(OSObjectSyncStatus)syncStatus {
     __block NSArray *results = nil;
-    NSManagedObjectContext *managedObjectContext = [[OSDatabase backgroundDatabase] managedObjectContext];
+    NSManagedObjectContext *managedObjectContext = [self.backgroundDatabase managedObjectContext];
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"syncStatus = %d", syncStatus];
     [fetchRequest setPredicate:predicate];
@@ -176,7 +171,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 
 - (NSArray *)managedObjectsForClass:(NSString *)className sortedByKey:(NSString *)key usingArrayOfIds:(NSArray *)idArray inArrayOfIds:(BOOL)inIds {
     __block NSArray *results = nil;
-    NSManagedObjectContext *managedObjectContext = [[OSDatabase backgroundDatabase] managedObjectContext];
+    NSManagedObjectContext *managedObjectContext = [self.backgroundDatabase managedObjectContext];
     NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
     NSPredicate *predicate;
     if (inIds) {
@@ -196,7 +191,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 }
 
 - (void)processJSONDataRecordsIntoCoreData {
-    NSManagedObjectContext *managedObjectContext = [[OSDatabase backgroundDatabase] managedObjectContext];
+    NSManagedObjectContext *managedObjectContext = [self.backgroundDatabase managedObjectContext];
     //
     // Iterate over all registered classes to sync
     //
@@ -279,7 +274,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 }
 
 - (void)processJSONDataRecordsForDeletion {
-    NSManagedObjectContext *managedObjectContext = [[OSDatabase backgroundDatabase] managedObjectContext];
+    NSManagedObjectContext *managedObjectContext = [self.backgroundDatabase managedObjectContext];
     //
     // Iterate over all registered classes to sync
     //
@@ -393,8 +388,8 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 //        NSLog(@"Completed %lu of %lu create operations", (unsigned long)numberOfCompletedOperations, (unsigned long)totalNumberOfOperations);
     } completionBlock:^(NSArray *operations) {
         if ([operations count] > 0) {
-//            NSLog(@"Creation of objects on server compelete, updated objects in context: %@", [[[OSDatabase backgroundDatabase] managedObjectContext] updatedObjects]);
-            [[OSDatabase backgroundDatabase] save];
+//            NSLog(@"Creation of objects on server compelete, updated objects in context: %@", [[self.backgroundDatabase managedObjectContext] updatedObjects]);
+            [self.backgroundDatabase save];
 //            NSLog(@"SBC After call creation");
         }
         if (putUpdates == NO) {
@@ -432,7 +427,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
                 // In the operations completion block delete the NSManagedObject from Core data locally since it has been
                 // deleted on the server
                 //
-                [[[OSDatabase backgroundDatabase] managedObjectContext] deleteObject:objectToDelete];
+                [[self.backgroundDatabase managedObjectContext] deleteObject:objectToDelete];
             } failure:^(OSHTTPRequestOperation *operation, NSError *error) {
                 NSLog(@"Failed to delete: %@", error);
             }];
@@ -448,7 +443,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 
     } completionBlock:^(NSArray *operations) {
 //        if ([operations count] > 0) {
-//            NSLog(@"Deletion of objects on server compelete, updated objects in context: %@", [[[OSDatabase backgroundDatabase] managedObjectContext] updatedObjects]);
+//            NSLog(@"Deletion of objects on server compelete, updated objects in context: %@", [[self.backgroundDatabase managedObjectContext] updatedObjects]);
 //        }
 
         [self executeSyncCompletedOperations];
@@ -500,6 +495,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         _syncInProgress = YES;
         [self didChangeValueForKey:@"syncInProgress"];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                self.backgroundDatabase = [OSDatabase backgroundDatabase];
                 [self downloadDataForRegisteredObjects:YES toDeleteLocalRecords:NO];
         });
     }
@@ -684,10 +680,6 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
         }
 //        [[OSCoreDataSyncEngine sharedEngine] startSync];
     }];
-}
-
-- (void)updateBackgroundContext:(NSNotification *)notification {
-//    [[[OSDatabase backgroundDatabase] managedObjectContext] mergeChangesFromContextDidSaveNotification:notification];
 }
 
 @end

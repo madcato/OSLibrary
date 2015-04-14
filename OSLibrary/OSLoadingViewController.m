@@ -53,4 +53,14 @@ const CGFloat waitingViewSize = 60.0;
   loadingView = nil;
 }
 
+-(UIView*)parentView {
+    UIViewController *parentController = [[[UIApplication sharedApplication] delegate] window].rootViewController;
+
+    while (parentController.presentedViewController)
+        parentController = parentController.presentedViewController;
+
+    UIView *parentView = parentController.view;
+    return parentView;
+}
+
 @end

@@ -9,6 +9,16 @@
 #import "OSCloudKitSyncEngine.h"
 #import "OSDatabase.h"
 #import "OSCloudKitRequestOperation.h"
+typedef enum {
+    OSObjectSynced = 0,
+    OSObjectCreated = 1,
+    OSObjectDeleted = 2,
+    OSObjectUpdated = 3
+} OSObjectSyncStatus;
+
+
+NSString * const kOSCloudSyncEngineSyncCompletedNotificationName = @"kOSCloudSyncEngineSyncCompletedNotificationName";
+NSString * const kOSCloudKitSyncEngineInitialCompleteKey = @"OSCloudKitSyncEngineInitialCompleteKey";
 
 @interface OSCloudKitSyncEngine ()
 
@@ -16,6 +26,9 @@
 @property (nonatomic, strong) NSOperationQueue *operationQueue;
 @property (nonatomic, strong) CKContainer* ckContainer;
 @property (nonatomic, strong) CKDatabase* ckPublicDB;
+@property (nonatomic, assign) BOOL syncInProgress;
+@property (nonatomic, strong) OSDatabase* backgroundDatabase;
+@property (nonatomic, strong) NSDateFormatter *dateFormatter;
 
 @end
 
@@ -27,11 +40,6 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedEngine = [[OSCloudKitSyncEngine alloc] init];
-        [[NSNotificationCenter defaultCenter] addObserver:sharedEngine
-                                                 selector:@selector(updateBackgroundContext:)
-                                                     name:NSManagedObjectContextDidSaveNotification
-                                                   object:[[OSDatabase defaultDatabase] managedObjectContext]];
-        
         sharedEngine.ckContainer = [CKContainer defaultContainer];
         sharedEngine.ckPublicDB = [sharedEngine.ckContainer publicCloudDatabase];
         sharedEngine.operationQueue = [[NSOperationQueue alloc] init];
@@ -41,25 +49,56 @@
     return sharedEngine;
 }
 
-- (void)startSync {
+- (void)startSync:(id)observer selector:(SEL)selector {
     if (!self.syncInProgress) {
         [self willChangeValueForKey:@"syncInProgress"];
         _syncInProgress = YES;
         [self didChangeValueForKey:@"syncInProgress"];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            self.backgroundDatabase = [OSDatabase backgroundDatabase];
             [self downloadDataForRegisteredObjects:YES toDeleteLocalRecords:NO];
+            if(observer) {
+                [[NSNotificationCenter defaultCenter] addObserver:observer
+                                                         selector:selector
+                                                             name:NSManagedObjectContextDidSaveNotification
+                                                           object:[self.backgroundDatabase managedObjectContext]];
+            }
         });
+        
     }
+}
+
+- (void)setInitialSyncCompleted {
+    [[NSUserDefaults standardUserDefaults] setValue:@YES forKey:kOSCloudKitSyncEngineInitialCompleteKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)executeSyncCompletedOperations {
     [self setInitialSyncCompleted];
-    [[OSDatabase backgroundDatabase] save];
+    [self.backgroundDatabase save];
     [self willChangeValueForKey:@"syncInProgress"];
     _syncInProgress = NO;
     [self didChangeValueForKey:@"syncInProgress"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:kOSCoreDataSyncEngineSyncCompletedNotificationName
+    [[NSNotificationCenter defaultCenter] postNotificationName:kOSCloudSyncEngineSyncCompletedNotificationName
                                                         object:nil];
+}
+
+- (void)registerNSManagedObjectClassToSync:(Class)aClass {
+    if (!self.registeredClassesToSync) {
+        self.registeredClassesToSync = [NSMutableArray array];
+    }
+    
+    if ([aClass isSubclassOfClass:[NSManagedObject class]]) {
+        if (![self.registeredClassesToSync containsObject:NSStringFromClass(aClass)]) {
+            [self.registeredClassesToSync addObject:NSStringFromClass(aClass)];
+        } else {
+            NSLog(@"Unable to register %@ as it is already registered", NSStringFromClass(aClass));
+            NSAssert(false, @"Unable to register class in OSCoreDataSyncEngine");
+        }
+    } else {
+        NSLog(@"Unable to register %@ as it is not a subclass of NSManagedObject", NSStringFromClass(aClass));
+        
+    }
 }
 
 
@@ -135,7 +174,7 @@
                     //
                     // Schedule the NSManagedObject for deletion and save the context
                     //
-                    NSManagedObjectContext *managedObjectContext = [[OSDatabase backgroundDatabase] managedObjectContext];
+                    NSManagedObjectContext *managedObjectContext = [self.backgroundDatabase managedObjectContext];
                     [managedObjectContext performBlockAndWait:^{
                         for (NSManagedObject *managedObject in storedRecords) {
                             [managedObjectContext deleteObject:managedObject];
@@ -239,7 +278,7 @@
                 if (error != nil) {
                     NSLog(@"Unable to delete record of class: %@ with error %@", className, error);
                 } else {
-                    NSManagedObjectContext *managedObjectContext = [[OSDatabase backgroundDatabase] managedObjectContext];
+                    NSManagedObjectContext *managedObjectContext = [self.backgroundDatabase managedObjectContext];
                     [managedObjectContext performBlockAndWait:^{
                         [managedObjectContext deleteObject:objectToDelete];
                     }];
@@ -250,6 +289,34 @@
     }
     
     [self executeSyncCompletedOperations];
+}
+
+- (NSDate *)mostRecentUpdatedAtDateForEntityWithName:(NSString *)entityName {
+    __block NSDate *date = [NSDate dateWithTimeIntervalSince1970:0];
+    //
+    // Create a new fetch request for the specified entity
+    //
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    //
+    // Set the sort descriptors on the request to sort by updated_at in descending order
+    //
+    [request setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"updated_at" ascending:NO]]];
+    //
+    // You are only interested in 1 result so limit the request to 1
+    //
+    [request setFetchLimit:1];
+    [[self.backgroundDatabase  managedObjectContext] performBlockAndWait:^{
+        NSError *error = nil;
+        NSArray *results = [[self.backgroundDatabase managedObjectContext]  executeFetchRequest:request error:&error];
+        if ([results lastObject])   {
+            //
+            // Set date to the fetched result
+            //
+            date = [[results lastObject] valueForKey:@"updated_at"];
+        }
+    }];
+    
+    return date;
 }
 
 
@@ -279,7 +346,7 @@
 
 - (void)newManagedObjectWithClassName:(NSString *)className
                             forRecord:(CKRecord *)record {
-    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:className inManagedObjectContext:[[OSDatabase backgroundDatabase] managedObjectContext]];
+    NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:className inManagedObjectContext:[self.backgroundDatabase managedObjectContext]];
     for (NSString* key in record.allKeys) {
         id obj = [record objectForKey:key];
         [newManagedObject setValue:obj forKey:key];
@@ -288,6 +355,41 @@
     [newManagedObject setValue:record.recordID.recordName forKey:@"objectId"];
     [newManagedObject setValue:record.modificationDate forKey:@"updated_at"];
     [newManagedObject setValue:record.creationDate forKey:@"created_at"];
+}
+
+- (NSArray *)managedObjectsForClass:(NSString *)className withSyncStatus:(OSObjectSyncStatus)syncStatus {
+    __block NSArray *results = nil;
+    NSManagedObjectContext *managedObjectContext = [self.backgroundDatabase managedObjectContext];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"syncStatus = %d", syncStatus];
+    [fetchRequest setPredicate:predicate];
+    [managedObjectContext performBlockAndWait:^{
+        NSError *error = nil;
+        results = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    }];
+    
+    return results;
+}
+
+- (NSArray *)managedObjectsForClass:(NSString *)className sortedByKey:(NSString *)key usingArrayOfIds:(NSArray *)idArray inArrayOfIds:(BOOL)inIds {
+    __block NSArray *results = nil;
+    NSManagedObjectContext *managedObjectContext = [self.backgroundDatabase managedObjectContext];
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:className];
+    NSPredicate *predicate;
+    if (inIds) {
+        predicate = [NSPredicate predicateWithFormat:@"objectId IN %@", idArray];
+    } else {
+        predicate = [NSPredicate predicateWithFormat:@"NOT (objectId IN %@) AND syncStatus != %d", idArray, OSObjectCreated];
+    }
+    
+    [fetchRequest setPredicate:predicate];
+    [fetchRequest setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"objectId" ascending:YES]]];
+    [managedObjectContext performBlockAndWait:^{
+        NSError *error = nil;
+        results = [managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    }];
+    
+    return results;
 }
 
 - (void)enqueueBatchOperations:(NSArray *)operations
@@ -351,6 +453,27 @@
             int a = 0;
         }];
     }];
+}
+
+#pragma mark - Date formatter
+
+- (void)initializeDateFormatter {
+    if (!self.dateFormatter) {
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+        [self.dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+        [self.dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    }
+}
+
+- (NSDate *)dateUsingStringFromAPI:(NSString *)dateString {
+    [self initializeDateFormatter];
+    return [self.dateFormatter dateFromString:dateString];
+}
+
+- (NSString *)dateStringForAPIUsingDate:(NSDate *)date {
+    [self initializeDateFormatter];
+    NSString *dateString = [self.dateFormatter stringFromDate:date];
+    return dateString;
 }
 
 @end
