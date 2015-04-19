@@ -29,12 +29,17 @@
 
 +(OSDatabase*)backgroundDatabase {
     static OSDatabase* database = nil;
-    database = [[OSDatabase alloc] init];
-    OSDatabase* instance = [OSDatabase defaultDatabase];
-    instance.backgroundDatabase = instance;
-    database.persistentStoreCoordinator = [instance persistentStoreCoordinator];
-    database.managedObjectModel = [instance managedObjectModel];
-    database.managedObjectContext = [instance createObjectContextForPrivateThread];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+            assert([[NSThread currentThread] isMainThread] == NO); // Do not invoke this method on the main thread.
+        // This object must be created on a backround thread
+        database = [[OSDatabase alloc] init];
+        OSDatabase* instance = [OSDatabase defaultDatabase];
+        instance.backgroundDatabase = instance;
+        database.persistentStoreCoordinator = [instance persistentStoreCoordinator];
+        database.managedObjectModel = [instance managedObjectModel];
+        database.managedObjectContext = [instance createObjectContextForPrivateThread];
+    });
     return database;
 }
 
@@ -225,22 +230,6 @@ andSectionNameKeyPath:(NSString*)keyPath {
         } 
     }
     return nil;
-}
-
-- (NSManagedObjectContext*)createObjectContextForMainThread {
-    NSManagedObjectContext* newManagedObjectContext = nil;
-    NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
-    if (coordinator != nil) {
-        newManagedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        [newManagedObjectContext performBlockAndWait:^{
-            [newManagedObjectContext setPersistentStoreCoordinator:coordinator];
-        }];
-
-    }
-    newManagedObjectContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy;
-    assert(newManagedObjectContext != nil);
-    self.managedObjectContext = newManagedObjectContext;
-    return newManagedObjectContext;
 }
 
 - (NSManagedObjectContext*)createObjectContextForPrivateThread {

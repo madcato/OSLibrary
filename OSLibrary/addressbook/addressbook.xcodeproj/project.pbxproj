@@ -28,6 +28,7 @@
 		0B52EEEC1768E73A00F7D477 /* addressbookTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EEEB1768E73A00F7D477 /* addressbookTests.m */; };
 		0B52EF001768E81800F7D477 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EEFF1768E81800F7D477 /* Person.m */; };
 		0B6183F9176924F3001C04E8 /* libOSLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B6183F4176924EB001C04E8 /* libOSLibrary.a */; };
+		0B9CED701AE41DBD0031747C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9CED6F1AE41DBD0031747C /* CloudKit.framework */; };
 		0BB511961768F7B20043208F /* ABHTTPAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB511951768F7B20043208F /* ABHTTPAPIClient.m */; };
 		0BB5119A1768F8260043208F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB511991768F8260043208F /* SystemConfiguration.framework */; };
 		0BB5119C1768F8380043208F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BB5119B1768F8380043208F /* Security.framework */; };
@@ -103,6 +104,7 @@
 		0B52EEFE1768E81800F7D477 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		0B52EEFF1768E81800F7D477 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		0B6183EE176924EA001C04E8 /* OSLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OSLibrary.xcodeproj; path = ../../OSLibrary.xcodeproj; sourceTree = "<group>"; };
+		0B9CED6F1AE41DBD0031747C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0BB511941768F7B20043208F /* ABHTTPAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABHTTPAPIClient.h; sourceTree = "<group>"; };
 		0BB511951768F7B20043208F /* ABHTTPAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABHTTPAPIClient.m; sourceTree = "<group>"; };
 		0BB511991768F8260043208F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -117,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B9CED701AE41DBD0031747C /* CloudKit.framework in Frameworks */,
 				0B6183F9176924F3001C04E8 /* libOSLibrary.a in Frameworks */,
 				0BB511A21768F8990043208F /* MobileCoreServices.framework in Frameworks */,
 				0BB511A01768F8720043208F /* QuartzCore.framework in Frameworks */,
@@ -166,6 +169,7 @@
 		0B52EEAD1768E73900F7D477 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B9CED6F1AE41DBD0031747C /* CloudKit.framework */,
 				0BB511A11768F8990043208F /* MobileCoreServices.framework */,
 				0BB5119F1768F8720043208F /* QuartzCore.framework */,
 				0BB5119D1768F86B0043208F /* CoreLocation.framework */,
