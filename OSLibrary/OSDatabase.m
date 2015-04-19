@@ -59,6 +59,14 @@
     return instance;
 }
 
+- (void)performBlock:(void (^)(void))block {
+    [self.managedObjectContext performBlock:block];
+}
+
+- (void)performBlockAndWait:(void (^)(void))block {
+    [self.managedObjectContext performBlockAndWait:block];
+}
+
 - (void)save {
     // Save the context.
     NSError *error = nil;

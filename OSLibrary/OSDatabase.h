@@ -15,26 +15,33 @@
 
 @end
 
-/**
- // In order to be notificated when the background is saved, use this code.
- //
- - (void)viewDidLoad {
-	[[NSNotificationCenter defaultCenter] addObserver:self
- selector:@selector(updateContext:)
- name:NSManagedObjectContextDidSaveNotification
- object:[[OSDatabase backgroundDatabase] managedObjectContext]];
- }
- 
- // this is called from mergeChanges: method,
- // requested to be made on the main thread so we can update our table with our new earthquake objects
- //
- - (void)updateContext:(NSNotification *)notification
- {
- NSManagedObjectContext *mainContext = [self.fetchedResultsController managedObjectContext];
- [mainContext mergeChangesFromContextDidSaveNotification:notification];
- }
- 
- */
+
+// // In order to be notificated when the background is saved, use this code.
+// //
+// - (void)viewDidLoad {
+//	[[NSNotificationCenter defaultCenter] addObserver:self
+// selector:@selector(updateContext:)
+// name:NSManagedObjectContextDidSaveNotification
+// object:[[OSDatabase backgroundDatabase] managedObjectContext]];
+// }
+// 
+// // this is called from mergeChanges: method,
+// // requested to be made on the main thread so we can update our table with our new earthquake objects
+// //
+// - (void)updateContext:(NSNotification *)notification
+// {
+// NSManagedObjectContext *mainContext = [self.fetchedResultsController managedObjectContext];
+// [mainContext mergeChangesFromContextDidSaveNotification:notification];
+// }
+
+// Call every single method or group o method of dis class inside a performBlock method
+// Example:
+// [[OSDatabase backgroundDatabase] performBlock:^{
+//     // Stuff here
+// }];
+
+
+
 @interface OSDatabase : NSObject
 
 /**
@@ -47,6 +54,10 @@
 +(OSDatabase*)defaultDatabase;
 
 +(OSDatabase*)backgroundDatabase;
+
+- (void)performBlock:(void (^)(void))block;
+- (void)performBlockAndWait:(void (^)(void))block;
+
 - (NSManagedObject*)insertObject:(NSString*)entityName values:(NSDictionary*)values;
 - (NSManagedObject*)selectObject:(NSString*)entityName withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments;
 - (NSArray*)getResultsFrom:(NSString*)entityName sortArray:(NSArray*)sortArray withPredicate:(NSString*)predicateText andArguments:(NSArray*)arguments;
