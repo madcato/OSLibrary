@@ -329,8 +329,9 @@ andSectionNameKeyPath:(NSString*)keyPath {
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     
     NSDictionary *optionsDictionary =
-    [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES]
-                                forKey:NSMigratePersistentStoresAutomaticallyOption];
+    [NSDictionary dictionaryWithObjectsAndKeys:
+     [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+     [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
     
     if(self.unittesting == NO){
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:optionsDictionary error:&error]) {
