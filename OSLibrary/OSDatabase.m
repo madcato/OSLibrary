@@ -206,7 +206,7 @@ andSectionNameKeyPath:(NSString*)keyPath {
     [fetchRequest setPredicate:predicate];
 
     // Specify that the request should return dictionaries.
-    [fetchRequest setResultType:NSManagedObjectResultType];
+    [fetchRequest setResultType:NSDictionaryResultType];
     
     // Create an expression for the key path.
     NSExpression *keyPathExpression = [NSExpression expressionForKeyPath:keyPath];
