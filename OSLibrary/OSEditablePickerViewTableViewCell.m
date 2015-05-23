@@ -45,7 +45,7 @@
 }
 
 - (void)initControls {
-    UIColor* kLightBlue = [UIColor colorWithRed:0.41f green:0.72f blue:1.0f alpha:1.0f];
+//    UIColor* kLightBlue = [UIColor colorWithRed:0.41f green:0.72f blue:1.0f alpha:1.0f];
     CGRect contentFrame = CGRectMake(0, 0, 320, 206);
     CGRect addButtonFrame = CGRectMake(263, 0, 44, 44);
     CGRect minusButtonFrame = CGRectMake(218, 0, 44, 44);
@@ -58,7 +58,7 @@
     [addButton addTarget:self
                   action:@selector(addPressed)
         forControlEvents:UIControlEventTouchUpInside];
-    [addButton setTitleColor:kLightBlue forState:UIControlStateNormal];
+//    [addButton setTitleColor:kLightBlue forState:UIControlStateNormal];
     [addButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [addButton setUserInteractionEnabled:YES];
     addButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -70,7 +70,7 @@
     [minusButton addTarget:self
                     action:@selector(minusPressed)
           forControlEvents:UIControlEventTouchUpInside];
-    [minusButton setTitleColor:kLightBlue forState:UIControlStateNormal];
+//    [minusButton setTitleColor:kLightBlue forState:UIControlStateNormal];
     [minusButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [minusButton setUserInteractionEnabled:YES];
     minusButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
