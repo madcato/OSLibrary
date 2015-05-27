@@ -58,7 +58,7 @@
     [addButton addTarget:self
                   action:@selector(addPressed)
         forControlEvents:UIControlEventTouchUpInside];
-//    [addButton setTitleColor:kLightBlue forState:UIControlStateNormal];
+    [addButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [addButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [addButton setUserInteractionEnabled:YES];
     addButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
@@ -70,7 +70,7 @@
     [minusButton addTarget:self
                     action:@selector(minusPressed)
           forControlEvents:UIControlEventTouchUpInside];
-//    [minusButton setTitleColor:kLightBlue forState:UIControlStateNormal];
+    [minusButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [minusButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [minusButton setUserInteractionEnabled:YES];
     minusButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
