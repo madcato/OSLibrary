@@ -21,7 +21,6 @@
 		0B5D1E1B18B75BF800B14A7B /* OSWebRequestAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C7CF23167B3F7100E9047F /* OSWebRequestAuth.m */; };
 		0B6917F619C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B6917F519C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.m */; };
 		0B7F130117905DF90068B3F8 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7F130017905DF90068B3F8 /* Cocoa.framework */; };
-		0B7F130B17905DF90068B3F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B7F130917905DF90068B3F8 /* InfoPlist.strings */; };
 		0B7F132B179061F00068B3F8 /* OSDatabase.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 106F667615D8DFC10016184F /* OSDatabase.h */; };
 		0B7F132C179061F00068B3F8 /* OSCoreDataSyncEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B52EE921768C71B00F7D477 /* OSCoreDataSyncEngine.h */; };
 		0B7F132D179061F00068B3F8 /* HTTPAPIClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B52EE981768CEFA00F7D477 /* HTTPAPIClient.h */; };
@@ -80,7 +79,6 @@
 		27CB95FA13E4110100717380 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CB95F913E4110100717380 /* Foundation.framework */; };
 		27CB960B13E4110100717380 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CB95F913E4110100717380 /* Foundation.framework */; };
 		27CB961013E4110100717380 /* libOSLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CB95F613E4110100717380 /* libOSLibrary.a */; };
-		27CB961613E4110100717380 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27CB961413E4110100717380 /* InfoPlist.strings */; };
 		27CB961813E4110100717380 /* OSLibraryTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 27CB961713E4110100717380 /* OSLibraryTests.h */; };
 		27CB961A13E4110100717380 /* OSLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CB961913E4110100717380 /* OSLibraryTests.m */; };
 		27CB962613E4115700717380 /* OSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27CB962413E4115700717380 /* OSDate.m */; };
@@ -179,7 +177,6 @@
 		0B7F130417905DF90068B3F8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0B7F130517905DF90068B3F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B7F130817905DF90068B3F8 /* OSLibraryBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSLibraryBundle-Info.plist"; sourceTree = "<group>"; };
-		0B7F130A17905DF90068B3F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0B7F130C17905DF90068B3F8 /* OSLibraryBundle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibraryBundle-Prefix.pch"; sourceTree = "<group>"; };
 		0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSystemTest.m; sourceTree = "<group>"; };
 		0BB1EB041A8E8C730038B564 /* OSCloudKitSyncEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCloudKitSyncEngine.h; sourceTree = "<group>"; };
@@ -231,7 +228,6 @@
 		27CB95FE13E4110100717380 /* OSLibrary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSLibrary.h; sourceTree = "<group>"; };
 		27CB960613E4110100717380 /* OSLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CB961313E4110100717380 /* OSLibraryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSLibraryTests-Info.plist"; sourceTree = "<group>"; };
-		27CB961513E4110100717380 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27CB961713E4110100717380 /* OSLibraryTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSLibraryTests.h; sourceTree = "<group>"; };
 		27CB961913E4110100717380 /* OSLibraryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OSLibraryTests.m; sourceTree = "<group>"; };
 		27CB962313E4115700717380 /* OSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDate.h; sourceTree = "<group>"; };
@@ -323,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				0B7F130817905DF90068B3F8 /* OSLibraryBundle-Info.plist */,
-				0B7F130917905DF90068B3F8 /* InfoPlist.strings */,
 				0B7F130C17905DF90068B3F8 /* OSLibraryBundle-Prefix.pch */,
 			);
 			name = "Supporting Files";
@@ -560,7 +555,6 @@
 			isa = PBXGroup;
 			children = (
 				27CB961313E4110100717380 /* OSLibraryTests-Info.plist */,
-				27CB961413E4110100717380 /* InfoPlist.strings */,
 				27CB963313E4140600717380 /* OSDateTest.h */,
 			);
 			name = "Supporting Files";
@@ -656,7 +650,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B7F13431790622B0068B3F8 /* WebViewController.xib in Resources */,
-				0B7F130B17905DF90068B3F8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,7 +657,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27CB961613E4110100717380 /* InfoPlist.strings in Resources */,
 				27CB961813E4110100717380 /* OSLibraryTests.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,25 +753,6 @@
 			targetProxy = 27CB960E13E4110100717380 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		0B7F130917905DF90068B3F8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0B7F130A17905DF90068B3F8 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		27CB961413E4110100717380 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				27CB961513E4110100717380 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0B7F130E17905DF90068B3F8 /* Debug */ = {
