@@ -78,7 +78,7 @@
 }
 
 + (NSString*)getPreferredLanguage {
-  return [NSLocale preferredLanguages][0];
+    return [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
 }
 
 
