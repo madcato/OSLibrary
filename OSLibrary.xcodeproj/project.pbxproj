@@ -48,6 +48,7 @@
 		0B7F13431790622B0068B3F8 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FEF71413ED54B200BC78B0 /* WebViewController.xib */; };
 		0B95C45118F47918003FA730 /* OSWebRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 278474B713EFF2E400CDD1CF /* OSWebRequest.h */; };
 		0B95C45218F4797F003FA730 /* OSLoadingViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10532F4115DA569000AB115B /* OSLoadingViewController.h */; };
+		0BAB46611B2D778F00A763B7 /* OSBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB46601B2D778F00A763B7 /* OSBorderedButton.m */; };
 		0BAB7DF219C1AFEB00BA044E /* OSSystemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */; };
 		0BB1EB061A8E8C730038B564 /* OSCloudKitSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1EB051A8E8C730038B564 /* OSCloudKitSyncEngine.m */; };
 		0BBB01D917906A6000969ACD /* OSSystem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27CB962F13E4124400717380 /* OSSystem.h */; };
@@ -178,6 +179,8 @@
 		0B7F130517905DF90068B3F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B7F130817905DF90068B3F8 /* OSLibraryBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSLibraryBundle-Info.plist"; sourceTree = "<group>"; };
 		0B7F130C17905DF90068B3F8 /* OSLibraryBundle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibraryBundle-Prefix.pch"; sourceTree = "<group>"; };
+		0BAB465F1B2D778F00A763B7 /* OSBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSBorderedButton.h; sourceTree = "<group>"; };
+		0BAB46601B2D778F00A763B7 /* OSBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSBorderedButton.m; sourceTree = "<group>"; };
 		0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSystemTest.m; sourceTree = "<group>"; };
 		0BB1EB041A8E8C730038B564 /* OSCloudKitSyncEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCloudKitSyncEngine.h; sourceTree = "<group>"; };
 		0BB1EB051A8E8C730038B564 /* OSCloudKitSyncEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCloudKitSyncEngine.m; sourceTree = "<group>"; };
@@ -447,6 +450,8 @@
 				108AD5D815DA657700EE2443 /* OSAppearance.m */,
 				0B6917F419C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.h */,
 				0B6917F519C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.m */,
+				0BAB465F1B2D778F00A763B7 /* OSBorderedButton.h */,
+				0BAB46601B2D778F00A763B7 /* OSBorderedButton.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -705,6 +710,7 @@
 				27FEF71613ED54B200BC78B0 /* WebViewController.m in Sources */,
 				278474BA13EFF2E400CDD1CF /* OSWebRequest.m in Sources */,
 				27FD9C7114EAB2DB0091A0E3 /* OSNetwork.m in Sources */,
+				0BAB46611B2D778F00A763B7 /* OSBorderedButton.m in Sources */,
 				0BD9FCD6190B99C300F7D8B6 /* OSHTTPRequestOperation.m in Sources */,
 				272C036315335261008DF260 /* NSData+Base64.m in Sources */,
 				272C0367153352F9008DF260 /* OSCrypto.m in Sources */,
