@@ -32,6 +32,7 @@
         self.layer.borderWidth = 1.0f;
         self.layer.borderColor = [color CGColor];
         self.layer.cornerRadius = 8.0f;
+        self.layer.masksToBounds = YES;
         
         [super setTitleColor:color forState:UIControlStateNormal];
         [super setTitleColor:[UIColor blackColor]
