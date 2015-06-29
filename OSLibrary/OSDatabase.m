@@ -46,6 +46,7 @@
 +(OSDatabase*)initWithModelName:(NSString *)modelName
                       storeName:(NSString*)storeName
                         testing:(BOOL)testing
+              sharedDirectoryID:(NSString*)sharedDirectoryID
                        delegate:(id<OSDatabaseDelegate>) dele {
     static OSDatabase* instance = nil;
     static dispatch_once_t onceToken;
@@ -54,6 +55,7 @@
         instance.modelName = modelName;
         instance.unittesting = testing;
         instance.storeName = storeName;
+        instance.sharedDirectoryID = sharedDirectoryID;
         instance.delegate = dele;
     });
     return instance;
@@ -396,13 +398,27 @@ andSectionNameKeyPath:(NSString*)keyPath {
     return _persistentStoreCoordinator;
 }
 
+- (void)migrateTo:(NSURL*)newStoreURL {
+    NSPersistentStore* store = [[_persistentStoreCoordinator persistentStores] lastObject];
+    
+    NSError* error = nil;
+    if (![_persistentStoreCoordinator migratePersistentStore:store toURL:newStoreURL options:nil withType:NSSQLiteStoreType error:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        [OSDatabase displayValidationError:error];
+    }
+}
+
 #pragma mark - Application's Documents directory
 
 // Returns the URL to the application's Documents directory.
 - (NSURL *)applicationDocumentsDirectory
 {
     NSURL *url;
-    url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    if (!self.sharedDirectoryID) {
+        url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    } else {
+        url = [[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:self.sharedDirectoryID];
+    }
     return url;
 }
 
