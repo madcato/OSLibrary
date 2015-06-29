@@ -12,6 +12,7 @@
 
 -(void)addPressed;
 -(void)minusPressed:(NSInteger)selectedRow;
+-(void)suplementaryPressed;
 
 @end
 
@@ -22,9 +23,12 @@
 
 @interface OSEditablePickerViewTableViewCell : UITableViewCell
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier suplementaryButton:(NSString*)suplementaryButtonTitle;
+
 @property (nonatomic, strong) id<OSFloatingPickerViewDelegate> delegate2;
 @property (nonatomic, strong) id<UIPickerViewDelegate> delegate;
 @property (nonatomic, strong) id<UIPickerViewDataSource> dataSource;
 @property (nonatomic, strong) UIPickerView* pickerView;
+@property (nonatomic, strong) NSString* suplementaryButtonTitle;
 
 @end

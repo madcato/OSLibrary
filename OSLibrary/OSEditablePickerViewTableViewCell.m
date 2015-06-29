@@ -10,10 +10,11 @@
 
 @implementation OSEditablePickerViewTableViewCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier suplementaryButton:(NSString*)suplementaryButtonTitle
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.suplementaryButtonTitle = suplementaryButtonTitle;
         [self initControls];
         [self setSelectionStyle:UITableViewCellSelectionStyleNone];
         self.autoresizesSubviews = YES;
@@ -89,6 +90,22 @@
     [self.contentView addSubview:pickerView];
 
 
+    if (self.suplementaryButtonTitle) {
+        CGRect supButtonFrame = CGRectMake(5, 0, 120, 44);
+        UIButton* supButton = [[UIButton alloc] initWithFrame:supButtonFrame];
+        [supButton setTitle:self.suplementaryButtonTitle forState:UIControlStateNormal];
+        [supButton addTarget:self
+                      action:@selector(supPressed)
+            forControlEvents:UIControlEventTouchUpInside];
+        [supButton setTitleColor:color forState:UIControlStateNormal];
+        [supButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+        [supButton setUserInteractionEnabled:YES];
+        supButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+        [supButton.titleLabel setFont:[UIFont systemFontOfSize:16.0f]];
+        supButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        supButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+        [self.contentView addSubview:supButton];
+    }
 //    // Constraints
 //    NSDictionary *views = NSDictionaryOfVariableBindings(addButton,minusButton,pickerView);
 //
@@ -140,6 +157,10 @@
 
     row = [self.pickerView selectedRowInComponent:0];
     [self.delegate pickerView:self.pickerView didSelectRow:row inComponent:0];
+}
+
+-(void)supPressed {
+    [self.delegate2 suplementaryPressed];
 }
 
 @end
