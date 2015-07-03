@@ -50,7 +50,6 @@
 +(OSDatabase*)initWithModelName:(NSString *)modelName
                       storeName:(NSString*)storeName
                         testing:(BOOL)testing
-              sharedDirectoryID:(NSString*)sharedDirectoryID
                        delegate:(id<OSDatabaseDelegate>) dele;
 +(OSDatabase*)defaultDatabase;
 
@@ -80,10 +79,8 @@
 @property (nonatomic, strong)  NSString *modelName;
 @property (nonatomic, strong)  NSString *storeName;
 @property (nonatomic, assign)  BOOL unittesting;
-@property (nonatomic, strong) NSString* sharedDirectoryID;
 @property (nonatomic, assign)  id<OSDatabaseDelegate> delegate;
 
-- (void)migrateTo:(NSURL*)newStoreURL;
 + (void)displayValidationError:(NSError *)anError;
 
 @end
