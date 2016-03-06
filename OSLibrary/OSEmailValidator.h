@@ -1,5 +1,5 @@
 //
-//  NSEmailValidator.h
+//  OSEmailValidator.h
 //  OSLibrary
 //
 //  Created by Daniel Vela on 21/01/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSEmailValidator : NSObject
+@interface OSEmailValidator : NSObject
 
 - (BOOL)isValid:(NSString*)email;
 

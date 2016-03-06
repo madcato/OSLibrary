@@ -48,7 +48,7 @@
 		0B7F13431790622B0068B3F8 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27FEF71413ED54B200BC78B0 /* WebViewController.xib */; };
 		0B95C45118F47918003FA730 /* OSWebRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 278474B713EFF2E400CDD1CF /* OSWebRequest.h */; };
 		0B95C45218F4797F003FA730 /* OSLoadingViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10532F4115DA569000AB115B /* OSLoadingViewController.h */; };
-		0BAA83191C515A8700DCB86D /* NSEmailValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA83181C515A8700DCB86D /* NSEmailValidator.m */; };
+		0BAA83191C515A8700DCB86D /* OSEmailValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA83181C515A8700DCB86D /* OSEmailValidator.m */; };
 		0BAB46611B2D778F00A763B7 /* OSBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB46601B2D778F00A763B7 /* OSBorderedButton.m */; };
 		0BAB7DF219C1AFEB00BA044E /* OSSystemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */; };
 		0BB1EB061A8E8C730038B564 /* OSCloudKitSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1EB051A8E8C730038B564 /* OSCloudKitSyncEngine.m */; };
@@ -59,6 +59,7 @@
 		0BD9FCDB190B9F0D00F7D8B6 /* OSHTTPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BD9FCD8190B9EE700F7D8B6 /* OSHTTPClient.h */; };
 		0BD9FCDE190BA18000F7D8B6 /* OSJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9FCDD190BA18000F7D8B6 /* OSJSONRequestOperation.m */; };
 		0BD9FCDF190BA19D00F7D8B6 /* OSJSONRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BD9FCDC190BA18000F7D8B6 /* OSJSONRequestOperation.h */; };
+		0BFA550B1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFA550A1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift */; };
 		0BFAB56B18A55B9000F30FC3 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
 		1008160515C11AB200429593 /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008160315C11AB200429593 /* UIView+Snapshot.m */; };
 		1008160815C11BA700429593 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1008160715C11BA700429593 /* UIKit.framework */; };
@@ -180,8 +181,8 @@
 		0B7F130517905DF90068B3F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B7F130817905DF90068B3F8 /* OSLibraryBundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSLibraryBundle-Info.plist"; sourceTree = "<group>"; };
 		0B7F130C17905DF90068B3F8 /* OSLibraryBundle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibraryBundle-Prefix.pch"; sourceTree = "<group>"; };
-		0BAA83171C515A8700DCB86D /* NSEmailValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSEmailValidator.h; sourceTree = "<group>"; };
-		0BAA83181C515A8700DCB86D /* NSEmailValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSEmailValidator.m; sourceTree = "<group>"; };
+		0BAA83171C515A8700DCB86D /* OSEmailValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEmailValidator.h; sourceTree = "<group>"; };
+		0BAA83181C515A8700DCB86D /* OSEmailValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEmailValidator.m; sourceTree = "<group>"; };
 		0BAB465F1B2D778F00A763B7 /* OSBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSBorderedButton.h; sourceTree = "<group>"; };
 		0BAB46601B2D778F00A763B7 /* OSBorderedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSBorderedButton.m; sourceTree = "<group>"; };
 		0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSystemTest.m; sourceTree = "<group>"; };
@@ -193,6 +194,8 @@
 		0BD9FCD9190B9EE700F7D8B6 /* OSHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSHTTPClient.m; sourceTree = "<group>"; };
 		0BD9FCDC190BA18000F7D8B6 /* OSJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSJSONRequestOperation.h; sourceTree = "<group>"; };
 		0BD9FCDD190BA18000F7D8B6 /* OSJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSJSONRequestOperation.m; sourceTree = "<group>"; };
+		0BFA55091C8C8C2E0072AE7C /* OSLibraryTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibraryTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		0BFA550A1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSEmailValidatorTest.swift; sourceTree = "<group>"; };
 		1008160215C11AB200429593 /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
 		1008160315C11AB200429593 /* UIView+Snapshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Snapshot.m"; sourceTree = "<group>"; };
 		1008160715C11BA700429593 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -417,8 +420,8 @@
 				272C036115335261008DF260 /* NSData+Base64.m */,
 				10A338FE15E381560059F012 /* NSString+encodeString.h */,
 				10A338FF15E381560059F012 /* NSString+encodeString.m */,
-				0BAA83171C515A8700DCB86D /* NSEmailValidator.h */,
-				0BAA83181C515A8700DCB86D /* NSEmailValidator.m */,
+				0BAA83171C515A8700DCB86D /* OSEmailValidator.h */,
+				0BAA83181C515A8700DCB86D /* OSEmailValidator.m */,
 			);
 			name = Formats;
 			sourceTree = "<group>";
@@ -557,6 +560,8 @@
 				0B0CF5D2176FB23F00CBEF64 /* OSDatabaseTest.m */,
 				0B0CF5D4176FB26600CBEF64 /* OSDatabaseTest.xcdatamodeld */,
 				0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */,
+				0BFA550A1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift */,
+				0BFA55091C8C8C2E0072AE7C /* OSLibraryTests-Bridging-Header.h */,
 			);
 			path = OSLibraryTests;
 			sourceTree = SOURCE_ROOT;
@@ -632,8 +637,9 @@
 		27CB95ED13E4110000717380 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = veladan;
 			};
 			buildConfigurationList = 27CB95F013E4110000717380 /* Build configuration list for PBXProject "OSLibrary" */;
@@ -718,7 +724,7 @@
 				0BAB46611B2D778F00A763B7 /* OSBorderedButton.m in Sources */,
 				0BD9FCD6190B99C300F7D8B6 /* OSHTTPRequestOperation.m in Sources */,
 				272C036315335261008DF260 /* NSData+Base64.m in Sources */,
-				0BAA83191C515A8700DCB86D /* NSEmailValidator.m in Sources */,
+				0BAA83191C515A8700DCB86D /* OSEmailValidator.m in Sources */,
 				272C0367153352F9008DF260 /* OSCrypto.m in Sources */,
 				108E2C6815B0483B003C0EB7 /* UIImageView+Downloader.m in Sources */,
 				1008160515C11AB200429593 /* UIView+Snapshot.m in Sources */,
@@ -743,6 +749,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BFA550B1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift in Sources */,
 				0BFAB56B18A55B9000F30FC3 /* NSString+encodeString.m in Sources */,
 				27CB961A13E4110100717380 /* OSLibraryTests.m in Sources */,
 				27CB963513E4140600717380 /* OSDateTest.m in Sources */,
@@ -792,6 +799,7 @@
 				INFOPLIST_FILE = "OSLibraryBundle/OSLibraryBundle-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.veladan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = bundle;
@@ -823,6 +831,7 @@
 				INFOPLIST_FILE = "OSLibraryBundle/OSLibraryBundle-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.veladan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = bundle;
@@ -834,6 +843,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -847,7 +857,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -867,7 +877,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -915,6 +925,7 @@
 		27CB962113E4110100717380 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -925,17 +936,22 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "${PODS_HEADERS_SEARCH_PATHS}";
 				INFOPLIST_FILE = "OSLibraryTests/OSLibraryTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PODS_BUILD_HEADERS_SEARCH_PATHS = "\"${PODS_ROOT}/BuildHeaders\" \"${PODS_ROOT}/BuildHeaders/AFNetworking\"";
 				PODS_HEADERS_SEARCH_PATHS = "${PODS_PUBLIC_HEADERS_SEARCH_PATHS}";
 				PODS_PUBLIC_HEADERS_SEARCH_PATHS = "\"${PODS_ROOT}/Headers\" \"${PODS_ROOT}/Headers/AFNetworking\"";
 				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = org.veladan.OSLibraryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OSLibraryTests/OSLibraryTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		27CB962213E4110100717380 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -946,11 +962,14 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "${PODS_HEADERS_SEARCH_PATHS}";
 				INFOPLIST_FILE = "OSLibraryTests/OSLibraryTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PODS_BUILD_HEADERS_SEARCH_PATHS = "\"${PODS_ROOT}/BuildHeaders\" \"${PODS_ROOT}/BuildHeaders/AFNetworking\"";
 				PODS_HEADERS_SEARCH_PATHS = "${PODS_PUBLIC_HEADERS_SEARCH_PATHS}";
 				PODS_PUBLIC_HEADERS_SEARCH_PATHS = "\"${PODS_ROOT}/Headers\" \"${PODS_ROOT}/Headers/AFNetworking\"";
 				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_BUNDLE_IDENTIFIER = org.veladan.OSLibraryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OSLibraryTests/OSLibraryTests-Bridging-Header.h";
 			};
 			name = Release;
 		};

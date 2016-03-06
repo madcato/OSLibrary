@@ -1,14 +1,14 @@
 //
-//  NSEmailValidator.m
+//  OSEmailValidator.m
 //  OSLibrary
 //
 //  Created by Daniel Vela on 21/01/16.
 //  Copyright © 2016 veladan. All rights reserved.
 //
 
-#import "NSEmailValidator.h"
+#import "OSEmailValidator.h"
 
-@implementation NSEmailValidator
+@implementation OSEmailValidator
 
 - (BOOL)isValid:(NSString*)email {
     NSString *emailRegex =
