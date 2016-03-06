@@ -1,6 +1,8 @@
 OSLibrary
 ---------
 
+[![Build Status](https://travis-ci.org/madcato/OSLibrary.svg?branch=master)](https://travis-ci.org/madcato/OSLibrary)
+
 iOS Utility library
 
 ### Adding to your project as an static library:
