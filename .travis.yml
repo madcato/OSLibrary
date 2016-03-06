@@ -1,4 +1,4 @@
 language: objective-c
 osx_image: xcode7.2
-xcode_workspace: OSLibrary.xcworkspace
+xcode_project: OSLibrary.xcodeproj
 xcode_scheme: OSLibrary
