@@ -2,3 +2,5 @@ language: objective-c
 osx_image: xcode7.2
 xcode_project: OSLibrary.xcodeproj
 xcode_scheme: OSLibrary
+script: xcodebuild clean build test -project OSLibrary.xcodeproj -scheme OSLibrary -sdk iphonesimulator -destination 'platform=iOS Simulator,OS=9.2,name=iPhone 6s' ONLY_ACTIVE_ARCH=NO CODE_SIGNING_REQUIRED=NO
+
