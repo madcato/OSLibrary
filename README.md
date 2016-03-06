@@ -2,6 +2,8 @@ OSLibrary
 ---------
 
 [![Build Status](https://travis-ci.org/madcato/OSLibrary.svg?branch=master)](https://travis-ci.org/madcato/OSLibrary)
+[![codecov.io](https://codecov.io/github/madcato/OSLibrary/coverage.svg?branch=master)](https://codecov.io/github/madcato/OSLibrary?branch=master)
+[![License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/madcato/OSLibrary/blob/master/MIT-LICENSE.txt)
 
 iOS Utility library
 
