@@ -11,6 +11,11 @@
 		0B0CF5D6176FB26600CBEF64 /* OSDatabaseTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B0CF5D4176FB26600CBEF64 /* OSDatabaseTest.xcdatamodeld */; };
 		0B0CF5D8176FB79500CBEF64 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0CF5D7176FB79500CBEF64 /* CoreData.framework */; };
 		0B0CF5DF176FDA5B00CBEF64 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0CF5DE176FDA5B00CBEF64 /* Security.framework */; };
+		0B21406C1C8CF0E600212007 /* OSWebQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2140631C8CF0E600212007 /* OSWebQuery.m */; };
+		0B21406D1C8CF0E600212007 /* OSWebInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2140651C8CF0E600212007 /* OSWebInterface.m */; };
+		0B21406E1C8CF0E600212007 /* OSDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2140671C8CF0E600212007 /* OSDataParser.m */; };
+		0B21406F1C8CF0E600212007 /* OSXMLDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2140691C8CF0E600212007 /* OSXMLDataParser.m */; };
+		0B2140701C8CF0E600212007 /* OSJSONDataParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B21406B1C8CF0E600212007 /* OSJSONDataParser.m */; };
 		0B2477A81AD99A7900B00728 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B2477A71AD99A7900B00728 /* CloudKit.framework */; };
 		0B2477AB1AD99DB700B00728 /* OSCloudKitRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2477AA1AD99DB700B00728 /* OSCloudKitRequestOperation.m */; };
 		0B2477B01AD9B78C00B00728 /* OSCloudKitSyncEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BB1EB041A8E8C730038B564 /* OSCloudKitSyncEngine.h */; };
@@ -159,6 +164,16 @@
 		0B0CF5D5176FB26600CBEF64 /* OSDatabaseTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OSDatabaseTest.xcdatamodel; sourceTree = "<group>"; };
 		0B0CF5D7176FB79500CBEF64 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0B0CF5DE176FDA5B00CBEF64 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0B2140621C8CF0E600212007 /* OSWebQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSWebQuery.h; sourceTree = "<group>"; };
+		0B2140631C8CF0E600212007 /* OSWebQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSWebQuery.m; sourceTree = "<group>"; };
+		0B2140641C8CF0E600212007 /* OSWebInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSWebInterface.h; sourceTree = "<group>"; };
+		0B2140651C8CF0E600212007 /* OSWebInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSWebInterface.m; sourceTree = "<group>"; };
+		0B2140661C8CF0E600212007 /* OSDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDataParser.h; sourceTree = "<group>"; };
+		0B2140671C8CF0E600212007 /* OSDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDataParser.m; sourceTree = "<group>"; };
+		0B2140681C8CF0E600212007 /* OSXMLDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSXMLDataParser.h; sourceTree = "<group>"; };
+		0B2140691C8CF0E600212007 /* OSXMLDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSXMLDataParser.m; sourceTree = "<group>"; };
+		0B21406A1C8CF0E600212007 /* OSJSONDataParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSJSONDataParser.h; sourceTree = "<group>"; };
+		0B21406B1C8CF0E600212007 /* OSJSONDataParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSJSONDataParser.m; sourceTree = "<group>"; };
 		0B2477A71AD99A7900B00728 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0B2477A91AD99DB700B00728 /* OSCloudKitRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCloudKitRequestOperation.h; sourceTree = "<group>"; };
 		0B2477AA1AD99DB700B00728 /* OSCloudKitRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCloudKitRequestOperation.m; sourceTree = "<group>"; };
@@ -295,6 +310,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B2140611C8CF0C700212007 /* API client */ = {
+			isa = PBXGroup;
+			children = (
+				0B2140621C8CF0E600212007 /* OSWebQuery.h */,
+				0B2140631C8CF0E600212007 /* OSWebQuery.m */,
+				0B2140641C8CF0E600212007 /* OSWebInterface.h */,
+				0B2140651C8CF0E600212007 /* OSWebInterface.m */,
+				0B2140661C8CF0E600212007 /* OSDataParser.h */,
+				0B2140671C8CF0E600212007 /* OSDataParser.m */,
+				0B2140681C8CF0E600212007 /* OSXMLDataParser.h */,
+				0B2140691C8CF0E600212007 /* OSXMLDataParser.m */,
+				0B21406A1C8CF0E600212007 /* OSJSONDataParser.h */,
+				0B21406B1C8CF0E600212007 /* OSJSONDataParser.m */,
+			);
+			name = "API client";
+			sourceTree = "<group>";
+		};
 		0B7F130217905DF90068B3F8 /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +368,7 @@
 		10BA49DE165E6CFD0069651F /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0B2140611C8CF0C700212007 /* API client */,
 				27FD9C6E14EAB2DB0091A0E3 /* OSNetwork.h */,
 				27FD9C6F14EAB2DB0091A0E3 /* OSNetwork.m */,
 				278474B713EFF2E400CDD1CF /* OSWebRequest.h */,
@@ -654,20 +687,24 @@
 				27CB962E13E411DC00717380 /* OSDateTime.m in Sources */,
 				27CB963213E4124400717380 /* OSSystem.m in Sources */,
 				27FEF6E513ED459800BC78B0 /* OSAnimation.m in Sources */,
+				0B21406D1C8CF0E600212007 /* OSWebInterface.m in Sources */,
 				27FEF70D13ED4A7A00BC78B0 /* OSLocation.m in Sources */,
 				27FEF71113ED4FBE00BC78B0 /* OSImage.m in Sources */,
 				27FEF71613ED54B200BC78B0 /* WebViewController.m in Sources */,
+				0B2140701C8CF0E600212007 /* OSJSONDataParser.m in Sources */,
 				278474BA13EFF2E400CDD1CF /* OSWebRequest.m in Sources */,
 				27FD9C7114EAB2DB0091A0E3 /* OSNetwork.m in Sources */,
 				0BAB46611B2D778F00A763B7 /* OSBorderedButton.m in Sources */,
 				0BD9FCD6190B99C300F7D8B6 /* OSHTTPRequestOperation.m in Sources */,
 				272C036315335261008DF260 /* NSData+Base64.m in Sources */,
 				0BAA83191C515A8700DCB86D /* OSEmailValidator.m in Sources */,
+				0B21406C1C8CF0E600212007 /* OSWebQuery.m in Sources */,
 				272C0367153352F9008DF260 /* OSCrypto.m in Sources */,
 				108E2C6815B0483B003C0EB7 /* UIImageView+Downloader.m in Sources */,
 				1008160515C11AB200429593 /* UIView+Snapshot.m in Sources */,
 				0B2477AB1AD99DB700B00728 /* OSCloudKitRequestOperation.m in Sources */,
 				106F64A815C16B8700C22FC0 /* UIImage+StackBlur.m in Sources */,
+				0B21406F1C8CF0E600212007 /* OSXMLDataParser.m in Sources */,
 				106F667915D8DFC10016184F /* OSDatabase.m in Sources */,
 				0BD9FCDA190B9EE700F7D8B6 /* OSHTTPClient.m in Sources */,
 				10532F4415DA569000AB115B /* OSLoadingViewController.m in Sources */,
@@ -679,6 +716,7 @@
 				103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */,
 				0BD9FCDE190BA18000F7D8B6 /* OSJSONRequestOperation.m in Sources */,
 				0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */,
+				0B21406E1C8CF0E600212007 /* OSDataParser.m in Sources */,
 				0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
