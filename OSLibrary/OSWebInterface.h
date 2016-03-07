@@ -21,6 +21,8 @@ typedef void(^OSWebInterfaceHandler)(NSInteger statusCode, NSData *responseData,
 
 @property (nonatomic, assign) BOOL bypassServerSSLAuthentication;
 
+- (id)initWithProtocol:(NSString*)proto server:(NSString*)serv basePath:(NSString*)baseP;
+
 - (void)get:(OSWebInterfaceHandler)handler;
 
 - (NSString*)URLStringForGetMethod;

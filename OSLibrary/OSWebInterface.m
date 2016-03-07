@@ -22,6 +22,16 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding
 
 @implementation OSWebInterface
 
+- (id)initWithProtocol:(NSString*)proto server:(NSString*)serv basePath:(NSString*)baseP {
+    if (self = [super init]) {
+        self.protocol = proto;
+        self.server = serv;
+        self.basePath = baseP;
+        self.encoding = NSUTF8StringEncoding;
+    }
+    return self;
+}
+
 + (NSString*)percentScape:(NSString*)cadena encoding:(NSStringEncoding)encoding {
     return AFPercentEscapedQueryStringPairMemberFromStringWithEncoding(cadena, encoding);
 }

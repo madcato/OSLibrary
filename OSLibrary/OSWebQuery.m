@@ -24,7 +24,7 @@
     NSAssert(self.interface != nil, @"Web interface not set");
     [self.interface get:^(NSInteger statusCode, NSData *responseData, NSError *error) {
         if (error) {
-            NSLog(@"Error NPDAperturaSesion: %@", [error localizedDescription]);
+            NSLog(@"Error AperturaSesion: %@", [error localizedDescription]);
             if (handler) {
                 handler(nil,error);
             }
@@ -32,13 +32,13 @@
         }
         
         if (statusCode == 200) {
-            NSAssert(self.dataParser != nil, @"Data perser not set");
+            NSAssert(self.dataParser != nil, @"Data parser not set");
             id result = [self.dataParser parse:responseData];
             if (handler) {
                 handler(result,error);
             }
         } else {
-            NSLog(@"Error NPDAperturaSesion: statusCode=%ld", (long)statusCode);
+            NSLog(@"Error AperturaSesion: statusCode=%ld", (long)statusCode);
             if (handler) {
                 handler(nil,nil);
             }
