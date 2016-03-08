@@ -55,6 +55,7 @@
 		0BAB46611B2D778F00A763B7 /* OSBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB46601B2D778F00A763B7 /* OSBorderedButton.m */; };
 		0BAB7DF219C1AFEB00BA044E /* OSSystemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */; };
 		0BB1EB061A8E8C730038B564 /* OSCloudKitSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1EB051A8E8C730038B564 /* OSCloudKitSyncEngine.m */; };
+		0BB7876E1C8F0947002B977E /* OSWebInterfaceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB7876D1C8F0947002B977E /* OSWebInterfaceTest.m */; };
 		0BBB01D917906A6000969ACD /* OSSystem.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27CB962F13E4124400717380 /* OSSystem.h */; };
 		0BD9FCD6190B99C300F7D8B6 /* OSHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9FCD5190B99C300F7D8B6 /* OSHTTPRequestOperation.m */; };
 		0BD9FCD7190B9BBC00F7D8B6 /* OSHTTPRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BD9FCD4190B99C300F7D8B6 /* OSHTTPRequestOperation.h */; };
@@ -200,6 +201,7 @@
 		0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSystemTest.m; sourceTree = "<group>"; };
 		0BB1EB041A8E8C730038B564 /* OSCloudKitSyncEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCloudKitSyncEngine.h; sourceTree = "<group>"; };
 		0BB1EB051A8E8C730038B564 /* OSCloudKitSyncEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCloudKitSyncEngine.m; sourceTree = "<group>"; };
+		0BB7876D1C8F0947002B977E /* OSWebInterfaceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSWebInterfaceTest.m; sourceTree = "<group>"; };
 		0BD9FCD4190B99C300F7D8B6 /* OSHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSHTTPRequestOperation.h; sourceTree = "<group>"; };
 		0BD9FCD5190B99C300F7D8B6 /* OSHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSHTTPRequestOperation.m; sourceTree = "<group>"; };
 		0BD9FCD8190B9EE700F7D8B6 /* OSHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSHTTPClient.h; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 				0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */,
 				0BFA550A1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift */,
 				0BFA55091C8C8C2E0072AE7C /* OSLibraryTests-Bridging-Header.h */,
+				0BB7876D1C8F0947002B977E /* OSWebInterfaceTest.m */,
 			);
 			path = OSLibraryTests;
 			sourceTree = SOURCE_ROOT;
@@ -727,6 +730,7 @@
 			files = (
 				0BFA550B1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift in Sources */,
 				0BFAB56B18A55B9000F30FC3 /* NSString+encodeString.m in Sources */,
+				0BB7876E1C8F0947002B977E /* OSWebInterfaceTest.m in Sources */,
 				27CB961A13E4110100717380 /* OSLibraryTests.m in Sources */,
 				27CB963513E4140600717380 /* OSDateTest.m in Sources */,
 				27CB963813E4162F00717380 /* OSTimeTest.m in Sources */,

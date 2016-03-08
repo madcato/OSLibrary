@@ -30,4 +30,6 @@ typedef void(^OSWebInterfaceHandler)(NSInteger statusCode, NSData *responseData,
 
 + (NSString*)percentScape:(NSString*)cadena encoding:(NSStringEncoding)encoding;
 
++ (NSString*)URLqueryEscape:(NSString*)cadena;
+
 @end

@@ -36,6 +36,10 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding
     return AFPercentEscapedQueryStringPairMemberFromStringWithEncoding(cadena, encoding);
 }
 
++ (NSString*)URLqueryEscape:(NSString*)cadena {
+    return [cadena stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+}
+
 - (void)get:(OSWebInterfaceHandler)handler {
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession* session =
