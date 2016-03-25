@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B081CA51CA5584300DCDC49 /* OSDNIValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B081CA41CA5584300DCDC49 /* OSDNIValidator.m */; };
+		0B081CA71CA55B8D00DCDC49 /* OSDNIValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B081CA61CA55B8D00DCDC49 /* OSDNIValidatorTest.swift */; };
 		0B0CF5D3176FB23F00CBEF64 /* OSDatabaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0CF5D2176FB23F00CBEF64 /* OSDatabaseTest.m */; };
 		0B0CF5D6176FB26600CBEF64 /* OSDatabaseTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0B0CF5D4176FB26600CBEF64 /* OSDatabaseTest.xcdatamodeld */; };
 		0B0CF5D8176FB79500CBEF64 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B0CF5D7176FB79500CBEF64 /* CoreData.framework */; };
@@ -160,6 +162,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B081CA31CA5584300DCDC49 /* OSDNIValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDNIValidator.h; sourceTree = "<group>"; };
+		0B081CA41CA5584300DCDC49 /* OSDNIValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDNIValidator.m; sourceTree = "<group>"; };
+		0B081CA61CA55B8D00DCDC49 /* OSDNIValidatorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSDNIValidatorTest.swift; sourceTree = "<group>"; };
 		0B0CF5D1176FB23F00CBEF64 /* OSDatabaseTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDatabaseTest.h; sourceTree = "<group>"; };
 		0B0CF5D2176FB23F00CBEF64 /* OSDatabaseTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDatabaseTest.m; sourceTree = "<group>"; };
 		0B0CF5D5176FB26600CBEF64 /* OSDatabaseTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OSDatabaseTest.xcdatamodel; sourceTree = "<group>"; };
@@ -446,6 +451,8 @@
 				10A338FF15E381560059F012 /* NSString+encodeString.m */,
 				0BAA83171C515A8700DCB86D /* OSEmailValidator.h */,
 				0BAA83181C515A8700DCB86D /* OSEmailValidator.m */,
+				0B081CA31CA5584300DCDC49 /* OSDNIValidator.h */,
+				0B081CA41CA5584300DCDC49 /* OSDNIValidator.m */,
 			);
 			name = Formats;
 			sourceTree = "<group>";
@@ -586,6 +593,7 @@
 				0BFA550A1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift */,
 				0BFA55091C8C8C2E0072AE7C /* OSLibraryTests-Bridging-Header.h */,
 				0BB7876D1C8F0947002B977E /* OSWebInterfaceTest.m */,
+				0B081CA61CA55B8D00DCDC49 /* OSDNIValidatorTest.swift */,
 			);
 			path = OSLibraryTests;
 			sourceTree = SOURCE_ROOT;
@@ -720,6 +728,7 @@
 				0BD9FCDE190BA18000F7D8B6 /* OSJSONRequestOperation.m in Sources */,
 				0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */,
 				0B21406E1C8CF0E600212007 /* OSDataParser.m in Sources */,
+				0B081CA51CA5584300DCDC49 /* OSDNIValidator.m in Sources */,
 				0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,6 +739,7 @@
 			files = (
 				0BFA550B1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift in Sources */,
 				0BFAB56B18A55B9000F30FC3 /* NSString+encodeString.m in Sources */,
+				0B081CA71CA55B8D00DCDC49 /* OSDNIValidatorTest.swift in Sources */,
 				0BB7876E1C8F0947002B977E /* OSWebInterfaceTest.m in Sources */,
 				27CB961A13E4110100717380 /* OSLibraryTests.m in Sources */,
 				27CB963513E4140600717380 /* OSDateTest.m in Sources */,
