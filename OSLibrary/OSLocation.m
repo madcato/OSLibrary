@@ -23,7 +23,7 @@
 	BOOL result = NO;
 	if([CLLocationManager respondsToSelector:@selector(authorizationStatus)]) {
 		result = ([CLLocationManager authorizationStatus] ==
-          kCLAuthorizationStatusAuthorized);
+          kCLAuthorizationStatusAuthorizedAlways);
 	} else {
 		result = [CLLocationManager locationServicesEnabled];
 	}

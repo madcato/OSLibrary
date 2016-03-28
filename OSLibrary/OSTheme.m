@@ -41,7 +41,7 @@ static id <OSTheme> sharedTheme = nil;
     
     UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
     [navigationBarAppearance setBackgroundImage:[theme navigationBackgroundForBarMetrics:UIBarMetricsDefault] forBarMetrics:UIBarMetricsDefault];
-    [navigationBarAppearance setBackgroundImage:[theme navigationBackgroundForBarMetrics:UIBarMetricsLandscapePhone] forBarMetrics:UIBarMetricsLandscapePhone];
+    [navigationBarAppearance setBackgroundImage:[theme navigationBackgroundForBarMetrics:UIBarMetricsLandscapePhone] forBarMetrics:UIBarMetricsCompact];
     
     if(IOS_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) [navigationBarAppearance setShadowImage:[theme topShadow]];
     
