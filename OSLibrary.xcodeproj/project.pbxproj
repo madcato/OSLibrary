@@ -53,6 +53,7 @@
 		0B7F1342179061F10068B3F8 /* OSLibrary.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 27CB95FE13E4110100717380 /* OSLibrary.h */; };
 		0B95C45118F47918003FA730 /* OSWebRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 278474B713EFF2E400CDD1CF /* OSWebRequest.h */; };
 		0B95C45218F4797F003FA730 /* OSLoadingViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10532F4115DA569000AB115B /* OSLoadingViewController.h */; };
+		0BA9A4811CAAF71E00A9C92B /* OSBorderedButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BAB465F1B2D778F00A763B7 /* OSBorderedButton.h */; };
 		0BAA83191C515A8700DCB86D /* OSEmailValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA83181C515A8700DCB86D /* OSEmailValidator.m */; };
 		0BAB46611B2D778F00A763B7 /* OSBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB46601B2D778F00A763B7 /* OSBorderedButton.m */; };
 		0BAB7DF219C1AFEB00BA044E /* OSSystemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */; };
@@ -124,6 +125,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				0BA9A4811CAAF71E00A9C92B /* OSBorderedButton.h in CopyFiles */,
 				0B2477B01AD9B78C00B00728 /* OSCloudKitSyncEngine.h in CopyFiles */,
 				0B2477B11AD9B78C00B00728 /* OSCloudKitRequestOperation.h in CopyFiles */,
 				0BD9FCDF190BA19D00F7D8B6 /* OSJSONRequestOperation.h in CopyFiles */,
