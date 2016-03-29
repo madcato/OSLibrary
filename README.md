@@ -11,7 +11,7 @@ iOS Utility library
 
 
 1. Get the latest source from GitHub executing this command line in the root of your project(where .xcodeproj file exits):
-```git submodule add git@github.com:veladan/OSLibrary.git```
+```git submodule add git@github.com:madcato/OSLibrary.git```
 2. Right-click on the your project in the navigator, click "Add Files to 'Your Project'", and browse to and select "OSLibrary.xcodeproj"
 3. In your project's target settings, go to "Build Phases" -> "Link Binary With Libraries" and add libOSLibrary.a.
 4.
