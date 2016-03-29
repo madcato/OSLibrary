@@ -37,3 +37,9 @@
 //#import "OSEditablePickerViewTableViewCell.h"
 #import "OSCloudKitSyncEngine.h"
 #import "OSBorderedButton.h"
+
+#import "OSWebInterface.h"
+#import "OSWebQuery.h"
+#import "OSDataParser.h"
+#import "OSXMLDataParser.h"
+#import "OSJSONDataParser.h"

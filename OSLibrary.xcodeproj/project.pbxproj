@@ -54,6 +54,11 @@
 		0B95C45118F47918003FA730 /* OSWebRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 278474B713EFF2E400CDD1CF /* OSWebRequest.h */; };
 		0B95C45218F4797F003FA730 /* OSLoadingViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 10532F4115DA569000AB115B /* OSLoadingViewController.h */; };
 		0BA9A4811CAAF71E00A9C92B /* OSBorderedButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BAB465F1B2D778F00A763B7 /* OSBorderedButton.h */; };
+		0BA9A4A41CAAFFE500A9C92B /* OSWebQuery.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B2140621C8CF0E600212007 /* OSWebQuery.h */; };
+		0BA9A4A51CAAFFE500A9C92B /* OSWebInterface.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B2140641C8CF0E600212007 /* OSWebInterface.h */; };
+		0BA9A4A61CAAFFE500A9C92B /* OSDataParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B2140661C8CF0E600212007 /* OSDataParser.h */; };
+		0BA9A4A71CAAFFE500A9C92B /* OSXMLDataParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B2140681C8CF0E600212007 /* OSXMLDataParser.h */; };
+		0BA9A4A81CAAFFE500A9C92B /* OSJSONDataParser.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B21406A1C8CF0E600212007 /* OSJSONDataParser.h */; };
 		0BAA83191C515A8700DCB86D /* OSEmailValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA83181C515A8700DCB86D /* OSEmailValidator.m */; };
 		0BAB46611B2D778F00A763B7 /* OSBorderedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB46601B2D778F00A763B7 /* OSBorderedButton.m */; };
 		0BAB7DF219C1AFEB00BA044E /* OSSystemTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */; };
@@ -125,6 +130,11 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				0BA9A4A41CAAFFE500A9C92B /* OSWebQuery.h in CopyFiles */,
+				0BA9A4A51CAAFFE500A9C92B /* OSWebInterface.h in CopyFiles */,
+				0BA9A4A61CAAFFE500A9C92B /* OSDataParser.h in CopyFiles */,
+				0BA9A4A71CAAFFE500A9C92B /* OSXMLDataParser.h in CopyFiles */,
+				0BA9A4A81CAAFFE500A9C92B /* OSJSONDataParser.h in CopyFiles */,
 				0BA9A4811CAAF71E00A9C92B /* OSBorderedButton.h in CopyFiles */,
 				0B2477B01AD9B78C00B00728 /* OSCloudKitSyncEngine.h in CopyFiles */,
 				0B2477B11AD9B78C00B00728 /* OSCloudKitRequestOperation.h in CopyFiles */,
@@ -786,8 +796,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -806,7 +816,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -827,6 +837,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSLibrary/OSLibrary-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
