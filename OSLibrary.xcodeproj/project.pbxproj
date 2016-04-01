@@ -22,6 +22,9 @@
 		0B2477AB1AD99DB700B00728 /* OSCloudKitRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2477AA1AD99DB700B00728 /* OSCloudKitRequestOperation.m */; };
 		0B2477B01AD9B78C00B00728 /* OSCloudKitSyncEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BB1EB041A8E8C730038B564 /* OSCloudKitSyncEngine.h */; };
 		0B2477B11AD9B78C00B00728 /* OSCloudKitRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B2477A91AD99DB700B00728 /* OSCloudKitRequestOperation.h */; };
+		0B3ED69A1CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3ED6991CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.m */; };
+		0B3ED69B1CAECA0000D349A8 /* OSTopBarActivityIndicatorManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B3ED6981CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.h */; };
+		0B3ED69D1CAECA4800D349A8 /* OSTopBarActivityIndicatorManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3ED69C1CAECA4800D349A8 /* OSTopBarActivityIndicatorManagerTest.m */; };
 		0B4DAC891CAE82C500036E8D /* OSTopBarActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4DAC881CAE82C500036E8D /* OSTopBarActivityIndicator.m */; };
 		0B4DAC8A1CAE843600036E8D /* OSTopBarActivityIndicator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B4DAC871CAE82C500036E8D /* OSTopBarActivityIndicator.h */; };
 		0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE931768C71B00F7D477 /* OSCoreDataSyncEngine.m */; };
@@ -132,6 +135,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				0B3ED69B1CAECA0000D349A8 /* OSTopBarActivityIndicatorManager.h in CopyFiles */,
 				0B4DAC8A1CAE843600036E8D /* OSTopBarActivityIndicator.h in CopyFiles */,
 				0BA9A4A41CAAFFE500A9C92B /* OSWebQuery.h in CopyFiles */,
 				0BA9A4A51CAAFFE500A9C92B /* OSWebInterface.h in CopyFiles */,
@@ -198,6 +202,9 @@
 		0B2477A71AD99A7900B00728 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0B2477A91AD99DB700B00728 /* OSCloudKitRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCloudKitRequestOperation.h; sourceTree = "<group>"; };
 		0B2477AA1AD99DB700B00728 /* OSCloudKitRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCloudKitRequestOperation.m; sourceTree = "<group>"; };
+		0B3ED6981CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTopBarActivityIndicatorManager.h; sourceTree = "<group>"; };
+		0B3ED6991CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTopBarActivityIndicatorManager.m; sourceTree = "<group>"; };
+		0B3ED69C1CAECA4800D349A8 /* OSTopBarActivityIndicatorManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTopBarActivityIndicatorManagerTest.m; sourceTree = "<group>"; };
 		0B4DAC871CAE82C500036E8D /* OSTopBarActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTopBarActivityIndicator.h; sourceTree = "<group>"; };
 		0B4DAC881CAE82C500036E8D /* OSTopBarActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTopBarActivityIndicator.m; sourceTree = "<group>"; };
 		0B52EE921768C71B00F7D477 /* OSCoreDataSyncEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCoreDataSyncEngine.h; sourceTree = "<group>"; };
@@ -407,6 +414,8 @@
 				0BD9FCDD190BA18000F7D8B6 /* OSJSONRequestOperation.m */,
 				0B4DAC871CAE82C500036E8D /* OSTopBarActivityIndicator.h */,
 				0B4DAC881CAE82C500036E8D /* OSTopBarActivityIndicator.m */,
+				0B3ED6981CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.h */,
+				0B3ED6991CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -613,6 +622,7 @@
 				0BFA55091C8C8C2E0072AE7C /* OSLibraryTests-Bridging-Header.h */,
 				0BB7876D1C8F0947002B977E /* OSWebInterfaceTest.m */,
 				0B081CA61CA55B8D00DCDC49 /* OSDNIValidatorTest.swift */,
+				0B3ED69C1CAECA4800D349A8 /* OSTopBarActivityIndicatorManagerTest.m */,
 			);
 			path = OSLibraryTests;
 			sourceTree = SOURCE_ROOT;
@@ -746,6 +756,7 @@
 				103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */,
 				103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */,
 				0BD9FCDE190BA18000F7D8B6 /* OSJSONRequestOperation.m in Sources */,
+				0B3ED69A1CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.m in Sources */,
 				0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */,
 				0B21406E1C8CF0E600212007 /* OSDataParser.m in Sources */,
 				0B081CA51CA5584300DCDC49 /* OSDNIValidator.m in Sources */,
@@ -759,6 +770,7 @@
 			files = (
 				0BFA550B1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift in Sources */,
 				0BFAB56B18A55B9000F30FC3 /* NSString+encodeString.m in Sources */,
+				0B3ED69D1CAECA4800D349A8 /* OSTopBarActivityIndicatorManagerTest.m in Sources */,
 				0B081CA71CA55B8D00DCDC49 /* OSDNIValidatorTest.swift in Sources */,
 				0BB7876E1C8F0947002B977E /* OSWebInterfaceTest.m in Sources */,
 				27CB961A13E4110100717380 /* OSLibraryTests.m in Sources */,

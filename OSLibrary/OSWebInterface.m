@@ -7,6 +7,7 @@
 //
 
 #import "OSWebInterface.h"
+#import "OSTopBarActivityIndicatorManager.h"
 
 static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding
 (NSString *string, NSStringEncoding encoding) {
@@ -41,6 +42,7 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding
 }
 
 - (void)get:(OSWebInterfaceHandler)handler {
+    [OSTopBarActivityIndicatorManager startActivity];
     NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession* session =
     [NSURLSession sessionWithConfiguration:sessionConfiguration
@@ -56,6 +58,7 @@ static NSString * AFPercentEscapedQueryStringPairMemberFromStringWithEncoding
     NSURLSessionDataTask* task = [session dataTaskWithRequest:request
                                             completionHandler:
                                   ^(NSData* data, NSURLResponse* response, NSError* error) {\
+                                      [OSTopBarActivityIndicatorManager stopActivity];
                                       NSInteger status = -1;
                                       
                                       if ([response isKindOfClass:[NSHTTPURLResponse class]]) {

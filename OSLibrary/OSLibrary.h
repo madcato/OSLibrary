@@ -44,3 +44,4 @@
 #import "OSXMLDataParser.h"
 #import "OSJSONDataParser.h"
 #import "OSTopBarActivityIndicator.h"
+#import "OSTopBarActivityIndicatorManager.h"
