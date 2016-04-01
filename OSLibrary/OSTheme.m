@@ -128,17 +128,17 @@ static id <OSTheme> sharedTheme = nil;
     NSMutableDictionary *titleTextAttributes = [[NSMutableDictionary alloc] init];
     UIColor *mainColor = [theme mainColor];
     if (mainColor) {
-        titleTextAttributes[UITextAttributeTextColor] = mainColor;
+        titleTextAttributes[NSForegroundColorAttributeName] = mainColor;
     }
     UIColor *shadowColor = [theme shadowColor];
     if (shadowColor) {
-        titleTextAttributes[UITextAttributeTextShadowColor] = shadowColor;
+        titleTextAttributes [NSShadowAttributeName] = shadowColor;
         CGSize shadowOffset = [theme shadowOffset];
-        titleTextAttributes[UITextAttributeTextShadowOffset] = [NSValue valueWithCGSize:shadowOffset];
+        titleTextAttributes[NSShadowAttributeName] = [NSValue valueWithCGSize:shadowOffset];
     }
     UIFont *font = [theme defaultFont];
     if (font) {
-        titleTextAttributes[UITextAttributeFont] = font;
+        titleTextAttributes[NSFontAttributeName] = font;
     }
     
     [navigationBarAppearance setTitleTextAttributes:titleTextAttributes];
@@ -206,8 +206,8 @@ static id <OSTheme> sharedTheme = nil;
         // Otherwise, set the finished images
         UIImage *selectedImage = [theme finishedImageForTab:tab selected:YES];
         UIImage *unselectedImage = [theme finishedImageForTab:tab selected:NO];
-        [item setFinishedSelectedImage:selectedImage
-           withFinishedUnselectedImage:unselectedImage];
+        item.image = unselectedImage;
+        item.selectedImage = selectedImage;
     }
 }
 
