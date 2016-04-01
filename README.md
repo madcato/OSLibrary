@@ -14,9 +14,9 @@ iOS Utility library
 ```git submodule add git@github.com:madcato/OSLibrary.git```
 2. Right-click on the your project in the navigator, click "Add Files to 'Your Project'", and browse to and select "OSLibrary.xcodeproj"
 3. In your project's target settings, go to "Build Phases" -> "Link Binary With Libraries" and add libOSLibrary.a.
-4.
-6. In "Build Phases" add SystemConfiguration.framework, QuartzCore.framework, CoreLocation.framework CloudKit.framework, Security.framework and CoreData.framework to "Linked Binary Wit Libraries".
-7. Include the following line in your precompiled file (.pch):  
+4. Optional. In "Build Phases" add OSLibrary to "Target dependencies". (This is compulsory if you are going to change or add code to OSLibrary project)
+5. In "Build Phases" add SystemConfiguration.framework, QuartzCore.framework, CoreLocation.framework CloudKit.framework, Security.framework and CoreData.framework to "Linked Binary Wit Libraries".
+6. Include the following line in your precompiled file (.pch):  
 
 ```
 #import <SystemConfiguration/SystemConfiguration.h>
