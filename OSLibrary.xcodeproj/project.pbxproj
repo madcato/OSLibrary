@@ -22,6 +22,8 @@
 		0B2477AB1AD99DB700B00728 /* OSCloudKitRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2477AA1AD99DB700B00728 /* OSCloudKitRequestOperation.m */; };
 		0B2477B01AD9B78C00B00728 /* OSCloudKitSyncEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BB1EB041A8E8C730038B564 /* OSCloudKitSyncEngine.h */; };
 		0B2477B11AD9B78C00B00728 /* OSCloudKitRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B2477A91AD99DB700B00728 /* OSCloudKitRequestOperation.h */; };
+		0B4DAC891CAE82C500036E8D /* OSTopBarActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4DAC881CAE82C500036E8D /* OSTopBarActivityIndicator.m */; };
+		0B4DAC8A1CAE843600036E8D /* OSTopBarActivityIndicator.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B4DAC871CAE82C500036E8D /* OSTopBarActivityIndicator.h */; };
 		0B52EE951768C71B00F7D477 /* OSCoreDataSyncEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE931768C71B00F7D477 /* OSCoreDataSyncEngine.m */; };
 		0B52EE971768CC9900F7D477 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */; };
 		0B52EEA11768D93500F7D477 /* NSManagedObject+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B52EE9F1768D93500F7D477 /* NSManagedObject+JSON.m */; };
@@ -130,6 +132,7 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
+				0B4DAC8A1CAE843600036E8D /* OSTopBarActivityIndicator.h in CopyFiles */,
 				0BA9A4A41CAAFFE500A9C92B /* OSWebQuery.h in CopyFiles */,
 				0BA9A4A51CAAFFE500A9C92B /* OSWebInterface.h in CopyFiles */,
 				0BA9A4A61CAAFFE500A9C92B /* OSDataParser.h in CopyFiles */,
@@ -195,6 +198,8 @@
 		0B2477A71AD99A7900B00728 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0B2477A91AD99DB700B00728 /* OSCloudKitRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCloudKitRequestOperation.h; sourceTree = "<group>"; };
 		0B2477AA1AD99DB700B00728 /* OSCloudKitRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCloudKitRequestOperation.m; sourceTree = "<group>"; };
+		0B4DAC871CAE82C500036E8D /* OSTopBarActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSTopBarActivityIndicator.h; sourceTree = "<group>"; };
+		0B4DAC881CAE82C500036E8D /* OSTopBarActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSTopBarActivityIndicator.m; sourceTree = "<group>"; };
 		0B52EE921768C71B00F7D477 /* OSCoreDataSyncEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCoreDataSyncEngine.h; sourceTree = "<group>"; };
 		0B52EE931768C71B00F7D477 /* OSCoreDataSyncEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCoreDataSyncEngine.m; sourceTree = "<group>"; };
 		0B52EE961768CC9900F7D477 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -400,6 +405,8 @@
 				0BD9FCD9190B9EE700F7D8B6 /* OSHTTPClient.m */,
 				0BD9FCDC190BA18000F7D8B6 /* OSJSONRequestOperation.h */,
 				0BD9FCDD190BA18000F7D8B6 /* OSJSONRequestOperation.m */,
+				0B4DAC871CAE82C500036E8D /* OSTopBarActivityIndicator.h */,
+				0B4DAC881CAE82C500036E8D /* OSTopBarActivityIndicator.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -735,6 +742,7 @@
 				10C58E4315DCDD7D00496A25 /* OSOperation.m in Sources */,
 				10C58E4C15DCEB2700496A25 /* OSOperationQueues.m in Sources */,
 				10A3390115E381560059F012 /* NSString+encodeString.m in Sources */,
+				0B4DAC891CAE82C500036E8D /* OSTopBarActivityIndicator.m in Sources */,
 				103FE0AA165BC7BD00F25586 /* OSDefaultTheme.m in Sources */,
 				103FE0AE165BC7CC00F25586 /* OSTheme.m in Sources */,
 				0BD9FCDE190BA18000F7D8B6 /* OSJSONRequestOperation.m in Sources */,
@@ -837,7 +845,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSLibrary/OSLibrary-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
