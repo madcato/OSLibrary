@@ -66,13 +66,6 @@
 			remoteGlobalIDString = 27CB95F513E4110000717380;
 			remoteInfo = OSLibrary;
 		};
-		0BD9FCD2190B937000F7D8B6 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0B6183EE176924EA001C04E8 /* OSLibrary.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0B7F12FF17905DF90068B3F8;
-			remoteInfo = OSLibraryBundle;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -241,7 +234,6 @@
 			children = (
 				0B6183F4176924EB001C04E8 /* libOSLibrary.a */,
 				0B6183F6176924EB001C04E8 /* OSLibraryTests.xctest */,
-				0BD9FCD3190B937000F7D8B6 /* OSLibraryBundle.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -293,7 +285,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Daniel Vela";
 			};
 			buildConfigurationList = 0B52EEA61768E73900F7D477 /* Build configuration list for PBXProject "addressbook" */;
@@ -333,13 +325,6 @@
 			fileType = wrapper.cfbundle;
 			path = OSLibraryTests.xctest;
 			remoteRef = 0B6183F5176924EB001C04E8 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0BD9FCD3190B937000F7D8B6 /* OSLibraryBundle.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OSLibraryBundle.bundle;
-			remoteRef = 0BD9FCD2190B937000F7D8B6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -463,6 +448,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -513,7 +499,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "addressbook/addressbook-Prefix.pch";
 				INFOPLIST_FILE = "addressbook/addressbook-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.veladan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -526,7 +513,8 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "addressbook/addressbook-Prefix.pch";
 				INFOPLIST_FILE = "addressbook/addressbook-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.veladan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -545,6 +533,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "addressbook/addressbook-Prefix.pch";
 				INFOPLIST_FILE = "addressbookTests/addressbookTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.veladan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -562,6 +551,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "addressbook/addressbook-Prefix.pch";
 				INFOPLIST_FILE = "addressbookTests/addressbookTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.veladan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};

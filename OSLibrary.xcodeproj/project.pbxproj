@@ -22,6 +22,7 @@
 		0B2477AB1AD99DB700B00728 /* OSCloudKitRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2477AA1AD99DB700B00728 /* OSCloudKitRequestOperation.m */; };
 		0B2477B01AD9B78C00B00728 /* OSCloudKitSyncEngine.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BB1EB041A8E8C730038B564 /* OSCloudKitSyncEngine.h */; };
 		0B2477B11AD9B78C00B00728 /* OSCloudKitRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B2477A91AD99DB700B00728 /* OSCloudKitRequestOperation.h */; };
+		0B3B307D1CB6596A003DB8B8 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 272C036115335261008DF260 /* NSData+Base64.m */; };
 		0B3ED69A1CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3ED6991CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.m */; };
 		0B3ED69B1CAECA0000D349A8 /* OSTopBarActivityIndicatorManager.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0B3ED6981CAEC60F00D349A8 /* OSTopBarActivityIndicatorManager.h */; };
 		0B3ED69D1CAECA4800D349A8 /* OSTopBarActivityIndicatorManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B3ED69C1CAECA4800D349A8 /* OSTopBarActivityIndicatorManagerTest.m */; };
@@ -93,7 +94,6 @@
 		10A3390115E381560059F012 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
 		10C58E4315DCDD7D00496A25 /* OSOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C58E4115DCDD7D00496A25 /* OSOperation.m */; };
 		10C58E4C15DCEB2700496A25 /* OSOperationQueues.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C58E4A15DCEB2700496A25 /* OSOperationQueues.m */; };
-		272C036315335261008DF260 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 272C036115335261008DF260 /* NSData+Base64.m */; };
 		272C0367153352F9008DF260 /* OSCrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 272C0365153352F9008DF260 /* OSCrypto.m */; };
 		278474BA13EFF2E400CDD1CF /* OSWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 278474B813EFF2E400CDD1CF /* OSWebRequest.m */; };
 		27CB95FA13E4110100717380 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CB95F913E4110100717380 /* Foundation.framework */; };
@@ -736,7 +736,7 @@
 				27FD9C7114EAB2DB0091A0E3 /* OSNetwork.m in Sources */,
 				0BAB46611B2D778F00A763B7 /* OSBorderedButton.m in Sources */,
 				0BD9FCD6190B99C300F7D8B6 /* OSHTTPRequestOperation.m in Sources */,
-				272C036315335261008DF260 /* NSData+Base64.m in Sources */,
+				0B3B307D1CB6596A003DB8B8 /* NSData+Base64.m in Sources */,
 				0BAA83191C515A8700DCB86D /* OSEmailValidator.m in Sources */,
 				0B21406C1C8CF0E600212007 /* OSWebQuery.m in Sources */,
 				272C0367153352F9008DF260 /* OSCrypto.m in Sources */,
