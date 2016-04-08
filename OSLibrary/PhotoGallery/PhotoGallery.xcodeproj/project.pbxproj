@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B3B30851CB65E18003DB8B8 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B3B30841CB65E18003DB8B8 /* CloudKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		0B7C787519C190BF00C7F8B4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7C787419C190BF00C7F8B4 /* Foundation.framework */; };
 		0B7C787719C190BF00C7F8B4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7C787619C190BF00C7F8B4 /* CoreGraphics.framework */; };
 		0B7C787919C190BF00C7F8B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B7C787819C190BF00C7F8B4 /* UIKit.framework */; };
@@ -48,16 +49,10 @@
 			remoteGlobalIDString = 27CB960613E4110100717380;
 			remoteInfo = OSLibraryTests;
 		};
-		0B7C78AD19C190D600C7F8B4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0B7C78A319C190D600C7F8B4 /* OSLibrary.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0B7F12FF17905DF90068B3F8;
-			remoteInfo = OSLibraryBundle;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B3B30841CB65E18003DB8B8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		0B7C787119C190BF00C7F8B4 /* PhotoGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B7C787419C190BF00C7F8B4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B7C787619C190BF00C7F8B4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B3B30851CB65E18003DB8B8 /* CloudKit.framework in Frameworks */,
 				0B7C78AF19C191BF00C7F8B4 /* libOSLibrary.a in Frameworks */,
 				0B7C787719C190BF00C7F8B4 /* CoreGraphics.framework in Frameworks */,
 				0B7C787919C190BF00C7F8B4 /* UIKit.framework in Frameworks */,
@@ -131,6 +127,7 @@
 		0B7C787319C190BF00C7F8B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0B3B30841CB65E18003DB8B8 /* CloudKit.framework */,
 				0B7C787419C190BF00C7F8B4 /* Foundation.framework */,
 				0B7C787619C190BF00C7F8B4 /* CoreGraphics.framework */,
 				0B7C787819C190BF00C7F8B4 /* UIKit.framework */,
@@ -191,7 +188,6 @@
 			children = (
 				0B7C78AA19C190D600C7F8B4 /* libOSLibrary.a */,
 				0B7C78AC19C190D600C7F8B4 /* OSLibraryTests.xctest */,
-				0B7C78AE19C190D600C7F8B4 /* OSLibraryBundle.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,7 +243,7 @@
 		0B7C786919C190BF00C7F8B4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = veladan;
 				TargetAttributes = {
 					0B7C788B19C190BF00C7F8B4 = {
@@ -292,13 +288,6 @@
 			fileType = wrapper.cfbundle;
 			path = OSLibraryTests.xctest;
 			remoteRef = 0B7C78AB19C190D600C7F8B4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0B7C78AE19C190D600C7F8B4 /* OSLibraryBundle.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = OSLibraryBundle.bundle;
-			remoteRef = 0B7C78AD19C190D600C7F8B4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -393,6 +382,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -453,6 +443,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGallery/PhotoGallery-Prefix.pch";
 				INFOPLIST_FILE = "PhotoGallery/PhotoGallery-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.veladan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -466,6 +457,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGallery/PhotoGallery-Prefix.pch";
 				INFOPLIST_FILE = "PhotoGallery/PhotoGallery-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.veladan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -487,6 +479,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PhotoGalleryTests/PhotoGalleryTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.veladan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -505,6 +498,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PhotoGallery/PhotoGallery-Prefix.pch";
 				INFOPLIST_FILE = "PhotoGalleryTests/PhotoGalleryTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.veladan.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

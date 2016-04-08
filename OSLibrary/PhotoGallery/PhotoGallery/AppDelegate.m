@@ -12,7 +12,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSString* str = [OSSystem getOrCreateAppUniqueIdentifier];
+    NSString* __unused str = [OSSystem getOrCreateAppUniqueIdentifier];
 
     return YES;
 }
