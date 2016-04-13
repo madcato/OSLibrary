@@ -72,6 +72,7 @@
         keyPath:(NSString*)keyPath
        function:(NSString*)function
            type:(NSAttributeType)type;
+- (NSUInteger)count:(NSString*)entityName;
 - (void)deleteAllEntities:(NSString *)nameEntity;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSManagedObjectModel *managedObjectModel;

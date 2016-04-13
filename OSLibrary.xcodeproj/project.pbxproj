@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B019F021CBE8D6600711F8B /* OSCoreDataSyncEngineTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B019F011CBE8D6600711F8B /* OSCoreDataSyncEngineTest.m */; };
+		0B019F081CBE8EA000711F8B /* Person+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B019F051CBE8EA000711F8B /* Person+CoreDataProperties.m */; };
+		0B019F091CBE8EA000711F8B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B019F071CBE8EA000711F8B /* Person.m */; };
+		0B019F0C1CBE8ED600711F8B /* PersonAPIClientMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B019F0B1CBE8ED600711F8B /* PersonAPIClientMock.m */; };
+		0B019F0F1CBE945000711F8B /* OSMockRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B019F0E1CBE945000711F8B /* OSMockRequestOperation.m */; };
+		0B019F121CBEA13400711F8B /* getAllObjects.json in Resources */ = {isa = PBXBuildFile; fileRef = 0B019F111CBEA13400711F8B /* getAllObjects.json */; };
 		0B081CA51CA5584300DCDC49 /* OSDNIValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B081CA41CA5584300DCDC49 /* OSDNIValidator.m */; };
 		0B081CA71CA55B8D00DCDC49 /* OSDNIValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B081CA61CA55B8D00DCDC49 /* OSDNIValidatorTest.swift */; };
 		0B0CF5D3176FB23F00CBEF64 /* OSDatabaseTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B0CF5D2176FB23F00CBEF64 /* OSDatabaseTest.m */; };
@@ -182,6 +188,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B019F011CBE8D6600711F8B /* OSCoreDataSyncEngineTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCoreDataSyncEngineTest.m; sourceTree = "<group>"; };
+		0B019F041CBE8EA000711F8B /* Person+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Person+CoreDataProperties.h"; sourceTree = "<group>"; };
+		0B019F051CBE8EA000711F8B /* Person+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Person+CoreDataProperties.m"; sourceTree = "<group>"; };
+		0B019F061CBE8EA000711F8B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		0B019F071CBE8EA000711F8B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		0B019F0A1CBE8ED600711F8B /* PersonAPIClientMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonAPIClientMock.h; sourceTree = "<group>"; };
+		0B019F0B1CBE8ED600711F8B /* PersonAPIClientMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonAPIClientMock.m; sourceTree = "<group>"; };
+		0B019F0D1CBE945000711F8B /* OSMockRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSMockRequestOperation.h; sourceTree = "<group>"; };
+		0B019F0E1CBE945000711F8B /* OSMockRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSMockRequestOperation.m; sourceTree = "<group>"; };
+		0B019F111CBEA13400711F8B /* getAllObjects.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = getAllObjects.json; sourceTree = "<group>"; };
 		0B081CA31CA5584300DCDC49 /* OSDNIValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSDNIValidator.h; sourceTree = "<group>"; };
 		0B081CA41CA5584300DCDC49 /* OSDNIValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSDNIValidator.m; sourceTree = "<group>"; };
 		0B081CA61CA55B8D00DCDC49 /* OSDNIValidatorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSDNIValidatorTest.swift; sourceTree = "<group>"; };
@@ -344,6 +360,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B019F001CBE8D4700711F8B /* SyncEngine */ = {
+			isa = PBXGroup;
+			children = (
+				0B019F011CBE8D6600711F8B /* OSCoreDataSyncEngineTest.m */,
+				0B019F041CBE8EA000711F8B /* Person+CoreDataProperties.h */,
+				0B019F051CBE8EA000711F8B /* Person+CoreDataProperties.m */,
+				0B019F061CBE8EA000711F8B /* Person.h */,
+				0B019F071CBE8EA000711F8B /* Person.m */,
+				0B019F0A1CBE8ED600711F8B /* PersonAPIClientMock.h */,
+				0B019F0B1CBE8ED600711F8B /* PersonAPIClientMock.m */,
+				0B019F0D1CBE945000711F8B /* OSMockRequestOperation.h */,
+				0B019F0E1CBE945000711F8B /* OSMockRequestOperation.m */,
+				0B019F111CBEA13400711F8B /* getAllObjects.json */,
+			);
+			name = SyncEngine;
+			sourceTree = "<group>";
+		};
 		0B2140611C8CF0C700212007 /* API client */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +638,7 @@
 		27CB961113E4110100717380 /* OSLibraryTests */ = {
 			isa = PBXGroup;
 			children = (
+				0B019F001CBE8D4700711F8B /* SyncEngine */,
 				27CB961713E4110100717380 /* OSLibraryTests.h */,
 				27CB961913E4110100717380 /* OSLibraryTests.m */,
 				27CB961213E4110100717380 /* Supporting Files */,
@@ -714,6 +748,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27CB961813E4110100717380 /* OSLibraryTests.h in Resources */,
+				0B019F121CBEA13400711F8B /* getAllObjects.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,18 +810,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BFA550B1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift in Sources */,
+				0B019F0F1CBE945000711F8B /* OSMockRequestOperation.m in Sources */,
 				0BFAB56B18A55B9000F30FC3 /* NSString+encodeString.m in Sources */,
 				0B3ED69D1CAECA4800D349A8 /* OSTopBarActivityIndicatorManagerTest.m in Sources */,
 				0B081CA71CA55B8D00DCDC49 /* OSDNIValidatorTest.swift in Sources */,
 				0BB7876E1C8F0947002B977E /* OSWebInterfaceTest.m in Sources */,
 				27CB961A13E4110100717380 /* OSLibraryTests.m in Sources */,
+				0B019F091CBE8EA000711F8B /* Person.m in Sources */,
 				27CB963513E4140600717380 /* OSDateTest.m in Sources */,
 				27CB963813E4162F00717380 /* OSTimeTest.m in Sources */,
 				27CB963B13E418A300717380 /* OSDateTimeTest.m in Sources */,
+				0B019F081CBE8EA000711F8B /* Person+CoreDataProperties.m in Sources */,
 				0BAB7DF219C1AFEB00BA044E /* OSSystemTest.m in Sources */,
 				27FD9C7A14EAB3BA0091A0E3 /* OSNetworkTest.m in Sources */,
 				1097CC48165A761400330CD2 /* NSStirng+encodeStringTest.m in Sources */,
 				1097CC4C165A789C00330CD2 /* OSOperationQueuesTest.m in Sources */,
+				0B019F0C1CBE8ED600711F8B /* PersonAPIClientMock.m in Sources */,
+				0B019F021CBE8D6600711F8B /* OSCoreDataSyncEngineTest.m in Sources */,
 				0B0CF5D3176FB23F00CBEF64 /* OSDatabaseTest.m in Sources */,
 				0B0CF5D6176FB26600CBEF64 /* OSDatabaseTest.xcdatamodeld in Sources */,
 			);

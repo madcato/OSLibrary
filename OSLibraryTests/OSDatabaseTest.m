@@ -21,7 +21,7 @@
 {
     database = [OSDatabase initWithModelName:@"OSDatabaseTest"
                                    storeName:@"OSDatabaseTest"
-                                     testing:YES
+                                     testing:NO
                                     delegate:nil];
 }
 
@@ -74,13 +74,13 @@
     [self createPepe2];
     [self createPepe3];
     [database save];
-//    NSNumber* result = [database calculate:@"Person"
-//                             withPredicate:@"programmer = NO"
-//                                 arguments:nil keyPath:@"salary"
-//                                  function:@"sum:"
-//                                      type:NSDecimalAttributeType];
-//    NSLog(@"object: %@", result);
-//    XCTAssertTrue([result isEqualToNumber:@2500], @"OSDatabase ha fallado al devolver dos objetos de la consulta");
+    NSNumber* result = [database calculate:@"Person"
+                             withPredicate:@"programmer = NO"
+                                 arguments:nil keyPath:@"salary"
+                                  function:@"sum:"
+                                      type:NSDecimalAttributeType];
+    NSLog(@"object: %@", result);
+    XCTAssertTrue([result isEqualToNumber:@2500], @"OSDatabase ha fallado al devolver dos objetos de la consulta");
 
 // This test fail because a bug in Memory Core Data model and NSDictionaryResultType.
 }

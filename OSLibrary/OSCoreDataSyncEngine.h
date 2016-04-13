@@ -54,7 +54,7 @@ typedef enum {
 NSString * const kOSCoreDataSyncEngineInitialCompleteKey;
 NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
 
-
+@class OSDatabase;
 
 @interface OSCoreDataSyncEngine : NSObject
 
@@ -69,6 +69,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
     
 @property (atomic, readonly) BOOL syncInProgress;
 
+@property (nonatomic, strong) OSDatabase* backgroundDatabase;
 
 - (NSDate *)mostRecentUpdatedAtDateForEntityWithName:(NSString *)entityName;
 - (BOOL)initialSyncComplete;

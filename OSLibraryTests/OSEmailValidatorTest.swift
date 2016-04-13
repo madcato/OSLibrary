@@ -39,12 +39,5 @@ class OSEmailValidatorTest: XCTestCase {
     func testBadEmail2() {
         XCTAssertFalse(validator.isValid("veladan@gmail"), "Mail validator fail verifing a bad email 2")
     }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
     
 }

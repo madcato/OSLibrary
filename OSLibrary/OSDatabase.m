@@ -222,6 +222,7 @@ andSectionNameKeyPath:(NSString*)keyPath {
     [expressionDescription setExpression:minExpression];
     [expressionDescription setExpressionResultType:type];
     
+//    [fetchRequest setFetchLimit:1];
     // Set the request's properties to fetch just the property represented by the expressions.
     [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:expressionDescription]];
     NSError *error = nil;
@@ -240,6 +241,21 @@ andSectionNameKeyPath:(NSString*)keyPath {
     return nil;
 }
 
+- (NSUInteger)count:(NSString*)entityName {
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:entityName inManagedObjectContext:self.managedObjectContext]];
+
+    [request setIncludesSubentities:NO];
+
+    NSError *error;
+    NSUInteger count = [self.managedObjectContext countForFetchRequest:request error:&error];
+    if(count == NSNotFound) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        [OSDatabase displayValidationError:error];
+    }
+
+    return count;
+}
 - (NSManagedObjectContext*)createObjectContextForPrivateThread {
     NSManagedObjectContext* newManagedObjectContext = nil;
     NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;

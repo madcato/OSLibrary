@@ -26982,3 +26982,248 @@ Served asset /people.js - 304 Not Modified (0ms)
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-04-08 18:35:20 +0200
 Served asset /application.js - 304 Not Modified (1ms)
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2016-04-13 17:43:45 +0200
+Served asset /rails.png - 200 OK (3ms)
+
+
+Started GET "/apple-touch-icon-precomposed.png" for 127.0.0.1 at 2016-04-13 17:43:45 +0200
+
+ActionController::RoutingError (No route matches [GET] "/apple-touch-icon-precomposed.png"):
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (2.8ms)
+
+
+Started GET "/apple-touch-icon.png" for 127.0.0.1 at 2016-04-13 17:43:45 +0200
+
+ActionController::RoutingError (No route matches [GET] "/apple-touch-icon.png"):
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.4ms)
+
+
+Started GET "/people/1" for 127.0.0.1 at 2016-04-13 17:43:50 +0200
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPerson Load (0.5ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "1"]]
+Completed 404 Not Found in 20ms
+
+ActiveRecord::RecordNotFound (Couldn't find Person with id=1):
+  app/controllers/people_controller.rb:23:in `show'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.0ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (9.2ms)
+
+
+Started GET "/people/1" for 127.0.0.1 at 2016-04-13 17:43:50 +0200
+Processing by PeopleController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mPerson Load (0.4ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find Person with id=1):
+  app/controllers/people_controller.rb:23:in `show'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.7ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (47.0ms)
+
+
+Started GET "/people" for 127.0.0.1 at 2016-04-13 17:43:53 +0200
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (11.5ms)
+Compiled people.css  (8ms)  (pid 9547)
+Compiled scaffolds.css  (7ms)  (pid 9547)
+Compiled application.css  (35ms)  (pid 9547)
+Compiled jquery.js  (4ms)  (pid 9547)
+Compiled jquery_ujs.js  (0ms)  (pid 9547)
+Compiled people.js  (433ms)  (pid 9547)
+Compiled application.js  (486ms)  (pid 9547)
+Completed 200 OK in 593ms (Views: 576.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/people" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Processing by PeopleController#index as HTML
+  [1m[35mPerson Load (0.5ms)[0m  SELECT "people".* FROM "people" 
+  Rendered people/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 43ms (Views: 40.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /application.css - 200 OK (6ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /people.css - 200 OK (2ms)
+
+
+Started GET "/assets/people.css?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /people.css - 200 OK (0ms)
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /scaffolds.css - 200 OK (2ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /jquery.js - 200 OK (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /jquery_ujs.js - 200 OK (6ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /jquery.js - 200 OK (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /people.js - 200 OK (1ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /application.js - 200 OK (30ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /jquery_ujs.js - 200 OK (0ms)
+
+
+Started GET "/assets/people.js?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /people.js - 200 OK (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2016-04-13 17:43:54 +0200
+Served asset /application.js - 200 OK (0ms)
+
+
+Started DELETE "/people/172" for 127.0.0.1 at 2016-04-13 17:43:59 +0200
+Processing by PeopleController#destroy as HTML
+  Parameters: {"authenticity_token"=>"aM4ib/XwwzWyuAqtqw46PApKLcwjG+1gmWmVH8LF5Hs=", "id"=>"172"}
+WARNING: Can't verify CSRF token authenticity
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "172"]]
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (6.7ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 172]]
+  [1m[35m (5.8ms)[0m  commit transaction
+Redirected to http://localhost:3000/people
+Completed 302 Found in 20ms (ActiveRecord: 12.8ms)
+
+
+Started GET "/people" for 127.0.0.1 at 2016-04-13 17:43:59 +0200
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 24ms (Views: 23.3ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/people/173" for 127.0.0.1 at 2016-04-13 17:44:01 +0200
+Processing by PeopleController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YAhjhQvq43W5ehVcqNJW8CJhXv339F1QYaOjEdtRsg0=", "id"=>"173"}
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1  [["id", "173"]]
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "people" WHERE "people"."id" = ?  [["id", 173]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/people
+Completed 302 Found in 6ms (ActiveRecord: 2.7ms)
+
+
+Started GET "/people" for 127.0.0.1 at 2016-04-13 17:44:01 +0200
+Processing by PeopleController#index as HTML
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" 
+  Rendered people/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 15ms (Views: 14.8ms | ActiveRecord: 0.1ms)
+
+
+Started DELETE "/people/174" for 127.0.0.1 at 2016-04-13 17:44:04 +0200
+Processing by PeopleController#destroy as HTML
+  Parameters: {"authenticity_token"=>"YAhjhQvq43W5ehVcqNJW8CJhXv339F1QYaOjEdtRsg0=", "id"=>"174"}
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT "people".* FROM "people" WHERE "people"."id" = ? LIMIT 1[0m  [["id", "174"]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "people" WHERE "people"."id" = ?[0m  [["id", 174]]
+  [1m[35m (1.0ms)[0m  commit transaction
+Redirected to http://localhost:3000/people
+Completed 302 Found in 4ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/people" for 127.0.0.1 at 2016-04-13 17:44:04 +0200
+Processing by PeopleController#index as HTML
+  [1m[36mPerson Load (0.2ms)[0m  [1mSELECT "people".* FROM "people" [0m
+  Rendered people/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 66ms (Views: 64.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json" for 127.0.0.1 at 2016-04-13 17:44:11 +0200
+Processing by PeopleController#index as JSON
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" 
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT id FROM "people" [0m
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?onlyId=0" for 127.0.0.1 at 2016-04-13 17:45:00 +0200
+Processing by PeopleController#index as JSON
+  Parameters: {"onlyId"=>"0"}
+  [1m[35mPerson Load (0.3ms)[0m  SELECT "people".* FROM "people" 
+  [1m[36mPerson Load (0.3ms)[0m  [1mSELECT id FROM "people" [0m
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/people.json?onlyId=1" for 127.0.0.1 at 2016-04-13 17:45:02 +0200
+Processing by PeopleController#index as JSON
+  Parameters: {"onlyId"=>"1"}
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" 
+  [1m[36mPerson Load (0.1ms)[0m  [1mSELECT id FROM "people" [0m
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/people.json?onlyIds=1" for 127.0.0.1 at 2016-04-13 17:45:09 +0200
+Processing by PeopleController#index as JSON
+  Parameters: {"onlyIds"=>"1"}
+  [1m[35mPerson Load (0.1ms)[0m  SELECT "people".* FROM "people" 
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms)

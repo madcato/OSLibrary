@@ -20,7 +20,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 @property (nonatomic, strong) NSMutableArray *registeredClassesToSync;
 @property (nonatomic, strong) id<HTTPAPIClient> registeredAPIClient;
 @property (nonatomic, strong) NSDateFormatter *dateFormatter;
-@property (nonatomic, strong) OSDatabase* backgroundDatabase;
+
 @end
 
 @implementation OSCoreDataSyncEngine
