@@ -36,7 +36,7 @@
     
     database = [OSDatabase initWithModelName:@"OSDatabaseTest"
                                    storeName:@"OSDatabaseTest"
-                                     testing:NO
+                                     testing:YES
                                     delegate:nil];
     
     [[OSCoreDataSyncEngine sharedEngine] registerNSManagedObjectClassToSync:[Person class]];
