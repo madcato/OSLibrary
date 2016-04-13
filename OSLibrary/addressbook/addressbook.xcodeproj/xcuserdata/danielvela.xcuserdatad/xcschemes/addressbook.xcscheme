@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0730"
-   version = "1.7">
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -27,42 +27,6 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <PreActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "osascript -e &apos;tell application &quot;Terminal&quot;&apos; -e &apos;delay 0.5&apos; -e &quot;set currentTab to do script (\&quot;cd $SRCROOT/addressbookserver &amp;&amp; bundle exec rake db:reset RAILS_ENV=test &amp;&amp; rails server -e test\&quot;)&quot; -e &apos;end tell&apos; &amp;&#10;&#10;">
-               <EnvironmentBuildable>
-                  <BuildableReference
-                     BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "0B52EEAA1768E73900F7D477"
-                     BuildableName = "addressbook.app"
-                     BlueprintName = "addressbook"
-                     ReferencedContainer = "container:addressbook.xcodeproj">
-                  </BuildableReference>
-               </EnvironmentBuildable>
-            </ActionContent>
-         </ExecutionAction>
-      </PreActions>
-      <PostActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "osascript -e &apos;tell application &quot;Terminal&quot;&apos; -e &apos;delay 0.5&apos; -e &quot;set currentTab to do script (\&quot;cd $SRCROOT/addressbookserver &amp;&amp; kill -INT \$(cat tmp/pids/server.pid)\&quot;)&quot; -e &apos;end tell&apos; &amp;&#10;">
-               <EnvironmentBuildable>
-                  <BuildableReference
-                     BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "0B52EEAA1768E73900F7D477"
-                     BuildableName = "addressbook.app"
-                     BlueprintName = "addressbook"
-                     ReferencedContainer = "container:addressbook.xcodeproj">
-                  </BuildableReference>
-               </EnvironmentBuildable>
-            </ActionContent>
-         </ExecutionAction>
-      </PostActions>
       <Testables>
          <TestableReference
             skipped = "NO">
