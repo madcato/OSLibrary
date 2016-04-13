@@ -661,7 +661,6 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             [OSDatabase displayValidationError:error];
         }
-        [[OSCoreDataSyncEngine sharedEngine] startSync];
     }];
 }
 
@@ -678,7 +677,6 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
             NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
             [OSDatabase displayValidationError:error];
         }
-//        [[OSCoreDataSyncEngine sharedEngine] startSync];
     }];
 }
 
