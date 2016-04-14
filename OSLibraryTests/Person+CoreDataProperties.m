@@ -18,5 +18,9 @@
 @dynamic name;
 @dynamic programmer;
 @dynamic salary;
+@dynamic updated_at;
+@dynamic created_at;
+@dynamic syncStatus;
+@dynamic objectId;
 
 @end

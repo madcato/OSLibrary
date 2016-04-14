@@ -84,6 +84,7 @@
 		0BD9FCDB190B9F0D00F7D8B6 /* OSHTTPClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BD9FCD8190B9EE700F7D8B6 /* OSHTTPClient.h */; };
 		0BD9FCDE190BA18000F7D8B6 /* OSJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD9FCDD190BA18000F7D8B6 /* OSJSONRequestOperation.m */; };
 		0BD9FCDF190BA19D00F7D8B6 /* OSJSONRequestOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0BD9FCDC190BA18000F7D8B6 /* OSJSONRequestOperation.h */; };
+		0BDCA2D71CBFE6E900731565 /* getEmptyList.json in Resources */ = {isa = PBXBuildFile; fileRef = 0BDCA2D61CBFE6E900731565 /* getEmptyList.json */; };
 		0BFA550B1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BFA550A1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift */; };
 		0BFAB56B18A55B9000F30FC3 /* NSString+encodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = 10A338FF15E381560059F012 /* NSString+encodeString.m */; };
 		1008160515C11AB200429593 /* UIView+Snapshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 1008160315C11AB200429593 /* UIView+Snapshot.m */; };
@@ -256,6 +257,7 @@
 		0BD9FCD9190B9EE700F7D8B6 /* OSHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSHTTPClient.m; sourceTree = "<group>"; };
 		0BD9FCDC190BA18000F7D8B6 /* OSJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSJSONRequestOperation.h; sourceTree = "<group>"; };
 		0BD9FCDD190BA18000F7D8B6 /* OSJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSJSONRequestOperation.m; sourceTree = "<group>"; };
+		0BDCA2D61CBFE6E900731565 /* getEmptyList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = getEmptyList.json; sourceTree = "<group>"; };
 		0BFA55091C8C8C2E0072AE7C /* OSLibraryTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibraryTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		0BFA550A1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSEmailValidatorTest.swift; sourceTree = "<group>"; };
 		1008160215C11AB200429593 /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				0B019F0D1CBE945000711F8B /* OSMockRequestOperation.h */,
 				0B019F0E1CBE945000711F8B /* OSMockRequestOperation.m */,
 				0B019F111CBEA13400711F8B /* getAllObjects.json */,
+				0BDCA2D61CBFE6E900731565 /* getEmptyList.json */,
 			);
 			name = SyncEngine;
 			sourceTree = "<group>";
@@ -748,6 +751,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27CB961813E4110100717380 /* OSLibraryTests.h in Resources */,
+				0BDCA2D71CBFE6E900731565 /* getEmptyList.json in Resources */,
 				0B019F121CBEA13400711F8B /* getAllObjects.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

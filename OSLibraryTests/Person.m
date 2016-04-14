@@ -10,6 +10,22 @@
 
 @implementation Person
 
-// Insert code here to add functionality to your managed object subclass
+- (NSDictionary *)JSONToCreateObjectOnServer {
+//    NSDictionary *date = [NSDictionary dictionaryWithObjectsAndKeys:
+//                          @"Date", @"__type",
+//                          [[OSCoreDataSyncEngine sharedEngine] dateStringForAPIUsingDate:self.date], @"iso" , nil];
+
+    NSDictionary *jsonDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                                    self.birthDate, @"birthDate",
+                                    self.height, @"height",
+                                    self.programmer, @"programmer",
+                                    self.salary, @"salary",
+                                    self.updated_at, @"updated_at",
+                                    self.created_at, @"created_at",
+                                    self.syncStatus, @"syncStatus",
+                                    self.objectId, @"objectId",
+                                    nil];
+    return jsonDictionary;
+}
 
 @end
