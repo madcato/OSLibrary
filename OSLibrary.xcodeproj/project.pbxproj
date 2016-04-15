@@ -258,6 +258,9 @@
 		0BD9FCDC190BA18000F7D8B6 /* OSJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSJSONRequestOperation.h; sourceTree = "<group>"; };
 		0BD9FCDD190BA18000F7D8B6 /* OSJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSJSONRequestOperation.m; sourceTree = "<group>"; };
 		0BDCA2D61CBFE6E900731565 /* getEmptyList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = getEmptyList.json; sourceTree = "<group>"; };
+		0BDCA2F91CC0EE6F00731565 /* OSLibrary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibrary-Bridging-Header.h"; sourceTree = "<group>"; };
+		0BDCA2FA1CC0EE6F00731565 /* OSCircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSCircleImageView.swift; sourceTree = "<group>"; };
+		0BDCA2FE1CC0F26500731565 /* OSCircleLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSCircleLabel.swift; sourceTree = "<group>"; };
 		0BFA55091C8C8C2E0072AE7C /* OSLibraryTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibraryTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		0BFA550A1C8C8C2E0072AE7C /* OSEmailValidatorTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSEmailValidatorTest.swift; sourceTree = "<group>"; };
 		1008160215C11AB200429593 /* UIView+Snapshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Snapshot.h"; sourceTree = "<group>"; };
@@ -549,6 +552,8 @@
 		10BA49E6165E6F7C0069651F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0BDCA2FE1CC0F26500731565 /* OSCircleLabel.swift */,
+				0BDCA2FA1CC0EE6F00731565 /* OSCircleImageView.swift */,
 				27FEF71213ED54B100BC78B0 /* WebViewController.h */,
 				27FEF71313ED54B200BC78B0 /* WebViewController.m */,
 				27FEF71413ED54B200BC78B0 /* WebViewController.xib */,
@@ -622,6 +627,7 @@
 				10BA49DE165E6CFD0069651F /* Network */,
 				103FE0A5165BC7A800F25586 /* Theme */,
 				10BA49E6165E6F7C0069651F /* Views */,
+				0BDCA2F91CC0EE6F00731565 /* OSLibrary-Bridging-Header.h */,
 				27CB95FE13E4110100717380 /* OSLibrary.h */,
 				27CB962F13E4124400717380 /* OSSystem.h */,
 				27CB963013E4124400717380 /* OSSystem.m */,
@@ -722,7 +728,7 @@
 		27CB95ED13E4110000717380 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 0730;
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = veladan;
@@ -898,6 +904,7 @@
 		27CB961E13E4110100717380 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/OSLibrary.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -907,16 +914,20 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSLibrary/OSLibrary-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "OSLibrary/OSLibrary-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		27CB961F13E4110100717380 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				DSTROOT = /tmp/OSLibrary.dst;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -926,9 +937,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OSLibrary/OSLibrary-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "OSLibrary/OSLibrary-Bridging-Header.h";
 			};
 			name = Release;
 		};
