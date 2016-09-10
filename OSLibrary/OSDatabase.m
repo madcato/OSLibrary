@@ -174,7 +174,7 @@ andSectionNameKeyPath:(NSString*)keyPath {
     [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                         managedObjectContext:self.managedObjectContext
                                           sectionNameKeyPath:keyPath
-                                                   cacheName:@"MasterList"];
+                                                   cacheName:nil];
     NSError *error = nil;
     if (![aFetchedResultsController performFetch:&error]) {
         // Replace this implementation with code to handle the error appropriately.

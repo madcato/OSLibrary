@@ -218,6 +218,21 @@ static const UInt8 kKeychainItemIdentifier[]    = "org.veladan.app.uniqueid\0";
     return returnDictionary[(__bridge id)kSecValueData];
 }
 
+//public func getOrCreateUniqueIdentifier() -> String {
+//    let userDefaults = NSUserDefaults.standardUserDefaults()
+//    var uniqueId: String!
+//    
+//    if userDefaults.objectForKey(kAppUniqueId) == nil {
+//        let uniqueId = NSUUID().UUIDString
+//        userDefaults.setObject(uniqueId, forKey: kAppUniqueId)
+//        userDefaults.synchronize()
+//    } else {
+//        uniqueId = userDefaults.objectForKey(kAppUniqueId) as! String
+//    }
+//    return uniqueId
+//}
+
+
 + (NSString*)getOrCreateAppUniqueIdentifier {
 
     NSMutableDictionary* genericPasswordQuery = [[NSMutableDictionary alloc] init];

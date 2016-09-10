@@ -243,6 +243,8 @@
 		0B7F130C17905DF90068B3F8 /* OSLibraryBundle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSLibraryBundle-Prefix.pch"; sourceTree = "<group>"; };
 		0B86CAE81CB8F4E300B7DCA0 /* NSManagedObject+SyncEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+SyncEngine.h"; sourceTree = "<group>"; };
 		0B86CAE91CB8F4E300B7DCA0 /* NSManagedObject+SyncEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+SyncEngine.m"; sourceTree = "<group>"; };
+		0B8CF4511D58EB3F0069543A /* OSSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSSystem.swift; sourceTree = "<group>"; };
+		0BA9B84B1D1FE7D1004AFA68 /* OSEditableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSEditableTableViewController.swift; sourceTree = "<group>"; };
 		0BAA83171C515A8700DCB86D /* OSEmailValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSEmailValidator.h; sourceTree = "<group>"; };
 		0BAA83181C515A8700DCB86D /* OSEmailValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSEmailValidator.m; sourceTree = "<group>"; };
 		0BAB465F1B2D778F00A763B7 /* OSBorderedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSBorderedButton.h; sourceTree = "<group>"; };
@@ -250,6 +252,8 @@
 		0BAB7DF119C1AFEB00BA044E /* OSSystemTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSSystemTest.m; sourceTree = "<group>"; };
 		0BB1EB041A8E8C730038B564 /* OSCloudKitSyncEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCloudKitSyncEngine.h; sourceTree = "<group>"; };
 		0BB1EB051A8E8C730038B564 /* OSCloudKitSyncEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCloudKitSyncEngine.m; sourceTree = "<group>"; };
+		0BB28A611D2A758700219F20 /* Serializator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializator.swift; sourceTree = "<group>"; };
+		0BB28A621D2A7E3800219F20 /* SerializableWebQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializableWebQueries.swift; sourceTree = "<group>"; };
 		0BB7876D1C8F0947002B977E /* OSWebInterfaceTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSWebInterfaceTest.m; sourceTree = "<group>"; };
 		0BD9FCD4190B99C300F7D8B6 /* OSHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSHTTPRequestOperation.h; sourceTree = "<group>"; };
 		0BD9FCD5190B99C300F7D8B6 /* OSHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -515,6 +519,8 @@
 		10BA49E4165E6DBF0069651F /* Formats */ = {
 			isa = PBXGroup;
 			children = (
+				0BB28A611D2A758700219F20 /* Serializator.swift */,
+				0BB28A621D2A7E3800219F20 /* SerializableWebQueries.swift */,
 				272C036015335261008DF260 /* NSData+Base64.h */,
 				272C036115335261008DF260 /* NSData+Base64.m */,
 				10A338FE15E381560059F012 /* NSString+encodeString.h */,
@@ -561,6 +567,7 @@
 				10532F4215DA569000AB115B /* OSLoadingViewController.m */,
 				108AD5D715DA657700EE2443 /* OSAppearance.h */,
 				108AD5D815DA657700EE2443 /* OSAppearance.m */,
+				0BA9B84B1D1FE7D1004AFA68 /* OSEditableTableViewController.swift */,
 				0B6917F419C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.h */,
 				0B6917F519C6EC3B0099A595 /* OSEditablePickerViewTableViewCell.m */,
 				0BAB465F1B2D778F00A763B7 /* OSBorderedButton.h */,
@@ -632,6 +639,7 @@
 				27CB962F13E4124400717380 /* OSSystem.h */,
 				27CB963013E4124400717380 /* OSSystem.m */,
 				27CB95FC13E4110100717380 /* Supporting Files */,
+				0B8CF4511D58EB3F0069543A /* OSSystem.swift */,
 			);
 			path = OSLibrary;
 			sourceTree = "<group>";

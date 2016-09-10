@@ -28,11 +28,13 @@
 // // this is called from mergeChanges: method,
 // // requested to be made on the main thread so we can update our table with our new earthquake objects
 // //
+// IMPORTANT: using this method, you must obligatory implement NSFetchedResultsControllerDelegate methods 
 // - (void)updateContext:(NSNotification *)notification
 // {
 // NSManagedObjectContext *mainContext = [self.fetchedResultsController managedObjectContext];
 // [mainContext mergeChangesFromContextDidSaveNotification:notification];
 // }
+
 
 // Call every single method or group o method of dis class inside a performBlock method
 // Example:
