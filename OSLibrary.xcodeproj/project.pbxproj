@@ -740,6 +740,11 @@
 				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = veladan;
+				TargetAttributes = {
+					27CB960513E4110100717380 = {
+						LastSwiftMigration = 0800;
+					};
+				};
 			};
 			buildConfigurationList = 27CB95F013E4110000717380 /* Build configuration list for PBXProject "OSLibrary" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -973,6 +978,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OSLibraryTests/OSLibraryTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -995,6 +1001,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.veladan.OSLibraryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "OSLibraryTests/OSLibraryTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
