@@ -51,8 +51,8 @@ typedef enum {
     OSObjectUpdated = 3
 } OSObjectSyncStatus;
 
-NSString * const kOSCoreDataSyncEngineInitialCompleteKey;
-NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
+//NSString * const kOSCoreDataSyncEngineInitialCompleteKey;
+//NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName;
 
 
 
