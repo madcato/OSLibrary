@@ -77,7 +77,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
          postNotificationName:kOSCoreDataSyncEngineSyncCompletedNotificationName
          object:nil];
         [self willChangeValueForKey:@"syncInProgress"];
-        _syncInProgress = NO;
+        self->_syncInProgress = NO;
         [self didChangeValueForKey:@"syncInProgress"];
     });
 }
@@ -492,7 +492,7 @@ NSString * const kOSCoreDataSyncEngineSyncCompletedNotificationName = @"OSCoreDa
 - (void)startSync {
     if (!self.syncInProgress) {
         [self willChangeValueForKey:@"syncInProgress"];
-        _syncInProgress = YES;
+        self->_syncInProgress = YES;
         [self didChangeValueForKey:@"syncInProgress"];
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
                 self.backgroundDatabase = [OSDatabase backgroundDatabase];
