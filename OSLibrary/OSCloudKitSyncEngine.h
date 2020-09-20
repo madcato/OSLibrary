@@ -8,8 +8,8 @@
 
 
 
-NSString * const kOSCloudSyncEngineSyncCompletedNotificationName;
-NSString * const kOSCloudKitSyncEngineInitialCompleteKey;
+extern NSString * const kOSCloudSyncEngineSyncCompletedNotificationName;
+extern NSString * const kOSCloudKitSyncEngineInitialCompleteKey;
 
 @interface OSCloudKitSyncEngine : NSObject
 
